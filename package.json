@@ -1,0 +1,11 @@
+{
+  "name": "mveri-public-service",
+  "version": "72.19.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "node server.mjs",
+    "start": "node server.mjs",
+    "verify": "node tests/verify-v7218.mjs && node tests/directory-v7218.mjs && node tests/loading-v7219.mjs"
+  }
+}
