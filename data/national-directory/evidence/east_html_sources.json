@@ -1,0 +1,63 @@
+{
+  "retrievedDate": "2026-11-02",
+  "sources": [
+    {
+      "sourceId": "HTML-JS-CZ-2025",
+      "evidence": "changzhou_2025_web_extracted.txt",
+      "sourceUrl": "https://jyj.changzhou.gov.cn/html/jyj/2021/JNFEPQJQ_1224/110630.html",
+      "title": "常州市中等职业学校（机构）信息",
+      "publisher": "常州市教育局",
+      "sourceYear": 2025,
+      "publicationDate": "2025-12-26",
+      "province": "江苏省",
+      "city": "常州市",
+      "sourceScope": "常州市2025年12月中职学校（机构）目录；非江苏全省",
+      "expectedRows": 10,
+      "parsedRows": 10,
+      "attachedSecondaryRows": 0,
+      "evidencePath": "evidence/changzhou_2025_web_extracted.txt",
+      "evidenceSha256": "100d5c973d0c949b473d2af830b037755d6eec9d353de30e1170689736f00e4f"
+    },
+    {
+      "sourceId": "HTML-JS-CS-2025",
+      "evidence": "changshu_2025_web_extracted.txt",
+      "sourceUrl": "https://www.changshu.gov.cn/zgcs/c100459/202511/392c65fdbc504415a2bcc7231ae7f65c.shtml",
+      "title": "中职名录（数据截至2025年10月）",
+      "publisher": "常熟市教育局/常熟市人民政府",
+      "sourceYear": 2025,
+      "publicationDate": "2025-11-17",
+      "province": "江苏省",
+      "city": "苏州市",
+      "sourceScope": "常熟市2025年10月中职学校目录；非江苏全省",
+      "expectedRows": 4,
+      "parsedRows": 4,
+      "attachedSecondaryRows": 0,
+      "evidencePath": "evidence/changshu_2025_web_extracted.txt",
+      "evidenceSha256": "358afcdbc8f2c7082b9511c50eee7c343bbb5b8779aa20562491329a2aa5d8f5"
+    },
+    {
+      "sourceId": "HTML-HB-WH-2025",
+      "evidence": "wuhan_2025_web_extracted.txt",
+      "sourceUrl": "https://jyj.wuhan.gov.cn/zfxxgk/fdzdgknr/qtzdgknr/gjgljy/202606/t20260611_2776232.shtml",
+      "title": "2025年武汉市属中职学校基本情况分校一览表",
+      "publisher": "武汉市教育局",
+      "sourceYear": 2025,
+      "publicationDate": "2026-05-29",
+      "province": "湖北省",
+      "city": "武汉市",
+      "sourceScope": "武汉市属中职学校2025年统计表，含附设中职班；非湖北全省",
+      "expectedRows": null,
+      "parsedRows": 58,
+      "attachedSecondaryRows": 11,
+      "evidencePath": "evidence/wuhan_2025_web_extracted.txt",
+      "evidenceSha256": "95f1b406a63da3ea5fe528b20644b90acc6d62d75e467628409e5d65d8468c0c"
+    }
+  ],
+  "limitations": [
+    "江苏、浙江、湖北未找到可读全省逐校HTML表。",
+    "杭州2026官方页面不可读，未提取浙江记录。",
+    "仅按各市2025年官方目录范围覆盖，不代表省级全量或2026招生资质。",
+    "保存的是官方正文检索文本快照，不是浏览器原始HTML下载。"
+  ],
+  "rowCount": 72
+}

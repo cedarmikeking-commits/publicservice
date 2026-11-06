@@ -1,0 +1,112 @@
+{
+  "counts": {
+    "GD-C-2026": 332,
+    "YN-2025": 201
+  },
+  "total": 533,
+  "GD_C": {
+    "count": 332,
+    "cityCount": 21,
+    "byCity": {
+      "广州市": 38,
+      "深圳市": 20,
+      "珠海市": 9,
+      "汕头市": 16,
+      "佛山市": 24,
+      "韶关市": 12,
+      "河源市": 15,
+      "梅州市": 11,
+      "惠州市": 22,
+      "汕尾市": 11,
+      "东莞市": 25,
+      "中山市": 7,
+      "江门市": 15,
+      "阳江市": 8,
+      "湛江市": 27,
+      "茂名市": 14,
+      "肇庆市": 17,
+      "清远市": 17,
+      "潮州市": 6,
+      "揭阳市": 11,
+      "云浮市": 7
+    },
+    "pageRows": [
+      {
+        "page": 1,
+        "schoolRows": 20
+      },
+      {
+        "page": 2,
+        "schoolRows": 32
+      },
+      {
+        "page": 3,
+        "schoolRows": 26
+      },
+      {
+        "page": 4,
+        "schoolRows": 32
+      },
+      {
+        "page": 5,
+        "schoolRows": 35
+      },
+      {
+        "page": 6,
+        "schoolRows": 34
+      },
+      {
+        "page": 7,
+        "schoolRows": 34
+      },
+      {
+        "page": 8,
+        "schoolRows": 34
+      },
+      {
+        "page": 9,
+        "schoolRows": 32
+      },
+      {
+        "page": 10,
+        "schoolRows": 34
+      },
+      {
+        "page": 11,
+        "schoolRows": 19
+      }
+    ],
+    "extractionIssues": [
+      {
+        "name": "广宁县中等职业技术学校（肇庆市广宁卫生中等职业技术学校、广宁开放大学）",
+        "code": "3644000233",
+        "sourceLocator": "地市附件第9页第1表第35行；肇庆市序号单元未提取",
+        "issue": "PDF表格序号单元未提取；学校名、机构码及正文序号5完整，按真实学校行保留，防止漏校"
+      }
+    ],
+    "annualInspectionNote": "原文名单含上年年检不合格学校，保留原名单及annualInspection字段，不能把列入名单自动等同于当前入驻授权或质量结论"
+  },
+  "YN": {
+    "count": 201,
+    "ordinary": 193,
+    "adult": 8,
+    "sourceAsOf": "2025-09-01",
+    "sourceReleaseDate": "2026-09-21",
+    "schoolTypes": {
+      "职业高中学校": 128,
+      "中等技术学校": 64,
+      "中等师范学校": 1,
+      "成人中等专业学校": 8
+    },
+    "ownershipNote": "原文列举办者类型，保留schoolSponsorType；未把县级/地级教育部门自动转写公办，authority空值不推断"
+  },
+  "GD_combined": {
+    "provinceAffiliated": 15,
+    "cityAffiliated": 332,
+    "totalRows": 347,
+    "uniqueNames": 347,
+    "uniqueCodes": 347,
+    "duplicateNames": [],
+    "duplicateCodes": []
+  }
+}

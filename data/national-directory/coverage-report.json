@@ -1,0 +1,841 @@
+{
+  "schemaVersion": "1.0",
+  "verifiedOn": "2026-11-02",
+  "nationalComplete": false,
+  "summary": "已核验职教本科124所、高职1540所；中职2539条学校/办学单位记录，涉及20个省区市，尚有11个省份未取得已核验中职逐校数据。",
+  "scope": "中国内地31省区市；不含港澳台",
+  "byLevel": {
+    "职教本科": 124,
+    "高职": 1540,
+    "中职": 2539
+  },
+  "secondaryProvincePresence": {
+    "covered": 20,
+    "total": 31,
+    "ratio": 0.645161,
+    "meaning": "有至少一条已核验中职信息的省份比例，不是全国学校覆盖率"
+  },
+  "nationalSecondarySchoolCoverageRate": null,
+  "denominatorExplanation": "省份来源年份、招生资格/学校名录/办事目录和附设单位口径不同，未取得统一同年度全国分母，不计算全国中职学校覆盖百分比。",
+  "uncoveredSecondaryProvinces": [
+    "河北省",
+    "山西省",
+    "辽宁省",
+    "吉林省",
+    "黑龙江省",
+    "山东省",
+    "河南省",
+    "广西壮族自治区",
+    "海南省",
+    "陕西省",
+    "青海省"
+  ],
+  "provinces": [
+    {
+      "province": "北京市",
+      "levels": {
+        "职教本科": {
+          "count": 2,
+          "status": "source_complete",
+          "statusLabel": "2026教育部名单已核验",
+          "note": "截至2026-06-17的教育部原始逐校名单。",
+          "nationalSchoolCoverageRate": 1
+        },
+        "高职": {
+          "count": 23,
+          "status": "source_complete",
+          "statusLabel": "2026教育部名单已核验",
+          "note": "截至2026-06-17的教育部原始逐校名单。",
+          "nationalSchoolCoverageRate": 1
+        },
+        "中职": {
+          "count": 73,
+          "status": "source_complete",
+          "statusLabel": "2026来源提取完整",
+          "note": "普通中专27+职业高中46；不含另列技工及未取得的成人中职名录。",
+          "nationalSchoolCoverageRate": null
+        }
+      }
+    },
+    {
+      "province": "天津市",
+      "levels": {
+        "职教本科": {
+          "count": 1,
+          "status": "source_complete",
+          "statusLabel": "2026教育部名单已核验",
+          "note": "截至2026-06-17的教育部原始逐校名单。",
+          "nationalSchoolCoverageRate": 1
+        },
+        "高职": {
+          "count": 24,
+          "status": "source_complete",
+          "statusLabel": "2026教育部名单已核验",
+          "note": "截至2026-06-17的教育部原始逐校名单。",
+          "nationalSchoolCoverageRate": 1
+        },
+        "中职": {
+          "count": 20,
+          "status": "partial",
+          "statusLabel": "仅部分学校核验",
+          "note": "政府中职目录与单校公开页20条；未取得全市完整名单。",
+          "nationalSchoolCoverageRate": null
+        }
+      }
+    },
+    {
+      "province": "河北省",
+      "levels": {
+        "职教本科": {
+          "count": 4,
+          "status": "source_complete",
+          "statusLabel": "2026教育部名单已核验",
+          "note": "截至2026-06-17的教育部原始逐校名单。",
+          "nationalSchoolCoverageRate": 1
+        },
+        "高职": {
+          "count": 71,
+          "status": "source_complete",
+          "statusLabel": "2026教育部名单已核验",
+          "note": "截至2026-06-17的教育部原始逐校名单。",
+          "nationalSchoolCoverageRate": 1
+        },
+        "中职": {
+          "count": 0,
+          "status": "uncovered",
+          "statusLabel": "未覆盖",
+          "note": "尚未取得可用官方逐校原件，未生成院校记录。",
+          "nationalSchoolCoverageRate": null
+        }
+      }
+    },
+    {
+      "province": "山西省",
+      "levels": {
+        "职教本科": {
+          "count": 3,
+          "status": "source_complete",
+          "statusLabel": "2026教育部名单已核验",
+          "note": "截至2026-06-17的教育部原始逐校名单。",
+          "nationalSchoolCoverageRate": 1
+        },
+        "高职": {
+          "count": 48,
+          "status": "source_complete",
+          "statusLabel": "2026教育部名单已核验",
+          "note": "截至2026-06-17的教育部原始逐校名单。",
+          "nationalSchoolCoverageRate": 1
+        },
+        "中职": {
+          "count": 0,
+          "status": "uncovered",
+          "statusLabel": "未覆盖",
+          "note": "尚未取得可用官方逐校原件，未生成院校记录。",
+          "nationalSchoolCoverageRate": null
+        }
+      }
+    },
+    {
+      "province": "内蒙古自治区",
+      "levels": {
+        "职教本科": {
+          "count": 3,
+          "status": "source_complete",
+          "statusLabel": "2026教育部名单已核验",
+          "note": "截至2026-06-17的教育部原始逐校名单。",
+          "nationalSchoolCoverageRate": 1
+        },
+        "高职": {
+          "count": 33,
+          "status": "source_complete",
+          "statusLabel": "2026教育部名单已核验",
+          "note": "截至2026-06-17的教育部原始逐校名单。",
+          "nationalSchoolCoverageRate": 1
+        },
+        "中职": {
+          "count": 10,
+          "status": "partial",
+          "statusLabel": "仅部分城市核验",
+          "note": "鄂尔多斯5、通辽5；不是全区逐校全表。",
+          "nationalSchoolCoverageRate": null
+        }
+      }
+    },
+    {
+      "province": "辽宁省",
+      "levels": {
+        "职教本科": {
+          "count": 1,
+          "status": "source_complete",
+          "statusLabel": "2026教育部名单已核验",
+          "note": "截至2026-06-17的教育部原始逐校名单。",
+          "nationalSchoolCoverageRate": 1
+        },
+        "高职": {
+          "count": 51,
+          "status": "source_complete",
+          "statusLabel": "2026教育部名单已核验",
+          "note": "截至2026-06-17的教育部原始逐校名单。",
+          "nationalSchoolCoverageRate": 1
+        },
+        "中职": {
+          "count": 0,
+          "status": "uncovered",
+          "statusLabel": "未覆盖",
+          "note": "已定位丹东市级原件，本轮尚未完成原件获取与逐校核验。",
+          "nationalSchoolCoverageRate": null
+        }
+      }
+    },
+    {
+      "province": "吉林省",
+      "levels": {
+        "职教本科": {
+          "count": 3,
+          "status": "source_complete",
+          "statusLabel": "2026教育部名单已核验",
+          "note": "截至2026-06-17的教育部原始逐校名单。",
+          "nationalSchoolCoverageRate": 1
+        },
+        "高职": {
+          "count": 28,
+          "status": "source_complete",
+          "statusLabel": "2026教育部名单已核验",
+          "note": "截至2026-06-17的教育部原始逐校名单。",
+          "nationalSchoolCoverageRate": 1
+        },
+        "中职": {
+          "count": 0,
+          "status": "uncovered",
+          "statusLabel": "未覆盖",
+          "note": "已定位四平市级原件，本轮尚未完成原件获取与逐校核验。",
+          "nationalSchoolCoverageRate": null
+        }
+      }
+    },
+    {
+      "province": "黑龙江省",
+      "levels": {
+        "职教本科": {
+          "count": 3,
+          "status": "source_complete",
+          "statusLabel": "2026教育部名单已核验",
+          "note": "截至2026-06-17的教育部原始逐校名单。",
+          "nationalSchoolCoverageRate": 1
+        },
+        "高职": {
+          "count": 39,
+          "status": "source_complete",
+          "statusLabel": "2026教育部名单已核验",
+          "note": "截至2026-06-17的教育部原始逐校名单。",
+          "nationalSchoolCoverageRate": 1
+        },
+        "中职": {
+          "count": 0,
+          "status": "uncovered",
+          "statusLabel": "未覆盖",
+          "note": "已定位普通中专招生计划，尚未完成省内/省外学校及其他中职类别的逐校核验。",
+          "nationalSchoolCoverageRate": null
+        }
+      }
+    },
+    {
+      "province": "上海市",
+      "levels": {
+        "职教本科": {
+          "count": 1,
+          "status": "source_complete",
+          "statusLabel": "2026教育部名单已核验",
+          "note": "截至2026-06-17的教育部原始逐校名单。",
+          "nationalSchoolCoverageRate": 1
+        },
+        "高职": {
+          "count": 29,
+          "status": "source_complete",
+          "statusLabel": "2026教育部名单已核验",
+          "note": "截至2026-06-17的教育部原始逐校名单。",
+          "nationalSchoolCoverageRate": 1
+        },
+        "中职": {
+          "count": 61,
+          "status": "scoped_complete",
+          "statusLabel": "2026招生名单已提取",
+          "note": "正文与艺体附注去重、排除纯技工后61条；未取得成人中职全表。",
+          "nationalSchoolCoverageRate": null
+        }
+      }
+    },
+    {
+      "province": "江苏省",
+      "levels": {
+        "职教本科": {
+          "count": 6,
+          "status": "source_complete",
+          "statusLabel": "2026教育部名单已核验",
+          "note": "截至2026-06-17的教育部原始逐校名单。",
+          "nationalSchoolCoverageRate": 1
+        },
+        "高职": {
+          "count": 91,
+          "status": "source_complete",
+          "statusLabel": "2026教育部名单已核验",
+          "note": "截至2026-06-17的教育部原始逐校名单。",
+          "nationalSchoolCoverageRate": 1
+        },
+        "中职": {
+          "count": 14,
+          "status": "partial",
+          "statusLabel": "仅部分城市核验",
+          "note": "常州10、常熟4；不是江苏全省名单。",
+          "nationalSchoolCoverageRate": null
+        }
+      }
+    },
+    {
+      "province": "浙江省",
+      "levels": {
+        "职教本科": {
+          "count": 7,
+          "status": "source_complete",
+          "statusLabel": "2026教育部名单已核验",
+          "note": "截至2026-06-17的教育部原始逐校名单。",
+          "nationalSchoolCoverageRate": 1
+        },
+        "高职": {
+          "count": 45,
+          "status": "source_complete",
+          "statusLabel": "2026教育部名单已核验",
+          "note": "截至2026-06-17的教育部原始逐校名单。",
+          "nationalSchoolCoverageRate": 1
+        },
+        "中职": {
+          "count": 13,
+          "status": "partial",
+          "statusLabel": "仅嘉兴历史名单核验",
+          "note": "2024嘉兴15行中保留13个中职/双挂牌单位、排除2个纯技师单位；非全省。",
+          "nationalSchoolCoverageRate": null
+        }
+      }
+    },
+    {
+      "province": "安徽省",
+      "levels": {
+        "职教本科": {
+          "count": 3,
+          "status": "source_complete",
+          "statusLabel": "2026教育部名单已核验",
+          "note": "截至2026-06-17的教育部原始逐校名单。",
+          "nationalSchoolCoverageRate": 1
+        },
+        "高职": {
+          "count": 75,
+          "status": "source_complete",
+          "statusLabel": "2026教育部名单已核验",
+          "note": "截至2026-06-17的教育部原始逐校名单。",
+          "nationalSchoolCoverageRate": 1
+        },
+        "中职": {
+          "count": 185,
+          "status": "source_complete",
+          "statusLabel": "2026来源提取完整",
+          "note": "全省原表2538专业点去重185校；未提供学校机构码。",
+          "nationalSchoolCoverageRate": null
+        }
+      }
+    },
+    {
+      "province": "福建省",
+      "levels": {
+        "职教本科": {
+          "count": 3,
+          "status": "source_complete",
+          "statusLabel": "2026教育部名单已核验",
+          "note": "截至2026-06-17的教育部原始逐校名单。",
+          "nationalSchoolCoverageRate": 1
+        },
+        "高职": {
+          "count": 48,
+          "status": "source_complete",
+          "statusLabel": "2026教育部名单已核验",
+          "note": "截至2026-06-17的教育部原始逐校名单。",
+          "nationalSchoolCoverageRate": 1
+        },
+        "中职": {
+          "count": 161,
+          "status": "source_complete",
+          "statusLabel": "2026来源提取完整",
+          "note": "附件1全部161条逐校信息；含高校中职办学单位，技工另列。",
+          "nationalSchoolCoverageRate": null
+        }
+      }
+    },
+    {
+      "province": "江西省",
+      "levels": {
+        "职教本科": {
+          "count": 7,
+          "status": "source_complete",
+          "statusLabel": "2026教育部名单已核验",
+          "note": "截至2026-06-17的教育部原始逐校名单。",
+          "nationalSchoolCoverageRate": 1
+        },
+        "高职": {
+          "count": 69,
+          "status": "source_complete",
+          "statusLabel": "2026教育部名单已核验",
+          "note": "截至2026-06-17的教育部原始逐校名单。",
+          "nationalSchoolCoverageRate": 1
+        },
+        "中职": {
+          "count": 189,
+          "status": "source_complete",
+          "statusLabel": "2026来源提取完整",
+          "note": "教育部门189校；采用江西教育传媒原公文附件，人社91另列。",
+          "nationalSchoolCoverageRate": null
+        }
+      }
+    },
+    {
+      "province": "山东省",
+      "levels": {
+        "职教本科": {
+          "count": 8,
+          "status": "source_complete",
+          "statusLabel": "2026教育部名单已核验",
+          "note": "截至2026-06-17的教育部原始逐校名单。",
+          "nationalSchoolCoverageRate": 1
+        },
+        "高职": {
+          "count": 94,
+          "status": "source_complete",
+          "statusLabel": "2026教育部名单已核验",
+          "note": "截至2026-06-17的教育部原始逐校名单。",
+          "nationalSchoolCoverageRate": 1
+        },
+        "中职": {
+          "count": 0,
+          "status": "uncovered",
+          "statusLabel": "未覆盖",
+          "note": "已定位2025/2026省级PDF；当前原件连接失败，本轮未取得完整可复核逐校数据。",
+          "nationalSchoolCoverageRate": null
+        }
+      }
+    },
+    {
+      "province": "河南省",
+      "levels": {
+        "职教本科": {
+          "count": 5,
+          "status": "source_complete",
+          "statusLabel": "2026教育部名单已核验",
+          "note": "截至2026-06-17的教育部原始逐校名单。",
+          "nationalSchoolCoverageRate": 1
+        },
+        "高职": {
+          "count": 114,
+          "status": "source_complete",
+          "statusLabel": "2026教育部名单已核验",
+          "note": "截至2026-06-17的教育部原始逐校名单。",
+          "nationalSchoolCoverageRate": 1
+        },
+        "中职": {
+          "count": 0,
+          "status": "uncovered",
+          "statusLabel": "未覆盖",
+          "note": "省教育厅页面拒绝当前云端浏览器访问；公示稿与最终名单尚未完成核对。",
+          "nationalSchoolCoverageRate": null
+        }
+      }
+    },
+    {
+      "province": "湖北省",
+      "levels": {
+        "职教本科": {
+          "count": 4,
+          "status": "source_complete",
+          "statusLabel": "2026教育部名单已核验",
+          "note": "截至2026-06-17的教育部原始逐校名单。",
+          "nationalSchoolCoverageRate": 1
+        },
+        "高职": {
+          "count": 60,
+          "status": "source_complete",
+          "statusLabel": "2026教育部名单已核验",
+          "note": "截至2026-06-17的教育部原始逐校名单。",
+          "nationalSchoolCoverageRate": 1
+        },
+        "中职": {
+          "count": 58,
+          "status": "partial",
+          "statusLabel": "仅武汉市属名单核验",
+          "note": "2025武汉市属58条，含11个附设中职班；不是全省名单。",
+          "nationalSchoolCoverageRate": null
+        }
+      }
+    },
+    {
+      "province": "湖南省",
+      "levels": {
+        "职教本科": {
+          "count": 4,
+          "status": "source_complete",
+          "statusLabel": "2026教育部名单已核验",
+          "note": "截至2026-06-17的教育部原始逐校名单。",
+          "nationalSchoolCoverageRate": 1
+        },
+        "高职": {
+          "count": 91,
+          "status": "source_complete",
+          "statusLabel": "2026教育部名单已核验",
+          "note": "截至2026-06-17的教育部原始逐校名单。",
+          "nationalSchoolCoverageRate": 1
+        },
+        "中职": {
+          "count": 385,
+          "status": "dynamic",
+          "statusLabel": "动态目录已提取，年度待核",
+          "note": "官方实时385行；页面未标名单年度，含附设中职及特殊教育单位。",
+          "nationalSchoolCoverageRate": null
+        }
+      }
+    },
+    {
+      "province": "广东省",
+      "levels": {
+        "职教本科": {
+          "count": 7,
+          "status": "source_complete",
+          "statusLabel": "2026教育部名单已核验",
+          "note": "截至2026-06-17的教育部原始逐校名单。",
+          "nationalSchoolCoverageRate": 1
+        },
+        "高职": {
+          "count": 90,
+          "status": "source_complete",
+          "statusLabel": "2026教育部名单已核验",
+          "note": "截至2026-06-17的教育部原始逐校名单。",
+          "nationalSchoolCoverageRate": 1
+        },
+        "中职": {
+          "count": 347,
+          "status": "source_complete",
+          "statusLabel": "2026来源提取完整",
+          "note": "省属15+21地市332=347；含附设中职班，保留年检结果。",
+          "nationalSchoolCoverageRate": null
+        }
+      }
+    },
+    {
+      "province": "广西壮族自治区",
+      "levels": {
+        "职教本科": {
+          "count": 5,
+          "status": "source_complete",
+          "statusLabel": "2026教育部名单已核验",
+          "note": "截至2026-06-17的教育部原始逐校名单。",
+          "nationalSchoolCoverageRate": 1
+        },
+        "高职": {
+          "count": 51,
+          "status": "source_complete",
+          "statusLabel": "2026教育部名单已核验",
+          "note": "截至2026-06-17的教育部原始逐校名单。",
+          "nationalSchoolCoverageRate": 1
+        },
+        "中职": {
+          "count": 0,
+          "status": "uncovered",
+          "statusLabel": "未覆盖",
+          "note": "已定位历史省级附件，当前连接失败；2026逐校原件未取得。",
+          "nationalSchoolCoverageRate": null
+        }
+      }
+    },
+    {
+      "province": "海南省",
+      "levels": {
+        "职教本科": {
+          "count": 2,
+          "status": "source_complete",
+          "statusLabel": "2026教育部名单已核验",
+          "note": "截至2026-06-17的教育部原始逐校名单。",
+          "nationalSchoolCoverageRate": 1
+        },
+        "高职": {
+          "count": 17,
+          "status": "source_complete",
+          "statusLabel": "2026教育部名单已核验",
+          "note": "截至2026-06-17的教育部原始逐校名单。",
+          "nationalSchoolCoverageRate": 1
+        },
+        "中职": {
+          "count": 0,
+          "status": "uncovered",
+          "statusLabel": "未覆盖",
+          "note": "省教育厅公告返回403，未取得可解析原件。",
+          "nationalSchoolCoverageRate": null
+        }
+      }
+    },
+    {
+      "province": "重庆市",
+      "levels": {
+        "职教本科": {
+          "count": 5,
+          "status": "source_complete",
+          "statusLabel": "2026教育部名单已核验",
+          "note": "截至2026-06-17的教育部原始逐校名单。",
+          "nationalSchoolCoverageRate": 1
+        },
+        "高职": {
+          "count": 46,
+          "status": "source_complete",
+          "statusLabel": "2026教育部名单已核验",
+          "note": "截至2026-06-17的教育部原始逐校名单。",
+          "nationalSchoolCoverageRate": 1
+        },
+        "中职": {
+          "count": 96,
+          "status": "historical_complete",
+          "statusLabel": "2025目录已提取",
+          "note": "实时124行，排除28技工后96条；不等同2026招生资格。",
+          "nationalSchoolCoverageRate": null
+        }
+      }
+    },
+    {
+      "province": "四川省",
+      "levels": {
+        "职教本科": {
+          "count": 6,
+          "status": "source_complete",
+          "statusLabel": "2026教育部名单已核验",
+          "note": "截至2026-06-17的教育部原始逐校名单。",
+          "nationalSchoolCoverageRate": 1
+        },
+        "高职": {
+          "count": 86,
+          "status": "source_complete",
+          "statusLabel": "2026教育部名单已核验",
+          "note": "截至2026-06-17的教育部原始逐校名单。",
+          "nationalSchoolCoverageRate": 1
+        },
+        "中职": {
+          "count": 343,
+          "status": "source_complete",
+          "statusLabel": "2026来源提取完整",
+          "note": "教育部门343校2880专业点；原表经省级媒体转载取得，技工74另列。",
+          "nationalSchoolCoverageRate": null
+        }
+      }
+    },
+    {
+      "province": "贵州省",
+      "levels": {
+        "职教本科": {
+          "count": 6,
+          "status": "source_complete",
+          "statusLabel": "2026教育部名单已核验",
+          "note": "截至2026-06-17的教育部原始逐校名单。",
+          "nationalSchoolCoverageRate": 1
+        },
+        "高职": {
+          "count": 46,
+          "status": "source_complete",
+          "statusLabel": "2026教育部名单已核验",
+          "note": "截至2026-06-17的教育部原始逐校名单。",
+          "nationalSchoolCoverageRate": 1
+        },
+        "中职": {
+          "count": 131,
+          "status": "source_complete",
+          "statusLabel": "2026来源提取完整",
+          "note": "中职附件131校；机构码与地址冲突原样保留，技工另列。",
+          "nationalSchoolCoverageRate": null
+        }
+      }
+    },
+    {
+      "province": "云南省",
+      "levels": {
+        "职教本科": {
+          "count": 3,
+          "status": "source_complete",
+          "statusLabel": "2026教育部名单已核验",
+          "note": "截至2026-06-17的教育部原始逐校名单。",
+          "nationalSchoolCoverageRate": 1
+        },
+        "高职": {
+          "count": 53,
+          "status": "source_complete",
+          "statusLabel": "2026教育部名单已核验",
+          "note": "截至2026-06-17的教育部原始逐校名单。",
+          "nationalSchoolCoverageRate": 1
+        },
+        "中职": {
+          "count": 201,
+          "status": "historical_complete",
+          "statusLabel": "2025学校名录已提取",
+          "note": "2025-09-01时点201校=普通193+成人8；不能等同2026招生资格。",
+          "nationalSchoolCoverageRate": null
+        }
+      }
+    },
+    {
+      "province": "西藏自治区",
+      "levels": {
+        "职教本科": {
+          "count": 0,
+          "status": "source_complete",
+          "statusLabel": "2026教育部名单已核验",
+          "note": "教育部该时点名单未列本省该层次学校（0条），并非采集缺失。",
+          "nationalSchoolCoverageRate": null
+        },
+        "高职": {
+          "count": 3,
+          "status": "source_complete",
+          "statusLabel": "2026教育部名单已核验",
+          "note": "截至2026-06-17的教育部原始逐校名单。",
+          "nationalSchoolCoverageRate": 1
+        },
+        "中职": {
+          "count": 3,
+          "status": "partial",
+          "statusLabel": "仅3所学校实体核验",
+          "note": "拉萨2所、林芝1所；未取得全区年度逐校招生资格名录。",
+          "nationalSchoolCoverageRate": null
+        }
+      }
+    },
+    {
+      "province": "陕西省",
+      "levels": {
+        "职教本科": {
+          "count": 4,
+          "status": "source_complete",
+          "statusLabel": "2026教育部名单已核验",
+          "note": "截至2026-06-17的教育部原始逐校名单。",
+          "nationalSchoolCoverageRate": 1
+        },
+        "高职": {
+          "count": 37,
+          "status": "source_complete",
+          "statusLabel": "2026教育部名单已核验",
+          "note": "截至2026-06-17的教育部原始逐校名单。",
+          "nationalSchoolCoverageRate": 1
+        },
+        "中职": {
+          "count": 0,
+          "status": "uncovered",
+          "statusLabel": "未覆盖",
+          "note": "已定位2024全省文件；附件获取未成功，未计入已核验记录。",
+          "nationalSchoolCoverageRate": null
+        }
+      }
+    },
+    {
+      "province": "甘肃省",
+      "levels": {
+        "职教本科": {
+          "count": 6,
+          "status": "source_complete",
+          "statusLabel": "2026教育部名单已核验",
+          "note": "截至2026-06-17的教育部原始逐校名单。",
+          "nationalSchoolCoverageRate": 1
+        },
+        "高职": {
+          "count": 21,
+          "status": "source_complete",
+          "statusLabel": "2026教育部名单已核验",
+          "note": "截至2026-06-17的教育部原始逐校名单。",
+          "nationalSchoolCoverageRate": 1
+        },
+        "中职": {
+          "count": 144,
+          "status": "historical_scoped",
+          "statusLabel": "2025公文办事名录已提取",
+          "note": "政府文件附件145个学校/校区名称，合并同校两校区后144条；非年度招生资格。",
+          "nationalSchoolCoverageRate": null
+        }
+      }
+    },
+    {
+      "province": "青海省",
+      "levels": {
+        "职教本科": {
+          "count": 1,
+          "status": "source_complete",
+          "statusLabel": "2026教育部名单已核验",
+          "note": "截至2026-06-17的教育部原始逐校名单。",
+          "nationalSchoolCoverageRate": 1
+        },
+        "高职": {
+          "count": 7,
+          "status": "source_complete",
+          "statusLabel": "2026教育部名单已核验",
+          "note": "截至2026-06-17的教育部原始逐校名单。",
+          "nationalSchoolCoverageRate": 1
+        },
+        "中职": {
+          "count": 0,
+          "status": "uncovered",
+          "statusLabel": "未覆盖",
+          "note": "尚未取得可用官方逐校原件，未生成院校记录。",
+          "nationalSchoolCoverageRate": null
+        }
+      }
+    },
+    {
+      "province": "宁夏回族自治区",
+      "levels": {
+        "职教本科": {
+          "count": 2,
+          "status": "source_complete",
+          "statusLabel": "2026教育部名单已核验",
+          "note": "截至2026-06-17的教育部原始逐校名单。",
+          "nationalSchoolCoverageRate": 1
+        },
+        "高职": {
+          "count": 13,
+          "status": "source_complete",
+          "statusLabel": "2026教育部名单已核验",
+          "note": "截至2026-06-17的教育部原始逐校名单。",
+          "nationalSchoolCoverageRate": 1
+        },
+        "中职": {
+          "count": 14,
+          "status": "partial",
+          "statusLabel": "仅学校实体核验",
+          "note": "从省教育厅毕业学校列核验14所中职实体；非学校招生资格名录。",
+          "nationalSchoolCoverageRate": null
+        }
+      }
+    },
+    {
+      "province": "新疆维吾尔自治区",
+      "levels": {
+        "职教本科": {
+          "count": 9,
+          "status": "source_complete",
+          "statusLabel": "2026教育部名单已核验",
+          "note": "截至2026-06-17的教育部原始逐校名单。",
+          "nationalSchoolCoverageRate": 1
+        },
+        "高职": {
+          "count": 37,
+          "status": "source_complete",
+          "statusLabel": "2026教育部名单已核验",
+          "note": "截至2026-06-17的教育部原始逐校名单。",
+          "nationalSchoolCoverageRate": 1
+        },
+        "中职": {
+          "count": 91,
+          "status": "partial",
+          "statusLabel": "自治区名单已提取，兵团待核",
+          "note": "40页858专业行去重91个学校单位；未核对兵团另行名录。",
+          "nationalSchoolCoverageRate": null
+        }
+      }
+    }
+  ]
+}

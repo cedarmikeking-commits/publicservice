@@ -1,0 +1,489 @@
+{
+  "researched_at": "2026-11-02",
+  "scope": "北部东北西北中职逐校名单来源检索；已核验HTML/PDF学校另见north_html_records.json；未将搜索摘要作为逐校数据",
+  "sources": [
+    {
+      "id": "BJ2026ZZ",
+      "province": "北京市",
+      "title": "北京市教育委员会关于公示2026年具有招生资格的高级中等学校名单的通知",
+      "publisher": "北京市教育委员会",
+      "published_date": "2026-05-16",
+      "document_date": "2026-05-13",
+      "page_url": "https://jw.beijing.gov.cn/tzgg/202605/t20260516_4653897.html",
+      "year": 2026,
+      "status": "official_attachments_located",
+      "coverage": "全市普通中专、职业高中招生资格；含特殊教育学校中职招生；不包含成人中专单独名录",
+      "attachments": [
+        {
+          "title": "2026年具有招生资格的普通中专学校名单",
+          "url": "https://jw.beijing.gov.cn/tzgg/202605/P020260516546375466950.pdf",
+          "type": "pdf",
+          "pages": 2,
+          "school_count": 27,
+          "technical_schools": false
+        },
+        {
+          "title": "2026年具有招生资格的职业高中学校名单",
+          "url": "https://jw.beijing.gov.cn/tzgg/202605/P020260516546375739940.pdf",
+          "type": "pdf",
+          "pages": 4,
+          "school_count": 46,
+          "technical_schools": false
+        }
+      ],
+      "extra_excluded_attachment": {
+        "title": "2026年具有招生资格的技工学校名单",
+        "url": "https://jw.beijing.gov.cn/tzgg/202605/P020260516546375808945.pdf",
+        "type": "pdf",
+        "school_count": 14,
+        "reason": "技工另列，勿混入教育部门中职统计分母"
+      }
+    },
+    {
+      "id": "XJ2026ZZ",
+      "province": "新疆维吾尔自治区",
+      "title": "关于公布2026年自治区具备学历教育招生资质的中等职业学校名录的通知",
+      "publisher": "新疆维吾尔自治区教育厅",
+      "published_date": "2026-08-03",
+      "document_date": "2026-07-28",
+      "document_number": "新教函〔2026〕422号",
+      "page_url": "https://jyt.xinjiang.gov.cn/edu/zyjy/202608/907f0d5a9a4f42fe93ffda7b48a52e0f.shtml",
+      "year": 2026,
+      "status": "official_attachment_located",
+      "coverage": "自治区招生资质核查名录；需核对是否覆盖兵团，不可据此直接宣称新疆含兵团全量",
+      "attachments": [
+        {
+          "title": "2026年通过招生资质核查的中等职业学校名录",
+          "url": "https://jyt.xinjiang.gov.cn/edu/zyjy/202608/907f0d5a9a4f42fe93ffda7b48a52e0f/files/2026%E5%B9%B4%E9%80%9A%E8%BF%87%E6%8B%9B%E7%94%9F%E8%B5%84%E8%B4%A8%E6%A0%B8%E6%9F%A5%E7%9A%84%E4%B8%AD%E7%AD%89%E8%81%8C%E4%B8%9A%E5%AD%A6%E6%A0%A1%E5%90%8D%E5%BD%95.pdf",
+          "type": "pdf",
+          "pages": 40,
+          "school_count": null,
+          "technical_schools": false
+        }
+      ],
+      "cleaning_notes": "学校按专业多行重复，按机构代码去重；机构代码存在10位、统一社会信用代码等多种形式；含高职学校中职办学和特殊学校中职班，应单列附设层次"
+    },
+    {
+      "id": "SXBAOJI2026ZZ",
+      "province": "陕西省",
+      "city": "宝鸡市",
+      "title": "2026年宝鸡市具有招生资质的中等职业学校名录",
+      "publisher": "宝鸡市教育局/宝鸡市人民政府",
+      "published_date": "2026-08-03",
+      "page_url": "https://www.baoji.gov.cn/col9816/col9817/col9872/col9875/202608/t20260804_1290860.html",
+      "year": 2026,
+      "status": "official_attachment_located_partial_province",
+      "coverage": "宝鸡市；不代表陕西全省",
+      "attachments": [
+        {
+          "title": "2026年宝鸡市具有招生资质的中等职业学校名录",
+          "url": "https://www.baoji.gov.cn/col9816/col9817/col9872/col9875/202608/P020260804552181151147.pdf",
+          "type": "pdf",
+          "pages": 7,
+          "school_count": null,
+          "technical_schools": null
+        }
+      ]
+    },
+    {
+      "id": "HLJ2026ZJ",
+      "province": "黑龙江省",
+      "title": "2026年黑龙江省普通中等专业学校招生志愿填报考生必读",
+      "publisher": "黑龙江省教育厅/黑龙江省招生考试院",
+      "published_date": "2026-07-31",
+      "page_url": "https://www.hlj.gov.cn/hlj/c107857/202607/c00_31963445.shtml",
+      "year": 2026,
+      "status": "official_attachment_url_located_download_unverified",
+      "coverage": "普通中专招生计划；需排除省外在黑龙江招生的学校，不包含所有职高成人中专",
+      "attachments": [
+        {
+          "title": "2026年黑龙江省中等专业学校招生计划",
+          "url": "https://www.lzk.hl.cn/cgzgs/zzzx/202607/W020260730408499582693.pdf",
+          "type": "pdf",
+          "school_count": null,
+          "technical_schools": null
+        }
+      ],
+      "access_note": "web检索工具无法打开PDF，官方来源页正文明确列出附件URL，待云端浏览器下载验证"
+    },
+    {
+      "id": "JLSIPING2025ZZ",
+      "province": "吉林省",
+      "city": "四平市",
+      "title": "吉林省四平市2025年度具备中等职业学历教育招生资质学校及专业名录",
+      "publisher": "四平市教育局",
+      "published_date": null,
+      "page_url": null,
+      "year": 2025,
+      "status": "official_attachment_url_located_download_unverified_partial_province",
+      "coverage": "四平市；8所名单中包含2所特殊教育学校附设中职班；仅为线索数量需原件验证",
+      "attachments": [
+        {
+          "title": "吉林省四平市2025年度具备中等职业学历教育招生资质学校及专业名录",
+          "url": "https://edu.siping.gov.cn/zwxx/gsgg/202505/W020250529504180503041.xls",
+          "type": "xls",
+          "school_count": null,
+          "technical_schools": false
+        }
+      ],
+      "discovery_url": "https://cc.bendibao.com/news/202573/66722.shtm",
+      "access_note": "从本地宝附件超链接解析出的官方域名附件，web下载超时，尚未读取原件，不可仅凭第三方正文视为已核验"
+    },
+    {
+      "id": "LNDANDONG2026ZZ",
+      "province": "辽宁省",
+      "city": "丹东市",
+      "title": "丹东市2026年具备中等职业学历教育招生资质学校及专业名单",
+      "publisher": "丹东市教育局",
+      "published_date": null,
+      "page_url": null,
+      "year": 2026,
+      "status": "official_attachment_located_partial_province",
+      "coverage": "丹东市11所；不代表辽宁全省",
+      "attachments": [
+        {
+          "title": "丹东市2026年具备中等职业学历教育招生资质学校及专业名单",
+          "url": "https://files.dandong.gov.cn/files/ueditor/DDJYJ/jsp/upload/file/20260515/1778807977820051624.pdf",
+          "type": "pdf",
+          "pages": 6,
+          "school_count": 11,
+          "technical_schools": false
+        }
+      ]
+    },
+    {
+      "id": "TJ_CURRENT_HTML",
+      "province": "天津市",
+      "title": "公共企事业单位信息公开",
+      "publisher": "天津市人民政府",
+      "published_date": null,
+      "page_url": "https://www.tj.gov.cn/zwgk/ggqsydwxxgk/",
+      "year": null,
+      "status": "official_inline_directory_lead_no_original_attachment",
+      "coverage": "页面包含中等职业学校类别可检索条目，未确认全量与年度",
+      "attachments": [],
+      "notes": "天津教育委员会主页 https://jy.tj.gov.cn/ web工具403；搜索出现 bbfzsc.com 等仿冒/污染镜像，未将其当官方数据使用"
+    },
+    {
+      "id": "SHAANXI2024ZZ",
+      "province": "陕西省",
+      "title": "宝鸡市教育局关于公布2024年具有招生资质的中等职业学校和技工学校名录的通知",
+      "publisher": "宝鸡市教育局（转载省级附件）",
+      "published_date": "2024-06-27",
+      "page_url": "https://jyj.baoji.gov.cn/col18637/col1511/202406/t20240627_727418.html",
+      "year": 2024,
+      "status": "official_province_attachment_located_download_unverified",
+      "coverage": "附件31标题为2024年陕西省具有学历教育招生资质的中等职业学校信息表，疑为全省204所；下载后核实实际范围",
+      "attachments": [
+        {
+          "title": "2024年陕西省具有学历教育招生资质的中等职业学校信息表.docx",
+          "url": "https://jyj.baoji.gov.cn/col18637/col1511/202406/P020241228662555864567.docx",
+          "type": "docx",
+          "school_count": null,
+          "technical_schools": false
+        },
+        {
+          "title": "2024年陕西省具有招生资质的中等职业学校和技工学校信息表.xls",
+          "url": "https://jyj.baoji.gov.cn/col18637/col1511/202406/P020241228662555774114.xls",
+          "type": "xls",
+          "school_count": null,
+          "technical_schools": true
+        }
+      ],
+      "access_note": "web工具返回unsupported content-type但已解析到官方原件URL；应云浏览器下载，再比对全省覆盖与只含宝鸡的差异"
+    },
+    {
+      "id": "GANSU2024ZZ",
+      "province": "甘肃省",
+      "title": "甘肃省2024年开展招生工作的中等职业学校一览表",
+      "publisher": "甘肃省教育厅",
+      "published_date": null,
+      "page_url": null,
+      "year": 2024,
+      "status": "official_province_attachment_located_download_unverified",
+      "coverage": "2024年全省开展招生工作的学校名单，含高校中专部与特殊教育中职，不等于所有现存学校",
+      "attachments": [
+        {
+          "title": "甘肃省2024年开展招生工作的中等职业学校一览表",
+          "url": "https://jyt.gansu.gov.cn/jyt/c120301/202407/173952848/files/0b42d27d63c3463e95ab5ebe110991d4.pdf",
+          "type": "pdf",
+          "school_count": 145,
+          "technical_schools": false
+        }
+      ],
+      "access_note": "搜索索引可见完整逐校表，打开PDF web412，待云浏览器获取原件；145是媒体正文对该附件的总数，需原件比对；2025有142所新名单但尚未定位到官方原件"
+    },
+    {
+      "id": "GANSU2025EMPLOYMENT",
+      "province": "甘肃省",
+      "title": "关于做好2026届毕业生一次性求职补贴发放工作的通知——附件3全省中等职业学校一览表",
+      "publisher": "甘肃省人力资源和社会保障厅、甘肃省教育厅、甘肃省财政厅（甘肃畜牧工程职业技术学院官网转载）",
+      "published_date": "2025-11-03",
+      "document_number": "甘人社通〔2025〕285号",
+      "page_url": "https://zsjyc.xmgcedu.cn/jyfw/jyzd/content_37248",
+      "year": 2025,
+      "status": "official_document_reprinted_by_public_college_attachment_located",
+      "coverage": "2026届毕业生补贴学校办事名录，15市州；不是当年招生资格名录；学校校区/中专部并列，应去重而非直接宣称145独立院校",
+      "attachments": [
+        {
+          "title": "关于做好2026届毕业生一次性求职补贴发放工作的通知(1).pdf",
+          "url": "https://zsjyc.xmgcedu.cn/upload/zsjyc/contentmanage/article/file/202603021641164308/%E5%85%B3%E4%BA%8E%E5%81%9A%E5%A5%BD2026%E5%B1%8A%E6%AF%95%E4%B8%9A%E7%94%9F%E4%B8%80%E6%AC%A1%E6%80%A7%E6%B1%82%E8%81%8C%E8%A1%A5%E8%B4%B4%E5%8F%91%E6%94%BE%E5%B7%A5%E4%BD%9C%E7%9A%84%E9%80%9A%E7%9F%A5(1).pdf",
+          "type": "pdf",
+          "pages": 6,
+          "relevant_pages_1_based": [
+            3,
+            4,
+            5
+          ],
+          "table_rows": 145,
+          "technical_schools": false
+        }
+      ],
+      "notes": "原件附件4另为技工名单应排除；附件3中仍有甘肃省冶金高级技术学院等个别名字需按原件保持学校类别标记，不静默修正"
+    },
+    {
+      "id": "NX2024OFFICIAL_PLATFORM",
+      "province": "宁夏回族自治区",
+      "title": "2024年全区具备招生资质的中职学校名录（官方县政府指向自治区平台公告）",
+      "publisher": "宁夏中等职业学校暨技工学校招生管理平台；彭阳县教育体育局政府网页背书",
+      "published_date": "2024-07-25",
+      "page_url": "https://www.pengyang.gov.cn/xwzx/tzgg/202407/t20240725_4604858.html",
+      "year": 2024,
+      "status": "official_platform_article_url_located_not_downloaded",
+      "coverage": "全区39所含5所高职中职与3所特教中职；同一公告另有区外在宁招生学校10所和技工16所，需分开",
+      "attachments": [],
+      "official_platform_url": "https://zzzs.nxeduyun.com/resources_detail.html?id=1813898372546351104",
+      "access_note": "web工具无法打开此平台，须浏览器核对并下载公告附件；官方县政府原文明确引用上述公告，年度数字仅为范围线索不作逐校数据"
+    },
+    {
+      "id": "TJ_GOV_DIRECTORY",
+      "province": "天津市",
+      "title": "天津市公共企事业单位信息公开：中等职业学校",
+      "publisher": "天津市人民政府",
+      "year": 2025,
+      "page_url": "https://www.tj.gov.cn/zwgk/ggqsydwxxgk/jy/zdzyxx/",
+      "published_date": null,
+      "status": "official_html_opened",
+      "verified_school_count": 14,
+      "coverage": "当前栏目第一页15条学校记录（其中1条使用更详细单校页作为最终来源）；不构成全市完整名录",
+      "technical_schools": "栏目含中职与技工合署学校，保留官方并列名称"
+    },
+    {
+      "id": "TJ_GOV_6914408",
+      "province": "天津市",
+      "title": "天津市第一商业学校",
+      "publisher": "天津市人民政府",
+      "year": 2025,
+      "published_date": "2025-04-21",
+      "page_url": "https://www.tj.gov.cn/zwgk/ggqsydwxxgk/jy/zdzyxx/202504/t20250421_6914408.html",
+      "status": "official_html_opened",
+      "verified_school_count": 1,
+      "coverage": "单校信息公开"
+    },
+    {
+      "id": "TJ_GOV_6914290",
+      "province": "天津市",
+      "title": "天津市滨海中等专业学校",
+      "publisher": "天津市人民政府",
+      "year": 2025,
+      "published_date": "2025-02-12",
+      "page_url": "https://www.tj.gov.cn/zwgk/ggqsydwxxgk/jy/zdzyxx/202504/t20250421_6914290.html",
+      "status": "official_html_opened",
+      "verified_school_count": 1,
+      "coverage": "单校信息公开"
+    },
+    {
+      "id": "TJ_GOV_6752925",
+      "province": "天津市",
+      "title": "天津市渤海职业学校",
+      "publisher": "天津市人民政府",
+      "year": 2024,
+      "published_date": "2024-10-14",
+      "page_url": "https://www.tj.gov.cn/zwgk/ggqsydwxxgk/jy/zdzyxx/202410/t20241015_6752925.html",
+      "status": "official_html_opened",
+      "verified_school_count": 1,
+      "coverage": "单校信息公开"
+    },
+    {
+      "id": "TJ_GOV_6716132",
+      "province": "天津市",
+      "title": "天津市北辰区中等职业技术学校",
+      "publisher": "天津市人民政府",
+      "year": 2024,
+      "published_date": "2024-09-03",
+      "page_url": "https://www.tj.gov.cn/zwgk/ggqsydwxxgk/jy/zdzyxx/202409/t20240903_6716132.html",
+      "status": "official_html_opened",
+      "verified_school_count": 1,
+      "coverage": "单校信息公开"
+    },
+    {
+      "id": "TJ_GOV_6718464",
+      "province": "天津市",
+      "title": "天津市中华职业中等专业学校",
+      "publisher": "天津市人民政府",
+      "year": 2024,
+      "published_date": "2024-09-05",
+      "page_url": "https://www.tj.gov.cn/zwgk/ggqsydwxxgk/jy/zdzyxx/202409/t20240905_6718464.html",
+      "status": "official_html_opened",
+      "verified_school_count": 1,
+      "coverage": "单校信息公开"
+    },
+    {
+      "id": "TJ_GOV_6715280",
+      "province": "天津市",
+      "title": "天津市南开区职业中等专业学校",
+      "publisher": "天津市人民政府",
+      "year": 2024,
+      "published_date": "2024-09-02",
+      "page_url": "https://www.tj.gov.cn/zwgk/ggqsydwxxgk/jy/zdzyxx/202409/t20240902_6715280.html",
+      "status": "official_html_opened",
+      "verified_school_count": 1,
+      "coverage": "单校信息公开；搜索结果标注日期与正文不同，采用正文2024-09-02"
+    },
+    {
+      "id": "NMG_ORDOS_2025",
+      "province": "内蒙古自治区",
+      "title": "鄂尔多斯市2025年高中阶段学校招生计划",
+      "publisher": "鄂尔多斯市人民政府／市教育体育局",
+      "year": 2025,
+      "published_date": "2025-07-02",
+      "page_url": "https://www.ordos.gov.cn/gk_128120/jyly/fzgh_2/202507/t20250721_3818013.html",
+      "status": "official_html_opened_intermittent",
+      "verified_school_count": 5,
+      "coverage": "仅提取实际打开正文明确列举的5所中职学校；后续重开出现404，已保存第一次成功读取证据，不将搜索摘要中附件名单计入"
+    },
+    {
+      "id": "NMG_TONGLIAO_2025",
+      "province": "内蒙古自治区",
+      "title": "2025年通辽市中等职业教育质量年度报告",
+      "publisher": "通辽市教育局",
+      "year": 2025,
+      "published_date": "2026-01-12",
+      "page_url": "https://jyj.tongliao.gov.cn/xwzx/bmdt/202601/t20260112_1027302.html?slb=true",
+      "status": "official_html_opened",
+      "verified_school_count": 5,
+      "coverage": "报告1.2双优建设段落明确列举5所中职学校；不是全市或全区名单",
+      "notes": "同文其他段落出现奈曼旗民族职业中等专业学校，未额外作为新学校计数，避免别名重复"
+    },
+    {
+      "id": "NX2025GRADUATE",
+      "province": "宁夏回族自治区",
+      "title": "2025年应届中职毕业生免试考生名单（高职）",
+      "publisher": "宁夏回族自治区教育厅",
+      "year": 2025,
+      "published_date": "2025-02-27",
+      "page_url": "https://jyt.nx.gov.cn/zzb/tzgg_67559/202502/t20250227_4839407.html",
+      "attachment_url": "https://jyt.nx.gov.cn/zzb/tzgg_67559/202502/P020250227578854219736.pdf",
+      "attachment_type": "pdf",
+      "pages": 9,
+      "status": "official_pdf_text_opened",
+      "verified_school_count": 14,
+      "coverage": "仅从毕业学校列核验14个明确中职学校实体；并非招生资质名录；未采学生个人信息",
+      "exclusions": [
+        "银川职业技术学院（仅高校名称，未明确中职部）",
+        "宁夏交通职业技术学院（仅高校名称，未明确中职部）",
+        "中卫市高级技工学校（纯技工）"
+      ]
+    }
+  ],
+  "province_status": [
+    {
+      "province": "北京市",
+      "status": "省级2026普通中专/职高名单原件已定位",
+      "source_ids": [
+        "BJ2026ZZ"
+      ]
+    },
+    {
+      "province": "天津市",
+      "status": "实际打开官方HTML核验20所；仅部分覆盖，不构成全市完整招生资质名单",
+      "source_ids": [
+        "TJ_GOV_DIRECTORY",
+        "TJ_GOV_6914408",
+        "TJ_GOV_6914290",
+        "TJ_GOV_6752925",
+        "TJ_GOV_6716132",
+        "TJ_GOV_6718464",
+        "TJ_GOV_6715280"
+      ]
+    },
+    {
+      "province": "河北省",
+      "status": "未取得官方2025/2026完整原始名单；省属名单不能代替全省；第三方有2026年6月15日省属30所+附设中专线索但未核验，未采信",
+      "source_ids": []
+    },
+    {
+      "province": "山西省",
+      "status": "未取得官方2025/2026完整原始名单；媒体报道2026核查267所+整改36所，但不是逐校数据，未采信入库",
+      "source_ids": []
+    },
+    {
+      "province": "内蒙古自治区",
+      "status": "实际打开鄂尔多斯、通辽官方HTML各核验5所，共10所；全区仍部分覆盖",
+      "source_ids": [
+        "NMG_ORDOS_2025",
+        "NMG_TONGLIAO_2025"
+      ],
+      "official_lead": "https://data.nmg.gov.cn"
+    },
+    {
+      "province": "辽宁省",
+      "status": "定位丹东2026市级11所原件，省级范围未完成",
+      "source_ids": [
+        "LNDANDONG2026ZZ"
+      ]
+    },
+    {
+      "province": "吉林省",
+      "status": "定位四平2025市级官方XLS原件URL，下载和省级范围未完成",
+      "source_ids": [
+        "JLSIPING2025ZZ"
+      ]
+    },
+    {
+      "province": "黑龙江省",
+      "status": "定位2026普通中专招生计划原件URL，下载及全层次范围未完成",
+      "source_ids": [
+        "HLJ2026ZJ"
+      ]
+    },
+    {
+      "province": "陕西省",
+      "status": "另定位2024省级DOCX/XLS原件，下载后核实是否全省204所；2026宝鸡市级原件可作较新补充",
+      "source_ids": [
+        "SXBAOJI2026ZZ",
+        "SHAANXI2024ZZ"
+      ]
+    },
+    {
+      "province": "甘肃省",
+      "status": "定位2024省教育厅145行招生逐校PDF与2025政府求职补贴文件附表145行，均需下载清洗；不能据此声称2026最新全量",
+      "source_ids": [
+        "GANSU2024ZZ",
+        "GANSU2025EMPLOYMENT"
+      ],
+      "official_lead": "https://www.ganseea.cn/zhongzhuankaosheng/1927.html"
+    },
+    {
+      "province": "青海省",
+      "status": "未取得官方2025/2026完整原始名单",
+      "source_ids": []
+    },
+    {
+      "province": "宁夏回族自治区",
+      "status": "从教育厅官方2025应届中职毕业学校列核验14所，非当年招生资质；仅部分覆盖。2025全区招生专业名录学校官网PDF已定位但web-open失败",
+      "source_ids": [
+        "NX2024OFFICIAL_PLATFORM",
+        "NX2025GRADUATE"
+      ],
+      "official_lead": "https://www.yczyjsxy.com/__local/7/B7/C6/6E64A655BA5332BB4A51B444A60_A098AA3E_3A34E.pdf"
+    },
+    {
+      "province": "新疆维吾尔自治区",
+      "status": "定位自治区2026省级原件；兵团需单独核对",
+      "source_ids": [
+        "XJ2026ZZ"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,76 @@
+{
+  "researchedAt": "2026-11-02",
+  "recordFile": "north_html_records.json",
+  "verifiedRecords": 44,
+  "sourceFile": "north_html_sources.json",
+  "extractionMethod": "仅实际成功打开的官方网页正文或官方PDF文本，不使用搜索摘要逐校入库",
+  "provinces": [
+    {
+      "province": "天津市",
+      "records": 20,
+      "status": "partial",
+      "years": [
+        2024,
+        2025
+      ],
+      "denominator": null,
+      "coveragePercent": null,
+      "reason": "未取得完整市级招生资质名录；来源是公共企事业单位公开栏目第一页及单校公开页"
+    },
+    {
+      "province": "内蒙古自治区",
+      "records": 10,
+      "status": "partial",
+      "years": [
+        2025
+      ],
+      "denominator": null,
+      "coveragePercent": null,
+      "reason": "仅鄂尔多斯正文5校与通辽报告明确列举5校；不代表全区"
+    },
+    {
+      "province": "宁夏回族自治区",
+      "records": 14,
+      "status": "partial",
+      "years": [
+        2025
+      ],
+      "denominator": null,
+      "coveragePercent": null,
+      "reason": "从2025届毕业学校列核验实体；非当年招生资质名录，且全区2025名单PDF尚未成功读取"
+    },
+    {
+      "province": "河北省",
+      "records": 0,
+      "status": "uncovered",
+      "years": [],
+      "denominator": null,
+      "coveragePercent": null,
+      "reason": "承德2024官方完整名单HTML的政府与教育局版本均web-open超时；搜索摘要未采信；省属名单不能替代全省"
+    },
+    {
+      "province": "山西省",
+      "records": 0,
+      "status": "uncovered",
+      "years": [],
+      "denominator": null,
+      "coveragePercent": null,
+      "reason": "未取得可实际读取的省级完整资质逐校名单；媒体/镜像统计不入库；吕梁所转2025专业备案PDF访问受限"
+    },
+    {
+      "province": "青海省",
+      "records": 0,
+      "status": "uncovered",
+      "years": [],
+      "denominator": null,
+      "coveragePercent": null,
+      "reason": "未取得教育主管部门可读取完整逐校名录；不采非官方名录或旧名不明记录"
+    }
+  ],
+  "notes": [
+    "本子任务无任何全国或全省全量完成结论。",
+    "空代码、性质、城市字段表示来源未明确提供，未推测补齐。",
+    "宁夏产物只含学校信息，不含学生姓名、考生号或成绩。",
+    "原始附件下载由主代理通过云端浏览器负责；本任务仅官方网页/附件URL研究与可读正文提取。"
+  ]
+}

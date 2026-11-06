@@ -1,0 +1,148 @@
+{
+  "SC-2026": {
+    "schoolRows": 343,
+    "programRows": 2880,
+    "expectedSchoolRows": 343,
+    "note": "招生代码单列，绝不冒充学校机构码；只取教育部门343校原件"
+  },
+  "JX-2026": {
+    "allRows": 280,
+    "educationRows": 189,
+    "technicalExcluded": 91,
+    "pageCounts": [
+      {
+        "page": 1,
+        "rows": 8
+      },
+      {
+        "page": 2,
+        "rows": 9
+      },
+      {
+        "page": 3,
+        "rows": 8
+      },
+      {
+        "page": 4,
+        "rows": 8
+      },
+      {
+        "page": 5,
+        "rows": 8
+      },
+      {
+        "page": 6,
+        "rows": 9
+      },
+      {
+        "page": 7,
+        "rows": 8
+      },
+      {
+        "page": 8,
+        "rows": 9
+      },
+      {
+        "page": 9,
+        "rows": 9
+      },
+      {
+        "page": 10,
+        "rows": 9
+      },
+      {
+        "page": 11,
+        "rows": 9
+      },
+      {
+        "page": 12,
+        "rows": 9
+      },
+      {
+        "page": 13,
+        "rows": 9
+      },
+      {
+        "page": 14,
+        "rows": 9
+      },
+      {
+        "page": 15,
+        "rows": 9
+      },
+      {
+        "page": 16,
+        "rows": 8
+      },
+      {
+        "page": 17,
+        "rows": 9
+      },
+      {
+        "page": 18,
+        "rows": 9
+      },
+      {
+        "page": 19,
+        "rows": 9
+      },
+      {
+        "page": 20,
+        "rows": 8
+      },
+      {
+        "page": 21,
+        "rows": 7
+      },
+      {
+        "page": 22,
+        "rows": 8
+      },
+      {
+        "page": 23,
+        "rows": 9
+      },
+      {
+        "page": 24,
+        "rows": 9
+      },
+      {
+        "page": 25,
+        "rows": 9
+      },
+      {
+        "page": 26,
+        "rows": 8
+      },
+      {
+        "page": 27,
+        "rows": 8
+      },
+      {
+        "page": 28,
+        "rows": 8
+      },
+      {
+        "page": 29,
+        "rows": 9
+      },
+      {
+        "page": 30,
+        "rows": 9
+      },
+      {
+        "page": 31,
+        "rows": 9
+      },
+      {
+        "page": 32,
+        "rows": 9
+      },
+      {
+        "page": 33,
+        "rows": 5
+      }
+    ],
+    "warning": "省级公文由江西教育传媒集团转载，原考试院链接404；原件机构码和原文分类保留"
+  }
+}

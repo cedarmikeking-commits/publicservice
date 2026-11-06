@@ -1,0 +1,132 @@
+[
+  {
+    "id": "TJ_GOV_DIRECTORY",
+    "province": "天津市",
+    "title": "天津市公共企事业单位信息公开：中等职业学校",
+    "publisher": "天津市人民政府",
+    "year": 2025,
+    "page_url": "https://www.tj.gov.cn/zwgk/ggqsydwxxgk/jy/zdzyxx/",
+    "published_date": null,
+    "status": "official_html_opened",
+    "verified_school_count": 14,
+    "coverage": "当前栏目第一页15条学校记录（其中1条使用更详细单校页作为最终来源）；不构成全市完整名录",
+    "technical_schools": "栏目含中职与技工合署学校，保留官方并列名称"
+  },
+  {
+    "id": "TJ_GOV_6914408",
+    "province": "天津市",
+    "title": "天津市第一商业学校",
+    "publisher": "天津市人民政府",
+    "year": 2025,
+    "published_date": "2025-04-21",
+    "page_url": "https://www.tj.gov.cn/zwgk/ggqsydwxxgk/jy/zdzyxx/202504/t20250421_6914408.html",
+    "status": "official_html_opened",
+    "verified_school_count": 1,
+    "coverage": "单校信息公开"
+  },
+  {
+    "id": "TJ_GOV_6914290",
+    "province": "天津市",
+    "title": "天津市滨海中等专业学校",
+    "publisher": "天津市人民政府",
+    "year": 2025,
+    "published_date": "2025-02-12",
+    "page_url": "https://www.tj.gov.cn/zwgk/ggqsydwxxgk/jy/zdzyxx/202504/t20250421_6914290.html",
+    "status": "official_html_opened",
+    "verified_school_count": 1,
+    "coverage": "单校信息公开"
+  },
+  {
+    "id": "TJ_GOV_6752925",
+    "province": "天津市",
+    "title": "天津市渤海职业学校",
+    "publisher": "天津市人民政府",
+    "year": 2024,
+    "published_date": "2024-10-14",
+    "page_url": "https://www.tj.gov.cn/zwgk/ggqsydwxxgk/jy/zdzyxx/202410/t20241015_6752925.html",
+    "status": "official_html_opened",
+    "verified_school_count": 1,
+    "coverage": "单校信息公开"
+  },
+  {
+    "id": "TJ_GOV_6716132",
+    "province": "天津市",
+    "title": "天津市北辰区中等职业技术学校",
+    "publisher": "天津市人民政府",
+    "year": 2024,
+    "published_date": "2024-09-03",
+    "page_url": "https://www.tj.gov.cn/zwgk/ggqsydwxxgk/jy/zdzyxx/202409/t20240903_6716132.html",
+    "status": "official_html_opened",
+    "verified_school_count": 1,
+    "coverage": "单校信息公开"
+  },
+  {
+    "id": "TJ_GOV_6718464",
+    "province": "天津市",
+    "title": "天津市中华职业中等专业学校",
+    "publisher": "天津市人民政府",
+    "year": 2024,
+    "published_date": "2024-09-05",
+    "page_url": "https://www.tj.gov.cn/zwgk/ggqsydwxxgk/jy/zdzyxx/202409/t20240905_6718464.html",
+    "status": "official_html_opened",
+    "verified_school_count": 1,
+    "coverage": "单校信息公开"
+  },
+  {
+    "id": "TJ_GOV_6715280",
+    "province": "天津市",
+    "title": "天津市南开区职业中等专业学校",
+    "publisher": "天津市人民政府",
+    "year": 2024,
+    "published_date": "2024-09-02",
+    "page_url": "https://www.tj.gov.cn/zwgk/ggqsydwxxgk/jy/zdzyxx/202409/t20240902_6715280.html",
+    "status": "official_html_opened",
+    "verified_school_count": 1,
+    "coverage": "单校信息公开；搜索结果标注日期与正文不同，采用正文2024-09-02"
+  },
+  {
+    "id": "NMG_ORDOS_2025",
+    "province": "内蒙古自治区",
+    "title": "鄂尔多斯市2025年高中阶段学校招生计划",
+    "publisher": "鄂尔多斯市人民政府／市教育体育局",
+    "year": 2025,
+    "published_date": "2025-07-02",
+    "page_url": "https://www.ordos.gov.cn/gk_128120/jyly/fzgh_2/202507/t20250721_3818013.html",
+    "status": "official_html_opened_intermittent",
+    "verified_school_count": 5,
+    "coverage": "仅提取实际打开正文明确列举的5所中职学校；后续重开出现404，已保存第一次成功读取证据，不将搜索摘要中附件名单计入"
+  },
+  {
+    "id": "NMG_TONGLIAO_2025",
+    "province": "内蒙古自治区",
+    "title": "2025年通辽市中等职业教育质量年度报告",
+    "publisher": "通辽市教育局",
+    "year": 2025,
+    "published_date": "2026-01-12",
+    "page_url": "https://jyj.tongliao.gov.cn/xwzx/bmdt/202601/t20260112_1027302.html?slb=true",
+    "status": "official_html_opened",
+    "verified_school_count": 5,
+    "coverage": "报告1.2双优建设段落明确列举5所中职学校；不是全市或全区名单",
+    "notes": "同文其他段落出现奈曼旗民族职业中等专业学校，未额外作为新学校计数，避免别名重复"
+  },
+  {
+    "id": "NX2025GRADUATE",
+    "province": "宁夏回族自治区",
+    "title": "2025年应届中职毕业生免试考生名单（高职）",
+    "publisher": "宁夏回族自治区教育厅",
+    "year": 2025,
+    "published_date": "2025-02-27",
+    "page_url": "https://jyt.nx.gov.cn/zzb/tzgg_67559/202502/t20250227_4839407.html",
+    "attachment_url": "https://jyt.nx.gov.cn/zzb/tzgg_67559/202502/P020250227578854219736.pdf",
+    "attachment_type": "pdf",
+    "pages": 9,
+    "status": "official_pdf_text_opened",
+    "verified_school_count": 14,
+    "coverage": "仅从毕业学校列核验14个明确中职学校实体；并非招生资质名录；未采学生个人信息",
+    "exclusions": [
+      "银川职业技术学院（仅高校名称，未明确中职部）",
+      "宁夏交通职业技术学院（仅高校名称，未明确中职部）",
+      "中卫市高级技工学校（纯技工）"
+    ]
+  }
+]

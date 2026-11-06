@@ -1,0 +1,36 @@
+[
+  {
+    "name": "上海市高级技工学校",
+    "originalName": "上海市高级技工学校",
+    "province": "上海市",
+    "level": "中职",
+    "code": "",
+    "city": "上海市",
+    "authority": "",
+    "ownership": "",
+    "sourceId": "SH-2026",
+    "sourceLocator": "第6页第1表第2行；正文序号31",
+    "unitType": "独立学校",
+    "verifiedOn": "2026-11-02",
+    "sourceOrdinal": "31",
+    "recordId": "SH-2026:fb558f5415beb0a1",
+    "excludedReason": "原件列入上海中职招生表的技工学校；本次教育部门中职口径分列排除，不冒充独立中职学校"
+  },
+  {
+    "name": "沪东中华造船集团高级技工学校",
+    "originalName": "沪东中华造船集团高级技工学校",
+    "province": "上海市",
+    "level": "中职",
+    "code": "",
+    "city": "上海市",
+    "authority": "",
+    "ownership": "",
+    "sourceId": "SH-2026",
+    "sourceLocator": "第6页第1表第4行；正文序号33",
+    "unitType": "独立学校",
+    "verifiedOn": "2026-11-02",
+    "sourceOrdinal": "33",
+    "recordId": "SH-2026:5dcc049770a90efb",
+    "excludedReason": "原件列入上海中职招生表的技工学校；本次教育部门中职口径分列排除，不冒充独立中职学校"
+  }
+]

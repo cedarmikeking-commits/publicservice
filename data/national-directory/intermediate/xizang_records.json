@@ -1,0 +1,82 @@
+[
+  {
+    "id": "research-xz-0",
+    "name": "拉萨市第一中等职业技术学校",
+    "province": "西藏自治区",
+    "city": "拉萨市",
+    "district": null,
+    "level": "中职",
+    "schoolType": "中等职业技术学校",
+    "qualityTier": null,
+    "organizer": "拉萨市人民政府",
+    "ownership": "公办",
+    "sourceTitle": "拉萨市2025年度职业教育质量报告",
+    "sourceUrl": "https://jyj.lasa.gov.cn/jiaoyuju/c100779/202601/65c46a212774474c924148f19a5aeb00.shtml",
+    "sourceOrdinal": null,
+    "sourceLocator": "一、学校情况（一），L33—L34",
+    "sourceLines": [
+      33,
+      34
+    ],
+    "sourceYear": 2025,
+    "publishedAt": "2026-01-09",
+    "verifiedOn": "2026-11-02",
+    "verificationMethod": "官方HTML正文逐校存在与层次核验",
+    "verificationScope": "学校实体存在、名称、城市、学历层次及公办性质；非全区当年招生资格名录",
+    "sourceRef": "turn174view0",
+    "liveFetchStatus": "成功"
+  },
+  {
+    "id": "research-xz-1",
+    "name": "拉萨市第二中等职业技术学校",
+    "province": "西藏自治区",
+    "city": "拉萨市",
+    "district": null,
+    "level": "中职",
+    "schoolType": "中等职业技术学校",
+    "qualityTier": null,
+    "organizer": "拉萨市人民政府",
+    "ownership": "公办",
+    "sourceTitle": "拉萨市2025年度职业教育质量报告",
+    "sourceUrl": "https://jyj.lasa.gov.cn/jiaoyuju/c100779/202601/65c46a212774474c924148f19a5aeb00.shtml",
+    "sourceOrdinal": null,
+    "sourceLocator": "一、学校情况（二），L36—L37",
+    "sourceLines": [
+      36,
+      37
+    ],
+    "sourceYear": 2025,
+    "publishedAt": "2026-01-09",
+    "verifiedOn": "2026-11-02",
+    "verificationMethod": "官方HTML正文逐校存在与层次核验",
+    "verificationScope": "学校实体存在、名称、城市、学历层次及公办性质；非全区当年招生资格名录",
+    "sourceRef": "turn174view0",
+    "liveFetchStatus": "成功"
+  },
+  {
+    "id": "research-xz-2",
+    "name": "林芝市职业技术学校",
+    "province": "西藏自治区",
+    "city": "林芝市",
+    "district": null,
+    "level": "中职",
+    "schoolType": "中等职业技术学校",
+    "qualityTier": null,
+    "organizer": "林芝市人民政府",
+    "ownership": "公办",
+    "sourceTitle": "林芝市职业技术学校2026年度部门（单位）预算",
+    "sourceUrl": "https://www.linzhi.gov.cn/zfxxgkpt/c106928ntm/202602/01486930974f41eab4a38a88cd788533.shtml",
+    "sourceOrdinal": null,
+    "sourceLocator": "第一部分 概况 一、主要职能，L105",
+    "sourceLines": [
+      105
+    ],
+    "sourceYear": 2026,
+    "publishedAt": "2026-02-09",
+    "verifiedOn": "2026-11-02",
+    "verificationMethod": "官方HTML正文逐校存在与层次核验",
+    "verificationScope": "学校实体存在、名称、城市、学历层次及公办性质；非全区当年招生资格名录",
+    "sourceRef": "turn176view0",
+    "liveFetchStatus": "成功"
+  }
+]

@@ -1,0 +1,242 @@
+{
+  "counts": {
+    "AH-2026": 185,
+    "GD-S-2026": 15,
+    "SH-2026": 61,
+    "XJ-2026": 91
+  },
+  "total": 352,
+  "AH": {
+    "programRows": 2538,
+    "uniqueSchoolNames": 185,
+    "scope": "全省具备学历教育办学资质和招生资格专业名单，按市区与学校名去重",
+    "schoolCode": "原表没有机构代码，全部留空；专业代码不误当机构代码"
+  },
+  "GD_S": {
+    "uniqueSchoolNames": 15,
+    "scope": "省属15条，不能单独作为广东全省覆盖",
+    "containsHigherEducationUnitsWithSecondaryClasses": 7
+  },
+  "SH": {
+    "mainList": 57,
+    "appendixList": 7,
+    "withinSourceDuplicates": [
+      {
+        "name": "上海体育大学附属竞技体育学校",
+        "kept": "第3页第1表第2行；正文序号13",
+        "duplicate": "第10页附注1，第4个单独艺体类中职学校名"
+      }
+    ],
+    "excludedTechnicalSchools": 2,
+    "retainedUniqueRecords": 61,
+    "watermarkFilter": "排除PDF中字号>=30的76pt水印，保留12pt正文校名；不根据污染后的文字手工猜名"
+  },
+  "XJ": {
+    "programRows": 858,
+    "uniqueSchoolCodePairs": 91,
+    "pageCount": 40,
+    "pageTables": [
+      {
+        "page": 1,
+        "tableCount": 1,
+        "rows": 20
+      },
+      {
+        "page": 2,
+        "tableCount": 1,
+        "rows": 22
+      },
+      {
+        "page": 3,
+        "tableCount": 1,
+        "rows": 22
+      },
+      {
+        "page": 4,
+        "tableCount": 1,
+        "rows": 22
+      },
+      {
+        "page": 5,
+        "tableCount": 1,
+        "rows": 22
+      },
+      {
+        "page": 6,
+        "tableCount": 1,
+        "rows": 22
+      },
+      {
+        "page": 7,
+        "tableCount": 1,
+        "rows": 22
+      },
+      {
+        "page": 8,
+        "tableCount": 1,
+        "rows": 22
+      },
+      {
+        "page": 9,
+        "tableCount": 1,
+        "rows": 22
+      },
+      {
+        "page": 10,
+        "tableCount": 1,
+        "rows": 22
+      },
+      {
+        "page": 11,
+        "tableCount": 1,
+        "rows": 22
+      },
+      {
+        "page": 12,
+        "tableCount": 1,
+        "rows": 22
+      },
+      {
+        "page": 13,
+        "tableCount": 1,
+        "rows": 22
+      },
+      {
+        "page": 14,
+        "tableCount": 1,
+        "rows": 22
+      },
+      {
+        "page": 15,
+        "tableCount": 1,
+        "rows": 22
+      },
+      {
+        "page": 16,
+        "tableCount": 1,
+        "rows": 22
+      },
+      {
+        "page": 17,
+        "tableCount": 1,
+        "rows": 22
+      },
+      {
+        "page": 18,
+        "tableCount": 1,
+        "rows": 22
+      },
+      {
+        "page": 19,
+        "tableCount": 1,
+        "rows": 22
+      },
+      {
+        "page": 20,
+        "tableCount": 1,
+        "rows": 22
+      },
+      {
+        "page": 21,
+        "tableCount": 1,
+        "rows": 22
+      },
+      {
+        "page": 22,
+        "tableCount": 1,
+        "rows": 22
+      },
+      {
+        "page": 23,
+        "tableCount": 1,
+        "rows": 22
+      },
+      {
+        "page": 24,
+        "tableCount": 1,
+        "rows": 22
+      },
+      {
+        "page": 25,
+        "tableCount": 1,
+        "rows": 22
+      },
+      {
+        "page": 26,
+        "tableCount": 1,
+        "rows": 22
+      },
+      {
+        "page": 27,
+        "tableCount": 1,
+        "rows": 22
+      },
+      {
+        "page": 28,
+        "tableCount": 1,
+        "rows": 22
+      },
+      {
+        "page": 29,
+        "tableCount": 1,
+        "rows": 22
+      },
+      {
+        "page": 30,
+        "tableCount": 1,
+        "rows": 22
+      },
+      {
+        "page": 31,
+        "tableCount": 1,
+        "rows": 22
+      },
+      {
+        "page": 32,
+        "tableCount": 1,
+        "rows": 22
+      },
+      {
+        "page": 33,
+        "tableCount": 1,
+        "rows": 22
+      },
+      {
+        "page": 34,
+        "tableCount": 1,
+        "rows": 22
+      },
+      {
+        "page": 35,
+        "tableCount": 1,
+        "rows": 22
+      },
+      {
+        "page": 36,
+        "tableCount": 1,
+        "rows": 22
+      },
+      {
+        "page": 37,
+        "tableCount": 1,
+        "rows": 22
+      },
+      {
+        "page": 38,
+        "tableCount": 1,
+        "rows": 22
+      },
+      {
+        "page": 39,
+        "tableCount": 1,
+        "rows": 22
+      },
+      {
+        "page": 40,
+        "tableCount": 1,
+        "rows": 2
+      }
+    ],
+    "scopeNote": "新疆自治区教育厅发布名录，未对新疆生产建设兵团另行名录作完整核对；不宣称含兵团全疆全量"
+  }
+}

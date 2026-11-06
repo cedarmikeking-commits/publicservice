@@ -1,0 +1,730 @@
+[
+  {
+    "name": "南昌技师学院",
+    "code": "319",
+    "sourceId": "JX-2026",
+    "sourceLocator": "原PDF第1页（印刷页码3）表第9行；序号8",
+    "sourceOrdinal": "8",
+    "reason": "原表办学类型为人社行政部门技工院校，单列排除"
+  },
+  {
+    "name": "江西技师学院",
+    "code": "726",
+    "sourceId": "JX-2026",
+    "sourceLocator": "原PDF第3页（印刷页码5）表第5行；序号21",
+    "sourceOrdinal": "21",
+    "reason": "原表办学类型为人社行政部门技工院校，单列排除"
+  },
+  {
+    "name": "江西省电子信息技师学院",
+    "code": "702",
+    "sourceId": "JX-2026",
+    "sourceLocator": "原PDF第3页（印刷页码5）表第6行；序号22",
+    "sourceOrdinal": "22",
+    "reason": "原表办学类型为人社行政部门技工院校，单列排除"
+  },
+  {
+    "name": "江西现代技师学院",
+    "code": "703",
+    "sourceId": "JX-2026",
+    "sourceLocator": "原PDF第3页（印刷页码5）表第7行；序号23",
+    "sourceOrdinal": "23",
+    "reason": "原表办学类型为人社行政部门技工院校，单列排除"
+  },
+  {
+    "name": "江西省机电技师学院",
+    "code": "705",
+    "sourceId": "JX-2026",
+    "sourceLocator": "原PDF第3页（印刷页码5）表第8行；序号24",
+    "sourceOrdinal": "24",
+    "reason": "原表办学类型为人社行政部门技工院校，单列排除"
+  },
+  {
+    "name": "江西省水利工程技师学院",
+    "code": "711",
+    "sourceId": "JX-2026",
+    "sourceLocator": "原PDF第3页（印刷页码5）表第9行；序号25",
+    "sourceOrdinal": "25",
+    "reason": "原表办学类型为人社行政部门技工院校，单列排除"
+  },
+  {
+    "name": "江西省医药技师学院",
+    "code": "740",
+    "sourceId": "JX-2026",
+    "sourceLocator": "原PDF第4页（印刷页码6）表第2行；序号26",
+    "sourceOrdinal": "26",
+    "reason": "原表办学类型为人社行政部门技工院校，单列排除"
+  },
+  {
+    "name": "江西交通技师学院",
+    "code": "743",
+    "sourceId": "JX-2026",
+    "sourceLocator": "原PDF第4页（印刷页码6）表第3行；序号27",
+    "sourceOrdinal": "27",
+    "reason": "原表办学类型为人社行政部门技工院校，单列排除"
+  },
+  {
+    "name": "江西高级技工学校",
+    "code": "713",
+    "sourceId": "JX-2026",
+    "sourceLocator": "原PDF第4页（印刷页码6）表第4行；序号28",
+    "sourceOrdinal": "28",
+    "reason": "原表办学类型为人社行政部门技工院校，单列排除"
+  },
+  {
+    "name": "江西省电子商务高级技工学校",
+    "code": "728",
+    "sourceId": "JX-2026",
+    "sourceLocator": "原PDF第4页（印刷页码6）表第5行；序号29",
+    "sourceOrdinal": "29",
+    "reason": "原表办学类型为人社行政部门技工院校，单列排除"
+  },
+  {
+    "name": "江西文理技师学院",
+    "code": "764",
+    "sourceId": "JX-2026",
+    "sourceLocator": "原PDF第4页（印刷页码6）表第6行；序号30",
+    "sourceOrdinal": "30",
+    "reason": "原表办学类型为人社行政部门技工院校，单列排除"
+  },
+  {
+    "name": "江西工商高级技工学校",
+    "code": "752",
+    "sourceId": "JX-2026",
+    "sourceLocator": "原PDF第4页（印刷页码6）表第7行；序号31",
+    "sourceOrdinal": "31",
+    "reason": "原表办学类型为人社行政部门技工院校，单列排除"
+  },
+  {
+    "name": "江西万通高级技工学校有限公司",
+    "code": "777",
+    "sourceId": "JX-2026",
+    "sourceLocator": "原PDF第4页（印刷页码6）表第8行；序号32",
+    "sourceOrdinal": "32",
+    "reason": "原表办学类型为人社行政部门技工院校，单列排除"
+  },
+  {
+    "name": "江西省石油技工学校",
+    "code": "736",
+    "sourceId": "JX-2026",
+    "sourceLocator": "原PDF第4页（印刷页码6）表第9行；序号33",
+    "sourceOrdinal": "33",
+    "reason": "原表办学类型为人社行政部门技工院校，单列排除"
+  },
+  {
+    "name": "江西新东方烹饪技工学校有限公司",
+    "code": "753",
+    "sourceId": "JX-2026",
+    "sourceLocator": "原PDF第5页（印刷页码7）表第2行；序号34",
+    "sourceOrdinal": "34",
+    "reason": "原表办学类型为人社行政部门技工院校，单列排除"
+  },
+  {
+    "name": "江西新华电脑技工学校有限公司",
+    "code": "754",
+    "sourceId": "JX-2026",
+    "sourceLocator": "原PDF第5页（印刷页码7）表第3行；序号35",
+    "sourceOrdinal": "35",
+    "reason": "原表办学类型为人社行政部门技工院校，单列排除"
+  },
+  {
+    "name": "南昌理工技工学校",
+    "code": "773",
+    "sourceId": "JX-2026",
+    "sourceLocator": "原PDF第5页（印刷页码7）表第4行；序号36",
+    "sourceOrdinal": "36",
+    "reason": "原表办学类型为人社行政部门技工院校，单列排除"
+  },
+  {
+    "name": "江西昌大技工学校",
+    "code": "774",
+    "sourceId": "JX-2026",
+    "sourceLocator": "原PDF第5页（印刷页码7）表第5行；序号37",
+    "sourceOrdinal": "37",
+    "reason": "原表办学类型为人社行政部门技工院校，单列排除"
+  },
+  {
+    "name": "南昌妆典技工学校",
+    "code": "784",
+    "sourceId": "JX-2026",
+    "sourceLocator": "原PDF第5页（印刷页码7）表第6行；序号38",
+    "sourceOrdinal": "38",
+    "reason": "原表办学类型为人社行政部门技工院校，单列排除"
+  },
+  {
+    "name": "南昌智远技工学校有限公司",
+    "code": "790",
+    "sourceId": "JX-2026",
+    "sourceLocator": "原PDF第5页（印刷页码7）表第7行；序号39",
+    "sourceOrdinal": "39",
+    "reason": "原表办学类型为人社行政部门技工院校，单列排除"
+  },
+  {
+    "name": "南昌金领技工学校有限公司",
+    "code": "314",
+    "sourceId": "JX-2026",
+    "sourceLocator": "原PDF第5页（印刷页码7）表第8行；序号40",
+    "sourceOrdinal": "40",
+    "reason": "原表办学类型为人社行政部门技工院校，单列排除"
+  },
+  {
+    "name": "南昌市望成技工学校",
+    "code": "339",
+    "sourceId": "JX-2026",
+    "sourceLocator": "原PDF第5页（印刷页码7）表第9行；序号41",
+    "sourceOrdinal": "41",
+    "reason": "原表办学类型为人社行政部门技工院校，单列排除"
+  },
+  {
+    "name": "九江市机械技工学校",
+    "code": "729",
+    "sourceId": "JX-2026",
+    "sourceLocator": "原PDF第6页（印刷页码8）表第3行；序号43",
+    "sourceOrdinal": "43",
+    "reason": "原表办学类型为人社行政部门技工院校，单列排除"
+  },
+  {
+    "name": "修水高级技工学校",
+    "code": "758",
+    "sourceId": "JX-2026",
+    "sourceLocator": "原PDF第6页（印刷页码8）表第5行；序号45",
+    "sourceOrdinal": "45",
+    "reason": "原表办学类型为人社行政部门技工院校，单列排除"
+  },
+  {
+    "name": "彭泽县技工学校",
+    "code": "313",
+    "sourceId": "JX-2026",
+    "sourceLocator": "原PDF第6页（印刷页码8）表第7行；序号47",
+    "sourceOrdinal": "47",
+    "reason": "原表办学类型为人社行政部门技工院校，单列排除"
+  },
+  {
+    "name": "武宁县技工学校",
+    "code": "795",
+    "sourceId": "JX-2026",
+    "sourceLocator": "原PDF第6页（印刷页码8）表第10行；序号50",
+    "sourceOrdinal": "50",
+    "reason": "原表办学类型为人社行政部门技工院校，单列排除"
+  },
+  {
+    "name": "瑞昌市技工学校",
+    "code": "727",
+    "sourceId": "JX-2026",
+    "sourceLocator": "原PDF第7页（印刷页码9）表第3行；序号52",
+    "sourceOrdinal": "52",
+    "reason": "原表办学类型为人社行政部门技工院校，单列排除"
+  },
+  {
+    "name": "湖口县技工学校",
+    "code": "344",
+    "sourceId": "JX-2026",
+    "sourceLocator": "原PDF第7页（印刷页码9）表第7行；序号56",
+    "sourceOrdinal": "56",
+    "reason": "原表办学类型为人社行政部门技工院校，单列排除"
+  },
+  {
+    "name": "九江技师学院",
+    "code": "724",
+    "sourceId": "JX-2026",
+    "sourceLocator": "原PDF第8页（印刷页码10）表第10行；序号67",
+    "sourceOrdinal": "67",
+    "reason": "原表办学类型为人社行政部门技工院校，单列排除"
+  },
+  {
+    "name": "九江庐山技工学校",
+    "code": "756",
+    "sourceId": "JX-2026",
+    "sourceLocator": "原PDF第9页（印刷页码11）表第2行；序号68",
+    "sourceOrdinal": "68",
+    "reason": "原表办学类型为人社行政部门技工院校，单列排除"
+  },
+  {
+    "name": "九江市华科技工学校",
+    "code": "789",
+    "sourceId": "JX-2026",
+    "sourceLocator": "原PDF第9页（印刷页码11）表第3行；序号69",
+    "sourceOrdinal": "69",
+    "reason": "原表办学类型为人社行政部门技工院校，单列排除"
+  },
+  {
+    "name": "九江市振邦技工学校",
+    "code": "793",
+    "sourceId": "JX-2026",
+    "sourceLocator": "原PDF第9页（印刷页码11）表第4行；序号70",
+    "sourceOrdinal": "70",
+    "reason": "原表办学类型为人社行政部门技工院校，单列排除"
+  },
+  {
+    "name": "九江市宁州技工学校",
+    "code": "796",
+    "sourceId": "JX-2026",
+    "sourceLocator": "原PDF第9页（印刷页码11）表第5行；序号71",
+    "sourceOrdinal": "71",
+    "reason": "原表办学类型为人社行政部门技工院校，单列排除"
+  },
+  {
+    "name": "庐山市星辰技工学校",
+    "code": "338",
+    "sourceId": "JX-2026",
+    "sourceLocator": "原PDF第9页（印刷页码11）表第6行；序号72",
+    "sourceOrdinal": "72",
+    "reason": "原表办学类型为人社行政部门技工院校，单列排除"
+  },
+  {
+    "name": "共青铁路工程技工学校",
+    "code": "786",
+    "sourceId": "JX-2026",
+    "sourceLocator": "原PDF第9页（印刷页码11）表第7行；序号73",
+    "sourceOrdinal": "73",
+    "reason": "原表办学类型为人社行政部门技工院校，单列排除"
+  },
+  {
+    "name": "共青技工学校",
+    "code": "306",
+    "sourceId": "JX-2026",
+    "sourceLocator": "原PDF第9页（印刷页码11）表第8行；序号74",
+    "sourceOrdinal": "74",
+    "reason": "原表办学类型为人社行政部门技工院校，单列排除"
+  },
+  {
+    "name": "景德镇陶瓷技师学院",
+    "code": "715",
+    "sourceId": "JX-2026",
+    "sourceLocator": "原PDF第10页（印刷页码12）表第9行；序号84",
+    "sourceOrdinal": "84",
+    "reason": "原表办学类型为人社行政部门技工院校，单列排除"
+  },
+  {
+    "name": "景德镇振兴文理技工学校",
+    "code": "336",
+    "sourceId": "JX-2026",
+    "sourceLocator": "原PDF第10页（印刷页码12）表第10行；序号85",
+    "sourceOrdinal": "85",
+    "reason": "原表办学类型为人社行政部门技工院校，单列排除"
+  },
+  {
+    "name": "萍乡技师学院",
+    "code": "704",
+    "sourceId": "JX-2026",
+    "sourceLocator": "原PDF第11页（印刷页码13）表第3行；序号87",
+    "sourceOrdinal": "87",
+    "reason": "原表办学类型为人社行政部门技工院校，单列排除"
+  },
+  {
+    "name": "萍乡市湘东技工学校",
+    "code": "317",
+    "sourceId": "JX-2026",
+    "sourceLocator": "原PDF第11页（印刷页码13）表第5行；序号89",
+    "sourceOrdinal": "89",
+    "reason": "原表办学类型为人社行政部门技工院校，单列排除"
+  },
+  {
+    "name": "萍乡市汽车工程技工学校",
+    "code": "771",
+    "sourceId": "JX-2026",
+    "sourceLocator": "原PDF第12页（印刷页码14）表第4行；序号97",
+    "sourceOrdinal": "97",
+    "reason": "原表办学类型为人社行政部门技工院校，单列排除"
+  },
+  {
+    "name": "萍乡市电瓷电气技工学校",
+    "code": "741",
+    "sourceId": "JX-2026",
+    "sourceLocator": "原PDF第12页（印刷页码14）表第5行；序号98",
+    "sourceOrdinal": "98",
+    "reason": "原表办学类型为人社行政部门技工院校，单列排除"
+  },
+  {
+    "name": "江西新余康展高级技工学校",
+    "code": "785",
+    "sourceId": "JX-2026",
+    "sourceLocator": "原PDF第13页（印刷页码15）表第4行；序号106",
+    "sourceOrdinal": "106",
+    "reason": "原表办学类型为人社行政部门技工院校，单列排除"
+  },
+  {
+    "name": "新余技师学院",
+    "code": "721",
+    "sourceId": "JX-2026",
+    "sourceLocator": "原PDF第13页（印刷页码15）表第7行；序号109",
+    "sourceOrdinal": "109",
+    "reason": "原表办学类型为人社行政部门技工院校，单列排除"
+  },
+  {
+    "name": "江西新余电子科技技工学校",
+    "code": "320",
+    "sourceId": "JX-2026",
+    "sourceLocator": "原PDF第13页（印刷页码15）表第8行；序号110",
+    "sourceOrdinal": "110",
+    "reason": "原表办学类型为人社行政部门技工院校，单列排除"
+  },
+  {
+    "name": "鹰潭技师学院",
+    "code": "738",
+    "sourceId": "JX-2026",
+    "sourceLocator": "原PDF第14页（印刷页码16）表第8行；序号119",
+    "sourceOrdinal": "119",
+    "reason": "原表办学类型为人社行政部门技工院校，单列排除"
+  },
+  {
+    "name": "江西铜产业高级技工学校",
+    "code": "340",
+    "sourceId": "JX-2026",
+    "sourceLocator": "原PDF第14页（印刷页码16）表第9行；序号120",
+    "sourceOrdinal": "120",
+    "reason": "原表办学类型为人社行政部门技工院校，单列排除"
+  },
+  {
+    "name": "赣州应用高级技工学校",
+    "code": "742",
+    "sourceId": "JX-2026",
+    "sourceLocator": "原PDF第16页（印刷页码18）表第3行；序号132",
+    "sourceOrdinal": "132",
+    "reason": "原表办学类型为人社行政部门技工院校，单列排除"
+  },
+  {
+    "name": "赣州市新阳技工学校",
+    "code": "342",
+    "sourceId": "JX-2026",
+    "sourceLocator": "原PDF第16页（印刷页码18）表第5行；序号134",
+    "sourceOrdinal": "134",
+    "reason": "原表办学类型为人社行政部门技工院校，单列排除"
+  },
+  {
+    "name": "江西赣州三江高级技工学校",
+    "code": "750",
+    "sourceId": "JX-2026",
+    "sourceLocator": "原PDF第16页（印刷页码18）表第9行；序号138",
+    "sourceOrdinal": "138",
+    "reason": "原表办学类型为人社行政部门技工院校，单列排除"
+  },
+  {
+    "name": "赣州市技工学校",
+    "code": "745",
+    "sourceId": "JX-2026",
+    "sourceLocator": "原PDF第17页（印刷页码19）表第3行；序号140",
+    "sourceOrdinal": "140",
+    "reason": "原表办学类型为人社行政部门技工院校，单列排除"
+  },
+  {
+    "name": "江西赣州育才技工学校",
+    "code": "725",
+    "sourceId": "JX-2026",
+    "sourceLocator": "原PDF第18页（印刷页码20）表第8行；序号154",
+    "sourceOrdinal": "154",
+    "reason": "原表办学类型为人社行政部门技工院校，单列排除"
+  },
+  {
+    "name": "江西赣州技师学院",
+    "code": "701",
+    "sourceId": "JX-2026",
+    "sourceLocator": "原PDF第20页（印刷页码22）表第3行；序号167",
+    "sourceOrdinal": "167",
+    "reason": "原表办学类型为人社行政部门技工院校，单列排除"
+  },
+  {
+    "name": "宁都技师学院",
+    "code": "782",
+    "sourceId": "JX-2026",
+    "sourceLocator": "原PDF第20页（印刷页码22）表第4行；序号168",
+    "sourceOrdinal": "168",
+    "reason": "原表办学类型为人社行政部门技工院校，单列排除"
+  },
+  {
+    "name": "于都新长征高级技工学校",
+    "code": "770",
+    "sourceId": "JX-2026",
+    "sourceLocator": "原PDF第20页（印刷页码22）表第5行；序号169",
+    "sourceOrdinal": "169",
+    "reason": "原表办学类型为人社行政部门技工院校，单列排除"
+  },
+  {
+    "name": "赣州科汇技工学校",
+    "code": "751",
+    "sourceId": "JX-2026",
+    "sourceLocator": "原PDF第20页（印刷页码22）表第6行；序号170",
+    "sourceOrdinal": "170",
+    "reason": "原表办学类型为人社行政部门技工院校，单列排除"
+  },
+  {
+    "name": "赣州工业技工学校",
+    "code": "798",
+    "sourceId": "JX-2026",
+    "sourceLocator": "原PDF第20页（印刷页码22）表第7行；序号171",
+    "sourceOrdinal": "171",
+    "reason": "原表办学类型为人社行政部门技工院校，单列排除"
+  },
+  {
+    "name": "宜春丰城技师学院",
+    "code": "781",
+    "sourceId": "JX-2026",
+    "sourceLocator": "原PDF第20页（印刷页码22）表第9行；序号173",
+    "sourceOrdinal": "173",
+    "reason": "原表办学类型为人社行政部门技工院校，单列排除"
+  },
+  {
+    "name": "高安技工学校",
+    "code": "311",
+    "sourceId": "JX-2026",
+    "sourceLocator": "原PDF第21页（印刷页码23）表第3行；序号175",
+    "sourceOrdinal": "175",
+    "reason": "原表办学类型为人社行政部门技工院校，单列排除"
+  },
+  {
+    "name": "江西省奉新技工学校",
+    "code": "766",
+    "sourceId": "JX-2026",
+    "sourceLocator": "原PDF第22页（印刷页码24）表第3行；序号182",
+    "sourceOrdinal": "182",
+    "reason": "原表办学类型为人社行政部门技工院校，单列排除"
+  },
+  {
+    "name": "江西宜春工业技工学校",
+    "code": "760",
+    "sourceId": "JX-2026",
+    "sourceLocator": "原PDF第22页（印刷页码24）表第9行；序号188",
+    "sourceOrdinal": "188",
+    "reason": "原表办学类型为人社行政部门技工院校，单列排除"
+  },
+  {
+    "name": "江西万载技工学校",
+    "code": "776",
+    "sourceId": "JX-2026",
+    "sourceLocator": "原PDF第23页（印刷页码25）表第2行；序号189",
+    "sourceOrdinal": "189",
+    "reason": "原表办学类型为人社行政部门技工院校，单列排除"
+  },
+  {
+    "name": "丰城剑威技工学校",
+    "code": "333",
+    "sourceId": "JX-2026",
+    "sourceLocator": "原PDF第23页（印刷页码25）表第3行；序号190",
+    "sourceOrdinal": "190",
+    "reason": "原表办学类型为人社行政部门技工院校，单列排除"
+  },
+  {
+    "name": "江西省有色冶金技工学校",
+    "code": "732",
+    "sourceId": "JX-2026",
+    "sourceLocator": "原PDF第23页（印刷页码25）表第9行；序号196",
+    "sourceOrdinal": "196",
+    "reason": "原表办学类型为人社行政部门技工院校，单列排除"
+  },
+  {
+    "name": "上饶市现代职业技工学校",
+    "code": "327",
+    "sourceId": "JX-2026",
+    "sourceLocator": "原PDF第25页（印刷页码27）表第8行；序号213",
+    "sourceOrdinal": "213",
+    "reason": "原表办学类型为人社行政部门技工院校，单列排除"
+  },
+  {
+    "name": "上饶市宇瞳技工学校",
+    "code": "341",
+    "sourceId": "JX-2026",
+    "sourceLocator": "原PDF第26页（印刷页码28）表第4行；序号218",
+    "sourceOrdinal": "218",
+    "reason": "原表办学类型为人社行政部门技工院校，单列排除"
+  },
+  {
+    "name": "上饶市高级技工学校",
+    "code": "337",
+    "sourceId": "JX-2026",
+    "sourceLocator": "原PDF第26页（印刷页码28）表第7行；序号221",
+    "sourceOrdinal": "221",
+    "reason": "原表办学类型为人社行政部门技工院校，单列排除"
+  },
+  {
+    "name": "江西凤凰技师学院",
+    "code": "707",
+    "sourceId": "JX-2026",
+    "sourceLocator": "原PDF第26页（印刷页码28）表第8行；序号222",
+    "sourceOrdinal": "222",
+    "reason": "原表办学类型为人社行政部门技工院校，单列排除"
+  },
+  {
+    "name": "上饶医药技工学校",
+    "code": "755",
+    "sourceId": "JX-2026",
+    "sourceLocator": "原PDF第26页（印刷页码28）表第9行；序号223",
+    "sourceOrdinal": "223",
+    "reason": "原表办学类型为人社行政部门技工院校，单列排除"
+  },
+  {
+    "name": "江西省精英技工学校",
+    "code": "759",
+    "sourceId": "JX-2026",
+    "sourceLocator": "原PDF第27页（印刷页码29）表第2行；序号224",
+    "sourceOrdinal": "224",
+    "reason": "原表办学类型为人社行政部门技工院校，单列排除"
+  },
+  {
+    "name": "江西上饶东南智慧技工学校有限公司",
+    "code": "307",
+    "sourceId": "JX-2026",
+    "sourceLocator": "原PDF第27页（印刷页码29）表第3行；序号225",
+    "sourceOrdinal": "225",
+    "reason": "原表办学类型为人社行政部门技工院校，单列排除"
+  },
+  {
+    "name": "上饶市科健技工学校",
+    "code": "315",
+    "sourceId": "JX-2026",
+    "sourceLocator": "原PDF第27页（印刷页码29）表第4行；序号226",
+    "sourceOrdinal": "226",
+    "reason": "原表办学类型为人社行政部门技工院校，单列排除"
+  },
+  {
+    "name": "上饶市江南经贸技工学校有限公司",
+    "code": "328",
+    "sourceId": "JX-2026",
+    "sourceLocator": "原PDF第27页（印刷页码29）表第5行；序号227",
+    "sourceOrdinal": "227",
+    "reason": "原表办学类型为人社行政部门技工院校，单列排除"
+  },
+  {
+    "name": "江西阳光技工学校",
+    "code": "763",
+    "sourceId": "JX-2026",
+    "sourceLocator": "原PDF第27页（印刷页码29）表第6行；序号228",
+    "sourceOrdinal": "228",
+    "reason": "原表办学类型为人社行政部门技工院校，单列排除"
+  },
+  {
+    "name": "横峰技工学校",
+    "code": "329",
+    "sourceId": "JX-2026",
+    "sourceLocator": "原PDF第27页（印刷页码29）表第7行；序号229",
+    "sourceOrdinal": "229",
+    "reason": "原表办学类型为人社行政部门技工院校，单列排除"
+  },
+  {
+    "name": "鄱阳县江南技工学校有限公司",
+    "code": "334",
+    "sourceId": "JX-2026",
+    "sourceLocator": "原PDF第27页（印刷页码29）表第8行；序号230",
+    "sourceOrdinal": "230",
+    "reason": "原表办学类型为人社行政部门技工院校，单列排除"
+  },
+  {
+    "name": "鄱阳县博奕技工学校有限公司",
+    "code": "335",
+    "sourceId": "JX-2026",
+    "sourceLocator": "原PDF第27页（印刷页码29）表第9行；序号231",
+    "sourceOrdinal": "231",
+    "reason": "原表办学类型为人社行政部门技工院校，单列排除"
+  },
+  {
+    "name": "吉安实验高级技工学校",
+    "code": "737",
+    "sourceId": "JX-2026",
+    "sourceLocator": "原PDF第28页（印刷页码30）表第3行；序号233",
+    "sourceOrdinal": "233",
+    "reason": "原表办学类型为人社行政部门技工院校，单列排除"
+  },
+  {
+    "name": "江西新干技工学校",
+    "code": "780",
+    "sourceId": "JX-2026",
+    "sourceLocator": "原PDF第28页（印刷页码30）表第9行；序号239",
+    "sourceOrdinal": "239",
+    "reason": "原表办学类型为人社行政部门技工院校，单列排除"
+  },
+  {
+    "name": "万安电子电路板技工学校",
+    "code": "769",
+    "sourceId": "JX-2026",
+    "sourceLocator": "原PDF第29页（印刷页码31）表第7行；序号245",
+    "sourceOrdinal": "245",
+    "reason": "原表办学类型为人社行政部门技工院校，单列排除"
+  },
+  {
+    "name": "遂川高级技工学校",
+    "code": "343",
+    "sourceId": "JX-2026",
+    "sourceLocator": "原PDF第29页（印刷页码31）表第9行；序号247",
+    "sourceOrdinal": "247",
+    "reason": "原表办学类型为人社行政部门技工院校，单列排除"
+  },
+  {
+    "name": "吉安技师学院",
+    "code": "714",
+    "sourceId": "JX-2026",
+    "sourceLocator": "原PDF第30页（印刷页码32）表第7行；序号254",
+    "sourceOrdinal": "254",
+    "reason": "原表办学类型为人社行政部门技工院校，单列排除"
+  },
+  {
+    "name": "吉安市井冈山技工学校",
+    "code": "797",
+    "sourceId": "JX-2026",
+    "sourceLocator": "原PDF第30页（印刷页码32）表第8行；序号255",
+    "sourceOrdinal": "255",
+    "reason": "原表办学类型为人社行政部门技工院校，单列排除"
+  },
+  {
+    "name": "吉安市理工技工学校",
+    "code": "749",
+    "sourceId": "JX-2026",
+    "sourceLocator": "原PDF第30页（印刷页码32）表第9行；序号256",
+    "sourceOrdinal": "256",
+    "reason": "原表办学类型为人社行政部门技工院校，单列排除"
+  },
+  {
+    "name": "吉安交通技工学校",
+    "code": "323",
+    "sourceId": "JX-2026",
+    "sourceLocator": "原PDF第30页（印刷页码32）表第10行；序号257",
+    "sourceOrdinal": "257",
+    "reason": "原表办学类型为人社行政部门技工院校，单列排除"
+  },
+  {
+    "name": "吉安市电子科技技工学校",
+    "code": "324",
+    "sourceId": "JX-2026",
+    "sourceLocator": "原PDF第31页（印刷页码33）表第2行；序号258",
+    "sourceOrdinal": "258",
+    "reason": "原表办学类型为人社行政部门技工院校，单列排除"
+  },
+  {
+    "name": "井冈山先锋软件技工学校",
+    "code": "331",
+    "sourceId": "JX-2026",
+    "sourceLocator": "原PDF第31页（印刷页码33）表第3行；序号259",
+    "sourceOrdinal": "259",
+    "reason": "原表办学类型为人社行政部门技工院校，单列排除"
+  },
+  {
+    "name": "江西金溪电子技工学校",
+    "code": "772",
+    "sourceId": "JX-2026",
+    "sourceLocator": "原PDF第31页（印刷页码33）表第10行；序号266",
+    "sourceOrdinal": "266",
+    "reason": "原表办学类型为人社行政部门技工院校，单列排除"
+  },
+  {
+    "name": "江西赣东高级技工学校有限公司",
+    "code": "730",
+    "sourceId": "JX-2026",
+    "sourceLocator": "原PDF第32页（印刷页码34）表第8行；序号273",
+    "sourceOrdinal": "273",
+    "reason": "原表办学类型为人社行政部门技工院校，单列排除"
+  },
+  {
+    "name": "抚州技师学院",
+    "code": "748",
+    "sourceId": "JX-2026",
+    "sourceLocator": "原PDF第33页（印刷页码35）表第5行；序号279",
+    "sourceOrdinal": "279",
+    "reason": "原表办学类型为人社行政部门技工院校，单列排除"
+  },
+  {
+    "name": "江西机械电子技工学校",
+    "code": "723",
+    "sourceId": "JX-2026",
+    "sourceLocator": "原PDF第33页（印刷页码35）表第6行；序号280",
+    "sourceOrdinal": "280",
+    "reason": "原表办学类型为人社行政部门技工院校，单列排除"
+  }
+]

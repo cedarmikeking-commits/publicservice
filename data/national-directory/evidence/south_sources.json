@@ -1,0 +1,202 @@
+{
+  "researched_at": "2026-11-02",
+  "scope": "湖南、广东、广西、海南、重庆、四川、贵州、云南、西藏中职官方逐校来源检索；本文件只列来源线索，不代表已下载或已入库",
+  "sources": [
+    {
+      "province": "四川省",
+      "title": "四川省教育厅 四川省人力资源和社会保障厅关于公布四川省2026年具有中等职业学历教育招生资格学校及专业的通告",
+      "page_url": "https://www.sceea.cn/Html/202604/Newsdetail_4764.html",
+      "official_origin_page_url": "https://edu.sc.gov.cn/scedu/cjhfwjk/2026/4/16/a271ac783e494aeea0ff526e2dfcb5f8.shtml",
+      "published_at": "2026-04-23",
+      "document_date": "2026-04-16",
+      "publisher": "四川省教育厅、四川省人力资源和社会保障厅；四川省教育考试院转载",
+      "attachment_url": "https://edu.sc.gov.cn/scedu/cjhfwjk/2026/4/16/a271ac783e494aeea0ff526e2dfcb5f8/files/四川省教育部门管理的中等职业学校名单（343所）.xlsx",
+      "attachment_type": "xlsx",
+      "stated_count": 343,
+      "coverage": "全省教育部门管理中职；另有74所技工院校不在本附件",
+      "includes_technical_schools": false,
+      "status": "官方正文已核验、附件真实链接已解析；web附件超时，待云浏览器下载",
+      "notes": "总通告417所=教育343+技工74，不能用417作为中职教育部门分母。official_origin_page_url按附件父路径推定，未成功读取，不作为已核验页面。"
+    },
+    {
+      "province": "广东省",
+      "title": "广东省2026年中等职业教育招生学校名单",
+      "page_url": "https://edu.gd.gov.cn/zwgknew/gsgg/content/post_4903737.html",
+      "published_at": "2026-05-28",
+      "publisher": "广东省教育厅",
+      "attachments": [
+        {
+          "title": "广东省2026年中等职业教育拟招生学校名单（省属）",
+          "url": "https://edu.gd.gov.cn/attachment/0/615/615383/4903737.pdf",
+          "type": "pdf",
+          "stated_count": 15,
+          "pages": 1
+        },
+        {
+          "title": "广东省2026年中等职业教育招生学校名单（地市）",
+          "url": "https://edu.gd.gov.cn/attachment/0/615/615384/4903737.pdf",
+          "type": "pdf",
+          "stated_count": null
+        }
+      ],
+      "coverage": "全省省属+地市；需合并两附件后按机构码去重",
+      "includes_technical_schools": false,
+      "status": "省属官方PDF已核验15条，地市官方附件URL已解析，待云浏览器下载",
+      "notes": "省属有高校附设中职班，不能将其误分类为独立普通中专或重复计算法人学校。日期来自媒体转述，官方页面未成功打开。"
+    },
+    {
+      "province": "湖南省",
+      "title": "湖南省中等职业教育阳光招生信息平台—中职学校名单",
+      "page_url": "https://zsxxtp.hnedu.cn/front/showSchoolPageByZML",
+      "portal_url": "https://zsxxtp.hnedu.cn/jgzsxxpt/frontpage.do",
+      "published_at": null,
+      "publisher": "湖南省教育厅；湖南省教育厅信息中心承办",
+      "attachment_type": "HTML逐校表（未找到下载附件）",
+      "observed_table_rows": 385,
+      "coverage": "全省14市州中职动态逐校表",
+      "includes_technical_schools": false,
+      "status": "官方逐校表已读取，未下载原始HTML或入库",
+      "notes": "门户标题2026，列表本身未标年份/发布日期。名单含高校中职部、特教附设中职。市州招生代码不是国家机构码，存在同码，不能单独按该字段去重。385是当前可见行数，不作独立学校全量声明。"
+    },
+    {
+      "province": "海南省",
+      "title": "2026年海南省中等职业学校招生指导计划",
+      "page_url": null,
+      "parent_page_candidate": "https://edu.hainan.gov.cn/edu/0400/202606/6fc666b143c444bc86b59e54a6afb2ba.shtml",
+      "published_at": "2026-06-24",
+      "publisher": "海南省教育厅",
+      "attachment_url": "https://edu.hainan.gov.cn/edu/0400/202606/6fc666b143c444bc86b59e54a6afb2ba/files/0928e4f76f254d67a9a7745d4195d145.pdf",
+      "attachment_type": "pdf",
+      "stated_count": null,
+      "coverage": "全省中职招生指导计划逐校表，需区分教育中职与技工",
+      "includes_technical_schools": true,
+      "status": "真实官方附件URL由转载页链接解析，web下载403；待浏览器核验下载",
+      "discovery_page": "https://haikou.bendibao.com/news/2026625/83172.shtm",
+      "notes": "parent_page_candidate按附件父路径推定、未核验；不是已下载数据。"
+    },
+    {
+      "province": "重庆市",
+      "title": "重庆市中等职业学校名录",
+      "page_url": "https://jw.cq.gov.cn/fwdh/202310/t20231020_12453424.html",
+      "mobile_page_url": "https://jw.cq.gov.cn/fwdh/202310/t20231020_12453424_wap.html",
+      "listing_url": "https://jw.cq.gov.cn/zwgk_209/fdzdgknr/zdlyxxgk/zyjy/xxmd/wap.html",
+      "published_at": "2025-12-15",
+      "publisher": "重庆市教育委员会",
+      "attachment_type": "HTML逐校表（附件未知）",
+      "stated_count": null,
+      "coverage": "全市名录，区县/校名/办学层次/举办单位",
+      "includes_technical_schools": null,
+      "status": "官方栏目与真实链接已读取，正文web超时，待浏览器读取",
+      "notes": "发布时间来自官方栏目列表；正文路径含202310，可能为持续更新旧URL，需以实际正文更新时间为准。"
+    },
+    {
+      "province": "贵州省",
+      "title": "关于公布贵州省2026年具有中等职业学校（技工）学历教育招生资质名录的通告",
+      "page_url": "https://zsksy.guizhou.gov.cn/tzgg/202606/t20260610_90505919.html",
+      "published_at": "2026-06-10",
+      "document_date": "2026-06-09",
+      "publisher": "贵州省教育厅、贵州省人力资源社会保障厅；省招生考试院发布",
+      "attachment_type": "未知，附件1中职131所，附件2技工56所",
+      "stated_count": 131,
+      "coverage": "全省教育部门中职131，技工56另列",
+      "includes_technical_schools": true,
+      "status": "官方原文URL已解析但web不可访问，未取得官方附件",
+      "discovery_pages": [
+        "https://www.atsws.com/2026/06/12/关于公布贵州省2026年具有中等职业学校技工学历教/",
+        "https://www.gzstv.com/a/c510199de56d497f9665f0efd2fffaf6",
+        "https://m.thepaper.cn/newsDetail_forward_33349279"
+      ],
+      "notes": "只有媒体与贵州教育发布官方澎湃号交叉核验统计，不是逐校数据，不可凭统计入库。"
+    },
+    {
+      "province": "云南省",
+      "title": "云南省2024年度中等职业学校名单",
+      "page_url": null,
+      "official_listing_url": "https://jyt.yn.gov.cn/zfxxgk/fdzdgknr/jytj/",
+      "republished_url": "https://www.ynjy.cn/article/2147451627",
+      "published_at": "2025-04-21",
+      "as_of": "2024-09-01",
+      "publisher": "云南省教育厅",
+      "attachment_type": "未知",
+      "stated_count": 217,
+      "coverage": "全省普通中职208+成人中职9；不是2026全量名单",
+      "includes_technical_schools": null,
+      "status": "官方栏目检出但未拿到单篇页面和附件，未取得逐校原始数据",
+      "notes": "官方教育统计栏目仍只列2024年度中职名录；不得将2024名单宣称2026全量。2026技工名单另有33校，在人社厅，不与本任务教育中职混算。"
+    },
+    {
+      "province": "广西壮族自治区",
+      "title": "中职招生资质逐校名单",
+      "page_url": null,
+      "official_listing_url": "https://jyt.gxzf.gov.cn/zfxxgk/fdzdgknr/bmfw/jyjgcx/",
+      "older_pdf_url": "https://jyt.gxzf.gov.cn/zfxxgk/fdzdgknr/bmfw/jyjgcx/P020240909397978797896.pdf",
+      "published_at": null,
+      "publisher": "广西壮族自治区教育厅",
+      "attachment_type": "2024 PDF已找到，2026官方附件未取得",
+      "stated_count": null,
+      "coverage": "全区（尚未核验）",
+      "includes_technical_schools": true,
+      "status": "2026来源未解决，未取得本次可直接使用的逐校数据",
+      "notes": "媒体有2026年度235所报道，但未找到可核验官方原文附件，不可按数字补录。2025同路径t21217798.shtml只是从非官方镜像发现的候选路径，未核验，未列为有效来源。"
+    },
+    {
+      "province": "西藏自治区",
+      "title": "未取得官方逐校名单",
+      "page_url": null,
+      "policy_reference_url": "https://jyj.lasa.gov.cn/jiaoyuju/c100360/202604/45df2be1564f4d1792a77a2076444184.shtml",
+      "policy_reference_title": "2026年西藏自治区高中阶段学校招生规定",
+      "published_at": null,
+      "publisher": "西藏自治区教育主管部门",
+      "attachment_type": null,
+      "stated_count": null,
+      "coverage": "未覆盖",
+      "includes_technical_schools": null,
+      "status": "只找到政策，未取得逐校原始名录，不可据此填充学校"
+    }
+  ],
+  "followup_findings": [
+    {
+      "province": "贵州省",
+      "title": "贵州省2025年具有中等职业学校学历教育招生资质学校及专业名录",
+      "attachment_url": "https://zsksy.guizhou.gov.cn/zzzs/202506/P020250626356337118024.xlsx",
+      "attachment_type": "xlsx",
+      "stated_count": 147,
+      "source_year": 2025,
+      "discovery_page": "https://www.gzs100.cn/page125?article_id=909",
+      "official_download": true,
+      "status": "官方附件真实链接已解析，web超时待云浏览器下载"
+    },
+    {
+      "province": "贵州省",
+      "title": "贵州省中等职业教育2025年招生指南",
+      "attachment_url": "https://zsksy.guizhou.gov.cn/zzzs/202506/P020250717623733252068.pdf",
+      "attachment_type": "pdf",
+      "source_year": 2025,
+      "discovery_page": "https://www.gzs100.cn/page125?article_id=909",
+      "official_download": true,
+      "status": "官方附件真实链接已解析，web超时待云浏览器下载"
+    },
+    {
+      "province": "湖南省",
+      "title": "湖南省中等职业教育阳光招生信息平台—中职学校名单",
+      "local_rows_file": "hunan_rows.json",
+      "local_web_evidence": "hunan_web_evidence.txt",
+      "rows": 385,
+      "source_ordinals": "1—385完整连续",
+      "status": "已从官方web原文分段解析，年度未明确，名单含高校中职部/特教学校，不能称2026独立法人全量"
+    },
+    {
+      "province": "云南省",
+      "title": "临沧市2024年度中等职业学校名单",
+      "local_rows_file": "yunnan_lincang_rows.json",
+      "local_web_evidence": "yunnan_lincang_web_evidence.txt",
+      "rows": 15,
+      "education_regular_rows": 12,
+      "adult_rows": 3,
+      "source_url": "https://lincang.gov.cn/zfxxgk_lcs_jytyj/artview/226/319265.html?chapter=null&ml=null&year=null",
+      "as_of": "2024-09-01",
+      "published_at": "2025-05-22",
+      "status": "官方逐校HTML已读，省份为部分覆盖，不代表全省"
+    }
+  ]
+}

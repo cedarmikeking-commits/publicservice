@@ -1,0 +1,153 @@
+{
+  "schoolCount": 131,
+  "programRows": 1186,
+  "sourceNameCodePairsBeforeSchoolIdentityResolution": 137,
+  "schoolIdentityKey": "规范校名+主管部门；同一学校各专业重复记录合并，机构码或地址冲突不虚增学校",
+  "codeConflicts": [
+    {
+      "name": "六盘水市钟山区职业技术学校",
+      "sourceCodes": [
+        "12520201G7264010XR",
+        "12520201G7264011XR",
+        "12520201G7264012XR",
+        "12520201G7264013XR",
+        "12520201G7264014XR",
+        "12520201G7264015XR",
+        "12520201G7264016XR"
+      ],
+      "authority": "钟山区教育局",
+      "address": "",
+      "sourceRows": [
+        "工作表“六盘水市5”第39行；专业序号36",
+        "工作表“六盘水市5”第40行；专业序号37",
+        "工作表“六盘水市5”第41行；专业序号38",
+        "工作表“六盘水市5”第42行；专业序号39",
+        "工作表“六盘水市5”第43行；专业序号40",
+        "工作表“六盘水市5”第44行；专业序号41",
+        "工作表“六盘水市5”第45行；专业序号42"
+      ],
+      "resolution": "同省同名、同主管合并成一条学校身份，机构码及地址多值逐项保留；机构码冲突未解决，code留空而非选择或编造"
+    }
+  ],
+  "sheets": [
+    {
+      "sheet": "省属4",
+      "expectedSchoolsFromSourceTitle": 4,
+      "parsedSchoolIdentities": 4,
+      "programRows": 34
+    },
+    {
+      "sheet": "贵阳市21",
+      "expectedSchoolsFromSourceTitle": 21,
+      "parsedSchoolIdentities": 21,
+      "programRows": 176
+    },
+    {
+      "sheet": "遵义市26",
+      "expectedSchoolsFromSourceTitle": 26,
+      "parsedSchoolIdentities": 26,
+      "programRows": 199
+    },
+    {
+      "sheet": "六盘水市5",
+      "expectedSchoolsFromSourceTitle": 5,
+      "parsedSchoolIdentities": 5,
+      "programRows": 43
+    },
+    {
+      "sheet": "安顺市7",
+      "expectedSchoolsFromSourceTitle": 7,
+      "parsedSchoolIdentities": 7,
+      "programRows": 86
+    },
+    {
+      "sheet": "毕节市12",
+      "expectedSchoolsFromSourceTitle": 12,
+      "parsedSchoolIdentities": 12,
+      "programRows": 127
+    },
+    {
+      "sheet": "铜仁市14",
+      "expectedSchoolsFromSourceTitle": 14,
+      "parsedSchoolIdentities": 14,
+      "programRows": 122
+    },
+    {
+      "sheet": "黔东南州16",
+      "expectedSchoolsFromSourceTitle": 16,
+      "parsedSchoolIdentities": 16,
+      "programRows": 156
+    },
+    {
+      "sheet": "黔南州16",
+      "expectedSchoolsFromSourceTitle": 16,
+      "parsedSchoolIdentities": 16,
+      "programRows": 170
+    },
+    {
+      "sheet": "黔西南州10",
+      "expectedSchoolsFromSourceTitle": 10,
+      "parsedSchoolIdentities": 10,
+      "programRows": 73
+    }
+  ],
+  "sourceScope": "教育厅官方附件1，未导入另一个技工院校附件",
+  "sourceReleaseDate": "2026-06-10",
+  "sourceUrl": "https://jyt.guizhou.gov.cn/zwgk/tzgg/202606/t20260610_90504460.html",
+  "attachmentUrl": "https://jyt.guizhou.gov.cn/zwgk/tzgg/202606/P020260611509445922538.xlsx",
+  "addressConflicts": [
+    {
+      "name": "六盘水市水城区职业技术学校",
+      "sourceAddresses": [
+        "贵州省六盘水市水城区老鹰山街道石河社区白云大道5号",
+        "贵州省六盘水市水城区老鹰山街道石河社区白云大道6号",
+        "贵州省六盘水市水城区老鹰山街道石河社区白云大道7号",
+        "贵州省六盘水市水城区老鹰山街道石河社区白云大道8号",
+        "贵州省六盘水市水城区老鹰山街道石河社区白云大道9号",
+        "贵州省六盘水市水城区老鹰山街道石河社区白云大道10号",
+        "贵州省六盘水市水城区老鹰山街道石河社区白云大道11号",
+        "贵州省六盘水市水城区老鹰山街道石河社区白云大道12号",
+        "贵州省六盘水市水城区老鹰山街道石河社区白云大道13号",
+        "贵州省六盘水市水城区老鹰山街道石河社区白云大道14号",
+        "贵州省六盘水市水城区老鹰山街道石河社区白云大道15号",
+        "贵州省六盘水市水城区老鹰山街道石河社区白云大道16号"
+      ],
+      "resolution": "不擅选正确地址，address留空，保留全部原值"
+    },
+    {
+      "name": "六盘水市钟山区职业技术学校",
+      "sourceAddresses": [
+        "六盘水高新技术产业开发区红桥街道红桥东路10号附1号",
+        "六盘水高新技术产业开发区红桥街道红桥东路10号附2号",
+        "六盘水高新技术产业开发区红桥街道红桥东路10号附3号",
+        "六盘水高新技术产业开发区红桥街道红桥东路10号附4号",
+        "六盘水高新技术产业开发区红桥街道红桥东路10号附5号",
+        "六盘水高新技术产业开发区红桥街道红桥东路10号附6号",
+        "六盘水高新技术产业开发区红桥街道红桥东路10号附7号"
+      ],
+      "resolution": "不擅选正确地址，address留空，保留全部原值"
+    }
+  ],
+  "nonstandardSingleCodes": [
+    {
+      "name": "清镇市中等职业技术学校",
+      "code": "125018556615246p",
+      "sourceLocator": "工作表“贵阳市21”第48行；专业序号45"
+    },
+    {
+      "name": "余庆县中等职业学校",
+      "code": "42952007-6",
+      "sourceLocator": "工作表“遵义市26”第121行；专业序号118"
+    },
+    {
+      "name": "毕节市七星关区中等职业学校",
+      "code": "520502429812255J",
+      "sourceLocator": "工作表“毕节市12”第15行；专业序号26"
+    },
+    {
+      "name": "贵州省铜仁市梵东中等职业学校有限公司",
+      "code": "MABY9AWX-8",
+      "sourceLocator": "工作表“铜仁市14”第110行；专业序号107"
+    }
+  ]
+}

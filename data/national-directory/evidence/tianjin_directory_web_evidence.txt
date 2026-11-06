@@ -1,0 +1,745 @@
+中等职业学校_天津政务网 (https://www.tj.gov.cn/zwgk/ggqsydwxxgk/jy/zdzyxx/)
+【turn163view0】 [wordlim: 200] Crawled: last week; Content type: text/html; Source: open({"ref_id":"https://www.tj.gov.cn/zwgk/ggqsydwxxgk/jy/zdzyxx/","lineno":null}); Total lines: 498
+L0: 【0†中央政府门户网站†www.gov.cn】----年--月--日 星期 -
+L1: 
+L2: 【1†English†en.tj.gov.cn】
+L3: 
+L4: 【2†Image】无障碍 【3†Image】长者模式
+L5: 
+L6: 繁体 【1†English†en.tj.gov.cn】|
+L7: 
+L8: 【4†个人中心†tysfrzcs.tj.gov.cn】|
+L9: 
+L10: [Input: 大家在搜 积分落户] [Input]
+L11: 
+L12:   * 【5†首页】 首页
+L13:   * 【6†政务公开】 政务公开
+L14:   * 【7†网上办事†zwfw.tj.gov.cn】 网上办事
+L15:   * 【8†政民互动】 政民互动
+L16:   * 【9†市情】 市情
+L17: 
+L18: 首页
+L19: 
+L20: 【10†Image】 【5†首页】  >  【6†政务公开】  >  【11†公共企事业单位信息公开】  >  【12†教育】
+L21: 
+L22: 中等职业学校
+L23: 
+L24: 天津市体育运动学校 2025-07-21
+L25: 
+L26: 天津市旅外职业高中 2025-07-21
+L27: 
+L28: 天津市弘博职业学校 2025-07-21
+L29: 
+L30: 天津市幼儿师范学校 2025-04-22
+L31: 
+L32: 天津市物资贸易学校（天津开放大学物资贸易分校） 2025-04-22
+L33: 
+L34: 天津市园林学校 2025-04-21
+L35: 天津音乐学院附属中等音乐学校 2025-04-21
+L36: 
+L37: 天津市电子信息技师学院（天津市仪表无线电工业学校） 2025-04-21
+L38: 
+L39: 天津市第一商业学校 2025-04-21
+L40: 
+L41: 天津市第一轻工业学校 2025-04-21
+L42: 
+L43: 天津市现代传媒职业学校 2025-04-21
+L44: 
+L45: 天津市市政工程学校 2025-04-21
+L46: 
+L47: 天津全人职业中等专业学校 2025-04-21
+L48: 
+L49: 天津市劳动经济学校（天津市人力资源和社会保障局第二高级技工学校） 2025-04-21
+L50: 
+L51: 天津市劳动保护学校 2025-04-21
+L52: 
+L53:   * 中央政府部门网站
+L54: 
+L55: 【13†外交部†www.fmprc.gov.cn】
+L56: 
+L57: 【14†国防部†www.mod.gov.cn】
+L58: 
+L59: 【15†国家发展改革委†www.ndrc.gov.cn】
+L60: 
+L61: 【16†教育部†www.moe.gov.cn】
+L62: 
+L63: 【17†科技部†www.most.gov.cn】
+L64: 
+L65: 【18†工业和信息化部†www.miit.gov.cn】
+L66: 
+L67: 【19†国家民委†www.neac.gov.cn】
+L68: 
+L69: 【20†公安部†www.mps.gov.cn】
+L70: 
+L71: 【21†民政部†www.mca.gov.cn】
+L72: 【22†司法部†www.moj.gov.cn】
+L73: 
+L74: 【23†财政部†www.mof.gov.cn】
+L75: 
+L76: 【24†人力资源社会保障部†www.mohrss.gov.cn】
+L77: 
+L78: 【25†自然资源部†www.mnr.gov.cn】
+L79: 
+L80: 【26†生态环境部†www.mee.gov.cn】
+L81: 
+L82: 【27†住房城乡建设部†www.mohurd.gov.cn】
+L83: 
+L84: 【28†交通运输部†www.mot.gov.cn】
+L85: 
+L86: 【29†水利部†www.mwr.gov.cn】
+L87: 
+L88: 【30†农业农村部†www.moa.gov.cn】
+L89: 
+L90: 【31†商务部†www.mofcom.gov.cn】
+L91: 
+L92: 【32†文化和旅游部†www.mct.gov.cn】
+L93: 
+L94: 【33†国家卫生健康委†www.nhc.gov.cn】
+L95: 
+L96: 【34†退役军人事务部†www.mva.gov.cn】
+L97: 
+L98: 【35†应急管理部†www.mem.gov.cn】
+L99: 
+L100: 【36†中国人民银行†www.pbc.gov.cn】
+L101: 
+L102: 【37†审计署†www.audit.gov.cn】
+L103: 
+L104: 【38†国家语委†www.moe.gov.cn】
+L105: 
+L106: 【39†国家航天局†www.cnsa.gov.cn】
+L107: 【40†国家原子能机构†www.caea.gov.cn】
+L108: 
+L109: 【41†国家核安全局†nnsa.mee.gov.cn】
+L110: 
+L111: 【42†国务院国资委†www.sasac.gov.cn】
+L112: 
+L113: 【43†海关总署†www.customs.gov.cn】
+L114: 
+L115: 【44†税务总局†www.chinatax.gov.cn】
+L116: 
+L117: 【45†市场监管总局†www.samr.gov.cn】
+L118: 
+L119: 【46†金融监管总局†www.nfra.gov.cn】
+L120: 
+L121: 【47†中国证监会†www.csrc.gov.cn】
+L122: 
+L123: 【48†广电总局†www.nrta.gov.cn】
+L124: 
+L125: 【49†体育总局†www.sport.gov.cn】
+L126: 
+L127: 【50†国家信访局†www.gjxfj.gov.cn】
+L128: 
+L129: 【51†国家统计局†www.stats.gov.cn】
+L130: 
+L131: 【52†国家知识产权局†www.cnipa.gov.cn】
+L132: 
+L133: 【53†国家国际发展合作署†www.cidca.gov.cn】
+L134: 
+L135: 【54†国家医保局†www.nhsa.gov.cn】
+L136: 
+L137: 【55†国务院参事室†www.counsellor.gov.cn】
+L138: 
+L139: 【56†国管局†www.ggj.gov.cn】
+L140: 【57†国家认监委†www.cnca.gov.cn】
+L141: 
+L142: 【58†国家标准委†www.sac.gov.cn】
+L143: 
+L144: 【59†国家新闻出版署(版权局)†www.ncac.gov.cn】
+L145: 
+L146: 【60†国家宗教局†www.sara.gov.cn】
+L147: 
+L148: 【61†国务院侨办†www.gqb.gov.cn】
+L149: 
+L150: 【62†国务院港澳办†www.hmo.gov.cn】
+L151: 
+L152: 【63†国务院台办†www.gwytb.gov.cn】
+L153: 
+L154: 【64†国家网信办†www.cac.gov.cn】
+L155: 
+L156: 【65†国务院新闻办†www.scio.gov.cn】
+L157: 
+L158: 新华社
+L159: 
+L160: 【66†中国科学院†www.cas.cn】
+L161: 
+L162: 【67†中国社科院†www.cass.cn】
+L163: 
+L164: 【68†中国工程院†www.cae.cn】
+L165: 
+L166: 【69†国务院发展研究中心†www.drc.gov.cn】
+L167: 
+L168: 【70†中国气象局†www.cma.gov.cn】
+L169: 
+L170: 【71†国家行政学院†www.ccps.gov.cn】
+L171: 
+L172: 【72†国家粮食和储备局†www.lswz.gov.cn】
+L173: 
+L174: 【73†国家能源局†www.nea.gov.cn】
+L175: 
+L176: 【74†国家国防科工局†www.sastind.gov.cn】
+L177: 【75†国家烟草局†www.tobacco.gov.cn】
+L178: 
+L179: 【76†国家移民局†www.nia.gov.cn】
+L180: 
+L181: 【77†国家林草局†www.forestry.gov.cn】
+L182: 
+L183: 【78†国家铁路局†www.nra.gov.cn】
+L184: 
+L185: 【79†中国民航局†www.caac.gov.cn】
+L186: 
+L187: 【80†国家邮政局†www.spb.gov.cn】
+L188: 
+L189: 【81†国家文物局†www.ncha.gov.cn】
+L190: 
+L191: 【82†国家中医药局†www.natcm.gov.cn】
+L192: 
+L193: 【83†国家疾控局†www.ndcpa.gov.cn】
+L194: 
+L195: 【84†国家矿山安监局†www.chinamine-safety.gov.cn】
+L196: 
+L197: 【85†国家消防救援局†www.119.gov.cn】
+L198: 
+L199: 【86†国家外汇局†www.safe.gov.cn】
+L200: 
+L201: 【87†国家药监局†www.nmpa.gov.cn】
+L202: 
+L203:   * 省市政府网站
+L204: 
+L205: 【88†北京†www.beijing.gov.cn】
+L206: 
+L207: 【89†河北†www.hebei.gov.cn】
+L208: 
+L209: 【90†山西†www.shanxi.gov.cn】
+L210: 
+L211: 【91†内蒙古†www.nmg.gov.cn】
+L212: 【92†辽宁†www.ln.gov.cn】
+L213: 
+L214: 【93†吉林†www.jl.gov.cn】
+L215: 
+L216: 【94†黑龙江†www.hlj.gov.cn】
+L217: 
+L218: 【95†上海†www.shanghai.gov.cn】
+L219: 
+L220: 【96†江苏†www.jiangsu.gov.cn】
+L221: 
+L222: 【97†浙江†www.zj.gov.cn】
+L223: 
+L224: 【98†安徽†www.ah.gov.cn】
+L225: 
+L226: 【99†福建†www.fujian.gov.cn】
+L227: 
+L228: 【100†江西†www.jiangxi.gov.cn】
+L229: 
+L230: 【101†山东†www.shandong.gov.cn】
+L231: 
+L232: 【102†河南†www.henan.gov.cn】
+L233: 
+L234: 【103†湖北†www.hubei.gov.cn】
+L235: 
+L236: 【104†湖南†www.hunan.gov.cn】
+L237: 
+L238: 【105†广东†www.gd.gov.cn】
+L239: 
+L240: 【106†广西†www.gxzf.gov.cn】
+L241: 
+L242: 【107†海南†www.hainan.gov.cn】
+L243: 
+L244: 【108†重庆†www.cq.gov.cn】
+L245: 
+L246: 【109†四川†www.sc.gov.cn】
+L247: 
+L248: 【110†贵州†www.guizhou.gov.cn】
+L249: 【111†云南†www.yn.gov.cn】
+L250: 
+L251: 【112†西藏†www.xizang.gov.cn】
+L252: 
+L253: 【113†陕西†www.shaanxi.gov.cn】
+L254: 
+L255: 【114†甘肃†www.gansu.gov.cn】
+L256: 
+L257: 【115†青海†www.qinghai.gov.cn】
+L258: 
+L259: 【116†宁夏†www.nx.gov.cn】
+L260: 
+L261: 【117†新疆†www.xinjiang.gov.cn】
+L262: 
+L263: 【118†香港†www.gov.hk】
+L264: 
+L265: 【119†澳门†www.gov.mo】
+L266: 
+L267: 【120†台湾†www.taiwan.cn】
+L268: 
+L269: 【121†新疆生产建设兵团†www.xjbt.gov.cn】
+L270: 
+L271:   * 市政府部门网站
+L272: 
+L273: 【122†市发展改革委†fzgg.tj.gov.cn】
+L274: 
+L275: 【123†市教委†jy.tj.gov.cn】
+L276: 
+L277: 【124†市科技局†kxjs.tj.gov.cn】
+L278: 
+L279: 【125†市工业和信息化局†gyxxh.tj.gov.cn】
+L280: 
+L281: 【126†市民族宗教委†mzzj.tj.gov.cn】
+L282: 
+L283: 【127†市公安局†ga.tj.gov.cn】
+L284: 
+L285: 【128†市民政局†mz.tj.gov.cn】
+L286: 【129†市司法局†sf.tj.gov.cn】
+L287: 
+L288: 【130†市财政局†cz.tj.gov.cn】
+L289: 
+L290: 【131†市人社局†hrss.tj.gov.cn】
+L291: 
+L292: 【132†市规划资源局†ghhzrzy.tj.gov.cn】
+L293: 
+L294: 【133†市生态环境局†sthj.tj.gov.cn】
+L295: 
+L296: 【134†市住房城乡建设委†zfcxjs.tj.gov.cn】
+L297: 
+L298: 【135†市城市管理委†csgl.tj.gov.cn】
+L299: 
+L300: 【136†市交通运输委†jtys.tj.gov.cn】
+L301: 
+L302: 【137†市水务局†swj.tj.gov.cn】
+L303: 
+L304: 【138†市农业农村委†nync.tj.gov.cn】
+L305: 
+L306: 【139†市商务局†shangwuju.tj.gov.cn】
+L307: 
+L308: 【140†市文化和旅游局†whly.tj.gov.cn】
+L309: 
+L310: 【141†市卫生健康委†wsjk.tj.gov.cn】
+L311: 
+L312: 【142†市退役军人局†tyjrswj.tj.gov.cn】
+L313: 
+L314: 【143†市应急管理局†yjgl.tj.gov.cn】
+L315: 
+L316: 【144†市审计局†sj.tj.gov.cn】
+L317: 
+L318: 【145†市外办†fao.tj.gov.cn】
+L319: 【146†市市场监管委†scjg.tj.gov.cn】
+L320: 
+L321: 【147†市国资委†sasac.tj.gov.cn】
+L322: 
+L323: 【148†市体育局†ty.tj.gov.cn】
+L324: 
+L325: 【149†市统计局†stats.tj.gov.cn】
+L326: 
+L327: 【150†市数据局†data.tj.gov.cn】
+L328: 
+L329: 【151†市投资促进局†tzcjj.tj.gov.cn】
+L330: 
+L331: 【152†市医保局†ylbz.tj.gov.cn】
+L332: 
+L333: 【153†市机关事务管理局†jgsw.tj.gov.cn】
+L334: 
+L335: 【154†市信访办†xf.tj.gov.cn】
+L336: 
+L337: 【155†市国动办†gfdy.tj.gov.cn】
+L338: 
+L339: 【156†市政务服务办†zwfwb.tj.gov.cn】
+L340: 
+L341: 【157†市知识产权局†zscq.tj.gov.cn】
+L342: 
+L343: 【158†市粮食和物资局†lswz.tj.gov.cn】
+L344: 
+L345: 【159†市地方金融管理局†jrgz.tj.gov.cn】
+L346: 
+L347: 【160†市消防救援局†tj.119.gov.cn】
+L348: 
+L349: 【161†市公积金管理中心†www.zfgjj.cn】
+L350: 
+L351:   * 区政府网站
+L352: 
+L353: 【162†滨海新区†www.tjbh.gov.cn】
+
+--------------------------------------------------------------------------------
+天津市第一商业学校_中等职业学校_天津政务网 (https://www.tj.gov.cn/zwgk/ggqsydwxxgk/jy/zdzyxx/202504/t20250421_6914408.html)
+【turn163view1】 [wordlim: 200] Crawled: last week; Content type: text/html; Source: open({"ref_id":"https://www.tj.gov.cn/zwgk/ggqsydwxxgk/jy/zdzyxx/202504/t20250421_6914408.html","lineno":null}); Total lines: 500
+L0: 【0†天津政务网】 ----年--月--日 星期 -
+L1: 
+L2: 【1†English†en.tj.gov.cn】
+L3: 
+L4: 【2†Image】无障碍 【3†Image】长者模式
+L5: 
+L6: 繁体 【1†English†en.tj.gov.cn】|
+L7: 
+L8: 【4†个人中心†tysfrzcs.tj.gov.cn】 |
+L9: 
+L10: 【5†Image】 【0†首页】  >  【6†政务公开】  >  【7†公共企事业单位信息公开】  >  【8†教育】  >  【9†中等职业学校】
+L11: 
+L12: 天津市第一商业学校
+L13: 
+L14: 市属
+L15: 
+L16: 【10†Image】
+L17: 
+L18: 机构性质：
+L19: 
+L20: 公办
+L21: 
+L22: 机构分类：
+L23: 
+L24: 中等职业学校
+L25: 
+L26: 机构层级：
+L27: 
+L28: 市属
+L29: 
+L30: 发布时间：
+L31: 
+L32: 2025-04-21
+L33: 
+L34: 办公电话：
+L35: 
+L36: 022-84940451
+L37: 
+L38: 办公地址：
+L39: 
+L40: 河东区津塘路129号(一号桥地铁站D口步行410米) 【11†[查看地图]】
+L41: 
+L42:   * 新媒体平台
+L43: 
+L44:     * 【12†Image: 微信.jpg】
+L45: 
+L46: 机构简介
+L47: 
+L48: * * *
+L49: 天津市第一商业学校成立于1960年，天津市首批国办商贸类中专学校，现隶属于天津市商务局，首批国家级改革发展示范校、天津市优质中职学校建设校。两次获评全国教育系统先进集体，先后获评全国职业教育先进单位、全国中等职业学校德育工作先进集体、全国黄炎培职业教育优秀学校、全国职业院校“教学管理50强”等。积极服务“一带一路”合作倡议，参与建设非洲首个鲁班工坊——吉布提鲁班工坊，持续开展国际合作；紧密对接京津冀协同发展国家战略，与雄县职教中心合作建设雄县分校，迈出中等职业教育津冀合作第一步，实现优势职业教育资源共建共享。
+L50: 
+L51: 【13†Image】
+L52: 
+L53: 【14†Image】 附件：  |
+L54: 
+L55:   * 中央政府部门网站
+L56: 
+L57: 【15†外交部†www.fmprc.gov.cn】
+L58: 
+L59: 【16†国防部†www.mod.gov.cn】
+L60: 
+L61: 【17†国家发展改革委†www.ndrc.gov.cn】
+L62: 
+L63: 【18†教育部†www.moe.gov.cn】
+L64: 
+L65: 【19†科技部†www.most.gov.cn】
+L66: 
+L67: 【20†工业和信息化部†www.miit.gov.cn】
+L68: 
+L69: 【21†国家民委†www.neac.gov.cn】
+L70: 【22†公安部†www.mps.gov.cn】
+L71: 
+L72: 【23†民政部†www.mca.gov.cn】
+L73: 
+L74: 【24†司法部†www.moj.gov.cn】
+L75: 
+L76: 【25†财政部†www.mof.gov.cn】
+L77: 
+L78: 【26†人力资源社会保障部†www.mohrss.gov.cn】
+L79: 
+L80: 【27†自然资源部†www.mnr.gov.cn】
+L81: 
+L82: 【28†生态环境部†www.mee.gov.cn】
+L83: 
+L84: 【29†住房城乡建设部†www.mohurd.gov.cn】
+L85: 
+L86: 【30†交通运输部†www.mot.gov.cn】
+L87: 
+L88: 【31†水利部†www.mwr.gov.cn】
+L89: 
+L90: 【32†农业农村部†www.moa.gov.cn】
+L91: 
+L92: 【33†商务部†www.mofcom.gov.cn】
+L93: 
+L94: 【34†文化和旅游部†www.mct.gov.cn】
+L95: 
+L96: 【35†国家卫生健康委†www.nhc.gov.cn】
+L97: 
+L98: 【36†退役军人事务部†www.mva.gov.cn】
+L99: 
+L100: 【37†应急管理部†www.mem.gov.cn】
+L101: 
+L102: 【38†中国人民银行†www.pbc.gov.cn】
+L103: 
+L104: 【39†审计署†www.audit.gov.cn】
+L105: 【40†国家语委†www.moe.gov.cn】
+L106: 
+L107: 【41†国家航天局†www.cnsa.gov.cn】
+L108: 
+L109: 【42†国家原子能机构†www.caea.gov.cn】
+L110: 
+L111: 【43†国家核安全局†nnsa.mee.gov.cn】
+L112: 
+L113: 【44†国务院国资委†www.sasac.gov.cn】
+L114: 
+L115: 【45†海关总署†www.customs.gov.cn】
+L116: 
+L117: 【46†税务总局†www.chinatax.gov.cn】
+L118: 
+L119: 【47†市场监管总局†www.samr.gov.cn】
+L120: 
+L121: 【48†金融监管总局†www.nfra.gov.cn】
+L122: 
+L123: 【49†中国证监会†www.csrc.gov.cn】
+L124: 
+L125: 【50†广电总局†www.nrta.gov.cn】
+L126: 
+L127: 【51†体育总局†www.sport.gov.cn】
+L128: 
+L129: 【52†国家信访局†www.gjxfj.gov.cn】
+L130: 
+L131: 【53†国家统计局†www.stats.gov.cn】
+L132: 
+L133: 【54†国家知识产权局†www.cnipa.gov.cn】
+L134: 
+L135: 【55†国家国际发展合作署†www.cidca.gov.cn】
+L136: 
+L137: 【56†国家医保局†www.nhsa.gov.cn】
+L138: 【57†国务院参事室†www.counsellor.gov.cn】
+L139: 
+L140: 【58†国管局†www.ggj.gov.cn】
+L141: 
+L142: 【59†国家认监委†www.cnca.gov.cn】
+L143: 
+L144: 【60†国家标准委†www.sac.gov.cn】
+L145: 
+L146: 【61†国家新闻出版署(版权局)†www.ncac.gov.cn】
+L147: 
+L148: 【62†国家宗教局†www.sara.gov.cn】
+L149: 
+L150: 【63†国务院侨办†www.gqb.gov.cn】
+L151: 
+L152: 【64†国务院港澳办†www.hmo.gov.cn】
+L153: 
+L154: 【65†国务院台办†www.gwytb.gov.cn】
+L155: 
+L156: 【66†国家网信办†www.cac.gov.cn】
+L157: 
+L158: 【67†国务院新闻办†www.scio.gov.cn】
+L159: 
+L160: 新华社
+L161: 
+L162: 【68†中国科学院†www.cas.cn】
+L163: 
+L164: 【69†中国社科院†www.cass.cn】
+L165: 
+L166: 【70†中国工程院†www.cae.cn】
+L167: 
+L168: 【71†国务院发展研究中心†www.drc.gov.cn】
+L169: 
+L170: 【72†中国气象局†www.cma.gov.cn】
+L171: 
+L172: 【73†国家行政学院†www.ccps.gov.cn】
+L173: 
+L174: 【74†国家粮食和储备局†www.lswz.gov.cn】
+L175: 【75†国家能源局†www.nea.gov.cn】
+L176: 
+L177: 【76†国家国防科工局†www.sastind.gov.cn】
+L178: 
+L179: 【77†国家烟草局†www.tobacco.gov.cn】
+L180: 
+L181: 【78†国家移民局†www.nia.gov.cn】
+L182: 
+L183: 【79†国家林草局†www.forestry.gov.cn】
+L184: 
+L185: 【80†国家铁路局†www.nra.gov.cn】
+L186: 
+L187: 【81†中国民航局†www.caac.gov.cn】
+L188: 
+L189: 【82†国家邮政局†www.spb.gov.cn】
+L190: 
+L191: 【83†国家文物局†www.ncha.gov.cn】
+L192: 
+L193: 【84†国家中医药局†www.natcm.gov.cn】
+L194: 
+L195: 【85†国家疾控局†www.ndcpa.gov.cn】
+L196: 
+L197: 【86†国家矿山安监局†www.chinamine-safety.gov.cn】
+L198: 
+L199: 【87†国家消防救援局†www.119.gov.cn】
+L200: 
+L201: 【88†国家外汇局†www.safe.gov.cn】
+L202: 
+L203: 【89†国家药监局†www.nmpa.gov.cn】
+L204: 
+L205:   * 省市政府网站
+L206: 
+L207: 【90†北京†www.beijing.gov.cn】
+L208: 
+L209: 【91†河北†www.hebei.gov.cn】
+L210: 【92†山西†www.shanxi.gov.cn】
+L211: 
+L212: 【93†内蒙古†www.nmg.gov.cn】
+L213: 
+L214: 【94†辽宁†www.ln.gov.cn】
+L215: 
+L216: 【95†吉林†www.jl.gov.cn】
+L217: 
+L218: 【96†黑龙江†www.hlj.gov.cn】
+L219: 
+L220: 【97†上海†www.shanghai.gov.cn】
+L221: 
+L222: 【98†江苏†www.jiangsu.gov.cn】
+L223: 
+L224: 【99†浙江†www.zj.gov.cn】
+L225: 
+L226: 【100†安徽†www.ah.gov.cn】
+L227: 
+L228: 【101†福建†www.fujian.gov.cn】
+L229: 
+L230: 【102†江西†www.jiangxi.gov.cn】
+L231: 
+L232: 【103†山东†www.shandong.gov.cn】
+L233: 
+L234: 【104†河南†www.henan.gov.cn】
+L235: 
+L236: 【105†湖北†www.hubei.gov.cn】
+L237: 
+L238: 【106†湖南†www.hunan.gov.cn】
+L239: 
+L240: 【107†广东†www.gd.gov.cn】
+L241: 
+L242: 【108†广西†www.gxzf.gov.cn】
+L243: 
+L244: 【109†海南†www.hainan.gov.cn】
+L245: 
+L246: 【110†重庆†www.cq.gov.cn】
+L247: 【111†四川†www.sc.gov.cn】
+L248: 
+L249: 【112†贵州†www.guizhou.gov.cn】
+L250: 
+L251: 【113†云南†www.yn.gov.cn】
+L252: 
+L253: 【114†西藏†www.xizang.gov.cn】
+L254: 
+L255: 【115†陕西†www.shaanxi.gov.cn】
+L256: 
+L257: 【116†甘肃†www.gansu.gov.cn】
+L258: 
+L259: 【117†青海†www.qinghai.gov.cn】
+L260: 
+L261: 【118†宁夏†www.nx.gov.cn】
+L262: 
+L263: 【119†新疆†www.xinjiang.gov.cn】
+L264: 
+L265: 【120†香港†www.gov.hk】
+L266: 
+L267: 【121†澳门†www.gov.mo】
+L268: 
+L269: 【122†台湾†www.taiwan.cn】
+L270: 
+L271: 【123†新疆生产建设兵团†www.xjbt.gov.cn】
+L272: 
+L273:   * 市政府部门网站
+L274: 
+L275: 【124†市发展改革委†fzgg.tj.gov.cn】
+L276: 
+L277: 【125†市教委†jy.tj.gov.cn】
+L278: 
+L279: 【126†市科技局†kxjs.tj.gov.cn】
+L280: 
+L281: 【127†市工业和信息化局†gyxxh.tj.gov.cn】
+L282: 
+L283: 【128†市民族宗教委†mzzj.tj.gov.cn】
+L284: 【129†市公安局†ga.tj.gov.cn】
+L285: 
+L286: 【130†市民政局†mz.tj.gov.cn】
+L287: 
+L288: 【131†市司法局†sf.tj.gov.cn】
+L289: 
+L290: 【132†市财政局†cz.tj.gov.cn】
+L291: 
+L292: 【133†市人社局†hrss.tj.gov.cn】
+L293: 
+L294: 【134†市规划资源局†ghhzrzy.tj.gov.cn】
+L295: 
+L296: 【135†市生态环境局†sthj.tj.gov.cn】
+L297: 
+L298: 【136†市住房城乡建设委†zfcxjs.tj.gov.cn】
+L299: 
+L300: 【137†市城市管理委†csgl.tj.gov.cn】
+L301: 
+L302: 【138†市交通运输委†jtys.tj.gov.cn】
+L303: 
+L304: 【139†市水务局†swj.tj.gov.cn】
+L305: 
+L306: 【140†市农业农村委†nync.tj.gov.cn】
+L307: 
+L308: 【141†市商务局†shangwuju.tj.gov.cn】
+L309: 
+L310: 【142†市文化和旅游局†whly.tj.gov.cn】
+L311: 
+L312: 【143†市卫生健康委†wsjk.tj.gov.cn】
+L313: 
+L314: 【144†市退役军人局†tyjrswj.tj.gov.cn】
+L315: 
+L316: 【145†市应急管理局†yjgl.tj.gov.cn】
+L317: 
+L318: 【146†市审计局†sj.tj.gov.cn】
+L319: 【147†市外办†fao.tj.gov.cn】
+L320: 
+L321: 【148†市市场监管委†scjg.tj.gov.cn】
+L322: 
+L323: 【149†市国资委†sasac.tj.gov.cn】
+L324: 
+L325: 【150†市体育局†ty.tj.gov.cn】
+L326: 
+L327: 【151†市统计局†stats.tj.gov.cn】
+L328: 
+L329: 【152†市数据局†data.tj.gov.cn】
+L330: 
+L331: 【153†市投资促进局†tzcjj.tj.gov.cn】
+L332: 
+L333: 【154†市医保局†ylbz.tj.gov.cn】
+L334: 
+L335: 【155†市机关事务管理局†jgsw.tj.gov.cn】
+L336: 
+L337: 【156†市信访办†xf.tj.gov.cn】
+L338: 
+L339: 【157†市国动办†gfdy.tj.gov.cn】
+L340: 
+L341: 【158†市政务服务办†zwfwb.tj.gov.cn】
+L342: 
+L343: 【159†市知识产权局†zscq.tj.gov.cn】
+L344: 
+L345: 【160†市粮食和物资局†lswz.tj.gov.cn】
+L346: 
+L347: 【161†市地方金融管理局†jrgz.tj.gov.cn】
+L348: 
+L349: 【162†市消防救援局†tj.119.gov.cn】
+L350: 
+L351: 【163†市公积金管理中心†www.zfgjj.cn】
+L352: 
+L353:   * 区政府网站
+L354: 【164†滨海新区†www.tjbh.gov.cn】
+L355: 
+L356: 【165†和平区†www.tjhp.gov.cn】
+L357: 
+L358: 【166†河东区†www.tjhd.gov.cn】
+L359: 
+L360: 【167†河西区†www.tjhx.gov.cn】
+L361: 
+L362: 【168†南开区†www.tjnk.gov.cn】
+L363: 
+L364: 【169†河北区†www.tjhb.gov.cn】
+L365: 
+L366: 【170†红桥区†www.tjhq.gov.cn】
+L367: 
+L368: 【171†东丽区†www.tjdl.gov.cn】
+L369: 
+L370: 【172†西青区†www.tjxq.gov.cn】
+L371: 
+L372: 【173†津南区†www.tjjn.gov.cn】
+L373: 
+L374: 【174†北辰区†www.tjbc.gov.cn】
+L375: 
+L376: 【175†武清区†www.tjwq.gov.cn】
+L377: 
+L378: 【176†宝坻区†www.tjbd.gov.cn】
+L379: 
+
+--------------------------------------------------------------------------------
+Internal Error ()
+【turn163view2】 [wordlim: 200] Source: open({"ref_id":"https://www.bizlaba.com/post/9613.html","lineno":null}); 
+Failed to fetch https://www.bizlaba.com/post/9613.html: (403) Forbidden
