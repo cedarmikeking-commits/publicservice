@@ -1,0 +1,30 @@
+{
+  "source": {
+    "title": "通用数智能力框架",
+    "subtitle": "面向就业导向的数字化、智能化通用能力要求",
+    "draftStatus": "报审稿",
+    "sourceFile": "通用数智能力框架（职建司意见修改稿）20261103.docx",
+    "sourceRevision": "2026-11-03（按附件文件名标识；文件封面为2026年9月）",
+    "reviewStatus": "待审核发布",
+    "normativeStatus": "指导性参考文件，不具强制性效力",
+    "assessmentNotice": "评价结果用于技能诊断和就业指导参考，不具有职业资格证书或职业技能等级证书效力",
+    "domains": 6,
+    "units": 22,
+    "requirements": 87,
+    "sourceHashSHA256": "cedb4b62dbce28026f7b0dcc09012f11f07a786733437b445912a86d5c461faa"
+  },
+  "domainCount": 6,
+  "unitCount": 22,
+  "requirementCount": 87,
+  "perDomain": {
+    "1": 11,
+    "2": 13,
+    "3": 12,
+    "4": 14,
+    "5": 16,
+    "6": 21
+  },
+  "legacyCandidatePointCount": 78,
+  "approval": "待审核发布",
+  "oldQuestions": "保留，待逐题映射复核"
+}

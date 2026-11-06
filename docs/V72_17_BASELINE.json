@@ -1,0 +1,1581 @@
+{
+  "version": "72.17",
+  "count": 315,
+  "files": [
+    {
+      "path": "NATIONAL_DIRECTORY_SOURCE_GUIDE.md",
+      "sha256": "02fc871d7c18f84714ca78921a42de24e32b4c59ef9eb1e4ae63754d9666f2e4",
+      "bytes": 1820
+    },
+    {
+      "path": "NATIONAL_FULL_COVERAGE_STATUS.md",
+      "sha256": "e37955b3690676271703690405ca6fc3c96c1add7ec8f8edbb47ea4445fcc832",
+      "bytes": 1527
+    },
+    {
+      "path": "README.md",
+      "sha256": "88a9338fa51a149011a23f181ee3c6bd05332a92b0d8f1ab4714f6d645a6acf0",
+      "bytes": 1039
+    },
+    {
+      "path": "RELEASE_V72_10.md",
+      "sha256": "058fc0be9bdbc485a5afa0c743877b58795f554e403b1d1540f5557140f766d4",
+      "bytes": 561
+    },
+    {
+      "path": "RELEASE_V72_11.md",
+      "sha256": "9aa788dedb643d8375b934948722448ee8cd4cb9a0e8c506a740dc5f370b1fda",
+      "bytes": 797
+    },
+    {
+      "path": "RELEASE_V72_12.md",
+      "sha256": "ac7556b7310ba6494829be09e9dcdd1ca2ebcfdcc1ffac0b2a14e2ac871c75e5",
+      "bytes": 867
+    },
+    {
+      "path": "RELEASE_V72_13.md",
+      "sha256": "ce94ca851c7be78e51a12a356d768bf689a14802f145a033a7c66af194f3d948",
+      "bytes": 507
+    },
+    {
+      "path": "RELEASE_V72_14.md",
+      "sha256": "d2cdc9d67908864604a8a3ae5ffa95275a6159c123d70e844f686f1ae179c19f",
+      "bytes": 697
+    },
+    {
+      "path": "RELEASE_V72_15.md",
+      "sha256": "90e43a34425f1950af8bb125fda764e6cc1841d989c3bb397ba900c88754c622",
+      "bytes": 595
+    },
+    {
+      "path": "RELEASE_V72_16.md",
+      "sha256": "545a87d56beecad72c9573017f94cb4564ffbe233257332bef2dbd491811a121",
+      "bytes": 520
+    },
+    {
+      "path": "RELEASE_V72_17.md",
+      "sha256": "b23a533d2ae1f7fe2e475f9ff01a371ab1be2cef945a15da479aca2b191bb2de",
+      "bytes": 195
+    },
+    {
+      "path": "RELEASE_V72_2.md",
+      "sha256": "26fa7d6f48c87dcca001a76005854ef2fe236307fbe5f450525adfd46112f617",
+      "bytes": 969
+    },
+    {
+      "path": "RELEASE_V72_3.md",
+      "sha256": "1bb3f85548d00b4975e1fa224ee842d40fd28b653b95041b896dad8923f3e7bf",
+      "bytes": 549
+    },
+    {
+      "path": "RELEASE_V72_4.md",
+      "sha256": "169087203a219d7f82719942486d3a2a2e7b130c32f3b86ff322f847a1687e73",
+      "bytes": 1077
+    },
+    {
+      "path": "RELEASE_V72_5.md",
+      "sha256": "51418d449c7ffafe23364ad7e23ebb886e3ed696f5f33ae9036217417ab6d2a3",
+      "bytes": 548
+    },
+    {
+      "path": "RELEASE_V72_6.md",
+      "sha256": "0c948dbfa680a9a16ca860d59718737a5947d362653977694e4799ab06454957",
+      "bytes": 450
+    },
+    {
+      "path": "RELEASE_V72_7.md",
+      "sha256": "8bba7f5ad24c152704b35811b84c8061a9fc67d9d0de93f2412a6c76d0ee4ffd",
+      "bytes": 386
+    },
+    {
+      "path": "RELEASE_V72_8.md",
+      "sha256": "c4c3c2fdb854dcde24cce38902d338e2396a667d77c3c8ab63e3c7620fd2d382",
+      "bytes": 1292
+    },
+    {
+      "path": "RELEASE_V72_9.md",
+      "sha256": "c7c893fa4404682c998fc8278719da73584aa42e35f678bd8c02b01c4567b28c",
+      "bytes": 247
+    },
+    {
+      "path": "docs/ARCHITECTURE.md",
+      "sha256": "5a3c0c9b57d94206708cefd54998ed54f599f768d394dbfdd153453aa413ca24",
+      "bytes": 1817
+    },
+    {
+      "path": "docs/MIGRATION_INVENTORY.json",
+      "sha256": "2fb5d6b0a5ef536fc223921d8131a94bef0e1a3e87d1adfce3fe3ace8740bde0",
+      "bytes": 41807
+    },
+    {
+      "path": "docs/RELEASE_V72_1.md",
+      "sha256": "05bb458fd6d47e014f743b2bab642b2cc512cbb5f792229080f90bf4e492c2d7",
+      "bytes": 334
+    },
+    {
+      "path": "docs/VALIDATION.md",
+      "sha256": "d1b678df5cdc7a5a635a8a2b2f21b08e388485bb5a575c641ff29398c09b29d0",
+      "bytes": 960
+    },
+    {
+      "path": "docs/history/INTEGRATION_V42.md",
+      "sha256": "a2753790fed737ea76560be10d7e250ab3e9299769ef2dfda6e258cee3477c66",
+      "bytes": 2452
+    },
+    {
+      "path": "docs/history/INTEGRATION_V48.md",
+      "sha256": "a598bb5e3b1f8992498f0536e150197a3322559c37b30e43b55e430a67a154be",
+      "bytes": 1027
+    },
+    {
+      "path": "docs/history/INTEGRATION_V52.md",
+      "sha256": "b1005fc47d4e8a5389577fa16b5ab993029dd5871820087349862916989a39e8",
+      "bytes": 758
+    },
+    {
+      "path": "docs/history/INTEGRATION_V53.md",
+      "sha256": "2a6974f8212ce4e4a034d7c20ad97aed0218e2e00c6102690b0643847e49726f",
+      "bytes": 548
+    },
+    {
+      "path": "docs/history/RELEASE_V49.md",
+      "sha256": "fa08dfd87f0c8744bba7e9d92d5227ab600b86522a72e0d83afb16db251a15e8",
+      "bytes": 874
+    },
+    {
+      "path": "docs/history/RELEASE_V56.md",
+      "sha256": "56e56231d60974acbc601e633bafb81fe7077a3494457e7b63a0a18366cf62c5",
+      "bytes": 595
+    },
+    {
+      "path": "docs/history/RELEASE_V58.md",
+      "sha256": "b586fbab99d86fbf52d4f2ce7108f76a8a4b26cfff03feabe1b570d33200083b",
+      "bytes": 1066
+    },
+    {
+      "path": "docs/history/RELEASE_V59.md",
+      "sha256": "be7d5569508d29578b9b7e5327791187915f73473541157ddaf02369b206c79b",
+      "bytes": 628
+    },
+    {
+      "path": "docs/history/RELEASE_V60.md",
+      "sha256": "b7114ba3c9d3a0c8c9854946867454911d45223302b292764620a72161cf17bb",
+      "bytes": 566
+    },
+    {
+      "path": "docs/history/RELEASE_V61.md",
+      "sha256": "bc7304b745c8c24c0e48559870c452afd1faa634086c62de85c4ca799a2c26b7",
+      "bytes": 362
+    },
+    {
+      "path": "docs/history/RELEASE_V62.md",
+      "sha256": "6e37941d44d7b82aa7180d3d53f9fc704150b7a9a887495b1c1fc3f9e21cb1eb",
+      "bytes": 480
+    },
+    {
+      "path": "docs/history/RELEASE_V63.md",
+      "sha256": "519d31ca656e8aeb40da25c083e29be76f226de0ac83501889649dda60c581d3",
+      "bytes": 876
+    },
+    {
+      "path": "docs/history/RELEASE_V64.md",
+      "sha256": "d041757b4b46399e245eee789b464724c7aa2a373c64a6ac9b4e1a948c02b83e",
+      "bytes": 678
+    },
+    {
+      "path": "docs/history/RELEASE_V65.md",
+      "sha256": "4a4379a81414c945330702d8e52513736c30dd6606007adb0a9efdffe1ab5de6",
+      "bytes": 450
+    },
+    {
+      "path": "docs/history/RELEASE_V66.md",
+      "sha256": "e21183bd3b777a028d6c71fa086970f8599dccc935f1e7fe5278e878f970e3db",
+      "bytes": 352
+    },
+    {
+      "path": "docs/history/RELEASE_V67.md",
+      "sha256": "7f0cd6d57c68957b2cc29b4534e63a3bfa93d8ef06f221f60bf59777d5f9ee20",
+      "bytes": 518
+    },
+    {
+      "path": "docs/history/RELEASE_V68.md",
+      "sha256": "f99acc78fe1642dcf79e5df846dbe1b045108b873a9d7c24eb56f2d915d6334b",
+      "bytes": 185
+    },
+    {
+      "path": "docs/history/START_HERE_V71.md",
+      "sha256": "70de0f29ec0c2293a7ce0966fbd804fe8c425afacb130c0acc127e6186a5fa5c",
+      "bytes": 1138
+    },
+    {
+      "path": "index.html",
+      "sha256": "0cf2318477badb7db98e7e47bfb8fffeda3bfea64daeb7dbe111ca8c4e2a3413",
+      "bytes": 899
+    },
+    {
+      "path": "package.json",
+      "sha256": "9e29be60b94027ecbb83c3131d1d5e89dac9114effa2dc46f3c2c63ca164d470",
+      "bytes": 219
+    },
+    {
+      "path": "server.mjs",
+      "sha256": "fc03770f92669d3b5da928e7dbf1f18499c2bffb6e570910447c30967b50b661",
+      "bytes": 1835
+    },
+    {
+      "path": "src/apps/area/README.md",
+      "sha256": "8b9415598be26394e24af1f7ef50c53e74673eddf96769ab49837fcc2050e943",
+      "bytes": 4571
+    },
+    {
+      "path": "src/apps/area/agreements.html",
+      "sha256": "d9d5131f9709933c37c5a17c80d758360404e2ae46ab2b0f0be215aa64d7682c",
+      "bytes": 482
+    },
+    {
+      "path": "src/apps/area/app.js",
+      "sha256": "3a8690553e3c2b200c5ff819d223cb74111951bc026293de2e16ff1b94a4eba6",
+      "bytes": 102104
+    },
+    {
+      "path": "src/apps/area/audit.html",
+      "sha256": "d9d5131f9709933c37c5a17c80d758360404e2ae46ab2b0f0be215aa64d7682c",
+      "bytes": 482
+    },
+    {
+      "path": "src/apps/area/certificates.html",
+      "sha256": "d9d5131f9709933c37c5a17c80d758360404e2ae46ab2b0f0be215aa64d7682c",
+      "bytes": 482
+    },
+    {
+      "path": "src/apps/area/colleges.html",
+      "sha256": "d9d5131f9709933c37c5a17c80d758360404e2ae46ab2b0f0be215aa64d7682c",
+      "bytes": 482
+    },
+    {
+      "path": "src/apps/area/dashboard.html",
+      "sha256": "d9d5131f9709933c37c5a17c80d758360404e2ae46ab2b0f0be215aa64d7682c",
+      "bytes": 482
+    },
+    {
+      "path": "src/apps/area/data.js",
+      "sha256": "c39b3862eaeb074abcc443ceb639b0429bda6ec6e3b61e8778c7a8d945ca9a68",
+      "bytes": 2413
+    },
+    {
+      "path": "src/apps/area/delivery.html",
+      "sha256": "d9d5131f9709933c37c5a17c80d758360404e2ae46ab2b0f0be215aa64d7682c",
+      "bytes": 482
+    },
+    {
+      "path": "src/apps/area/eval-agents.html",
+      "sha256": "ff1c7218e6f33713bc03c8dbf3bbf970a498042ecc47941f79843893ab97f5f9",
+      "bytes": 247
+    },
+    {
+      "path": "src/apps/area/eval-bank.html",
+      "sha256": "fb92873f4a5d94f74a3c222cd8a8625f8d510282e40d8b9a0eba3cb55a9bc861",
+      "bytes": 243
+    },
+    {
+      "path": "src/apps/area/eval-blueprint.html",
+      "sha256": "694ae79c17a68bc58f51c9946f607c6f7beee4a00a7e622eef704a5affd02b04",
+      "bytes": 253
+    },
+    {
+      "path": "src/apps/area/eval-data.html",
+      "sha256": "98e9bc2bec8183bc7ee3a016b6b7cdb020dfaf437b1287e19355340984c19b27",
+      "bytes": 243
+    },
+    {
+      "path": "src/apps/area/eval-home.html",
+      "sha256": "afdc592e69543c0e7751903d0fe88ba9dd22d0c468065996201a29c2903c097f",
+      "bytes": 243
+    },
+    {
+      "path": "src/apps/area/eval-indicators.html",
+      "sha256": "9821bcbced779caf51ed697f3eb5a1c706b7fff2de9b19d68c677cc480d52dde",
+      "bytes": 255
+    },
+    {
+      "path": "src/apps/area/eval-masterdata.html",
+      "sha256": "18de0d8704e5dc5d6c21122a8434930420b7967ffc4a6871e1635ebff4cbc90b",
+      "bytes": 255
+    },
+    {
+      "path": "src/apps/area/eval-plans.html",
+      "sha256": "d0d5f766f4dd02484b114a8120e55a60ed2a3b658ff5ef1c2f97830c6b9af7f5",
+      "bytes": 245
+    },
+    {
+      "path": "src/apps/area/eval-points.html",
+      "sha256": "c6ce600a65786fa5919fad538ea2cad7db5de8574404805a007356c209791566",
+      "bytes": 247
+    },
+    {
+      "path": "src/apps/area/eval-practice.html",
+      "sha256": "4e132454dae9eb3c855624cdb2fc2ac10d9a12e02014dd01a62398de298ca33a",
+      "bytes": 214
+    },
+    {
+      "path": "src/apps/area/eval-quality.html",
+      "sha256": "59c586b2f15f26c04b4e5f2bb8c5cc3127bcad684d2b4e8909f06b1ec2a82120",
+      "bytes": 262
+    },
+    {
+      "path": "src/apps/area/eval-report.html",
+      "sha256": "4ad558d80933b368921fa61ade123839572ba44b13f7316091fb3f1422cfc72d",
+      "bytes": 232
+    },
+    {
+      "path": "src/apps/area/eval-types.html",
+      "sha256": "b9ced0df842d5a64f48722b245880e3588bce08fa9fbb555a98204d6dc95e943",
+      "bytes": 245
+    },
+    {
+      "path": "src/apps/area/evaluation.html",
+      "sha256": "44256cb2394155ed74099e6627234a93095c50fda18ad907301ab736aee86274",
+      "bytes": 504
+    },
+    {
+      "path": "src/apps/area/finance.html",
+      "sha256": "d9d5131f9709933c37c5a17c80d758360404e2ae46ab2b0f0be215aa64d7682c",
+      "bytes": 482
+    },
+    {
+      "path": "src/apps/area/index.html",
+      "sha256": "d9d5131f9709933c37c5a17c80d758360404e2ae46ab2b0f0be215aa64d7682c",
+      "bytes": 482
+    },
+    {
+      "path": "src/apps/area/journey.html",
+      "sha256": "d9d5131f9709933c37c5a17c80d758360404e2ae46ab2b0f0be215aa64d7682c",
+      "bytes": 482
+    },
+    {
+      "path": "src/apps/area/nav-policy-v63.js",
+      "sha256": "f8eb06670418fc14abcd32785f031ee31e08834336d17e8c7b2d6cfddd65e48a",
+      "bytes": 1791
+    },
+    {
+      "path": "src/apps/area/partners.html",
+      "sha256": "d9d5131f9709933c37c5a17c80d758360404e2ae46ab2b0f0be215aa64d7682c",
+      "bytes": 482
+    },
+    {
+      "path": "src/apps/area/portal-bridge.js",
+      "sha256": "67e84185676ccaa2d199c3a47ed5980af7b3ff184c80b3e88722940b642262ba",
+      "bytes": 936
+    },
+    {
+      "path": "src/apps/area/portal-loader-v43.js",
+      "sha256": "f0790be2f3668e1dbfffe4d88ba75bd0b07a59b1e0418099c65ebcb16794cf02",
+      "bytes": 813
+    },
+    {
+      "path": "src/apps/area/portal-loader-v49.js",
+      "sha256": "19ee5394bf69179918cf83108ddc85c51d5f9a1ff1e716a6ba2e2791f4e7e611",
+      "bytes": 813
+    },
+    {
+      "path": "src/apps/area/portal-loader-v50.js",
+      "sha256": "0a5cf3340da7c7cf2719899a968d6abb51b6194ddbc5339b33515fbb90910e0f",
+      "bytes": 813
+    },
+    {
+      "path": "src/apps/area/portal-loader-v51.js",
+      "sha256": "2a5acb03dd35e2b55a9c95319600134b4cdea6b08967e923d560719afbe19f61",
+      "bytes": 813
+    },
+    {
+      "path": "src/apps/area/portal-loader-v55.js",
+      "sha256": "449bf9eed4dc052a80da5aa569845f9d236f7d6192bf08d212ce1b0603aa8066",
+      "bytes": 813
+    },
+    {
+      "path": "src/apps/area/portal-loader-v58.js",
+      "sha256": "91f3a1fe36ab357b642626aec890301de616528957d15037138b9f0a441212e2",
+      "bytes": 486
+    },
+    {
+      "path": "src/apps/area/portal-loader-v59.js",
+      "sha256": "807278142a9f51c38d86fbf8bcddffbf2eb2afa7957c711c829203bdf7bd4504",
+      "bytes": 526
+    },
+    {
+      "path": "src/apps/area/portal-loader-v61.js",
+      "sha256": "b9755a97a0f43463382cbf10aefec23b967c6e0bfc080017686ddec9ddfedb18",
+      "bytes": 813
+    },
+    {
+      "path": "src/apps/area/portal-loader-v62.js",
+      "sha256": "a05fe836578ffb723fb7261d649317421812b0340e6725d8c6e91f734210c6a8",
+      "bytes": 843
+    },
+    {
+      "path": "src/apps/area/portal-loader-v63.js",
+      "sha256": "a05fe836578ffb723fb7261d649317421812b0340e6725d8c6e91f734210c6a8",
+      "bytes": 843
+    },
+    {
+      "path": "src/apps/area/portal-loader-v64.js",
+      "sha256": "49fb42998c8e7bef1939bd5e2eb40e3522ddcd6d204b7fc0627158305e8c46fe",
+      "bytes": 1438
+    },
+    {
+      "path": "src/apps/area/portal-loader-v66.js",
+      "sha256": "fe14e01da1d1048c714f4e7c5690dbdbedfc989d8a1d8ccef36a5bbf4e4bd7ed",
+      "bytes": 1438
+    },
+    {
+      "path": "src/apps/area/portal-loader-v68.js",
+      "sha256": "d9a9c01cb835cd21a67c7eb932da2bb3f06ebd9cf1c89a6e1f1f2124996aae53",
+      "bytes": 1587
+    },
+    {
+      "path": "src/apps/area/programs.html",
+      "sha256": "d9d5131f9709933c37c5a17c80d758360404e2ae46ab2b0f0be215aa64d7682c",
+      "bytes": 482
+    },
+    {
+      "path": "src/apps/area/quality.html",
+      "sha256": "095e9516df2ccba730af46806732c3de508d47becccf0952c0a58701e7cb4967",
+      "bytes": 501
+    },
+    {
+      "path": "src/apps/area/school-admin.html",
+      "sha256": "d9d5131f9709933c37c5a17c80d758360404e2ae46ab2b0f0be215aa64d7682c",
+      "bytes": 482
+    },
+    {
+      "path": "src/apps/area/settlement.html",
+      "sha256": "d9d5131f9709933c37c5a17c80d758360404e2ae46ab2b0f0be215aa64d7682c",
+      "bytes": 482
+    },
+    {
+      "path": "src/apps/area/styles.css",
+      "sha256": "0e1489411caf620e62d61d6fc64c11c826b436dfb9ab0807ffeee68902654a9d",
+      "bytes": 42528
+    },
+    {
+      "path": "src/apps/area/targets.html",
+      "sha256": "d9d5131f9709933c37c5a17c80d758360404e2ae46ab2b0f0be215aa64d7682c",
+      "bytes": 482
+    },
+    {
+      "path": "src/apps/area/user-admin.html",
+      "sha256": "d9d5131f9709933c37c5a17c80d758360404e2ae46ab2b0f0be215aa64d7682c",
+      "bytes": 482
+    },
+    {
+      "path": "src/apps/area/wbzy-logo.png",
+      "sha256": "2b463a3b0c98769191e1ef56651a5eb11e2a53f28dd8370f598df8f6ff6fe136",
+      "bytes": 26125
+    },
+    {
+      "path": "src/apps/area/wbzy-symbol.png",
+      "sha256": "b5175d1602d79ef7bca1aaa886a3a4f0e7f9cf9d3916d3a279cda311d00a6099",
+      "bytes": 8949
+    },
+    {
+      "path": "src/apps/assessment/V16.1_修复说明.txt",
+      "sha256": "12daca9e1c6ba363b4019d2edf076c180e502fd24da53cbe7f23ac175f98f7ed",
+      "bytes": 198
+    },
+    {
+      "path": "src/apps/assessment/V16.2_修复说明.txt",
+      "sha256": "35fd91df02c3d874e5f35728bfca0b48153feb644b848ddfac1b9a3e610008d6",
+      "bytes": 248
+    },
+    {
+      "path": "src/apps/assessment/V16.3_更新说明.txt",
+      "sha256": "5181e6b4a700119051646cb4d313f79a74f15f2e4eb89ec3a7285501b4afcfbe",
+      "bytes": 218
+    },
+    {
+      "path": "src/apps/assessment/V16.4_更新说明.txt",
+      "sha256": "e614daef66253e24ef6121db5dec45325637d2b0d2ccd64afbcabe07f12bd931",
+      "bytes": 448
+    },
+    {
+      "path": "src/apps/assessment/V16.7_考评点核验入口与数据存储说明.txt",
+      "sha256": "21035e520a21c212a8f8706b893613b3253604d337c1309b47cb823ea0a72ae7",
+      "bytes": 988
+    },
+    {
+      "path": "src/apps/assessment/V16_设计系统与验收说明.txt",
+      "sha256": "eb422f5737c4505844126dd8066d508f8892206ae6f9a17cff8746caa0539676",
+      "bytes": 1071
+    },
+    {
+      "path": "src/apps/assessment/V17.2_树形核验表说明.txt",
+      "sha256": "a78931d6cd4393ecee2be05d2df61c1988fb037b491a56e6d1421c0810e8929f",
+      "bytes": 217
+    },
+    {
+      "path": "src/apps/assessment/V17.3_关键词映射说明.txt",
+      "sha256": "804eddb62d0c1f5262224022b2a897b04863d906ef967db39b5279285381dc11",
+      "bytes": 331
+    },
+    {
+      "path": "src/apps/assessment/V17.4_更新说明.txt",
+      "sha256": "31312c96664fc19d562baf969fdbd04fc574919fe71b313ee3fb30154e371390",
+      "bytes": 314
+    },
+    {
+      "path": "src/apps/assessment/V17.6_更新说明.txt",
+      "sha256": "0e28dd66283c7b18e86a86465766a7d03f82c1c03a0e83cd855c9ec2975eafe8",
+      "bytes": 240
+    },
+    {
+      "path": "src/apps/assessment/V17.7_更新说明.txt",
+      "sha256": "ebaba71fb81664fc2b9f96b02b4c1c8c728e98b414051cbdcb8a7069d904ccdc",
+      "bytes": 405
+    },
+    {
+      "path": "src/apps/assessment/V17.8_更新说明.txt",
+      "sha256": "cbda01fe9d5816618540ba0b16dd1fe7bee4447adeaed2d8ee23628076438752",
+      "bytes": 287
+    },
+    {
+      "path": "src/apps/assessment/V17.8_质量检查说明.txt",
+      "sha256": "59e06cecbd2738d8fef4b3e3356084bd61fed0adf982df82d6e8e1c243d40697",
+      "bytes": 279
+    },
+    {
+      "path": "src/apps/assessment/V17.9_更新说明.txt",
+      "sha256": "7af214ff8f23ca7c09fd1f6e26e0890e73a4f57e6f0b9a7d269fbb9b06f2b582",
+      "bytes": 333
+    },
+    {
+      "path": "src/apps/assessment/V17_语义复核说明.txt",
+      "sha256": "d9d62a6612774ca1ea9d1660951de4aa0b30e7404e24f7064e91f370e4cbbe49",
+      "bytes": 363
+    },
+    {
+      "path": "src/apps/assessment/V18.0_使用说明.txt",
+      "sha256": "fe133f004bd4024391fd927a18f3affc4309fee7d234e96888e1be7a915b0ebc",
+      "bytes": 277
+    },
+    {
+      "path": "src/apps/assessment/V18.0_命题质量报告.md",
+      "sha256": "d30d13aea851bd7be651705a8e700a414c1ac720e5424da7f340e8f0d6eb3475",
+      "bytes": 1859
+    },
+    {
+      "path": "src/apps/assessment/V18.1_接入说明.txt",
+      "sha256": "80f7a0578fa0d621de1939d7d14d235334618785c949247a7d88584abf9df787",
+      "bytes": 596
+    },
+    {
+      "path": "src/apps/assessment/V18.2_说明.txt",
+      "sha256": "a78776e219d22e02461a452401c1031ca0af320ba932c0846261d4162a7cfe55",
+      "bytes": 240
+    },
+    {
+      "path": "src/apps/assessment/V18.6_加载修复说明.txt",
+      "sha256": "078ba02a26661ce18c8ea618a214bda443fb5b5997a1f3925f50c9d298daded4",
+      "bytes": 335
+    },
+    {
+      "path": "src/apps/assessment/V18.8_更新说明.txt",
+      "sha256": "53344c454ed8cd38880d8d561d6763385c12904f7285399428c1a0bc097257f0",
+      "bytes": 263
+    },
+    {
+      "path": "src/apps/assessment/V18.9_单选答案显示修复说明.txt",
+      "sha256": "8783291a940f91a2b86af268459c8c23b9d009f003b26344d448366e73f47c59",
+      "bytes": 808
+    },
+    {
+      "path": "src/apps/assessment/V19.0_题型数据与展示核查报告.md",
+      "sha256": "14e9ff986fabc786da88d33fae5330bf4b1fbb6cc09db209b53d659b52d4919f",
+      "bytes": 2425
+    },
+    {
+      "path": "src/apps/assessment/V19.1_答题交互预览说明.md",
+      "sha256": "42b9f236f6ae5de0e9b391fb3bd389d5a62da913a3fff32815c58fff84462dc8",
+      "bytes": 741
+    },
+    {
+      "path": "src/apps/assessment/V19.3_按钮事件修复说明.txt",
+      "sha256": "ca3a7bc07c116acb1ddd99f8ed3f2aae77263eb486ac85b30d37dc0c49965277",
+      "bytes": 616
+    },
+    {
+      "path": "src/apps/assessment/V19.4_题型示例说明.md",
+      "sha256": "a35eb920173aaab4cb2ad9b44c5d06be2d824ccf0c7099be02a65fc619e10ece",
+      "bytes": 758
+    },
+    {
+      "path": "src/apps/assessment/V19.5_示例覆盖检查.md",
+      "sha256": "670c35f2a3c9f87726cd00a120e7fc1f8471f2712600caca34b0c076067e044e",
+      "bytes": 509
+    },
+    {
+      "path": "src/apps/assessment/V19.6_交互组件说明.md",
+      "sha256": "b720abaa22d5a764604dc502e0ce1b8f7ca3b5ea32babed266e76c1fa8ca483b",
+      "bytes": 1078
+    },
+    {
+      "path": "src/apps/assessment/V19.7_专项智能体产品说明.md",
+      "sha256": "7d0270a6392b7fc9c21a29960de8dc2d57df46aeca16b370df123f69d2e8b379",
+      "bytes": 1730
+    },
+    {
+      "path": "src/apps/assessment/V20.0_协同中心示例说明.md",
+      "sha256": "d5a21ba7f0bc047b8d6d77d915743d0833dfe5000f23c18fbe23fbae3e814596",
+      "bytes": 745
+    },
+    {
+      "path": "src/apps/assessment/V20.2_指标层级与发布说明.md",
+      "sha256": "e8da6b21d84841633bb991e7511d20f5943c70a8e074b3a95d0a5dbe4b1a5d37",
+      "bytes": 838
+    },
+    {
+      "path": "src/apps/assessment/V20.4_指标切换与分体系发布修复说明.txt",
+      "sha256": "9ec712c7a03ddba33305d19cedd25d1e13fbfdbe681fef1f6f2fb43daa79616b",
+      "bytes": 776
+    },
+    {
+      "path": "src/apps/assessment/V20.6_更新说明.md",
+      "sha256": "6e18b5c371cae6d9ced3985dc37241b4740348653786b1742726fdd4c696fef6",
+      "bytes": 657
+    },
+    {
+      "path": "src/apps/assessment/V20.7_产品架构图说明.md",
+      "sha256": "300ee378d5222c1e1d41eb8cc9f4464015378a89da4a37f0b6114537d057268e",
+      "bytes": 650
+    },
+    {
+      "path": "src/apps/assessment/V20.8_架构图顺序调整说明.md",
+      "sha256": "acd5c1e4ba524b768446d4172a55dd196375c1d868fa693791e7b522e201cd62",
+      "bytes": 287
+    },
+    {
+      "path": "src/apps/assessment/V20.9_多体系平台更名说明.md",
+      "sha256": "97616d8ab81eebadc239da3ac265f7caad308b2f6f7a4dd1d509cac5f8eb8059",
+      "bytes": 535
+    },
+    {
+      "path": "src/apps/assessment/V21.0_原文语义覆盖风险清单.csv",
+      "sha256": "eb29e24b78200c8cb6469da4e2a62cd99a4f31cf69c921d6875365e87008ea98",
+      "bytes": 44201
+    },
+    {
+      "path": "src/apps/assessment/V21.0_语义深度核验说明.md",
+      "sha256": "fdd33d43ec86853b9a000ac5d98e36bba1b6f975c3c886a937fcdce63fac9c54",
+      "bytes": 1034
+    },
+    {
+      "path": "src/apps/assessment/V21.1_111条原文覆盖复核.csv",
+      "sha256": "a19cf47d8ccfc3ee8007dc8facacc7560e7cb50730337bfaed3725e6b9342652",
+      "bytes": 89448
+    },
+    {
+      "path": "src/apps/assessment/V21.1_371条考评点深度分析.csv",
+      "sha256": "0fba5effdcaa122222eed39b7946cd3e98ed5876dddf693c4e6d3d619e20acd2",
+      "bytes": 308740
+    },
+    {
+      "path": "src/apps/assessment/V21.1_全量核验与质量说明.md",
+      "sha256": "8d000b5b278bd2aa1e770a2d00674d21d2ba20c99ce62aa8898443d96c6aef51",
+      "bytes": 1155
+    },
+    {
+      "path": "src/apps/assessment/V21.1_全量考评点深度核验数据.json",
+      "sha256": "16fc3cdf83837655c775cd9abd70606a1367d740a6521c6f7535c4e22114fbea",
+      "bytes": 834727
+    },
+    {
+      "path": "src/apps/assessment/V21.2_主数据模型说明.md",
+      "sha256": "44d4a35e935079ba07843b48be9dfe25d5875ec78bcc5070dd807d409d93adda",
+      "bytes": 546
+    },
+    {
+      "path": "src/apps/assessment/admin-hq.html",
+      "sha256": "0ebb1c0ee8141c6c81889074dbcf5d008474a16a9f9ac33d258c15580fc95437",
+      "bytes": 105718
+    },
+    {
+      "path": "src/apps/assessment/admin.html",
+      "sha256": "be5ee36ec1d73fe3d3ea468a222a0e4cecc37a3e1969e5da40909a5a214e98bf",
+      "bytes": 99629
+    },
+    {
+      "path": "src/apps/assessment/assessment-blueprint.js",
+      "sha256": "0d21f10f90ce56f90f5c66db19d6390e268a2d60614973eaad73ebfb4b808466",
+      "bytes": 594
+    },
+    {
+      "path": "src/apps/assessment/assessment-points.js",
+      "sha256": "9c7508251eab19bfca03df94794d2edbefa3a7b35bf394421c89bf9f966aba81",
+      "bytes": 200180
+    },
+    {
+      "path": "src/apps/assessment/assessment-question-plans.js",
+      "sha256": "32913ca45f1533ec176a008c30a8c5d93fce9176ae16149396ce8e000ea5b7b7",
+      "bytes": 923877
+    },
+    {
+      "path": "src/apps/assessment/browser.log",
+      "sha256": "f317dd714edd83b6b34a5e6506bd1d0adabc3e96fae723f572e11f0c00a637e3",
+      "bytes": 4334
+    },
+    {
+      "path": "src/apps/assessment/chromium.log",
+      "sha256": "5a08fd7a6f9c3e005c62ca6a383508186b1bf7dab0e7008c60379ecbaa7817d3",
+      "bytes": 4185
+    },
+    {
+      "path": "src/apps/assessment/dashboard-v163.js",
+      "sha256": "95d18f5068f292fb3b4dff68fba55127a8990df4106975490b839e445c55d617",
+      "bytes": 12547
+    },
+    {
+      "path": "src/apps/assessment/data.js",
+      "sha256": "56cd4c8f2d372168cb979211f8ae79ba648fb245aae3e79027211d65b7362312",
+      "bytes": 399
+    },
+    {
+      "path": "src/apps/assessment/dual-admin.js",
+      "sha256": "605a9bbc142ad8c18e7f99d136b16067fed1eac418366c0a51128bf274c22587",
+      "bytes": 6149
+    },
+    {
+      "path": "src/apps/assessment/dual-assessment.js",
+      "sha256": "e46d18d1150cb1a3f1e8901a47d09ed027e9bfe82fcee3411c8bc7e95631ee5d",
+      "bytes": 11009
+    },
+    {
+      "path": "src/apps/assessment/dual-report-builder.js",
+      "sha256": "03cb4513f31b2329b1f187c2b8a7b4adb8cbb843a356062ed1c7e289131720b7",
+      "bytes": 3252
+    },
+    {
+      "path": "src/apps/assessment/dual-style.css",
+      "sha256": "e175dfdae358c369d9d2d2c5934a44eff14c328e3ff1922c59e34c9c07ac8562",
+      "bytes": 1520
+    },
+    {
+      "path": "src/apps/assessment/extracted-general-points.js",
+      "sha256": "46f3f6ee927ac1dc0fc12cd034d6bad80a062468e55d1a51d44cee925b8b1a85",
+      "bytes": 482869
+    },
+    {
+      "path": "src/apps/assessment/general-bank.js",
+      "sha256": "92f19615d5dbe8d8f23ace7447f824c09df43ab798af3a5058c8a1a541baf181",
+      "bytes": 90156
+    },
+    {
+      "path": "src/apps/assessment/general-framework.js",
+      "sha256": "d74de6c7218187ac6e343f61e60fd926bbca30a21bd95a97f888ed265e9801dd",
+      "bytes": 35254
+    },
+    {
+      "path": "src/apps/assessment/general-interactions-bank.js",
+      "sha256": "fc75a434479febf69e3b2b19f33a242ecadd8f638015576b03593b8f9d9b3b2c",
+      "bytes": 28538
+    },
+    {
+      "path": "src/apps/assessment/general-interactions.js",
+      "sha256": "251cc559a249c7e7e6650e68f990af8fc27c26f98e53cd0b7367409c9bad9752",
+      "bytes": 2067
+    },
+    {
+      "path": "src/apps/assessment/general-task-bank.js",
+      "sha256": "f2803d6bf31d6363fb14ef1e08270ac2583b93a3514c07ea6ddfae959eb0e83a",
+      "bytes": 149737
+    },
+    {
+      "path": "src/apps/assessment/general-task-engine.js",
+      "sha256": "f6ea7709d106b473ecb9ee9417573957e5b20406d28df1209ff71c844928f65b",
+      "bytes": 3848
+    },
+    {
+      "path": "src/apps/assessment/generated-question-bank.js",
+      "sha256": "71b383fa2e0e2d85c12f11b1a7a5905dbfbe5fa6d019ddbd1880193fa923575e",
+      "bytes": 7893142
+    },
+    {
+      "path": "src/apps/assessment/hq-accordion-v56.css",
+      "sha256": "469493ed3f66f4b7004888ffca22dfdea0fa62d2e7416efa05aafeb0036b2e73",
+      "bytes": 1466
+    },
+    {
+      "path": "src/apps/assessment/hq-accordion-v56.js",
+      "sha256": "32b3d313c4e0172ef25085c841a4d84c84f5ab0035bf9ac393247140b0e5f4a6",
+      "bytes": 2274
+    },
+    {
+      "path": "src/apps/assessment/hq-accordion-v63.js",
+      "sha256": "62a483c04acd8ee13cd7c3925850f3d50210f3d89c5346fc5e764d39170b0bbd",
+      "bytes": 1647
+    },
+    {
+      "path": "src/apps/assessment/hq-native-v52.css",
+      "sha256": "b0f52cc72fdc08bf8f681a958b3c852841e1c35109c7a83b4a779c4c374e0bd3",
+      "bytes": 3905
+    },
+    {
+      "path": "src/apps/assessment/hq-native-v52.js",
+      "sha256": "b3e6dfcfa1a49611d5f12d790d6942b75da9ef33a6d6cfa0dc46388d0fdcd59d",
+      "bytes": 1714
+    },
+    {
+      "path": "src/apps/assessment/hq-native-v53.css",
+      "sha256": "ad8db1ad7d809c07b4132edd0d46cd99aa108644b2adf171115197874fd121fc",
+      "bytes": 5790
+    },
+    {
+      "path": "src/apps/assessment/hq-native-v53.js",
+      "sha256": "c48bbd7996b20b103cb5b551cbb178a04d8e0a452a5429bcec102a0cdb5c1dc2",
+      "bytes": 5964
+    },
+    {
+      "path": "src/apps/assessment/index.html",
+      "sha256": "1a0519a5c02e49038e3d4fc71ea06f1053d9ab51933d7cad686addf94fa1222b",
+      "bytes": 51297
+    },
+    {
+      "path": "src/apps/assessment/indicator-analysis.js",
+      "sha256": "f24f77a7c00e74a96709a5298a2a063fbb0d657aed61ff7ef73fd52396767949",
+      "bytes": 19576
+    },
+    {
+      "path": "src/apps/assessment/indicator-tree.js",
+      "sha256": "3b338c5a60af55b344660f59f073a1f147ba13d16e862ea99a6ae4c8183ccd1b",
+      "bytes": 15855
+    },
+    {
+      "path": "src/apps/assessment/mveri-assessment-controls-standalone-v7214.css",
+      "sha256": "27bf69e21857b5f89bfd1b8d57247b42c642b286ad5d5b9fce7fe778303ed283",
+      "bytes": 2827
+    },
+    {
+      "path": "src/apps/assessment/mveri-assessment-controls-v7214.css",
+      "sha256": "4fd9b3ad0df8abaa6c2a0e9f215037490b52e3e0beafa40636845d8593d558c6",
+      "bytes": 3047
+    },
+    {
+      "path": "src/apps/assessment/mveri-brand-theme-v7210.css",
+      "sha256": "ef16ff1153deb70500dae8c8bf3a0d9e3eb6b4b8a1eee4aca88dcd15edacd993",
+      "bytes": 4232
+    },
+    {
+      "path": "src/apps/assessment/mveri-component-corrections-v7211.css",
+      "sha256": "5edda86dabde90e17f8886195e3766a8b4bd217dad030d04f205a436fb49aeba",
+      "bytes": 3775
+    },
+    {
+      "path": "src/apps/assessment/mveri-component-theme-v7212.css",
+      "sha256": "f146375e9a30342ca440315b41b326757f4f51541bc85e7d06c85fc868f9d698",
+      "bytes": 4944
+    },
+    {
+      "path": "src/apps/assessment/mveri-embedded-blue-v724.css",
+      "sha256": "889c548c717e70a100052b9aedd073936154c37b99ebba853f5782abfa7de9f9",
+      "bytes": 8756
+    },
+    {
+      "path": "src/apps/assessment/mveri-question-bank-theme-v7212.css",
+      "sha256": "392cd9104c4160cfd29890f3490f0f4a15a0f35de2d737afe407c96512e68999",
+      "bytes": 1515
+    },
+    {
+      "path": "src/apps/assessment/mveri-question-bank-theme-v7213.css",
+      "sha256": "56d4acbc7df225397ef562eabfddf439300ed2bd0a3171bbecc5c206e81388be",
+      "bytes": 2004
+    },
+    {
+      "path": "src/apps/assessment/nav-policy-v63.js",
+      "sha256": "f8eb06670418fc14abcd32785f031ee31e08834336d17e8c7b2d6cfddd65e48a",
+      "bytes": 1791
+    },
+    {
+      "path": "src/apps/assessment/point-more-menu-v168.css",
+      "sha256": "6ba5db039dfaa36c157f6526576fab9d3f457697e167d8e2c21093c32d43f948",
+      "bytes": 1845
+    },
+    {
+      "path": "src/apps/assessment/point-more-menu-v168.js",
+      "sha256": "3b6581e47f3d614c7dccd9b49fe5c5f656c9dd3016a2029b7b450ddfa805850b",
+      "bytes": 1527
+    },
+    {
+      "path": "src/apps/assessment/practical-bank.js",
+      "sha256": "297e2eead16ff749249a22358da685ac4d3843ba1654786a55429dcbf9a60f12",
+      "bytes": 55120
+    },
+    {
+      "path": "src/apps/assessment/prompt-library.js",
+      "sha256": "ef4b44365e3dd6f4ecbfaccaf1b9159095e73a1821e95b00321365ad9bb1b976",
+      "bytes": 4080
+    },
+    {
+      "path": "src/apps/assessment/question-bank.js",
+      "sha256": "7d3e5e360204ad86f43836a38abaf6e4b20276103ad0cc5490d1d46115199104",
+      "bytes": 71345
+    },
+    {
+      "path": "src/apps/assessment/report-builder.html",
+      "sha256": "05a0735a045cbd039955ac6528b76851181e152f0311c5bf3d4f1227ec3439e9",
+      "bytes": 32583
+    },
+    {
+      "path": "src/apps/assessment/report-engine.js",
+      "sha256": "81eb4ba4750b33b047b1c9be2283809497cbf8fff673d5ae0d5b8a9272e5ff37",
+      "bytes": 14806
+    },
+    {
+      "path": "src/apps/assessment/semantic-deep-review-v210.js",
+      "sha256": "762b71b30312c8e7671c12af7396408c036f570b3cc56f19d37e7254cdddcafb",
+      "bytes": 42734
+    },
+    {
+      "path": "src/apps/assessment/semantic-full-analysis-v211.js",
+      "sha256": "1759e9d35899b96dbaede023e363b2120d7e54abdc82cc5d29a7873696de21f0",
+      "bytes": 730589
+    },
+    {
+      "path": "src/apps/assessment/store.js",
+      "sha256": "731b180cbd97d328cf3b024d1d842e7d60cfcb610b6f743f2ba19fce6f195398",
+      "bytes": 1613
+    },
+    {
+      "path": "src/apps/assessment/unified-points.js",
+      "sha256": "1819cdfd3977f0df22b6b690568d42fb9da81eb5a38bb7c47895ea8a387c2b90",
+      "bytes": 15393
+    },
+    {
+      "path": "src/apps/assessment/unified-question-store.js",
+      "sha256": "cdd19a8497199f70296344a0977927dca5c6569f8dda9ba98bd5036a559b49c6",
+      "bytes": 4359
+    },
+    {
+      "path": "src/apps/assessment/v181-draft-questions.js",
+      "sha256": "2b0655036067fa433b79ebafd5c02a60900b6dbfbb8ef5d3eb9a75c004662d9c",
+      "bytes": 8892805
+    },
+    {
+      "path": "src/apps/assessment/v186-draft-merge.js",
+      "sha256": "9e44e90e9f607e52a338d7069a311176aedfe9da6ef983f528d9cfb4ff5ffdae",
+      "bytes": 106
+    },
+    {
+      "path": "src/apps/assessment/v186-draft-part-01.js",
+      "sha256": "1948d2a58e9666a3652e1d9d9143e48a8e13995eb432d31d9e0a06d97b502500",
+      "bytes": 706876
+    },
+    {
+      "path": "src/apps/assessment/v186-draft-part-02.js",
+      "sha256": "408fef27309fa25963835b1606591471e8261d6a082944c3965ece3da0555e09",
+      "bytes": 710710
+    },
+    {
+      "path": "src/apps/assessment/v186-draft-part-03.js",
+      "sha256": "41cf10b77348c1ff272f7e61d7618d38e42848dfeec665480e9b9d081c5476ec",
+      "bytes": 698027
+    },
+    {
+      "path": "src/apps/assessment/v186-draft-part-04.js",
+      "sha256": "6e58b32c2b4abe361222753c2101e113ad1c2410295483906fb59bfbf9c69ab2",
+      "bytes": 697923
+    },
+    {
+      "path": "src/apps/assessment/v186-draft-part-05.js",
+      "sha256": "3dcd266ed028dcb5727b9922cdacd43f6dacf5f58be75392ec88589ce387a62a",
+      "bytes": 707613
+    },
+    {
+      "path": "src/apps/assessment/v186-draft-part-06.js",
+      "sha256": "989d33afc47e2feed271e66077e5fa0c5348c842bfd37105e06e58d218ca1dc8",
+      "bytes": 712604
+    },
+    {
+      "path": "src/apps/assessment/v186-draft-part-07.js",
+      "sha256": "2b42dc53cf8ea2e5eca0b3a1bcc0537dd84dacf4d9d53b92b4c959f9b1218f76",
+      "bytes": 706606
+    },
+    {
+      "path": "src/apps/assessment/v186-draft-part-08.js",
+      "sha256": "bed70674ec9ddd57dd294620efc758554ef4034d198f06360a3ff09f59f6abd2",
+      "bytes": 703575
+    },
+    {
+      "path": "src/apps/assessment/v186-draft-part-09.js",
+      "sha256": "943909aa102c341e6a7bd6a2eb671f30c5c3707f342b1dc76fd2ed2e56e5c17d",
+      "bytes": 713877
+    },
+    {
+      "path": "src/apps/assessment/v186-draft-part-10.js",
+      "sha256": "22e0ef1c8fb3fb111b9629efe4577836798385bd3557e19b6d2d2faffdd5cfe1",
+      "bytes": 743266
+    },
+    {
+      "path": "src/apps/assessment/v186-draft-part-11.js",
+      "sha256": "7780a041d42a3f9be6e42d7e8aecdadd6ead0b5aeb4cf33a2a7ce87c3bd22d6f",
+      "bytes": 755047
+    },
+    {
+      "path": "src/apps/assessment/v186-draft-part-12.js",
+      "sha256": "39a465c3d4d91538546acfd33273eb81afb29f421df75686b711cf54cf911e32",
+      "bytes": 754837
+    },
+    {
+      "path": "src/apps/assessment/v186-draft-part-13.js",
+      "sha256": "d6b5911957c74d45d4b10eae49844ca56e3c4cfa2d6a4b6de81003e1c289bc13",
+      "bytes": 282911
+    },
+    {
+      "path": "src/apps/assessment/v194-type-examples.js",
+      "sha256": "5fda99f578d294402185fd745b34a0272c45dd0501231f71f7ff7bfd499aafc5",
+      "bytes": 13745
+    },
+    {
+      "path": "src/apps/assessment/wbzy-design-system.css",
+      "sha256": "efa03ab01d29fab78a476f8196513c53e135db7ab96d3d1b6c48392ed68c1973",
+      "bytes": 6982
+    },
+    {
+      "path": "src/apps/assessment/wbzy-interactive-engine.js",
+      "sha256": "f207c49e894cc94c3b373b31bb19266ff43bcda689857e522a4a519e72f7d3dc",
+      "bytes": 13704
+    },
+    {
+      "path": "src/apps/assessment/wbzy-layout-v165.css",
+      "sha256": "34ed7c3d13c5eb34e4ce58b657683422311e06985ad286bfb6f83aace5974c31",
+      "bytes": 3382
+    },
+    {
+      "path": "src/apps/assessment/wbzy-logo.png",
+      "sha256": "2b463a3b0c98769191e1ef56651a5eb11e2a53f28dd8370f598df8f6ff6fe136",
+      "bytes": 26125
+    },
+    {
+      "path": "src/apps/assessment/wbzy-point-master-data-v212.js",
+      "sha256": "3807aadce0d920e182b1264d7124ed7a8f660e9dd85e5e445906b6d69cce70f2",
+      "bytes": 1190410
+    },
+    {
+      "path": "src/apps/assessment/wbzy-point-master-v212.css",
+      "sha256": "1243b10a5f2ef6296d67258618da5fb7122c439673453091e9b816162d92360f",
+      "bytes": 1855
+    },
+    {
+      "path": "src/apps/assessment/wbzy-point-master-view-v212.js",
+      "sha256": "b9e4bdc68d961a47f195df978bdddd2cb951b9eaacc6cb67ce2bda2d4a8eb3f7",
+      "bytes": 7969
+    },
+    {
+      "path": "src/apps/assessment/wbzy-product-architecture-v207.css",
+      "sha256": "11387f97433a1d77d9dd4a0527bf7d6d904c0cd9811f51503fb877053b7f85a3",
+      "bytes": 3802
+    },
+    {
+      "path": "src/apps/assessment/wbzy-special-agents.css",
+      "sha256": "c750d1bca811b69613b60954be2337b76eea610e5f7b0eb651a0b4c0b8dae553",
+      "bytes": 8338
+    },
+    {
+      "path": "src/apps/assessment/wbzy-special-agents.js",
+      "sha256": "4523b03990e543edc51cb2c3529f536c0ef2c20767b26c86e248134e77424c22",
+      "bytes": 44093
+    },
+    {
+      "path": "src/apps/assessment/wbzy-standard-management-v201.css",
+      "sha256": "91adfa71eb62b70bc732c2090230073a648487395f2481bf208690c8982e6043",
+      "bytes": 5534
+    },
+    {
+      "path": "src/apps/assessment/wbzy-standard-management-v201.js",
+      "sha256": "ecc82c7153836fcc21bf589d51c8be673b70c6365d64f4bd54035c0c02a3abac",
+      "bytes": 25886
+    },
+    {
+      "path": "src/apps/assessment/wbzy-ui-fixes-v162.css",
+      "sha256": "477d2ca289541717607ca0a95f0d0020baa1a4fd5ac76e9b2965c7d61ed677dd",
+      "bytes": 3590
+    },
+    {
+      "path": "src/apps/assessment/使用说明.txt",
+      "sha256": "61fb500a8f413420eac2d8e5f134003b862ea18e8afcf7f5931202a6ba557281",
+      "bytes": 581
+    },
+    {
+      "path": "src/apps/assessment/使用说明_双体系.txt",
+      "sha256": "138fac2ceaf1d36916a0da257290bd4cc9cd2483682250c76018e09ca67263b3",
+      "bytes": 928
+    },
+    {
+      "path": "src/apps/assessment/全量语义核验质量报告.txt",
+      "sha256": "88c0fe770a1937e1e8007eab70e3cf34e259852993153e4137c99e52715eb31b",
+      "bytes": 889
+    },
+    {
+      "path": "src/apps/assessment/双体系3710题_候选题库.json",
+      "sha256": "679ce55be1b8bc2fa9c71d97729e77915f8c3bd28fffb784c046065982b9c270",
+      "bytes": 9682905
+    },
+    {
+      "path": "src/apps/assessment/双体系3710题_命题清单.csv",
+      "sha256": "c32e55f9a5192c52fc2bb83143061a49a7aed598ae837ce09befa13a149c3fbc",
+      "bytes": 2642076
+    },
+    {
+      "path": "src/apps/assessment/双体系原文语义审查清单_V17.8.csv",
+      "sha256": "ff76e3c3f8859cfcc154c059c6abee01eca18ef67d6893d25461c8922febdad6",
+      "bytes": 26879
+    },
+    {
+      "path": "src/apps/assessment/双体系考评点逐项语义核验数据.csv",
+      "sha256": "83213c1dd3cd76097994aa5e457a4683a673f0584064b3e4e307b98b7a8eb0fa",
+      "bytes": 261172
+    },
+    {
+      "path": "src/apps/assessment/学生端_交互实训.html",
+      "sha256": "71dcc68a7cfee38bbf2eb5f226d797db9b4b6b26c619036293a8d1ebf6cb7165",
+      "bytes": 2304
+    },
+    {
+      "path": "src/apps/assessment/更新说明_V13.2.txt",
+      "sha256": "b922dbeaf0195c226d776a2b1a4120453fb496673b99b8a977da3cbfb2352d70",
+      "bytes": 886
+    },
+    {
+      "path": "src/apps/assessment/更新说明_V14.1.txt",
+      "sha256": "9395445cd889d73040cf2bbae69c61bc09986a014178ed24b8922f6add13ae55",
+      "bytes": 516
+    },
+    {
+      "path": "src/apps/assessment/更新说明_V15.0.txt",
+      "sha256": "54bbe1e66601e426a93658ade5e6562b13dfa1f58055d7ed99be5dca05208ef9",
+      "bytes": 677
+    },
+    {
+      "path": "src/apps/assessment/更新说明_V15.1.txt",
+      "sha256": "d972dbbe9ebd93b796d071628cc213c858dc7f2dfb162b4ed120c3279c49b71d",
+      "bytes": 497
+    },
+    {
+      "path": "src/apps/assessment/更新说明_V15.2.txt",
+      "sha256": "39b129da3d58d1575037b637affaed5919e1d2e11f4b41cfa7ffbb407736fe01",
+      "bytes": 910
+    },
+    {
+      "path": "src/apps/assessment/更新说明_V15.3.txt",
+      "sha256": "a6627c3a45e603072ac57f206449d37b7f23753e71eda1b42aeeddd671f1b9fc",
+      "bytes": 441
+    },
+    {
+      "path": "src/apps/assessment/更新说明_V15.4.txt",
+      "sha256": "e4d96a8780474f8a2d2cc44437e00b9a9289ceddd9a798e374ea459bc5539095",
+      "bytes": 323
+    },
+    {
+      "path": "src/apps/assessment/更新说明_V15.5.txt",
+      "sha256": "a0168611d69a10b3042f5e3e26ebf8550d237fade7b80da309384d388463595b",
+      "bytes": 387
+    },
+    {
+      "path": "src/apps/assessment/更新说明_V15.6.txt",
+      "sha256": "1aeb096a6f1e6753f77ac55d4cde1d946afdd3cec65dea4ae2fc6ee5f4b9f75e",
+      "bytes": 463
+    },
+    {
+      "path": "src/apps/assessment/版本说明_V14.txt",
+      "sha256": "558929ff3fee8cf3e2cf47a802e55ebbc1cae04d68b0f645c29fd21d53dece02",
+      "bytes": 1504
+    },
+    {
+      "path": "src/apps/assessment/考评点3710题_核验中心.html",
+      "sha256": "3a4d6cee9f57da3ed26865808132a529b37f176e5145e9aec359780565029cb6",
+      "bytes": 7564
+    },
+    {
+      "path": "src/apps/assessment/考评点萃取核验表.html",
+      "sha256": "252126b64c75b29c0b6cb9bd82ed54694c5e8f56e055f84b59ca2d7436698b48",
+      "bytes": 40757
+    },
+    {
+      "path": "src/apps/assessment/考评点语义复核进度.json",
+      "sha256": "ca486b5cb6aa1d6fc24c3d040cb5bc44653645f0206eaa55157489d2d48c77db",
+      "bytes": 158
+    },
+    {
+      "path": "src/apps/assessment/考评点顺序核验清单.csv",
+      "sha256": "210d5063170ff07a5d41e6cfacfb996b188d19640c37b6b3b8ea981d88673908",
+      "bytes": 31684
+    },
+    {
+      "path": "src/apps/assessment/题库统一管理.html",
+      "sha256": "64d477ce8f1b9ec87e142c54b5140e423f916da2fb5ab992de15b9e5ed4ba00e",
+      "bytes": 56941
+    },
+    {
+      "path": "src/apps/assets/action-v21.css",
+      "sha256": "03d29825969f447535367924ad25906be1d94e6afe57870de06c669a83f23b97",
+      "bytes": 5668
+    },
+    {
+      "path": "src/apps/assets/app.js",
+      "sha256": "8bcd1b9b5f947fababcf2d2a097e8b88d7f3484c1811e68d48b0af9395ce66aa",
+      "bytes": 77997
+    },
+    {
+      "path": "src/apps/assets/auth-access-v38.css",
+      "sha256": "bad355f0d0b22701340c4c34e5cc998982bc81b48a8a7fcd48bcb8bd5ab27e3e",
+      "bytes": 6887
+    },
+    {
+      "path": "src/apps/assets/auth-login-v39.css",
+      "sha256": "e8f86876f34f60dc9cffa60a2b8099169ce81a801f7355d2cdf295b703b09ab2",
+      "bytes": 9052
+    },
+    {
+      "path": "src/apps/assets/auth-login-v39.js",
+      "sha256": "357eb8cb015cd560fe2964200a6a719e36e1fc622723cbdf688137d4eae12f3e",
+      "bytes": 4335
+    },
+    {
+      "path": "src/apps/assets/auth-one-screen-v41.css",
+      "sha256": "dc2501e7042b907d87a8c8fbec882c7a575239450422389c7ffb4230c25b437d",
+      "bytes": 5785
+    },
+    {
+      "path": "src/apps/assets/auth-v30.css",
+      "sha256": "bef0751f27165bd1faa2f2872f419dc9aa0e0f828ecc70bfbdbb026889179523",
+      "bytes": 8162
+    },
+    {
+      "path": "src/apps/assets/auth-v30.js",
+      "sha256": "ebc21bfe56c6250ae6356896cccdae55c2f9ab19f7a2daf6bade1af6b887f984",
+      "bytes": 3763
+    },
+    {
+      "path": "src/apps/assets/auth.css",
+      "sha256": "a26ed106b5d74ba2f78041dc6a62d7bb34ed21981c7ae6f3a9543ff84693d22d",
+      "bytes": 3240
+    },
+    {
+      "path": "src/apps/assets/auth.js",
+      "sha256": "7b80ee30cc9dc905c2106c1998cdc3e49aa1d5429c2cd6cb7118a63197136f52",
+      "bytes": 3217
+    },
+    {
+      "path": "src/apps/assets/brand-v19.css",
+      "sha256": "241f2549dc570b80a885baef5d17623b72fc5036f3e4f20c3cac72d6bc633b8e",
+      "bytes": 6646
+    },
+    {
+      "path": "src/apps/assets/data.js",
+      "sha256": "92686229f122d9a88a82e30b25e6f718efa8b51b01fb8baa38b0a71fa43c7969",
+      "bytes": 4271
+    },
+    {
+      "path": "src/apps/assets/home-v22.css",
+      "sha256": "6fdc0d198c2764eb1488f8f24ea1e05e4d8b0e24bbccdc8468b2f57f964ff52b",
+      "bytes": 6390
+    },
+    {
+      "path": "src/apps/assets/mveri-logo.png",
+      "sha256": "9f188ef555928ce7cfec54167909d8bbc0a63787b0678603cf8112e507cd8fdc",
+      "bytes": 98045
+    },
+    {
+      "path": "src/apps/assets/national-school-catalog.js",
+      "sha256": "af2db6b9920b51bafb3b3598f202c5611f77be93097b828029695a30dbb56440",
+      "bytes": 283
+    },
+    {
+      "path": "src/apps/assets/nav-policy-v63.js",
+      "sha256": "f8eb06670418fc14abcd32785f031ee31e08834336d17e8c7b2d6cfddd65e48a",
+      "bytes": 1791
+    },
+    {
+      "path": "src/apps/assets/news-data.js",
+      "sha256": "c8b8a702ebdf0445fe5c714cbdea65b9cf3b3eae6c48ac5c4df8c5ef2a559cde",
+      "bytes": 4006
+    },
+    {
+      "path": "src/apps/assets/news-images/analysis.svg",
+      "sha256": "a52800a3d2e7e887f1709f414128508861e5827f7c9a234b88e92b2aa147b19a",
+      "bytes": 1284
+    },
+    {
+      "path": "src/apps/assets/news-images/industry.svg",
+      "sha256": "969cab9e4277f21d8c5c1fa44f0757edb92d2d59e87ed510a3163f061cc26c91",
+      "bytes": 1281
+    },
+    {
+      "path": "src/apps/assets/news-images/law.svg",
+      "sha256": "da42b7e9e2478583a639a10676addb1d7a5d0c6e3cc4510e49b77a969bba1667",
+      "bytes": 1280
+    },
+    {
+      "path": "src/apps/assets/news-images/policy.svg",
+      "sha256": "05efaaf9a19f2857f9c036f37b9605871ff5cda56f0a1b2960632d7a2e11542c",
+      "bytes": 1283
+    },
+    {
+      "path": "src/apps/assets/news-images/standards.svg",
+      "sha256": "7f77f28f1b36d633d2cfcae78929efcb332214730b0cde91fcf6ef456f4cd6c3",
+      "bytes": 1286
+    },
+    {
+      "path": "src/apps/assets/news.css",
+      "sha256": "db04a1310e127bc779c015e0f186caaf53354a59cd9613419efb46aa7866c2b6",
+      "bytes": 5541
+    },
+    {
+      "path": "src/apps/assets/personal-modal-v31.css",
+      "sha256": "a2508980d180cc746cba12e9506cec8832e0acb34fc2837ee7479052b157208b",
+      "bytes": 3977
+    },
+    {
+      "path": "src/apps/assets/portfolio-v34.css",
+      "sha256": "56db826569dc5358a8b34a1bbef1d4f8d213ea280bdc97fb8af59b70ba1d2a71",
+      "bytes": 12929
+    },
+    {
+      "path": "src/apps/assets/registered-users-v60.js",
+      "sha256": "1fc27f6c42a29f4b0715c469a2448907e084fbe79f1d74bb40467e1159e1bc56",
+      "bytes": 830
+    },
+    {
+      "path": "src/apps/assets/school-licenses-v58.js",
+      "sha256": "9f95f4bf9d8508cb4829ef302969f2839a7807d2c306810f6998f7154d7727ea",
+      "bytes": 5256
+    },
+    {
+      "path": "src/apps/assets/split.css",
+      "sha256": "203e5ef608b2cfc55a6ed88613c5b479214d9d390cc749bfd7b6b354eee7a2af",
+      "bytes": 12764
+    },
+    {
+      "path": "src/apps/assets/standard-details.js",
+      "sha256": "805aecce4fce2f6a5143e891c2d79b0419792d0ec871245993e84fe63c9592e8",
+      "bytes": 4529
+    },
+    {
+      "path": "src/apps/assets/styles.css",
+      "sha256": "dd77cf18392e940d3f894cfe4e067df43c489497ab98aebd2fa1b257d707da73",
+      "bytes": 18573
+    },
+    {
+      "path": "src/apps/assets/task-actions-v21.css",
+      "sha256": "bbe3215e4d9f265081e2c0e5fe687a9ea4668d1464ddea6c6140a17388e8799a",
+      "bytes": 1197
+    },
+    {
+      "path": "src/apps/assets/unified-assessment-nav-v722.js",
+      "sha256": "f1c9c1659d8f4cdb48a962d0eaacf7865f929dd45217adaef71e74f3a71e398b",
+      "bytes": 866
+    },
+    {
+      "path": "src/apps/assets/unified-menu-v722.css",
+      "sha256": "d436f8dacdb826417f82dc7326f0105c2c6cee4f1894ef6f1f63b0487f020d1d",
+      "bytes": 4452
+    },
+    {
+      "path": "src/apps/assets/unified-menu-v722.js",
+      "sha256": "f94927b2a68f80cd02a4bc042301a475362573f470faebc8b80402c9821f78b2",
+      "bytes": 4831
+    },
+    {
+      "path": "src/apps/assets/unified-shell-v65.css",
+      "sha256": "672f1c5980ca8dbeaf9ab8344ee2fc3eeb450764bb8c027d1075956324753e75",
+      "bytes": 4284
+    },
+    {
+      "path": "src/apps/assets/user-directory-v59.js",
+      "sha256": "210e62d50b348135321ca190d1fdd835489e532c43abb158c543e294d50a30f1",
+      "bytes": 3606
+    },
+    {
+      "path": "src/apps/auth/access.html",
+      "sha256": "4b256d9b4cc5ab5a1c60d38186d13b5cfde1f2362382accb99461ffa12f7ad62",
+      "bytes": 5540
+    },
+    {
+      "path": "src/apps/auth/institution.html",
+      "sha256": "d67889be63b01fb171c85074e15c0279ef457f04bea8180f19ecb2f31b975666",
+      "bytes": 195
+    },
+    {
+      "path": "src/apps/auth/login.html",
+      "sha256": "a76d146df105e4f84b0db5e221dc6518790eed8ef438025cb942ca7fb82576a6",
+      "bytes": 2571
+    },
+    {
+      "path": "src/apps/auth/operations.html",
+      "sha256": "23f51cedf3b53c1bd0edfd0ce5bf703dff53ad103a0496b6eb692dc7a66119d6",
+      "bytes": 3946
+    },
+    {
+      "path": "src/apps/auth/region.html",
+      "sha256": "1d0ad999cddc622f68510d798111964d1859d68fcadda8423c051fe28de4bf0f",
+      "bytes": 4098
+    },
+    {
+      "path": "src/apps/auth/register.html",
+      "sha256": "b7d382097c05bfae08e6863aad2acd7a0bea415bed3130fc3ca29d51e1bd4f2b",
+      "bytes": 2814
+    },
+    {
+      "path": "src/apps/auth/school.html",
+      "sha256": "da871c9db2ddddf37f74622745ae8ccef31c02cbe01778fdb85f83450a537992",
+      "bytes": 4149
+    },
+    {
+      "path": "src/apps/institution/index.html",
+      "sha256": "277818a753b25e9e5833b8925a15f73307cba2ef3634f2c5cfa6c8077e8ab75b",
+      "bytes": 650
+    },
+    {
+      "path": "src/apps/operations/index.html",
+      "sha256": "7eed1d58e9d0b048a8a07ac6270f82561fbcc5b5e96bf10372ac30c08f92e4dd",
+      "bytes": 649
+    },
+    {
+      "path": "src/apps/personal/index.html",
+      "sha256": "fd1c98cd9f399034978295598f5d60834cc8d4af5b210fa682ea72753508136d",
+      "bytes": 705
+    },
+    {
+      "path": "src/apps/personal/report.html",
+      "sha256": "afc452125904ba159346608a7ec4acde8eac8aa936567ce72a591163604f7217",
+      "bytes": 7428
+    },
+    {
+      "path": "src/apps/site/eight-questions.html",
+      "sha256": "0fdec00df693ccf65e338e60b32a06003e0b01026e5c34654599681c0208f828",
+      "bytes": 442011
+    },
+    {
+      "path": "src/apps/site/index.html",
+      "sha256": "d718f0daa86e00acb0df0daf9902f840e190c6068644630fb72da60bac50d2b7",
+      "bytes": 869
+    },
+    {
+      "path": "src/apps/workspace/README.md",
+      "sha256": "b61fde825b7aecc7a6a1d9ef68ac1f56e83cc8cbb8b57890e6a67ebb7fd5f752",
+      "bytes": 2011
+    },
+    {
+      "path": "src/apps/workspace/docs/MIGRATION.md",
+      "sha256": "7b3c2bf97ede7455536bfc2a24d9a7482e7c1e00177ca1f5e1272d0c4d3fecf6",
+      "bytes": 1687
+    },
+    {
+      "path": "src/apps/workspace/index.html",
+      "sha256": "3ca036fb030a6d6e7544f1d2d5aee8c72ff4eeb97a30aae0a34b7009baf28cff",
+      "bytes": 364
+    },
+    {
+      "path": "src/apps/workspace/package.json",
+      "sha256": "082c54da58211facbbb281272aacc47973b349682103aa6894d36d889683c36b",
+      "bytes": 184
+    },
+    {
+      "path": "src/apps/workspace/public/assets/logo.png",
+      "sha256": "9f188ef555928ce7cfec54167909d8bbc0a63787b0678603cf8112e507cd8fdc",
+      "bytes": 98045
+    },
+    {
+      "path": "src/apps/workspace/public/data/operations.json",
+      "sha256": "c3c3410decd3692e1849384c068984165a6fd8aca835c20928ae775b126c3f42",
+      "bytes": 3968
+    },
+    {
+      "path": "src/apps/workspace/public/data/point-review.json",
+      "sha256": "16fc3cdf83837655c775cd9abd70606a1367d740a6521c6f7535c4e22114fbea",
+      "bytes": 834727
+    },
+    {
+      "path": "src/apps/workspace/public/data/question-bank.json",
+      "sha256": "679ce55be1b8bc2fa9c71d97729e77915f8c3bd28fffb784c046065982b9c270",
+      "bytes": 9682905
+    },
+    {
+      "path": "src/apps/workspace/server.mjs",
+      "sha256": "aaa72a76690071e72627eec37c789a739da1cf8d2f2a2a0760d798907e03826a",
+      "bytes": 1128
+    },
+    {
+      "path": "src/apps/workspace/src/core/catalog.js",
+      "sha256": "c5b66cafed3795942a7ab1adfc59452d61466edb9d947c8f05e97202afbb2ac8",
+      "bytes": 1701
+    },
+    {
+      "path": "src/apps/workspace/src/core/format.js",
+      "sha256": "06863480719467cd4c5d5afd6a5061d40ddd4d6685e00f77c6a3615e9e478ab6",
+      "bytes": 1212
+    },
+    {
+      "path": "src/apps/workspace/src/core/router.js",
+      "sha256": "28605586195779dd295e39c06bf6cb16f0100af9f077fab02ed46ca8c4211a17",
+      "bytes": 651
+    },
+    {
+      "path": "src/apps/workspace/src/core/store.js",
+      "sha256": "73d15ca661f896c30bb88c9b54170725670f7c6cd902f26cf129f047d42a6d00",
+      "bytes": 1724
+    },
+    {
+      "path": "src/apps/workspace/src/main.js",
+      "sha256": "ef8898dcb0dd5eee8037e4d6e5d1c1cddd9e9bc4481b561cb09eba235d5bcba4",
+      "bytes": 10953
+    },
+    {
+      "path": "src/apps/workspace/src/modules/assessment.js",
+      "sha256": "c8c519859d618bad5de47eee9c44b32a3f3d1e54a1d8099f57d48f498550c5ab",
+      "bytes": 7415
+    },
+    {
+      "path": "src/apps/workspace/src/modules/business.js",
+      "sha256": "7c7549fd1a2a6bb48397340d6ecee8a56f2d4954e0dd470310871f38d20e0db1",
+      "bytes": 12681
+    },
+    {
+      "path": "src/apps/workspace/src/styles/app.css",
+      "sha256": "d2fa65b641a2cf2a14640bcbcbf8ce12b7f1500ff4c36360b4a2d0e5620fc87c",
+      "bytes": 7753
+    },
+    {
+      "path": "src/apps/workspace/tests/architecture.test.mjs",
+      "sha256": "6754dfbc3f5be4354f6253a7951ee2f8062ba6b352f0794cc170514bb120395d",
+      "bytes": 955
+    },
+    {
+      "path": "src/platform/README.md",
+      "sha256": "ce9657c82483868a06554e6db31d6d5f356b53dfaead2f4da19e89403efcf941",
+      "bytes": 350
+    },
+    {
+      "path": "src/platform/routes.json",
+      "sha256": "68c9cb09d3b4c50d84b250cbf5b05fb2b6a050c3e2452db1c68ee73d6001289e",
+      "bytes": 1422
+    },
+    {
+      "path": "tests/audit-v728.mjs",
+      "sha256": "17029d81c17e6f5ba87d300866202b58c0dce5ff6c13fdacd480ce0e5d5ccdd1",
+      "bytes": 921
+    },
+    {
+      "path": "tests/verify.mjs",
+      "sha256": "ceb4e49d192e52f15e7b1bc21b53ebef5db0feb30c86b5dac26effcfb4e44383",
+      "bytes": 1087
+    },
+    {
+      "path": "tools/collect_public_school_directory.py",
+      "sha256": "4a623025eaa0ae431d13115ae12e4abb3f781ee088e31560ee38982aab10a1ac",
+      "bytes": 7310
+    },
+    {
+      "path": "tools/import_school_directory.py",
+      "sha256": "e9fac6c26e3f87134f4e042528515542f44dc013d7c7f31d858546916f552ce9",
+      "bytes": 6682
+    }
+  ]
+}

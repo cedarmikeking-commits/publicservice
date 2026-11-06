@@ -1,0 +1,162 @@
+{
+  "version": "72.18",
+  "baseVersion": "72.17",
+  "changedFiles": [
+    {
+      "path": "NATIONAL_DIRECTORY_SOURCE_GUIDE.md",
+      "sha256Before": "02fc871d7c18f84714ca78921a42de24e32b4c59ef9eb1e4ae63754d9666f2e4",
+      "sha256After": "e5760de4f51453fa67ef555fe0b24ef460bd625704352e03964c1af8d0a3a5b6",
+      "reason": "版本、核验入口或覆盖说明更新"
+    },
+    {
+      "path": "NATIONAL_FULL_COVERAGE_STATUS.md",
+      "sha256Before": "e37955b3690676271703690405ca6fc3c96c1add7ec8f8edbb47ea4445fcc832",
+      "sha256After": "dead3365ce7113522d43181e39efa590243e6c47b8a53b9e7c109854212a0d6d",
+      "reason": "版本、核验入口或覆盖说明更新"
+    },
+    {
+      "path": "README.md",
+      "sha256Before": "88a9338fa51a149011a23f181ee3c6bd05332a92b0d8f1ab4714f6d645a6acf0",
+      "sha256After": "e7ad4dc8552d92480ff9840a0cfebcda9ece8daab193c41d17c53ca360ad39e6",
+      "reason": "版本、核验入口或覆盖说明更新"
+    },
+    {
+      "path": "package.json",
+      "sha256Before": "9e29be60b94027ecbb83c3131d1d5e89dac9114effa2dc46f3c2c63ca164d470",
+      "sha256After": "fdea6e8a65de814a0c2b1db30bf71f4e6d65555e2e020166c7057b46ee6c994f",
+      "reason": "版本、核验入口或覆盖说明更新"
+    },
+    {
+      "path": "src/apps/area/agreements.html",
+      "sha256Before": "d9d5131f9709933c37c5a17c80d758360404e2ae46ab2b0f0be215aa64d7682c",
+      "sha256After": "5d2ad9109f7dd3aab8c16987052ffde3af566da16a15d02022f0680f43c046ca",
+      "reason": "院校名录及来源展示、缓存版本或真实名录/业务演示范围文案更新"
+    },
+    {
+      "path": "src/apps/area/app.js",
+      "sha256Before": "3a8690553e3c2b200c5ff819d223cb74111951bc026293de2e16ff1b94a4eba6",
+      "sha256After": "f9047fdc72ef0c3fdef12f5500267118261376f42940606767a543767e02c362",
+      "reason": "院校名录及来源展示、缓存版本或真实名录/业务演示范围文案更新"
+    },
+    {
+      "path": "src/apps/area/audit.html",
+      "sha256Before": "d9d5131f9709933c37c5a17c80d758360404e2ae46ab2b0f0be215aa64d7682c",
+      "sha256After": "5d2ad9109f7dd3aab8c16987052ffde3af566da16a15d02022f0680f43c046ca",
+      "reason": "院校名录及来源展示、缓存版本或真实名录/业务演示范围文案更新"
+    },
+    {
+      "path": "src/apps/area/certificates.html",
+      "sha256Before": "d9d5131f9709933c37c5a17c80d758360404e2ae46ab2b0f0be215aa64d7682c",
+      "sha256After": "5d2ad9109f7dd3aab8c16987052ffde3af566da16a15d02022f0680f43c046ca",
+      "reason": "院校名录及来源展示、缓存版本或真实名录/业务演示范围文案更新"
+    },
+    {
+      "path": "src/apps/area/colleges.html",
+      "sha256Before": "d9d5131f9709933c37c5a17c80d758360404e2ae46ab2b0f0be215aa64d7682c",
+      "sha256After": "5d2ad9109f7dd3aab8c16987052ffde3af566da16a15d02022f0680f43c046ca",
+      "reason": "院校名录及来源展示、缓存版本或真实名录/业务演示范围文案更新"
+    },
+    {
+      "path": "src/apps/area/dashboard.html",
+      "sha256Before": "d9d5131f9709933c37c5a17c80d758360404e2ae46ab2b0f0be215aa64d7682c",
+      "sha256After": "5d2ad9109f7dd3aab8c16987052ffde3af566da16a15d02022f0680f43c046ca",
+      "reason": "院校名录及来源展示、缓存版本或真实名录/业务演示范围文案更新"
+    },
+    {
+      "path": "src/apps/area/delivery.html",
+      "sha256Before": "d9d5131f9709933c37c5a17c80d758360404e2ae46ab2b0f0be215aa64d7682c",
+      "sha256After": "5d2ad9109f7dd3aab8c16987052ffde3af566da16a15d02022f0680f43c046ca",
+      "reason": "院校名录及来源展示、缓存版本或真实名录/业务演示范围文案更新"
+    },
+    {
+      "path": "src/apps/area/evaluation.html",
+      "sha256Before": "44256cb2394155ed74099e6627234a93095c50fda18ad907301ab736aee86274",
+      "sha256After": "2c64f61a3e6c09eb8ff758e1e9ef8627ba9fd725ad2c7efac9a03ef0b5d9cf5f",
+      "reason": "院校名录及来源展示、缓存版本或真实名录/业务演示范围文案更新"
+    },
+    {
+      "path": "src/apps/area/finance.html",
+      "sha256Before": "d9d5131f9709933c37c5a17c80d758360404e2ae46ab2b0f0be215aa64d7682c",
+      "sha256After": "5d2ad9109f7dd3aab8c16987052ffde3af566da16a15d02022f0680f43c046ca",
+      "reason": "院校名录及来源展示、缓存版本或真实名录/业务演示范围文案更新"
+    },
+    {
+      "path": "src/apps/area/index.html",
+      "sha256Before": "d9d5131f9709933c37c5a17c80d758360404e2ae46ab2b0f0be215aa64d7682c",
+      "sha256After": "5d2ad9109f7dd3aab8c16987052ffde3af566da16a15d02022f0680f43c046ca",
+      "reason": "院校名录及来源展示、缓存版本或真实名录/业务演示范围文案更新"
+    },
+    {
+      "path": "src/apps/area/journey.html",
+      "sha256Before": "d9d5131f9709933c37c5a17c80d758360404e2ae46ab2b0f0be215aa64d7682c",
+      "sha256After": "5d2ad9109f7dd3aab8c16987052ffde3af566da16a15d02022f0680f43c046ca",
+      "reason": "院校名录及来源展示、缓存版本或真实名录/业务演示范围文案更新"
+    },
+    {
+      "path": "src/apps/area/partners.html",
+      "sha256Before": "d9d5131f9709933c37c5a17c80d758360404e2ae46ab2b0f0be215aa64d7682c",
+      "sha256After": "5d2ad9109f7dd3aab8c16987052ffde3af566da16a15d02022f0680f43c046ca",
+      "reason": "院校名录及来源展示、缓存版本或真实名录/业务演示范围文案更新"
+    },
+    {
+      "path": "src/apps/area/portal-loader-v68.js",
+      "sha256Before": "d9a9c01cb835cd21a67c7eb932da2bb3f06ebd9cf1c89a6e1f1f2124996aae53",
+      "sha256After": "9f7b667a7737c28a9df6528c8afc95995b46374bf331f13bdca4cd5a4075c94b",
+      "reason": "院校名录及来源展示、缓存版本或真实名录/业务演示范围文案更新"
+    },
+    {
+      "path": "src/apps/area/programs.html",
+      "sha256Before": "d9d5131f9709933c37c5a17c80d758360404e2ae46ab2b0f0be215aa64d7682c",
+      "sha256After": "5d2ad9109f7dd3aab8c16987052ffde3af566da16a15d02022f0680f43c046ca",
+      "reason": "院校名录及来源展示、缓存版本或真实名录/业务演示范围文案更新"
+    },
+    {
+      "path": "src/apps/area/quality.html",
+      "sha256Before": "095e9516df2ccba730af46806732c3de508d47becccf0952c0a58701e7cb4967",
+      "sha256After": "f2ad3cefda4eafed07fcc68da93cf66a9d10e53620df02b6db67dadab5425670",
+      "reason": "院校名录及来源展示、缓存版本或真实名录/业务演示范围文案更新"
+    },
+    {
+      "path": "src/apps/area/school-admin.html",
+      "sha256Before": "d9d5131f9709933c37c5a17c80d758360404e2ae46ab2b0f0be215aa64d7682c",
+      "sha256After": "5d2ad9109f7dd3aab8c16987052ffde3af566da16a15d02022f0680f43c046ca",
+      "reason": "院校名录及来源展示、缓存版本或真实名录/业务演示范围文案更新"
+    },
+    {
+      "path": "src/apps/area/settlement.html",
+      "sha256Before": "d9d5131f9709933c37c5a17c80d758360404e2ae46ab2b0f0be215aa64d7682c",
+      "sha256After": "5d2ad9109f7dd3aab8c16987052ffde3af566da16a15d02022f0680f43c046ca",
+      "reason": "院校名录及来源展示、缓存版本或真实名录/业务演示范围文案更新"
+    },
+    {
+      "path": "src/apps/area/styles.css",
+      "sha256Before": "0e1489411caf620e62d61d6fc64c11c826b436dfb9ab0807ffeee68902654a9d",
+      "sha256After": "4a577929a3f5318083e83b32cbca748e92a913bd4d8bbd66564d6d2909623bf8",
+      "reason": "院校名录及来源展示、缓存版本或真实名录/业务演示范围文案更新"
+    },
+    {
+      "path": "src/apps/area/targets.html",
+      "sha256Before": "d9d5131f9709933c37c5a17c80d758360404e2ae46ab2b0f0be215aa64d7682c",
+      "sha256After": "5d2ad9109f7dd3aab8c16987052ffde3af566da16a15d02022f0680f43c046ca",
+      "reason": "院校名录及来源展示、缓存版本或真实名录/业务演示范围文案更新"
+    },
+    {
+      "path": "src/apps/area/user-admin.html",
+      "sha256Before": "d9d5131f9709933c37c5a17c80d758360404e2ae46ab2b0f0be215aa64d7682c",
+      "sha256After": "5d2ad9109f7dd3aab8c16987052ffde3af566da16a15d02022f0680f43c046ca",
+      "reason": "院校名录及来源展示、缓存版本或真实名录/业务演示范围文案更新"
+    },
+    {
+      "path": "src/apps/assets/app.js",
+      "sha256Before": "8bcd1b9b5f947fababcf2d2a097e8b88d7f3484c1811e68d48b0af9395ce66aa",
+      "sha256After": "a3422e25169aa64b45cde4dc800ceb569203209dd188deedd5504ca1d4a60e9e",
+      "reason": "院校名录及来源展示、缓存版本或真实名录/业务演示范围文案更新"
+    },
+    {
+      "path": "src/apps/assets/national-school-catalog.js",
+      "sha256Before": "af2db6b9920b51bafb3b3598f202c5611f77be93097b828029695a30dbb56440",
+      "sha256After": "0a4f1349fc6a7b86c55b3be5948105c269ae1dacb72aa04c635a762683cc7742",
+      "reason": "院校名录及来源展示、缓存版本或真实名录/业务演示范围文案更新"
+    }
+  ]
+}
