@@ -380,7 +380,7 @@
         icon: "◈",
         name: "能力标准查询",
         kind: "标准依据",
-        summary: "浏览通用数智能力与教师素智素养体系，了解能力领域、单元和应用边界。",
+        summary: "查通用数智能力和教师素智素养两套框架，看清能力领域、单元和适用范围。",
         audience: "all personal institution",
         tags: ["标准查询", "能力框架", "版本信息"],
         action: "查看标准体系",
@@ -391,7 +391,7 @@
         icon: "◇",
         name: "能力测评",
         kind: "能力诊断",
-        summary: "通过快速8题了解测评方式，识别发展方向；完整测评及个人能力档案由个人服务中心承接。",
+        summary: "先用 8 道题看看现状。完整测评和个人能力档案在个人服务中心办理。",
         audience: "all personal",
         tags: ["快速体验", "能力诊断", "发展建议"],
         action: "快速8题体验",
@@ -402,7 +402,7 @@
         icon: "▤",
         name: "能力发展与培训",
         kind: "能力提升",
-        summary: "为在职教师、在校学生、社会人员和在职人员提供学习培训入口，衔接能力诊断、课程与成果记录。",
+        summary: "教师、学生、社会人员和在职人员都能进。测评结果、课程和成果记录连着走。",
         audience: "all personal institution",
         tags: ["培训项目", "学习记录", "能力提升"],
         action: "进入个人服务",
@@ -413,7 +413,7 @@
         icon: "▥",
         name: "组织测评与培训管理",
         kind: "组织能力发展",
-        summary: "支持院校与企业组织教师、学生及员工的能力提升培训、能力测评和项目管理。",
+        summary: "院校和企业用它组织教师、学生、员工的培训、测评和项目。",
         audience: "all institution",
         tags: ["组织管理", "培训实施", "授权范围"],
         action: "进入机构服务",
@@ -424,7 +424,7 @@
         icon: "◎",
         name: "评价认证服务",
         kind: "成果评价",
-        summary: "了解能力评价与成果认定的衔接方式；具体认证申请和审核须符合相应项目规则。",
+        summary: "看清能力评价怎么接上成果认定。具体申请和审核按各项目规则走。",
         audience: "all personal institution",
         tags: ["认证申请", "业务审核", "证书记录"],
         action: "进入个人服务",
@@ -435,7 +435,7 @@
         icon: "✓",
         name: "数字证书核验",
         kind: "结果查询",
-        summary: "使用证书编号查询平台保存的发证记录、当前状态和关联信息；演示数据不构成正式认证。",
+        summary: "输证书编号，查平台里的发证记录和当前状态。演示数据不算正式认证。",
         audience: "all personal institution",
         tags: ["编号查询", "状态核验", "记录说明"],
         action: "查询证书",
@@ -446,7 +446,7 @@
         icon: "▧",
         name: "资讯与资源智库",
         kind: "学习资源",
-        summary: "获取职业教育政策、能力发展研究与实践资讯，支持自主学习和职业成长。",
+        summary: "政策、研究和实践动态都在这里，自己看、自己学。",
         audience: "all personal institution",
         tags: ["政策法规", "研究资讯", "实践参考"],
         action: "浏览资讯动态",
@@ -457,7 +457,7 @@
         icon: "♧",
         name: "生态合作与服务网络",
         kind: "发展支持",
-        summary: "了解区域、院校、企业与专家如何协同提供职业能力提升资源及服务。",
+        summary: "看看区域、院校、企业和专家怎么合作，能提供哪些培训资源和服务。",
         audience: "all institution",
         tags: ["区域合作", "院校合作", "企业协作"],
         action: "了解生态合作",
@@ -474,20 +474,20 @@
             : `<button type="button" class="mps30-card-link" data-page="${item.page}">${item.action}<span aria-hidden="true">↗</span></button>`;
     content(`<section class="mps30 mps35 site-wrap" aria-label="职业能力发展公共服务">
   <header class="mps35-pagehead">
-    <div><div class="mps35-breadcrumb">公共服务 / 职业能力发展</div><div class="mps35-overline">CAREER COMPETENCY DEVELOPMENT</div><h1>职业能力发展公共服务</h1><p>面向在职院校教师、在校学生、社会人员及在职人员，提供能力标准、能力测评、学习培训、评价认证与发展支持服务，助力职业能力提升与持续发展。</p></div>
-    <div class="mps35-head-info"><span>8 <small>项能力发展服务</small></span><div>服务教师、学生、社会人员及在职人员</div></div>
+    <div><div class="mps35-breadcrumb">公共服务 / 职业能力发展</div><div class="mps35-overline">CAREER COMPETENCY DEVELOPMENT</div><h1>职业能力发展公共服务</h1><p>面向院校教师、在校学生、社会人员和在职人员。查标准、做测评、参加培训、申请认证，都从这里进；需要留存个人记录的业务，登录后办理。</p></div>
+    <div class="mps35-head-info"><span>8 <small>项能力发展服务</small></span><div>教师、学生、社会人员、在职人员都能用</div></div>
   </header>
-  <div class="mps35-notice"><span class="mps35-notice-dot" aria-hidden="true"></span><strong>服务提示</strong><span>能力标准、资讯和快速测评体验可直接访问；个人测评记录、学习培训与认证申请等服务，请登录相应的个人或机构工作台。</span></div>
+  <div class="mps35-notice"><span class="mps35-notice-dot" aria-hidden="true"></span><strong>服务提示</strong><span>标准、资讯和快速测评不用登录，直接看、直接做。测评记录、培训学习和认证申请，到个人或机构工作台办理。</span></div>
   <div class="mps35-layout">
-    <aside class="mps35-sidebar" aria-label="服务分类导航"><div class="mps35-side-title">能力发展服务导航</div><div class="mps35-side-link is-current"><span>▦</span> 全部服务 <b>08</b></div><a href="#mps35-catalog"><span>◈</span> 标准与测评</a><a href="#mps35-catalog"><span>▤</span> 培训与认证</a><a href="#mps35-guide"><span>≡</span> 办理流程</a><a href="#mps35-roles"><span>♙</span> 按身份办理</a><div class="mps35-side-hint">按职业能力发展需求选择服务，进入对应功能。</div></aside>
+    <aside class="mps35-sidebar" aria-label="服务分类导航"><div class="mps35-side-title">能力发展服务导航</div><div class="mps35-side-link is-current"><span>▦</span> 全部服务 <b>08</b></div><a href="#mps35-catalog"><span>◈</span> 标准与测评</a><a href="#mps35-catalog"><span>▤</span> 培训与认证</a><a href="#mps35-guide"><span>≡</span> 办理流程</a><a href="#mps35-roles"><span>♙</span> 按身份办理</a><div class="mps35-side-hint">按需求挑服务，点进去就能办。</div></aside>
     <div class="mps35-main">
-      <div class="mps35-catalog-head" id="mps35-catalog"><div><span class="mps35-overline">SERVICE CATALOG</span><h2>职业能力发展服务</h2><p>围绕能力认知、测评诊断、学习提升、成果评价和持续发展，选择适合自己的服务。</p></div><span class="mps35-catalog-total">共 08 项</span></div>
+      <div class="mps35-catalog-head" id="mps35-catalog"><div><span class="mps35-overline">SERVICE CATALOG</span><h2>职业能力发展服务</h2><p>从了解能力要求到评价学习成果，挑一项现在用得上的服务。</p></div><span class="mps35-catalog-total">共 08 项</span></div>
       <div class="mps30-filters mps35-filters" role="group" aria-label="按服务对象筛选"><button type="button" data-service-filter="all" aria-pressed="true" class="is-active">全部服务</button><button type="button" data-service-filter="personal" aria-pressed="false">教师、学生与社会人员</button><button type="button" data-service-filter="institution" aria-pressed="false">组织培训与管理</button><span class="mps30-filter-count" aria-live="polite">显示 8 项服务</span></div>
       <div class="mps35-service-list">${serviceItems.map((item) => `<article class="mps35-item" data-service-audience="${item.audience}"><div class="mps35-item-icon" aria-hidden="true">${item.icon}</div><div class="mps35-item-body"><div class="mps35-item-top"><span class="mps35-item-type">${item.kind}</span><span class="mps35-item-id">${item.no} / 08</span></div><h3>${item.name}</h3><p>${item.summary}</p><div class="mps35-item-tags">${item.tags.map((t) => `<span>${t}</span>`).join("")}</div></div><div class="mps35-item-action">${actionHtml(item)}</div></article>`).join("")}</div>
     </div>
-    <aside class="mps35-rail" aria-label="常用办理入口"><section class="mps35-rail-panel"><div class="mps35-rail-kicker">QUICK ACCESS</div><h3>常用服务</h3><button type="button" data-page="standards"><span>◈</span><b>能力标准查询</b><em>↗</em></button><a href="eight-questions.html"><span>◇</span><b>快速能力测评</b><em>↗</em></a><button type="button" data-page="verify"><span>✓</span><b>证书信息核验</b><em>↗</em></button></section><section class="mps35-rail-support"><strong>面向院校与培训组织者</strong><p>开展教师、学生及员工培训与组织测评，可从机构工作台进入。</p><button type="button" data-act="institution-login">进入机构服务 →</button></section></aside>
+    <aside class="mps35-rail" aria-label="常用办理入口"><section class="mps35-rail-panel"><div class="mps35-rail-kicker">QUICK ACCESS</div><h3>常用服务</h3><button type="button" data-page="standards"><span>◈</span><b>能力标准查询</b><em>↗</em></button><a href="eight-questions.html"><span>◇</span><b>快速能力测评</b><em>↗</em></a><button type="button" data-page="verify"><span>✓</span><b>证书信息核验</b><em>↗</em></button></section><section class="mps35-rail-support"><strong>面向院校与培训组织者</strong><p>组织教师、学生和员工的培训与测评，从机构工作台进。</p><button type="button" data-act="institution-login">进入机构服务 →</button></section></aside>
   </div>
-  <section class="mps35-guide" id="mps35-guide"><div class="mps35-guide-head"><span class="mps35-overline">SERVICE PROCEDURE</span><h2>职业能力发展路径</h2><p>了解能力要求、诊断能力现状、参与学习实践、评价发展成果，并持续改进；测评结果不等同于职业资格认定。</p></div><div class="mps35-guide-steps">${[
+  <section class="mps35-guide" id="mps35-guide"><div class="mps35-guide-head"><span class="mps35-overline">SERVICE PROCEDURE</span><h2>职业能力发展路径</h2><p>先看清要求，再测评现状，然后学习实践、评价成果，最后补上短板。测评结果不是职业资格认定。</p></div><div class="mps35-guide-steps">${[
     ["01", "明确能力目标", "了解能力要求"],
     ["02", "开展能力测评", "识别能力现状"],
     ["03", "学习与实践", "提升岗位能力"],
@@ -496,7 +496,7 @@
   ]
     .map((x) => `<div><span>${x[0]}</span><strong>${x[1]}</strong><small>${x[2]}</small></div>`)
     .join("")}</div></section>
-  <section class="mps35-roles" id="mps35-roles"><div class="mps35-guide-head"><span class="mps35-overline">ROLE ENTRANCE</span><h2>按服务对象进入工作台</h2><p>个人开展能力测评与学习提升，院校和机构组织培训、测评及成果管理。</p></div><div class="mps35-role-grid"><article><div class="mps35-role-number">01 / 个人服务</div><h3>在职教师、在校学生、社会人员及在职人员</h3><p>开展职业能力测评、学习实践和培训，查看个人能力档案与发展成果。</p><button type="button" data-personal-modal="true">进入个人服务 <span>↗</span></button></article><article><div class="mps35-role-number">02 / 机构服务</div><h3>院校、企业及培训服务机构</h3><p>面向教师、学生与员工组织职业能力提升项目，在授权范围内管理培训及测评业务。</p><button type="button" data-act="institution-login">进入机构服务 <span>↗</span></button></article></div></section>
+  <section class="mps35-roles" id="mps35-roles"><div class="mps35-guide-head"><span class="mps35-overline">ROLE ENTRANCE</span><h2>按服务对象进入工作台</h2><p>个人做测评、学课程；院校和机构组织培训、测评，管理成果记录。</p></div><div class="mps35-role-grid"><article><div class="mps35-role-number">01 / 个人服务</div><h3>在职教师、在校学生、社会人员及在职人员</h3><p>做测评、参加培训，能力和成果都留档。</p><button type="button" data-personal-modal="true">进入个人服务 <span>↗</span></button></article><article><div class="mps35-role-number">02 / 机构服务</div><h3>院校、企业及培训服务机构</h3><p>给教师、学生、员工组织培训项目，在授权范围内管理培训和测评。</p><button type="button" data-act="institution-login">进入机构服务 <span>↗</span></button></article></div></section>
   <div class="mps35-disclaimer"><strong>服务说明：</strong>本平台以职业能力发展为导向，提供学习、测评与评价相关服务；各类认证按独立规则办理。离线演示记录不具备职业资格或正式证书核验效力。</div>
  </section>`);
   }
