@@ -104,7 +104,13 @@
       org: "SCH-003",
       label: "院校管理员 · 山西职业技术学院",
     },
-    { account: "admin", password: "123456", name: "平台管理员", role: "operations", label: "研究院总部 · 运营管理员" },
+    {
+      account: "admin",
+      password: "123456",
+      name: "平台管理员",
+      role: "operations",
+      label: "研究院总部 · 运营管理员",
+    },
     {
       account: "reviewer",
       password: "123456",
@@ -120,11 +126,14 @@
     if (
       old &&
       (DEMO_ACCOUNTS.some((a) => a.account === old.account) ||
-        registeredUsers().some((a) => a.account === old.account && a.status !== "停用"))
+        registeredUsers().some(
+          (a) => a.account === old.account && a.status !== "停用",
+        ))
     ) {
-      session = [...DEMO_ACCOUNTS, ...registeredUsers().filter((a) => a.status !== "停用")].find(
-        (a) => a.account === old.account,
-      );
+      session = [
+        ...DEMO_ACCOUNTS,
+        ...registeredUsers().filter((a) => a.status !== "停用"),
+      ].find((a) => a.account === old.account);
       role = session.role;
       person = session.person || person;
       org = session.org || org;
@@ -154,7 +163,9 @@
     }
   }
   const authorizedPage = (k) =>
-    role === "public" || !session ? role === "public" : !session.permissions || session.permissions.includes(k);
+    role === "public" || !session
+      ? role === "public"
+      : !session.permissions || session.permissions.includes(k);
   const $ = (s) => document.querySelector(s);
   const find = (k, id) => db[k].find((x) => x.id === id),
     name = (k, id) => find(k, id)?.name || id,
@@ -167,7 +178,14 @@
     esc = (x) =>
       String(x ?? "").replace(
         /[&<>"']/g,
-        (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[c],
+        (c) =>
+          ({
+            "&": "&amp;",
+            "<": "&lt;",
+            ">": "&gt;",
+            '"': "&quot;",
+            "'": "&#39;",
+          })[c],
       ),
     save = () => localStorage.setItem(KEY, JSON.stringify(db));
   let toastTimer;
@@ -188,7 +206,8 @@
     `<div class="stat"><div class="metric">${t}</div><div class="num">${v}</div><div class="hint">${h}</div></div>`;
   const table = (headers, rows) =>
     `<div class="table-scroll"><table><thead><tr>${headers.map((h) => `<th>${h}</th>`).join("")}</tr></thead><tbody>${rows.length ? rows.map((r) => `<tr>${r.map((c) => `<td>${c}</td>`).join("")}</tr>`).join("") : `<tr><td colspan="${headers.length}" class="empty">暂无符合条件的数据</td></tr>`}</tbody></table></div>`;
-  const panel = (title, body) => `<section class="panel"><h2>${title}</h2>${body}</section>`;
+  const panel = (title, body) =>
+    `<section class="panel"><h2>${title}</h2>${body}</section>`;
   const header = (title, desc, actions = "") =>
     `<div class="titleline"><div><div class="eyebrow">MVERI / ${role === "public" ? "公共服务" : role === "personal" ? "个人服务" : role === "institution" ? "机构服务" : "运营管理"}</div><h1>${title}</h1><div class="muted">${desc}</div></div><div class="actions">${actions}</div></div>`;
   const content = (s) => (document.getElementById("content").innerHTML = s);
@@ -197,16 +216,24 @@
     myApps = () => db.applications.filter((x) => x.person === person),
     myCert = () => db.certificates.filter((x) => x.person === person),
     groupPeople = () => db.people.filter((p) => byOrg(p.id, org)),
-    groupProjects = () => db.projects.filter((p) => p.org === org || p.region === org),
+    groupProjects = () =>
+      db.projects.filter((p) => p.org === org || p.region === org),
     groupEnrollment = () => db.enrollments.filter((e) => byOrg(e.person, org));
   const eligible = (p) => {
     let e = db.enrollments.find((x) => x.person === p && x.completed),
       a =
         e &&
         db.assessments.find(
-          (x) => x.person === p && x.framework === find("projects", e.project).framework && x.score >= 70,
+          (x) =>
+            x.person === p &&
+            x.framework === find("projects", e.project).framework &&
+            x.score >= 70,
         ),
-      x = e && db.exams.find((t) => t.person === p && t.project === e.project && t.passed);
+      x =
+        e &&
+        db.exams.find(
+          (t) => t.person === p && t.project === e.project && t.passed,
+        );
     return { e, a, x, ok: !!(e && a && x) };
   };
   function navItems() {
@@ -274,7 +301,10 @@
           ["verify", "认证中心"],
           ["ecology", "生态合作"],
         ]
-          .map(([k, t]) => `<button class="${page === k ? "selected" : ""}" data-page="${k}">${t}</button>`)
+          .map(
+            ([k, t]) =>
+              `<button class="${page === k ? "selected" : ""}" data-page="${k}">${t}</button>`,
+          )
           .join(
             "",
           )}</nav><button class="site-login" data-act="login">登录 <span>↗</span></button></div></header><main id="content" class="site-main"></main><footer class="site-footer"><div class="site-wrap"><div><strong>现代职业教育研究院</strong><p>以标准为基础，以能力发展为导向，推动职业教育数字化公共服务。</p></div><div><b>公共服务</b><span>标准体系　能力测评　培训发展　评价认证　证书核验</span></div><div class="site-mini-program" aria-label="微信小程序二维码"><img src="../assets/wechat-mini-program-code.png" alt="微信小程序码，使用微信扫一扫进入" width="132" height="132" loading="lazy"></div><div class="site-disclaimer"><span>培训、认证等业务演示数据为虚构，不构成真实认证结果；全国院校名录以已核验来源和覆盖范围为准。</span><a class="site-icp" href="https://beian.miit.gov.cn/#/Integrated/index" target="_blank" rel="noopener noreferrer">京ICP备18024731号-1</a></div></div></footer>`;
@@ -295,38 +325,84 @@
   }
   function home() {
     const latest = (window.MVERI_NEWS || []).slice(0, 3);
-    content(`<section class="site-hero home-v22-hero"><div class="site-wrap site-hero-grid"><div class="home-v22-intro"><div class="site-kicker"><span></span> MODERN VOCATIONAL EDUCATION · PUBLIC SERVICE</div><h1>构建开放、专业、可信赖的<br><em>职业教育公共服务体系</em></h1><p>聚焦能力标准、测评评价、人才培养与评价认证，面向院校、教师、学生和行业企业，提供贯通能力发展全过程的数字化服务。</p><div class="site-hero-actions"><button class="site-primary" data-page="services">探索公共服务 <span>→</span></button><button type="button" class="home-v22-outline" data-personal-modal="true">进入个人服务中心 <span aria-hidden="true">↗</span></button></div><div class="home-v22-hero-meta"><span>开放标准查询</span><span>公益互动体验</span><span>证书公开核验</span></div></div><div class="hero-graphic" aria-label="MVERI 标准、评价、培养、认证、合作公共服务生态"><div class="orbit orbit-one"></div><div class="orbit orbit-two"></div><div class="orbit-system"><span class="orbit-node node-a"><span>标准</span></span><span class="orbit-node node-b"><span>评价</span></span><span class="orbit-node node-c"><span>培养</span></span><span class="orbit-node node-d"><span>认证</span></span><span class="orbit-node node-e"><span>合作</span></span></div><div class="orbit-center">MVERI<small>公共服务生态</small></div></div></div></section>
-<section class="home-v22-quick site-wrap" aria-label="常用服务快捷入口"><button data-page="standards"><span class="qicon">◈</span><span><b>查看能力标准</b><small>通用能力与教师素智素养框架</small></span><span class="quick-arrow">↗</span></button><a href="eight-questions.html"><span class="qicon">◇</span><span><b>快速8题体验</b><small>无需登录，交互任务与结果解析</small></span><span class="quick-arrow">↗</span></a><button data-page="verify"><span class="qicon">✓</span><span><b>认证中心</b><small>根据证书编号查询记录</small></span><span class="quick-arrow">↗</span></button></section>
-<section class="site-section site-wrap home-v22-services" id="public-services"><div class="site-section-header"><div><span class="site-eyebrow">PUBLIC SERVICES</span><h2>公共服务，覆盖能力发展全过程</h2><p>按服务目的进入业务，而不是先选择复杂的管理系统。</p></div><button class="text-action" data-page="services">全部公共服务 →</button></div><div class="service-grid">${[
-      ["01", "标准体系", "查询能力标准、版本与指标结构，了解测评依据。", "◈", "standards"],
-      ["02", "能力测评", "通过真实任务了解个人数智能力与发展方向。", "◇", "services"],
-      ["03", "能力发展", "了解课程培训、学习路径和教师发展服务。", "▤", "services"],
-      ["04", "评价认证", "查看考试、认证申请及证书管理流程。", "◎", "services"],
-      ["05", "资源智库", "获取研究资料、课程与相关资源。", "▧", "services"],
-      ["06", "生态合作", "了解区域、院校、企业及专家合作方式。", "♧", "ecology"],
+    content(`<section class="site-hero home-v22-hero"><div class="site-wrap site-hero-grid"><div class="home-v22-intro"><div class="site-kicker"><span></span> MODERN VOCATIONAL EDUCATION · PUBLIC SERVICE</div><h1>标准、测评、认证，<br><em>都在同一个入口</em></h1><p>院校教师、在校学生、社会人员和在职人员都能用。先查标准，再做测评；学完可以申请认证，证书支持公开查询。</p><div class="site-hero-actions"><button class="site-primary" data-page="services">看看有哪些服务 <span>→</span></button><button type="button" class="home-v22-outline" data-personal-modal="true">进入个人服务中心 <span aria-hidden="true">↗</span></button></div><div class="home-v22-hero-meta"><span>开放标准查询</span><span>公益互动体验</span><span>证书公开核验</span></div></div><div class="hero-graphic" aria-label="MVERI 标准、评价、培养、认证、合作公共服务生态"><div class="orbit orbit-one"></div><div class="orbit orbit-two"></div><div class="orbit-system"><span class="orbit-node node-a"><span>标准</span></span><span class="orbit-node node-b"><span>评价</span></span><span class="orbit-node node-c"><span>培养</span></span><span class="orbit-node node-d"><span>认证</span></span><span class="orbit-node node-e"><span>合作</span></span></div><div class="orbit-center">MVERI<small>公共服务生态</small></div></div></div></section>
+<section class="home-v22-quick site-wrap" aria-label="常用服务快捷入口"><button data-page="standards"><span class="qicon">◈</span><span><b>查能力标准</b><small>通用能力与教师数智素养两套框架</small></span><span class="quick-arrow">↗</span></button><a href="eight-questions.html"><span class="qicon">◇</span><span><b>做8道体验题</b><small>不用登录，做完看逐题解析</small></span><span class="quick-arrow">↗</span></a><button data-page="verify"><span class="qicon">✓</span><span><b>查证书</b><small>输入编号，看发证记录和状态</small></span><span class="quick-arrow">↗</span></button></section>
+<section class="site-section site-wrap home-v22-services" id="public-services"><div class="site-section-header"><div><span class="site-eyebrow">PUBLIC SERVICES</span><h2>能力发展用得到的服务，都在这儿</h2><p>按你要办的事找入口，不用先研究系统结构。</p></div><button class="text-action" data-page="services">全部公共服务 →</button></div><div class="service-grid">${[
+      [
+        "01",
+        "标准体系",
+        "查标准、版本和指标结构，看测评依据是什么。",
+        "◈",
+        "standards",
+      ],
+      [
+        "02",
+        "能力测评",
+        "做真实任务，看自己的数智能力在什么位置。",
+        "◇",
+        "services",
+      ],
+      [
+        "03",
+        "能力发展",
+        "课程、培训和学习路径，教师发展服务也在这一块。",
+        "▤",
+        "services",
+      ],
+      [
+        "04",
+        "评价认证",
+        "考试怎么考、认证怎么申请、证书怎么管理，流程写在这里。",
+        "◎",
+        "services",
+      ],
+      [
+        "05",
+        "资源智库",
+        "研究报告、课程和其他能直接用的资料。",
+        "▧",
+        "services",
+      ],
+      [
+        "06",
+        "生态合作",
+        "区域、院校、企业和专家，各自怎么合作。",
+        "♧",
+        "ecology",
+      ],
     ]
       .map(
         (x) =>
           `<article class="service-tile"><span class="service-index">${x[0]}</span><div class="service-symbol">${x[3]}</div><h3>${x[1]}</h3><p>${x[2]}</p><button class="service-link" data-page="${x[4]}">了解服务 <span aria-hidden="true">→</span></button></article>`,
       )
       .join("")}</div></section>
-<section class="home-v22-demo"><div class="site-wrap home-v22-demo-grid"><div><span class="home-v22-kicker">FREE INTERACTIVE EXPERIENCE</span><h2>8道互动任务<br>让数字能力看得见</h2><p>围绕信息检索、邮件处理、文件管理、文档与网页操作，在独立任务空间中完成操作，并获得逐题反馈与解析。</p><a href="eight-questions.html" class="home-v22-demo-btn">立即体验8道题 <span>↗</span></a><div class="home-v22-demo-note">无需登录 · 支持本地进度保存 · 不作为正式认证成绩</div></div><div class="home-v22-demo-visual"><div class="home-v22-demo-count">08<small>REAL-WORLD TASKS</small></div><div class="home-v22-demo-flow"><span>任务操作</span><span>即时反馈</span><span>复盘提升</span></div></div></div></section>
-<section class="site-section site-wrap home-v22-news"><div class="site-section-header"><div><span class="site-eyebrow">POLICY & NEWS</span><h2>政策资讯与行业动态</h2><p>精选有来源的政策、职业教育新闻与研究动态，详情可查看官方原文。</p></div><button class="text-action" data-page="news">进入资讯动态 →</button></div><div class="home-v22-news-grid">${latest.map((n, i) => `<article class="home-v22-news-card"><div class="home-v22-news-image"><img src="../assets/news-images/${esc(n.art)}" alt="${esc(n.category)}专题配图" loading="lazy"></div><div class="home-v22-news-body"><div class="home-v22-news-meta"><span>${esc(n.category)}</span><time>${esc(n.date)}</time></div><h3>${esc(n.title)}</h3><p>${esc(n.lead)}</p><button class="service-link" data-news-id="${esc(n.id)}">阅读详情 →</button></div></article>`).join("")}</div></section>
-<section class="site-band home-v22-process"><div class="site-wrap band-inner"><div><span class="site-eyebrow">SERVICE JOURNEY</span><h2>从标准依据到能力发展</h2><p>个人的测评、培训、考试和认证形成关联记录；标准与认证规则由平台统一管理。</p><button class="text-action" data-page="services">了解业务流程 →</button></div><div class="band-steps">${["标准依据", "能力测评", "学习发展", "考试评价", "认证核验"].map((x, i) => `<div><strong>0${i + 1}</strong><span>${x}</span></div>`).join("")}</div></div></section>
-<section class="site-section site-wrap home-v22-audience"><div class="site-section-header"><div><span class="site-eyebrow">SERVICE ENTRANCE</span><h2>面向不同用户的统一服务入口</h2><p>官网内容开放浏览，办理个人或机构业务时使用统一账号登录。</p></div></div><div class="audience-grid"><article><span>PERSONAL SERVICE</span><h3>教师、学生与社会学习者</h3><p>进行能力测评、课程学习、考试与认证申请，查看个人记录和证书。</p><button class="home-v22-audience-btn" data-personal-modal="true">进入个人服务 →</button></article><article><span>INSTITUTIONAL SERVICE</span><h3>院校、企业与区域服务中心</h3><p>开展成员管理、培训项目与测评组织，查看授权范围内的业务成果。</p><button class="home-v22-audience-btn" data-act="institution-login">进入机构服务 →</button></article></div></section>
-<section class="site-verify-band home-v22-verify"><div class="site-wrap"><div><span class="site-eyebrow">CERTIFICATE VERIFICATION</span><h2>证书信息公开核验</h2><p>输入证书编号，查询平台已有的证书记录与状态。</p></div><button class="home-v22-verify-btn" data-page="verify">前往认证中心 →</button></div></section>`);
+<section class="home-v22-demo"><div class="site-wrap home-v22-demo-grid"><div><span class="home-v22-kicker">FREE INTERACTIVE EXPERIENCE</span><h2>8道真实操作题，<br>做完知道差在哪</h2><p>题目就是日常会碰到的活：查信息、写邮件、整理文件、处理文档和网页。每做完一道，当场给反馈和解析。</p><a href="eight-questions.html" class="home-v22-demo-btn">开始做题 <span>↗</span></a><div class="home-v22-demo-note">无需登录 · 支持本地进度保存 · 不作为正式认证成绩</div></div><div class="home-v22-demo-visual"><div class="home-v22-demo-count">08<small>REAL-WORLD TASKS</small></div><div class="home-v22-demo-flow"><span>任务操作</span><span>即时反馈</span><span>复盘提升</span></div></div></div></section>
+<section class="site-section site-wrap home-v22-news"><div class="site-section-header"><div><span class="site-eyebrow">POLICY & NEWS</span><h2>政策资讯与行业动态</h2><p>每条都标来源和发布时间，详情页能跳到官方原文。</p></div><button class="text-action" data-page="news">进入资讯动态 →</button></div><div class="home-v22-news-grid">${latest.map((n, i) => `<article class="home-v22-news-card"><div class="home-v22-news-image"><img src="../assets/news-images/${esc(n.art)}" alt="${esc(n.category)}专题配图" loading="lazy"></div><div class="home-v22-news-body"><div class="home-v22-news-meta"><span>${esc(n.category)}</span><time>${esc(n.date)}</time></div><h3>${esc(n.title)}</h3><p>${esc(n.lead)}</p><button class="service-link" data-news-id="${esc(n.id)}">阅读详情 →</button></div></article>`).join("")}</div></section>
+<section class="site-band home-v22-process"><div class="site-wrap band-inner"><div><span class="site-eyebrow">SERVICE JOURNEY</span><h2>从一条标准，到一张证书</h2><p>测评、培训、考试、认证的记录跟着个人走。标准怎么定、认证按什么规则，由平台统一管。</p><button class="text-action" data-page="services">了解业务流程 →</button></div><div class="band-steps">${["标准依据", "能力测评", "学习发展", "考试评价", "认证核验"].map((x, i) => `<div><strong>0${i + 1}</strong><span>${x}</span></div>`).join("")}</div></div></section>
+<section class="site-section site-wrap home-v22-audience"><div class="site-section-header"><div><span class="site-eyebrow">SERVICE ENTRANCE</span><h2>谁来用，走哪个入口</h2><p>官网内容不登录也能看。要办个人或机构业务，用一个账号登录。</p></div></div><div class="audience-grid"><article><span>PERSONAL SERVICE</span><h3>教师、学生与社会学习者</h3><p>做测评、学课程、参加考试、申请认证，个人记录和证书都在账号里。</p><button class="home-v22-audience-btn" data-personal-modal="true">进入个人服务 →</button></article><article><span>INSTITUTIONAL SERVICE</span><h3>院校、企业与区域服务中心</h3><p>管成员、办培训、组织测评，看授权范围内的业务数据。</p><button class="home-v22-audience-btn" data-act="institution-login">进入机构服务 →</button></article></div></section>
+<section class="site-verify-band home-v22-verify"><div class="site-wrap"><div><span class="site-eyebrow">CERTIFICATE VERIFICATION</span><h2>证书可以公开查</h2><p>有证书编号就能查，看到发证记录和当前状态。</p></div><button class="home-v22-verify-btn" data-page="verify">前往认证中心 →</button></div></section>`);
   }
   function news(category = "全部资讯", term = "") {
     const list = window.MVERI_NEWS || [],
-      cats = ["全部资讯", "政策法规", "行业新闻", "政策解读", "研究动态", "通知公告"],
+      cats = [
+        "全部资讯",
+        "政策法规",
+        "行业新闻",
+        "政策解读",
+        "研究动态",
+        "通知公告",
+      ],
       featured = list[0],
       filtered = list.filter(
         (x) =>
           (category === "全部资讯" || x.category === category) &&
-          (!term || (x.title + x.lead + x.agency).toLowerCase().includes(term.toLowerCase())),
+          (!term ||
+            (x.title + x.lead + x.agency)
+              .toLowerCase()
+              .includes(term.toLowerCase())),
       );
     content(
-      `<section class="news-landing"><div class="news-titleband site-wrap"><div><span class="site-eyebrow">POLICY & NEWS</span><h1>资讯动态</h1><p>聚焦职业教育政策法规、行业新闻及研究进展，提供有来源、可核验的图文资讯。</p></div><div class="news-title-mark">NEWS<small>政策 · 资讯 · 研究</small></div></div><div class="site-wrap"><div class="news-tabs" role="group" aria-label="资讯分类">${cats.map((c) => `<button type="button" class="${category === c ? "active" : ""}" data-news-category="${esc(c)}">${esc(c)}</button>`).join("")}</div><div class="news-search-row"><div class="news-result-info">${category === "全部资讯" ? "政策与行业精选" : esc(category)} <span>· ${filtered.length} 条内容</span></div><form id="news-search-form"><input id="news-search-input" type="search" value="${esc(term)}" placeholder="搜索政策、新闻关键词" aria-label="搜索资讯"><button type="submit">搜索</button></form></div>${category === "全部资讯" && !term && featured ? `<article class="news-feature"><img src="../assets/news-images/${featured.art}" alt="政策专题图文封面"><div class="news-feature-copy"><span class="news-chip">焦点政策</span><div class="news-meta">${esc(featured.date)} · ${esc(featured.agency)}</div><h2>${esc(featured.title)}</h2><p>${esc(featured.lead)}</p><button type="button" class="news-button" data-news-open="${featured.id}">阅读政策详情 →</button></div></article>` : ""}<div class="news-content-layout"><div><div class="news-section-title"><h2>资讯列表</h2><span>按发布时间整理</span></div><div class="news-card-grid">${filtered.length ? filtered.map((x) => `<article class="news-card"><button type="button" class="news-image-action" data-news-open="${x.id}" aria-label="阅读${esc(x.title)}"><img src="../assets/news-images/${x.art}" alt="${esc(x.category)}专题配图" loading="lazy"></button><div class="news-card-body"><span class="news-chip">${esc(x.category)}</span><div class="news-meta">${esc(x.date)} · ${esc(x.agency)}</div><h3><button type="button" data-news-open="${x.id}">${esc(x.title)}</button></h3><p>${esc(x.lead)}</p><button type="button" class="news-read" data-news-open="${x.id}">阅读全文 →</button></div></article>`).join("") : '<div class="news-empty">当前分类暂无已核验的资讯。后续可通过资讯数据文件补充。</div>'}</div></div><aside class="news-side"><div class="news-aside-box"><h3>政策信息来源</h3><p>政策及行业资讯优先采用教育部等官方公开渠道，记录发布时间、发布机构和原文链接。</p><a href="https://www.moe.gov.cn/" target="_blank" rel="noopener noreferrer">教育部官网 ↗</a></div><div class="news-aside-box"><h3>专题关注</h3><button data-news-category="政策法规">职业教育政策</button><button data-news-category="行业新闻">行业发展动态</button><button data-news-category="政策解读">政策要点解读</button></div><div class="news-aside-box news-aside-note"><h3>信息说明</h3><p>本站对公开政策与新闻进行简要摘编，不代表原发布机关的官方解释。配图为平台自制专题插画，不是新闻现场照片。</p></div></aside></div></div></section>`,
+      `<section class="news-landing"><div class="news-titleband site-wrap"><div><span class="site-eyebrow">POLICY & NEWS</span><h1>资讯动态</h1><p>职业教育领域的政策、新闻和研究进展。每条都写明来源和发布时间，能点回原文。</p></div><div class="news-title-mark">NEWS<small>政策 · 资讯 · 研究</small></div></div><div class="site-wrap"><div class="news-tabs" role="group" aria-label="资讯分类">${cats.map((c) => `<button type="button" class="${category === c ? "active" : ""}" data-news-category="${esc(c)}">${esc(c)}</button>`).join("")}</div><div class="news-search-row"><div class="news-result-info">${category === "全部资讯" ? "政策与行业精选" : esc(category)} <span>· ${filtered.length} 条内容</span></div><form id="news-search-form"><input id="news-search-input" type="search" value="${esc(term)}" placeholder="搜索政策、新闻关键词" aria-label="搜索资讯"><button type="submit">搜索</button></form></div>${category === "全部资讯" && !term && featured ? `<article class="news-feature"><img src="../assets/news-images/${featured.art}" alt="政策专题图文封面"><div class="news-feature-copy"><span class="news-chip">焦点政策</span><div class="news-meta">${esc(featured.date)} · ${esc(featured.agency)}</div><h2>${esc(featured.title)}</h2><p>${esc(featured.lead)}</p><button type="button" class="news-button" data-news-open="${featured.id}">阅读政策详情 →</button></div></article>` : ""}<div class="news-content-layout"><div><div class="news-section-title"><h2>资讯列表</h2><span>按发布时间整理</span></div><div class="news-card-grid">${filtered.length ? filtered.map((x) => `<article class="news-card"><button type="button" class="news-image-action" data-news-open="${x.id}" aria-label="阅读${esc(x.title)}"><img src="../assets/news-images/${x.art}" alt="${esc(x.category)}专题配图" loading="lazy"></button><div class="news-card-body"><span class="news-chip">${esc(x.category)}</span><div class="news-meta">${esc(x.date)} · ${esc(x.agency)}</div><h3><button type="button" data-news-open="${x.id}">${esc(x.title)}</button></h3><p>${esc(x.lead)}</p><button type="button" class="news-read" data-news-open="${x.id}">阅读全文 →</button></div></article>`).join("") : '<div class="news-empty">这个分类下暂时没有内容。</div>'}</div></div><aside class="news-side"><div class="news-aside-box"><h3>政策信息来源</h3><p>政策类内容优先取教育部等官方渠道。每条都记发布时间、发布机构和原文链接。</p><a href="https://www.moe.gov.cn/" target="_blank" rel="noopener noreferrer">教育部官网 ↗</a></div><div class="news-aside-box"><h3>专题关注</h3><button data-news-category="政策法规">职业教育政策</button><button data-news-category="行业新闻">行业发展动态</button><button data-news-category="政策解读">政策要点解读</button></div><div class="news-aside-box news-aside-note"><h3>信息说明</h3><p>本站摘编公开政策和新闻，不代表原发布机关的解释。配图是平台自制插画，不是新闻现场照片。</p></div></aside></div></div></section>`,
     );
   }
   function newsDetail(id) {
@@ -341,7 +417,17 @@
   }
   function ecology() {
     const partnerGroups = [
-      ["科技企业", ["华为技术", "阿里云智能", "腾讯教育", "百度智能云", "科大讯飞", "联想方案服务"]],
+      [
+        "科技企业",
+        [
+          "华为技术",
+          "阿里云智能",
+          "腾讯教育",
+          "百度智能云",
+          "科大讯飞",
+          "联想方案服务",
+        ],
+      ],
       [
         "院校",
         [
@@ -353,16 +439,30 @@
           "广州番禺职业技术学院",
         ],
       ],
-      ["央企合作", ["中国电信", "中国联通", "中国移动", "国家电网", "中国中车", "中国中铁"]],
+      [
+        "央企合作",
+        [
+          "中国电信",
+          "中国联通",
+          "中国移动",
+          "国家电网",
+          "中国中车",
+          "中国中铁",
+        ],
+      ],
     ];
     content(
-      `<section class="site-section site-wrap ecology-page"><div class="site-section-header"><div><span class="site-eyebrow">ECOSYSTEM PARTNERSHIP</span><h2>生态合作</h2><p>协同院校、行业企业、专家和区域服务伙伴，共建职业教育公共服务生态。</p></div></div><div class="ecology-intro"><div class="ecology-copy"><span class="site-eyebrow">OPEN COLLABORATION</span><h2>携手共建，共享能力发展服务</h2><p>围绕标准研究、能力测评、教师发展、课程资源和评价认证等公共服务开展协作。合作申请及授权须经研究院审核，体验版不接受真实申请。</p><button class="site-primary" data-act="institution-login">进入机构服务 <span>→</span></button></div><div class="ecology-globe" aria-hidden="true">MVERI<small>研究 · 协作 · 发展</small></div></div><div class="service-grid ecology-grid">${[
-        ["区域合作", "区域服务中心建设、院校服务拓展与项目协同。", "01"],
-        ["院校合作", "教师能力发展、组织测评、培训项目与成果应用。", "02"],
-        ["企业合作", "数字技术、产业资源、实践场景与人才培养合作。", "03"],
-        ["专家合作", "参与能力标准研究、题目审查、课程与评价研究。", "04"],
-        ["学习资源合作", "课程、工具、案例等资源共建与合规共享。", "05"],
-        ["教育科技合作", "测评工具、AI技术与数字平台能力集成。", "06"],
+      `<section class="site-section site-wrap ecology-page"><div class="site-section-header"><div><span class="site-eyebrow">ECOSYSTEM PARTNERSHIP</span><h2>生态合作</h2><p>和院校、企业、专家、区域服务中心一起做事，把服务铺开。</p></div></div><div class="ecology-intro"><div class="ecology-copy"><span class="site-eyebrow">OPEN COLLABORATION</span><h2>合作能做什么</h2><p>标准研究、能力测评、教师发展、课程资源、评价认证，都可以按各自擅长的部分参与。申请要经过研究院审核；这是体验版，不收真实申请。</p><button class="site-primary" data-act="institution-login">进入机构服务 <span>→</span></button></div><div class="ecology-globe" aria-hidden="true">MVERI<small>研究 · 协作 · 发展</small></div></div><div class="service-grid ecology-grid">${[
+        ["区域合作", "建区域服务中心，拓展院校服务，一起做项目。", "01"],
+        [
+          "院校合作",
+          "教师能力发展、组织测评、培训项目，以及成果怎么用。",
+          "02",
+        ],
+        ["企业合作", "数字技术、产业资源、实践场景，落到人才培养上。", "03"],
+        ["专家合作", "参与标准研究、审题、课程和评价研究。", "04"],
+        ["学习资源合作", "课程、工具、案例一起建，按规矩共享。", "05"],
+        ["教育科技合作", "测评工具、AI 技术和平台能力对接。", "06"],
       ]
         .map(
           (x) =>
@@ -370,7 +470,7 @@
         )
         .join(
           "",
-        )}</div><div class="partner-showcase"><div class="partner-showcase-head"><div><span class="site-eyebrow">PARTNER NETWORK</span><h3>生态合作网络</h3><p>按科技企业、院校与央企分类展示潜在生态合作方向；以下机构为界面示例，不代表已建立合作关系。</p></div><span class="partner-note">示例机构 · 非已确认合作名单 · 可替换授权 Logo</span></div>${partnerGroups.map((group, gIndex) => `<div class="partner-lane"><div class="partner-lane-label"><strong>${group[0]}</strong><span>${group[1].length} 家/所</span></div><div class="partner-track-wrap"><div class="partner-track ${gIndex % 2 === 1 ? "reverse" : ""}">${[...group[1], ...group[1]].map((name, index) => `<div class="partner-logo-card"><span class="partner-logo-mark">${name.slice(0, 2)}</span><span class="partner-logo-name">${name}</span></div>`).join("")}</div></div></div>`).join("")}</div><div class="ep-ecology-apply"><div><span class="site-eyebrow">PARTNER ACCESS</span><h3>成为生态合作伙伴</h3><p>面向科技企业、职业院校、培训机构与行业组织。合作申请先登记审核，再配置合作范围与工作台账号。未批准不代表已建立合作关系。</p></div><div class="ep-ecology-actions"><a href="../partner/apply.html" class="site-primary">申请生态合作 →</a><a href="../auth/partner.html" class="site-primary ep-outline">合作伙伴登录 →</a></div></div><div class="ecology-bottom"><div><h3>合作服务流程</h3><p>合作咨询 → 需求沟通 → 资质审核 → 方案确认 → 协议签署 → 项目实施与评价</p></div><button class="site-primary" data-act="institution-login">登录机构工作台 →</button></div></section>`,
+        )}</div><div class="partner-showcase"><div class="partner-showcase-head"><div><span class="site-eyebrow">PARTNER NETWORK</span><h3>生态合作网络</h3><p>按科技企业、院校、央企分类列出合作方向。下面这些机构只是界面示例，不代表已经合作。</p></div><span class="partner-note">示例机构 · 非已确认合作名单 · 可替换授权 Logo</span></div>${partnerGroups.map((group, gIndex) => `<div class="partner-lane"><div class="partner-lane-label"><strong>${group[0]}</strong><span>${group[1].length} 家/所</span></div><div class="partner-track-wrap"><div class="partner-track ${gIndex % 2 === 1 ? "reverse" : ""}">${[...group[1], ...group[1]].map((name, index) => `<div class="partner-logo-card"><span class="partner-logo-mark">${name.slice(0, 2)}</span><span class="partner-logo-name">${name}</span></div>`).join("")}</div></div></div>`).join("")}</div><div class="ep-ecology-apply"><div><span class="site-eyebrow">PARTNER ACCESS</span><h3>成为生态合作伙伴</h3><p>科技企业、职业院校、培训机构和行业组织都能申请。先登记审核，通过后分配合作范围和工作台账号。没通过就是没建立合作。</p></div><div class="ep-ecology-actions"><a href="../partner/apply.html" class="site-primary">申请生态合作 →</a><a href="../auth/partner.html" class="site-primary ep-outline">合作伙伴登录 →</a></div></div><div class="ecology-bottom"><div><h3>合作服务流程</h3><p>合作咨询 → 需求沟通 → 资质审核 → 方案确认 → 协议签署 → 项目实施与评价</p></div><button class="site-primary" data-act="institution-login">登录机构工作台 →</button></div></section>`,
     );
   }
   function services() {
@@ -380,7 +480,8 @@
         icon: "◈",
         name: "能力标准查询",
         kind: "标准依据",
-        summary: "查通用数智能力和教师素智素养两套框架，看清能力领域、单元和适用范围。",
+        summary:
+          "查通用数智能力和教师素智素养两套框架，看清能力领域、单元和适用范围。",
         audience: "all personal institution",
         tags: ["标准查询", "能力框架", "版本信息"],
         action: "查看标准体系",
@@ -391,7 +492,8 @@
         icon: "◇",
         name: "能力测评",
         kind: "能力诊断",
-        summary: "先用 8 道题看看现状。完整测评和个人能力档案在个人服务中心办理。",
+        summary:
+          "先用 8 道题看看现状。完整测评和个人能力档案在个人服务中心办理。",
         audience: "all personal",
         tags: ["快速体验", "能力诊断", "发展建议"],
         action: "快速8题体验",
@@ -402,7 +504,8 @@
         icon: "▤",
         name: "能力发展与培训",
         kind: "能力提升",
-        summary: "教师、学生、社会人员和在职人员都能进。测评结果、课程和成果记录连着走。",
+        summary:
+          "教师、学生、社会人员和在职人员都能进。测评结果、课程和成果记录连着走。",
         audience: "all personal institution",
         tags: ["培训项目", "学习记录", "能力提升"],
         action: "进入个人服务",
@@ -435,7 +538,8 @@
         icon: "✓",
         name: "数字证书核验",
         kind: "结果查询",
-        summary: "输证书编号，查平台里的发证记录和当前状态。演示数据不算正式认证。",
+        summary:
+          "输证书编号，查平台里的发证记录和当前状态。演示数据不算正式认证。",
         audience: "all personal institution",
         tags: ["编号查询", "状态核验", "记录说明"],
         action: "查询证书",
@@ -457,7 +561,8 @@
         icon: "♧",
         name: "生态合作与服务网络",
         kind: "发展支持",
-        summary: "看看区域、院校、企业和专家怎么合作，能提供哪些培训资源和服务。",
+        summary:
+          "看看区域、院校、企业和专家怎么合作，能提供哪些培训资源和服务。",
         audience: "all institution",
         tags: ["区域合作", "院校合作", "企业协作"],
         action: "了解生态合作",
@@ -494,7 +599,10 @@
     ["04", "评价与反馈", "检验学习成效"],
     ["05", "持续发展", "完善能力档案"],
   ]
-    .map((x) => `<div><span>${x[0]}</span><strong>${x[1]}</strong><small>${x[2]}</small></div>`)
+    .map(
+      (x) =>
+        `<div><span>${x[0]}</span><strong>${x[1]}</strong><small>${x[2]}</small></div>`,
+    )
     .join("")}</div></section>
   <section class="mps35-roles" id="mps35-roles"><div class="mps35-guide-head"><span class="mps35-overline">ROLE ENTRANCE</span><h2>按服务对象进入工作台</h2><p>个人做测评、学课程；院校和机构组织培训、测评，管理成果记录。</p></div><div class="mps35-role-grid"><article><div class="mps35-role-number">01 / 个人服务</div><h3>在职教师、在校学生、社会人员及在职人员</h3><p>做测评、参加培训，能力和成果都留档。</p><button type="button" data-personal-modal="true">进入个人服务 <span>↗</span></button></article><article><div class="mps35-role-number">02 / 机构服务</div><h3>院校、企业及培训服务机构</h3><p>给教师、学生、员工组织培训项目，在授权范围内管理培训和测评。</p><button type="button" data-act="institution-login">进入机构服务 <span>↗</span></button></article></div></section>
   <div class="mps35-disclaimer"><strong>服务说明：</strong>本平台以职业能力发展为导向，提供学习、测评与评价相关服务；各类认证按独立规则办理。离线演示记录不具备职业资格或正式证书核验效力。</div>
@@ -503,11 +611,22 @@
   function standards() {
     let fw = [...db.frameworks]
       .map((f) =>
-        f.id === "STD-G" ? { ...f, name: "通用数智能力框架", version: "2026-11修订稿", status: "报审稿" } : f,
+        f.id === "STD-G"
+          ? {
+              ...f,
+              name: "通用数智能力框架",
+              version: "2026-11修订稿",
+              status: "报审稿",
+            }
+          : f,
       )
-      .sort((a, b) => (({ "STD-G": 0, "STD-T": 1 })[a.id] ?? 99) - ({ "STD-G": 0, "STD-T": 1 }[b.id] ?? 99));
+      .sort(
+        (a, b) =>
+          (({ "STD-G": 0, "STD-T": 1 })[a.id] ?? 99) -
+          ({ "STD-G": 0, "STD-T": 1 }[b.id] ?? 99),
+      );
     content(
-      `<section class="standard-wrap"><div class="standard-intro"><div class="site-eyebrow">COMPETENCY STANDARDS</div><h1>能力标准体系</h1><p>按标准查看适用对象、能力结构、观察点与业务应用。标准版本与培训、测评、认证项目使用统一编号关联。</p><div class="standard-disclaimer">说明：当前能力结构和考评观察点为业务展示示例，不代表正式标准原文。完整指标及条文须以经确认的研究院标准文件为准。</div></div><div class="standard-catalog">${fw
+      `<section class="standard-wrap"><div class="standard-intro"><div class="site-eyebrow">COMPETENCY STANDARDS</div><h1>能力标准体系</h1><p>每套标准都写明适用对象、能力结构、观察点，以及能用在哪些业务上。版本号把培训、测评、认证项目串在一起。</p><div class="standard-disclaimer">说明：当前能力结构和考评观察点为业务展示示例，不代表正式标准原文。完整指标及条文须以经确认的研究院标准文件为准。</div></div><div class="standard-catalog">${fw
         .map((f, i) => {
           let d = window.MVERI_STANDARD_DETAILS?.[f.id];
           return `<article class="standard-card"><div class="standard-card-top"><span class="standard-number">${String(i + 1).padStart(2, "0")}</span><span class="standard-version">${esc(f.version)}</span></div><h2>${esc(f.name)}</h2><p>${esc(d?.summary || "标准详情待维护")}</p><div class="standard-facts"><span>${f.domains} 个能力维度</span><span>${db.projects.filter((p) => p.framework === f.id).length} 个关联项目</span><span>${esc(f.status)}</span></div><button class="standard-open" data-standard="${esc(f.id)}">查看标准详细内容 <span>→</span></button></article>`;
@@ -581,7 +700,9 @@
   function getCareerProfile() {
     try {
       const map = JSON.parse(localStorage.getItem(CAREER_KEY) || "{}");
-      return map[session?.account || person] || { group: "", goal: "", notes: "" };
+      return (
+        map[session?.account || person] || { group: "", goal: "", notes: "" }
+      );
     } catch {
       return { group: "", goal: "", notes: "" };
     }
@@ -653,7 +774,12 @@
        ]),
      ...myApps()
        .slice(-3)
-       .map((t) => ["认证", esc(t.id), tag(t.status), btn("查看认证", "to-certification", "ghost")]),
+       .map((t) => [
+         "认证",
+         esc(t.id),
+         tag(t.status),
+         btn("查看认证", "to-certification", "ghost"),
+       ]),
    ],
  )}</section>`);
     } else if (role === "institution") {
@@ -671,7 +797,14 @@
           panel(
             "项目执行进度",
             table(
-              ["项目编号", "培训项目", "责任院校", "报名人数", "完成学习", "状态"],
+              [
+                "项目编号",
+                "培训项目",
+                "责任院校",
+                "报名人数",
+                "完成学习",
+                "状态",
+              ],
               projs.map((x) => {
                 let es = db.enrollments.filter((e) => e.project === x.id);
                 return [
@@ -693,12 +826,22 @@
     } else {
       let pending = db.applications.filter((x) => x.status === "待审核");
       content(
-        header("研究院总部运营总览", "面向总部管理、质量监管、认证审核与证据追溯") +
+        header(
+          "研究院总部运营总览",
+          "面向总部管理、质量监管、认证审核与证据追溯",
+        ) +
           `<div class="cards">${stat("区域中心", db.orgs.filter((x) => x.type === "region").length, "统一授权组织")}${stat("合作院校", db.orgs.filter((x) => x.type === "school").length, "挂靠区域服务中心")}${stat("待审核认证", pending.length, "需人工审核")}${stat("已发证", db.certificates.length, "持证可公开核验")}</div>` +
           panel(
             "待处理认证任务",
             table(
-              ["申请编号", "申请人", "所属院校", "关联培训", "资料状态", "操作"],
+              [
+                "申请编号",
+                "申请人",
+                "所属院校",
+                "关联培训",
+                "资料状态",
+                "操作",
+              ],
               pending.map((c) => [
                 c.id,
                 name("people", c.person),
@@ -745,7 +888,11 @@
     const completed = en.filter((x) => x.completed).length,
       latest = ass[ass.length - 1],
       latestExam = ex[ex.length - 1],
-      mean = en.length ? Math.round(en.reduce((sum, x) => sum + Number(x.progress || 0), 0) / en.length) : 0;
+      mean = en.length
+        ? Math.round(
+            en.reduce((sum, x) => sum + Number(x.progress || 0), 0) / en.length,
+          )
+        : 0;
     const tab = window.__mveriPortfolioTab || "overview";
     const tabLabels = [
       ["overview", "档案总览"],
@@ -754,18 +901,39 @@
       ["portrait", "能力画像"],
       ["credentials", "认证成果"],
     ];
-    const frameworkId = (latest && latest.framework) || find("projects", en[0]?.project)?.framework || "STD-G";
-    const detail = (window.MVERI_STANDARD_DETAILS && window.MVERI_STANDARD_DETAILS[frameworkId]) || null;
+    const frameworkId =
+      (latest && latest.framework) ||
+      find("projects", en[0]?.project)?.framework ||
+      "STD-G";
+    const detail =
+      (window.MVERI_STANDARD_DETAILS &&
+        window.MVERI_STANDARD_DETAILS[frameworkId]) ||
+      null;
     const domains = (detail?.domains || []).map((d) => d.name);
-    const levelByScore = (s) => (s >= 90 ? "卓越" : s >= 80 ? "良好" : s >= 70 ? "达标" : s > 0 ? "发展中" : "待建立");
+    const levelByScore = (s) =>
+      s >= 90
+        ? "卓越"
+        : s >= 80
+          ? "良好"
+          : s >= 70
+            ? "达标"
+            : s > 0
+              ? "发展中"
+              : "待建立";
     const nextActions = [];
-    if (!en.length) nextActions.push("报名一个与当前标准匹配的培训项目，形成学习记录。");
-    if (en.length && completed < en.length) nextActions.push("优先完成当前培训课程，提升学习进度和能力画像完整度。");
+    if (!en.length)
+      nextActions.push("报名一个与当前标准匹配的培训项目，形成学习记录。");
+    if (en.length && completed < en.length)
+      nextActions.push("优先完成当前培训课程，提升学习进度和能力画像完整度。");
     if (!latest) nextActions.push("完成一次正式能力测评，形成初始能力基线。");
-    if (en.some((v) => v.completed) && !latestExam) nextActions.push("参加结业考试，补齐认证所需的关键证据。");
-    if (eligible(person).ok && !apps.length) nextActions.push("你已具备申请条件，可提交认证申请。");
-    if (apps.some((a) => a.status === "待审核")) nextActions.push("认证已提交，关注总部审核结果。");
-    if (!nextActions.length) nextActions.push("保持学习与测评更新，持续完善个人能力档案。");
+    if (en.some((v) => v.completed) && !latestExam)
+      nextActions.push("参加结业考试，补齐认证所需的关键证据。");
+    if (eligible(person).ok && !apps.length)
+      nextActions.push("你已具备申请条件，可提交认证申请。");
+    if (apps.some((a) => a.status === "待审核"))
+      nextActions.push("认证已提交，关注总部审核结果。");
+    if (!nextActions.length)
+      nextActions.push("保持学习与测评更新，持续完善个人能力档案。");
     const levelScore = Math.round(
       (latest?.score || 0) * 0.45 +
         mean * 0.2 +
@@ -779,7 +947,11 @@
       const base = Number(latest?.score || 0),
         progress = mean,
         exam = Number(latestExam?.score || 0),
-        certBoost = certs.filter((x) => x.status === "有效").length ? 6 : apps.length ? 3 : 0;
+        certBoost = certs.filter((x) => x.status === "有效").length
+          ? 6
+          : apps.length
+            ? 3
+            : 0;
       const variantMap = {
         "STD-T": [
           [0.58, 0.14, 0.06, 1],
@@ -797,13 +969,22 @@
           [0.57, 0.14, 0.1, 2],
         ],
       };
-      const weights = variantMap[frameworkId] || detail.domains.map((_, i) => [0.6, 0.14, 0.08, i % 2 ? 2 : -1]);
+      const weights =
+        variantMap[frameworkId] ||
+        detail.domains.map((_, i) => [0.6, 0.14, 0.08, i % 2 ? 2 : -1]);
       return detail.domains.map((d, i) => {
         const w = weights[i] || [0.6, 0.14, 0.08, 0];
-        let score = Math.round(base * w[0] + progress * w[1] + exam * w[2] + certBoost + w[3]);
+        let score = Math.round(
+          base * w[0] + progress * w[1] + exam * w[2] + certBoost + w[3],
+        );
         if (!base && !progress && !exam) score = 0;
         else score = Math.max(0, Math.min(96, score));
-        return { name: d.name, score, desc: d.description, items: d.items || [] };
+        return {
+          name: d.name,
+          score,
+          desc: d.description,
+          items: d.items || [],
+        };
       });
     }
     const portraitData = portfolioDomainScores();
@@ -836,10 +1017,16 @@
           .join(" ")}" class="portfolio-radar-ring" />`;
       }).join("");
       const axes = pts(r)
-        .map((p) => `<line x1="${cx}" y1="${cy}" x2="${p[0]}" y2="${p[1]}" class="portfolio-radar-axis" />`)
+        .map(
+          (p) =>
+            `<line x1="${cx}" y1="${cy}" x2="${p[0]}" y2="${p[1]}" class="portfolio-radar-axis" />`,
+        )
         .join("");
       const labels = pts(r + 24)
-        .map((p, i) => `<text x="${p[0]}" y="${p[1]}" class="portfolio-radar-label">${esc(items[i].name)}</text>`)
+        .map(
+          (p, i) =>
+            `<text x="${p[0]}" y="${p[1]}" class="portfolio-radar-label">${esc(items[i].name)}</text>`,
+        )
         .join("");
       const dots = dataPts
         .map(
@@ -851,20 +1038,35 @@
     }
     function strengthSummary(items) {
       if (!items.length) return { strengths: [], weaknesses: [] };
-      const sorted = [...items].filter((x) => x.score > 0).sort((a, b) => b.score - a.score);
-      return { strengths: sorted.slice(0, 2), weaknesses: sorted.slice(-2).sort((a, b) => a.score - b.score) };
+      const sorted = [...items]
+        .filter((x) => x.score > 0)
+        .sort((a, b) => b.score - a.score);
+      return {
+        strengths: sorted.slice(0, 2),
+        weaknesses: sorted.slice(-2).sort((a, b) => a.score - b.score),
+      };
     }
     const sw = strengthSummary(portraitData);
     function trendDelta() {
       if (ass.length < 2) return null;
-      return Number(ass[ass.length - 1].score) - Number(ass[ass.length - 2].score);
+      return (
+        Number(ass[ass.length - 1].score) - Number(ass[ass.length - 2].score)
+      );
     }
     const delta = trendDelta();
     const bodyOverview = `
  <div class="portfolio-grid portfolio-grid-hero">${[
    ["成长参与指数（体验）", levelScore, `当前判定：${overallLevel}`],
-   ["测评记录", ass.length, latest ? `最近得分 ${latest.score} 分` : "尚未测评"],
-   ["学习完成度", mean + "%", completed ? `已完成 ${completed} 个项目` : "暂无完成项目"],
+   [
+     "测评记录",
+     ass.length,
+     latest ? `最近得分 ${latest.score} 分` : "尚未测评",
+   ],
+   [
+     "学习完成度",
+     mean + "%",
+     completed ? `已完成 ${completed} 个项目` : "暂无完成项目",
+   ],
    [
      "有效证书",
      certs.filter((x) => x.status === "有效").length,
@@ -908,15 +1110,24 @@
          label: "结业考试 · " + name("projects", x.project),
          detail: x.score + " 分",
        })),
-       ...apps.map((x) => ({ date: x.date, label: "认证申请 · " + x.id, detail: x.status })),
-       ...certs.map((x) => ({ date: x.issued, label: "证书核发 · " + x.id, detail: x.status })),
+       ...apps.map((x) => ({
+         date: x.date,
+         label: "认证申请 · " + x.id,
+         detail: x.status,
+       })),
+       ...certs.map((x) => ({
+         date: x.issued,
+         label: "证书核发 · " + x.id,
+         detail: x.status,
+       })),
      ]
        .sort((a, b) => (b.date || "").localeCompare(a.date || ""))
        .map(
          (x) =>
            `<div class="portfolio-event"><time>${esc(x.date)}</time><div><strong>${esc(x.label)}</strong><small>${esc(x.detail)}</small></div></div>`,
        )
-       .join("") || '<p class="portfolio-note">暂无成长记录，完成测评或学习后将自动出现。</p>'
+       .join("") ||
+     '<p class="portfolio-note">暂无成长记录，完成测评或学习后将自动出现。</p>'
    }</section>
    <section class="portfolio-surface"><div class="portfolio-section-head"><div><h3>业务证据链</h3><p>用于支撑能力画像、认证判断和学习建议的关键数据。</p></div></div>
      <div class="portfolio-evidence"><span>测评证据</span><b>${ass.length} 条</b></div>
@@ -1062,7 +1273,13 @@
           "测评记录",
           table(
             ["测评编号", "能力标准", "得分", "日期", "状态"],
-            done.map((a) => [a.id, name("frameworks", a.framework), `<b>${a.score}</b> / 100`, a.date, tag(a.status)]),
+            done.map((a) => [
+              a.id,
+              name("frameworks", a.framework),
+              `<b>${a.score}</b> / 100`,
+              a.date,
+              tag(a.status),
+            ]),
           ),
         ) +
         panel(
@@ -1072,11 +1289,31 @@
     );
   }
   const questions = [
-    ["数字化教学资源共享最应优先考虑哪项？", ["只追求访问量", "版权许可与学习需求", "尽可能公开学生隐私"], "1"],
-    ["利用AI辅助教学前，首先应当做什么？", ["明确教学目标与数据边界", "直接替代全部教学", "上传所有学生原始资料"], "0"],
-    ["分析学习数据时，应优先使用？", ["个体敏感信息明文", "匿名或最小必要数据", "未经授权的外部数据"], "1"],
-    ["对于生成式AI的课堂内容，教师应？", ["不作审核直接使用", "核实内容准确性与适切性", "让学生承担所有审核"], "1"],
-    ["评价数字能力提升效果，应优先依据？", ["单一工具的使用次数", "可观察的能力表现及证据", "社交媒体热度"], "1"],
+    [
+      "数字化教学资源共享最应优先考虑哪项？",
+      ["只追求访问量", "版权许可与学习需求", "尽可能公开学生隐私"],
+      "1",
+    ],
+    [
+      "利用AI辅助教学前，首先应当做什么？",
+      ["明确教学目标与数据边界", "直接替代全部教学", "上传所有学生原始资料"],
+      "0",
+    ],
+    [
+      "分析学习数据时，应优先使用？",
+      ["个体敏感信息明文", "匿名或最小必要数据", "未经授权的外部数据"],
+      "1",
+    ],
+    [
+      "对于生成式AI的课堂内容，教师应？",
+      ["不作审核直接使用", "核实内容准确性与适切性", "让学生承担所有审核"],
+      "1",
+    ],
+    [
+      "评价数字能力提升效果，应优先依据？",
+      ["单一工具的使用次数", "可观察的能力表现及证据", "社交媒体热度"],
+      "1",
+    ],
   ];
   function testZone() {
     let box = $("#test-zone");
@@ -1086,18 +1323,30 @@
   function learning() {
     let x = myEnroll();
     content(
-      header("培训学习", "培训报名、进度、考试与认证均按照同一培训项目编号关联") +
+      header(
+        "培训学习",
+        "培训报名、进度、考试与认证均按照同一培训项目编号关联",
+      ) +
         panel(
           "我的培训项目",
           table(
-            ["项目编号", "项目名称", "所属机构", "学习进度", "结业状态", "操作"],
+            [
+              "项目编号",
+              "项目名称",
+              "所属机构",
+              "学习进度",
+              "结业状态",
+              "操作",
+            ],
             x.map((e) => [
               e.project,
               name("projects", e.project),
               name("orgs", find("projects", e.project)?.org),
               `<span class="progress"><i style="width:${e.progress}%"></i></span>${e.progress}%`,
               tag(e.completed ? "已完成" : "学习中"),
-              e.completed ? "已结业" : btn("完成剩余课程", "finish-" + e.id, "primary"),
+              e.completed
+                ? "已结业"
+                : btn("完成剩余课程", "finish-" + e.id, "primary"),
             ]),
           ),
         ) +
@@ -1110,7 +1359,9 @@
               p.name,
               name("frameworks", p.framework),
               tag(p.stage),
-              myEnroll().some((e) => e.project === p.id) ? "已报名" : btn("报名此项目", "enroll-" + p.id, "outline"),
+              myEnroll().some((e) => e.project === p.id)
+                ? "已报名"
+                : btn("报名此项目", "enroll-" + p.id, "outline"),
             ]),
           ),
         ) +
@@ -1123,7 +1374,8 @@
                 (e) =>
                   `<div class="sequence"><span>${name("projects", e.project)}</span>${db.exams.some((ex) => ex.person === person && ex.project === e.project) ? tag("已参加考试") : btn("参加结业考试", "exam-" + e.project, "primary")}</div>`,
               )
-              .join("") || '<div class="muted">请先完成培训课程，再参加结业考试。</div>'
+              .join("") ||
+            '<div class="muted">请先完成培训课程，再参加结业考试。</div>'
           }<div id="exam-zone"></div>`,
         ),
     );
@@ -1142,7 +1394,13 @@
           "我的认证申请",
           table(
             ["申请编号", "关联项目", "提交日期", "审核状态", "审核备注"],
-            apps.map((x) => [x.id, name("projects", x.project), x.date, tag(x.status), x.note || "—"]),
+            apps.map((x) => [
+              x.id,
+              name("projects", x.project),
+              x.date,
+              tag(x.status),
+              x.note || "—",
+            ]),
           ),
         ) +
         panel(
@@ -1160,15 +1418,21 @@
   function verify() {
     const publicView = role === "public";
     const result = `<div id="verify-result" class="verification-result" aria-live="polite"></div>`;
-    const view = `<section class="verification-page ${publicView ? "verification-public" : ""}"><div class="verification-head"><span class="verification-kicker">CERTIFICATE VERIFICATION · MVERI</span><h1>认证中心</h1><p>查询证书编号、核对发证记录与当前状态。核验结果仅代表当前平台存储记录，不公开个人测评和考试明细。</p><div class="verification-warning"><b>演示环境说明</b>：当前核验数据保存在浏览器本地，示例证书不具有正式认证效力，也无法跨设备保证记录一致。正式上线须对接服务器端证书数据库和签名核验服务。</div></div><div class="verification-layout"><div class="verification-main"><section class="verification-panel"><div class="verification-panel-heading"><div><span class="verification-step">01 · 查询</span><h2>证书信息查询</h2></div><span class="verification-secure">编号精确匹配</span></div><form id="mveri-verify-form" class="verification-form"><label for="verify-id">证书编号</label><div class="verification-search"><input id="verify-id" name="certificateNumber" autocomplete="off" maxlength="80" placeholder="请输入证书编号，例如 MVERI-2026-0001" value="${esc(query)}" required><button type="submit">查询证书</button></div><p>支持复制粘贴编号。核验不要求身份证号、手机号或其他敏感信息。</p></form>${result}</section><section class="verification-panel"><div class="verification-panel-heading"><div><span class="verification-step">02 · 记录</span><h2>本次访问的核验记录</h2></div><button type="button" class="verification-clear" data-verify-clear="true">清空记录</button></div><div id="verification-history"></div></section></div><aside class="verification-aside"><section class="verification-panel"><h2>核验说明</h2><ol><li>在证书上找到唯一编号并准确输入。</li><li>查看系统是否存在对应的发证记录。</li><li>核对证书状态、发证日期和认证项目。</li><li>出现不一致或无法查询时联系发证机构核实。</li></ol></section><section class="verification-panel"><h2>常见问题</h2><details><summary>查不到证书怎么办？</summary><p>检查编号是否正确；只有已写入当前数据库的证书才能查询。未通过审核、尚未发证的申请不会出现在此处。</p></details><details><summary>“有效”意味着什么？</summary><p>代表当前平台记录的证书状态。演示版不能独立证明证书真实性或现实世界中的法律效力。</p></details><details><summary>可以使用截图作为证明吗？</summary><p>截图无法证明证书实时状态。正式业务应使用官方服务器核验地址或数字签名核验。</p></details></section></aside></div></section>`;
+    const view = `<section class="verification-page ${publicView ? "verification-public" : ""}"><div class="verification-head"><span class="verification-kicker">CERTIFICATE VERIFICATION · MVERI</span><h1>认证中心</h1><p>输入编号，看发证记录和当前状态。结果只反映平台里存的记录，不显示个人测评和考试明细。</p><div class="verification-warning"><b>演示环境说明</b>：当前核验数据保存在浏览器本地，示例证书不具有正式认证效力，也无法跨设备保证记录一致。正式上线须对接服务器端证书数据库和签名核验服务。</div></div><div class="verification-layout"><div class="verification-main"><section class="verification-panel"><div class="verification-panel-heading"><div><span class="verification-step">01 · 查询</span><h2>证书信息查询</h2></div><span class="verification-secure">编号精确匹配</span></div><form id="mveri-verify-form" class="verification-form"><label for="verify-id">证书编号</label><div class="verification-search"><input id="verify-id" name="certificateNumber" autocomplete="off" maxlength="80" placeholder="请输入证书编号，例如 MVERI-2026-0001" value="${esc(query)}" required><button type="submit">查询证书</button></div><p>支持复制粘贴编号。核验不要求身份证号、手机号或其他敏感信息。</p></form>${result}</section><section class="verification-panel"><div class="verification-panel-heading"><div><span class="verification-step">02 · 记录</span><h2>本次访问的核验记录</h2></div><button type="button" class="verification-clear" data-verify-clear="true">清空记录</button></div><div id="verification-history"></div></section></div><aside class="verification-aside"><section class="verification-panel"><h2>核验说明</h2><ol><li>在证书上找到编号，照着输。</li><li>看系统里有没有这条发证记录。</li><li>核对状态、发证日期和认证项目。</li><li>对不上或查不到，联系发证机构核实。</li></ol></section><section class="verification-panel"><h2>常见问题</h2><details><summary>查不到证书怎么办？</summary><p>先检查编号有没有输错。只有已经写进数据库的证书才查得到；没通过审核、还没发证的申请不会出现。</p></details><details><summary>“有效”意味着什么？</summary><p>代表当前平台记录的证书状态。演示版不能独立证明证书真实性或现实世界中的法律效力。</p></details><details><summary>可以使用截图作为证明吗？</summary><p>截图无法证明证书实时状态。正式业务应使用官方服务器核验地址或数字签名核验。</p></details></section></aside></div></section>`;
     if (publicView) content(view);
-    else content(header("电子证书核验", "证书核验服务，演示数据仅在当前浏览器有效") + view);
+    else
+      content(
+        header("电子证书核验", "证书核验服务，演示数据仅在当前浏览器有效") +
+          view,
+      );
     verifyResult();
     renderVerifyHistory();
   }
   function verifyMaskedName(raw) {
     const str = String(raw || "");
-    return str.length <= 1 ? "*" : str.slice(0, 1) + "*".repeat(Math.min(3, str.length - 1));
+    return str.length <= 1
+      ? "*"
+      : str.slice(0, 1) + "*".repeat(Math.min(3, str.length - 1));
   }
   function renderVerifyHistory() {
     const el = document.getElementById("verification-history");
@@ -1182,7 +1446,8 @@
     if (!el) return;
     const id = String(query || "").trim();
     if (!id) {
-      el.innerHTML = '<div class="verification-empty">请输入证书编号开始核验。</div>';
+      el.innerHTML =
+        '<div class="verification-empty">请输入证书编号开始核验。</div>';
       return;
     }
     const c = db.certificates.find(
@@ -1208,7 +1473,15 @@
         panel(
           "成员目录",
           table(
-            ["人员编号", "姓名", "所在院校", "职务", "培训报名", "完成测评", "认证状态"],
+            [
+              "人员编号",
+              "姓名",
+              "所在院校",
+              "职务",
+              "培训报名",
+              "完成测评",
+              "认证状态",
+            ],
             groupPeople().map((p) => [
               p.id,
               p.name,
@@ -1216,7 +1489,8 @@
               p.title,
               db.enrollments.filter((e) => e.person === p.id).length,
               db.assessments.filter((a) => a.person === p.id).length,
-              db.applications.find((c) => c.person === p.id)?.status || "未申请",
+              db.applications.find((c) => c.person === p.id)?.status ||
+                "未申请",
             ]),
           ),
         ),
@@ -1229,7 +1503,16 @@
         panel(
           "项目台账",
           table(
-            ["项目编号", "项目名称", "责任院校", "能力标准", "报名/容量", "完成", "起止日期", "项目状态"],
+            [
+              "项目编号",
+              "项目名称",
+              "责任院校",
+              "能力标准",
+              "报名/容量",
+              "完成",
+              "起止日期",
+              "项目状态",
+            ],
             ps.map((p) => {
               let en = db.enrollments.filter((e) => e.project === p.id);
               return [
@@ -1275,11 +1558,22 @@
   }
   function organizations() {
     content(
-      header("组织与区域管理", "区域中心与所属院校形成树状关系，人员和项目按组织归属计算") +
+      header(
+        "组织与区域管理",
+        "区域中心与所属院校形成树状关系，人员和项目按组织归属计算",
+      ) +
         panel(
           "组织目录",
           table(
-            ["组织编码", "组织名称", "类型", "上级区域", "负责人", "关联人员", "状态"],
+            [
+              "组织编码",
+              "组织名称",
+              "类型",
+              "上级区域",
+              "负责人",
+              "关联人员",
+              "状态",
+            ],
             db.orgs.map((o) => [
               o.id,
               o.name,
@@ -1318,7 +1612,16 @@
         panel(
           "待审核任务",
           table(
-            ["申请编号", "姓名", "所在院校", "项目", "培训进度", "测评", "考试", "操作"],
+            [
+              "申请编号",
+              "姓名",
+              "所在院校",
+              "项目",
+              "培训进度",
+              "测评",
+              "考试",
+              "操作",
+            ],
             db.applications
               .filter((a) => a.status === "待审核")
               .map((a) => {
@@ -1340,18 +1643,35 @@
           "认证申请全量记录",
           table(
             ["申请编号", "申请人", "日期", "状态", "审核意见"],
-            db.applications.map((a) => [a.id, name("people", a.person), a.date, tag(a.status), a.note || "—"]),
+            db.applications.map((a) => [
+              a.id,
+              name("people", a.person),
+              a.date,
+              tag(a.status),
+              a.note || "—",
+            ]),
           ),
         ),
     );
   }
   function certificates() {
     content(
-      header("证书管理中心", "证书以认证申请为来源；每张证书都能回溯到人员、项目、审核意见") +
+      header(
+        "证书管理中心",
+        "证书以认证申请为来源；每张证书都能回溯到人员、项目、审核意见",
+      ) +
         panel(
           "已核发证书",
           table(
-            ["证书编号", "持证人", "院校", "培训项目", "发证日期", "状态", "操作"],
+            [
+              "证书编号",
+              "持证人",
+              "院校",
+              "培训项目",
+              "发证日期",
+              "状态",
+              "操作",
+            ],
             db.certificates.map((c) => [
               c.id,
               name("people", c.person),
@@ -1367,7 +1687,10 @@
   }
   function audits() {
     content(
-      header("操作审计与证据链", "业务操作留存时间、操作者、关联对象和动作说明") +
+      header(
+        "操作审计与证据链",
+        "业务操作留存时间、操作者、关联对象和动作说明",
+      ) +
         panel(
           "最近操作记录",
           table(
@@ -1462,36 +1785,57 @@
     };
     document.addEventListener("keydown", onKey);
     overlay.addEventListener("click", (e) => {
-      if (e.target === overlay || e.target.closest(".mveri-personal-close")) close();
+      if (e.target === overlay || e.target.closest(".mveri-personal-close"))
+        close();
       const b = e.target.closest("[data-personal-sample]");
       if (b) {
-        overlay.querySelector("#mveri-personal-account").value = b.dataset.personalSample;
+        overlay.querySelector("#mveri-personal-account").value =
+          b.dataset.personalSample;
         overlay.querySelector("#mveri-personal-password").value =
-          (window.MVERI_PERSONAL_DEMO_ACCOUNTS || []).find((u) => u.account === b.dataset.personalSample)?.password ||
-          "123456";
+          (window.MVERI_PERSONAL_DEMO_ACCOUNTS || []).find(
+            (u) => u.account === b.dataset.personalSample,
+          )?.password || "123456";
         overlay.querySelector("#mveri-personal-error").hidden = true;
         overlay.querySelector("#mveri-personal-password").focus();
       }
     });
-    overlay.querySelector("#mveri-personal-show").addEventListener("change", (e) => {
-      overlay.querySelector("#mveri-personal-password").type = e.target.checked ? "text" : "password";
-    });
-    overlay.querySelector("#mveri-personal-form").addEventListener("submit", (e) => {
-      e.preventDefault();
-      const account = overlay.querySelector("#mveri-personal-account").value.trim();
-      const password = overlay.querySelector("#mveri-personal-password").value;
-      const found = [...DEMO_ACCOUNTS, ...registeredUsers()].find(
-        (u) => u.account === account && u.password === password && u.role === "personal" && u.status !== "停用",
-      );
-      if (!found) {
-        const err = overlay.querySelector("#mveri-personal-error");
-        err.textContent = "账号或密码错误，或该账号不属于个人服务。";
-        err.hidden = false;
-        return;
-      }
-      sessionStorage.setItem(AUTH_KEY, JSON.stringify({ account: found.account }));
-      window.location.href = PORTAL_URL.personal;
-    });
+    overlay
+      .querySelector("#mveri-personal-show")
+      .addEventListener("change", (e) => {
+        overlay.querySelector("#mveri-personal-password").type = e.target
+          .checked
+          ? "text"
+          : "password";
+      });
+    overlay
+      .querySelector("#mveri-personal-form")
+      .addEventListener("submit", (e) => {
+        e.preventDefault();
+        const account = overlay
+          .querySelector("#mveri-personal-account")
+          .value.trim();
+        const password = overlay.querySelector(
+          "#mveri-personal-password",
+        ).value;
+        const found = [...DEMO_ACCOUNTS, ...registeredUsers()].find(
+          (u) =>
+            u.account === account &&
+            u.password === password &&
+            u.role === "personal" &&
+            u.status !== "停用",
+        );
+        if (!found) {
+          const err = overlay.querySelector("#mveri-personal-error");
+          err.textContent = "账号或密码错误，或该账号不属于个人服务。";
+          err.hidden = false;
+          return;
+        }
+        sessionStorage.setItem(
+          AUTH_KEY,
+          JSON.stringify({ account: found.account }),
+        );
+        window.location.href = PORTAL_URL.personal;
+      });
     overlay.querySelector("#mveri-personal-account").focus();
   }
   document.addEventListener("click", (e) => {
@@ -1512,7 +1856,9 @@
     if (select) {
       select.innerHTML =
         '<option value="">请选择发展目标</option>' +
-        group.goals.map((goal) => `<option value="${esc(goal)}">${esc(goal)}</option>`).join("");
+        group.goals
+          .map((goal) => `<option value="${esc(goal)}">${esc(goal)}</option>`)
+          .join("");
     }
     if (focus) focus.textContent = group.focus;
   });
@@ -1592,7 +1938,12 @@
         toast("仅平台管理员可重置数据");
         return;
       }
-      if (!confirm("确定恢复所有初始体验数据？新增测评、报名、审批、证书会被清空。")) return;
+      if (
+        !confirm(
+          "确定恢复所有初始体验数据？新增测评、报名、审批、证书会被清空。",
+        )
+      )
+        return;
       db = clone(window.MVERI_SEED);
       save();
       query = "";
@@ -1628,7 +1979,9 @@
       return;
     }
     if (action === "submit-test") {
-      let selected = questions.map((q, i) => document.querySelector(`input[name=q${i}]:checked`)?.value);
+      let selected = questions.map(
+        (q, i) => document.querySelector(`input[name=q${i}]:checked`)?.value,
+      );
       if (selected.some((v) => v === undefined)) {
         toast("请先完成全部5道题");
         return;
@@ -1636,8 +1989,21 @@
       let score = selected.filter((v, i) => v === questions[i][2]).length * 20;
       let fw = $("#test-framework").value;
       let id = "A" + Date.now().toString().slice(-9);
-      db.assessments.push({ id, person, framework: fw, score, date: date(), status: "已完成", source: "interactive" });
-      addAudit(name("people", person), "完成能力测评", id, `${fw}，得分${score}`);
+      db.assessments.push({
+        id,
+        person,
+        framework: fw,
+        score,
+        date: date(),
+        status: "已完成",
+        source: "interactive",
+      });
+      addAudit(
+        name("people", person),
+        "完成能力测评",
+        id,
+        `${fw}，得分${score}`,
+      );
       save();
       shell();
       toast(`测评完成，得分 ${score} 分，已写入关联业务记录`);
@@ -1657,13 +2023,23 @@
     if (action.startsWith("enroll-")) {
       let pid = action.slice(7),
         p = find("projects", pid);
-      if (!p || db.enrollments.some((e) => e.person === person && e.project === pid)) return;
+      if (
+        !p ||
+        db.enrollments.some((e) => e.person === person && e.project === pid)
+      )
+        return;
       let existing = db.enrollments.filter((e) => e.project === pid).length;
       if (existing >= p.capacity) {
         toast("项目已满员");
         return;
       }
-      let e = { id: "E" + Date.now().toString().slice(-9), person, project: pid, progress: 0, completed: false };
+      let e = {
+        id: "E" + Date.now().toString().slice(-9),
+        person,
+        project: pid,
+        progress: 0,
+        completed: false,
+      };
       db.enrollments.push(e);
       addAudit(name("people", person), "报名培训项目", e.id, pid);
       save();
@@ -1684,12 +2060,16 @@
           (q, i) =>
             `<div style="margin:12px 0"><b>${q[0]}</b><label style="display:block;font-size:12px;margin:7px 0"><input type="radio" name="examq${i}" value="0"> ${q[1]}</label><label style="font-size:12px"><input type="radio" name="examq${i}" value="1"> ${q[2]}</label></div>`,
         )
-        .join("")}${btn("交卷并记录结果", "submit-exam-" + project, "primary")}</section>`;
+        .join(
+          "",
+        )}${btn("交卷并记录结果", "submit-exam-" + project, "primary")}</section>`;
       return;
     }
     if (action.startsWith("submit-exam-")) {
       let p = action.slice(12),
-        ans = [0, 1, 2].map((i) => document.querySelector(`input[name=examq${i}]:checked`)?.value);
+        ans = [0, 1, 2].map(
+          (i) => document.querySelector(`input[name=examq${i}]:checked`)?.value,
+        );
       if (ans.some((x) => x === undefined)) {
         toast("请回答全部3题");
         return;
@@ -1697,8 +2077,20 @@
       let n = ans.filter((x) => x === "0").length,
         score = Math.round((n / 3) * 100);
       let id = "X" + Date.now().toString().slice(-9);
-      db.exams.push({ id, person, project: p, score, passed: n >= 2, date: date() });
-      addAudit(name("people", person), "完成结业考试", id, `${p}；${score}分；${n >= 2 ? "通过" : "未通过"}`);
+      db.exams.push({
+        id,
+        person,
+        project: p,
+        score,
+        passed: n >= 2,
+        date: date(),
+      });
+      addAudit(
+        name("people", person),
+        "完成结业考试",
+        id,
+        `${p}；${score}分；${n >= 2 ? "通过" : "未通过"}`,
+      );
       save();
       shell();
       toast(`考试得分${score}，${n >= 2 ? "通过" : "未通过"}，成绩已保存`);
@@ -1722,7 +2114,12 @@
         reviewer: "",
         note: "",
       });
-      addAudit(name("people", person), "提交认证申请", id, `依据 ${ev.e.id}、${ev.a.id}、${ev.x.id}`);
+      addAudit(
+        name("people", person),
+        "提交认证申请",
+        id,
+        `依据 ${ev.e.id}、${ev.a.id}、${ev.x.id}`,
+      );
       save();
       shell();
       toast("已提交总部审核，认证证据已关联");
@@ -1746,9 +2143,15 @@
       }
       app.status = ok ? "已发证" : "已驳回";
       app.reviewer = "研究院总部审核员";
-      app.note = ok ? "培训、同标准测评和结业考试核验通过" : "人工审核驳回（体验操作）";
+      app.note = ok
+        ? "培训、同标准测评和结业考试核验通过"
+        : "人工审核驳回（体验操作）";
       if (ok) {
-        let certId = "MVERI-" + date().slice(0, 4) + "-" + String(db.certificates.length + 1).padStart(4, "0");
+        let certId =
+          "MVERI-" +
+          date().slice(0, 4) +
+          "-" +
+          String(db.certificates.length + 1).padStart(4, "0");
         db.certificates.push({
           id: certId,
           application: app.id,
@@ -1782,7 +2185,9 @@
         verifySessionHistory.unshift({
           id: query,
           at: new Date().toLocaleString("zh-CN"),
-          found: db.certificates.some((c) => String(c.id).toUpperCase() === query.toUpperCase()),
+          found: db.certificates.some(
+            (c) => String(c.id).toUpperCase() === query.toUpperCase(),
+          ),
         });
         verifySessionHistory = verifySessionHistory.slice(0, 8);
         renderVerifyHistory();
@@ -1824,7 +2229,10 @@
   document.addEventListener("submit", (e) => {
     if (e.target.id === "news-search-form") {
       e.preventDefault();
-      news("全部资讯", document.getElementById("news-search-input")?.value.trim() || "");
+      news(
+        "全部资讯",
+        document.getElementById("news-search-input")?.value.trim() || "",
+      );
     }
   });
   document.addEventListener("click", (e) => {
@@ -1881,16 +2289,23 @@
       "</h2><p>本维度数值来自示例权重模型，对总体测评成绩、学习进度、结业考试和认证状态进行组合，<strong>没有独立的考评点测量结果</strong>，不得作为正式能力水平证明。</p><dl><dt>最近测评</dt><dd>" +
       (a ? esc(a.id + " · " + a.score + "分 · " + a.date) : "无") +
       "</dd><dt>培训进度</dt><dd>" +
-      (en.length ? Math.round(en.reduce((n, x) => n + Number(x.progress || 0), 0) / en.length) + "%" : "无") +
+      (en.length
+        ? Math.round(
+            en.reduce((n, x) => n + Number(x.progress || 0), 0) / en.length,
+          ) + "%"
+        : "无") +
       "</dd><dt>结业考试</dt><dd>" +
-      (ex.length ? esc(ex[ex.length - 1].id + " · " + ex[ex.length - 1].score + "分") : "无") +
+      (ex.length
+        ? esc(ex[ex.length - 1].id + " · " + ex[ex.length - 1].score + "分")
+        : "无") +
       "</dd><dt>认证证书</dt><dd>" +
       cert.length +
       '张</dd></dl><div class="portfolio-dialog-note">升级正式画像需要将题目、考评点、评分量规及维度权重一一关联，并保存每个维度的真实得分及版本。</div></div>';
     box.showModal();
   });
   document.addEventListener("click", (e) => {
-    if (e.target.closest("[data-close-dimension]")) document.getElementById("portfolio-evidence-dialog")?.close();
+    if (e.target.closest("[data-close-dimension]"))
+      document.getElementById("portfolio-evidence-dialog")?.close();
   });
   document.addEventListener("click", (e) => {
     const t = e.target.closest("[data-portfolio-tab]");
@@ -1908,7 +2323,9 @@
     const type = filter.dataset.serviceFilter;
     let count = 0;
     root.querySelectorAll("[data-service-audience]").forEach((card) => {
-      const show = type === "all" || card.dataset.serviceAudience.split(" ").includes(type);
+      const show =
+        type === "all" ||
+        card.dataset.serviceAudience.split(" ").includes(type);
       card.hidden = !show;
       if (show) count++;
     });
@@ -1957,13 +2374,16 @@
     }
   });
   document.addEventListener("change", (e) => {
-    if (e.target.id === "show-password") $("#login-password").type = e.target.checked ? "text" : "password";
+    if (e.target.id === "show-password")
+      $("#login-password").type = e.target.checked ? "text" : "password";
   });
   document.addEventListener("submit", (e) => {
     if (e.target.id !== "login-form") return;
     e.preventDefault();
     let a = DEMO_ACCOUNTS.find(
-      (v) => v.account === $("#login-account").value.trim() && v.password === $("#login-password").value,
+      (v) =>
+        v.account === $("#login-account").value.trim() &&
+        v.password === $("#login-password").value,
     );
     if (!a) {
       let error = $("#login-error");
