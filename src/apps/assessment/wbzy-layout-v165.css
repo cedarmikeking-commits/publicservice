@@ -1,0 +1,34 @@
+/* V16.5 考评点页面布局修复：仅作用于该模块 */
+main#main{margin:0!important;align-self:start!important;justify-self:stretch!important;max-width:none!important;width:100%!important;min-height:0!important}
+.up-page{width:100%;max-width:1500px;margin:0 auto;display:flex;flex-direction:column;gap:18px;align-content:start;padding:0 0 36px}
+.up-page .panel{margin-bottom:0!important}
+.up-head{display:flex;gap:20px;align-items:center;justify-content:space-between;padding:24px 28px;background:#fff;border:1px solid #e2e9f0;border-radius:16px}
+.up-eyebrow{font-weight:750;color:#087d73;letter-spacing:1.5px;font-size:11px;margin-bottom:8px}
+.up-head h2{margin:0 0 8px;font-size:23px!important;color:#182f41}
+.up-head p{margin:0;color:#637987;font-size:13px;line-height:1.7}
+.up-count{white-space:nowrap;background:#e8f6f2;border-radius:999px;padding:8px 14px;color:#08756c;font-weight:700;font-size:12px}
+.up-tabs{display:flex;flex-wrap:wrap;gap:8px;padding:0;border:0}
+.up-tabs button{background:#fff!important;color:#415c6c!important;border:1px solid #dce6ed;border-radius:10px;padding:11px 16px;font-weight:650}
+.up-tabs button span{display:inline-block;margin-left:5px;color:#78909c;font-size:12px}
+.up-tabs button.up-selected{background:#087d73!important;color:#fff!important;border-color:#087d73!important}
+.up-tabs button.up-selected span{color:#d7fff5}
+.up-framework-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;width:100%;align-items:stretch}
+.up-framework-card{background:#fff;border:1px solid #dce6ee;border-radius:16px;padding:26px;display:flex;flex-direction:column;gap:12px;min-width:0;min-height:290px}
+.up-framework-icon{display:grid;place-items:center;width:40px;height:40px;border-radius:12px;background:#e8f6f3;color:#09796e;font-weight:800;font-size:14px}
+.up-framework-card h3{font-size:18px!important;margin:0 0 6px;color:#1c3444}
+.up-framework-card p{font-size:13px;line-height:1.65;color:#61798a;margin:0}
+.up-statline{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin:3px 0}
+.up-statline>div{background:#f5f8fb;padding:14px 16px;border-radius:11px;display:flex;flex-direction:column;gap:4px}
+.up-statline b{font-size:26px;color:#17344a;line-height:1.15}
+.up-statline span{font-size:12px;color:#607889}
+.up-card-description{flex:1}
+.up-framework-card>button{align-self:flex-start;background:#087d73;color:#fff;font-weight:700;padding:10px 17px}
+.up-framework-card>button:hover{background:#066b63}
+@media(max-width:900px){.up-head{padding:20px}.up-framework-grid{grid-template-columns:1fr}}
+@media(max-width:600px){.up-head{flex-direction:column;align-items:flex-start;padding:17px}.up-tabs button{flex:1}.up-framework-card{padding:18px}}
+
+/* V16.7 考评点核验入口：仅作用于考评点页标题区 */
+.up-heading-actions{display:flex;gap:12px;align-items:center;flex-wrap:wrap;justify-content:flex-end}
+.up-audit-entry{display:inline-flex;align-items:center;justify-content:center;min-height:38px;padding:8px 14px;background:#fff;border:1px solid #b8cfdc;border-radius:10px;color:#12609a!important;font-weight:650;text-decoration:none!important;white-space:nowrap}
+.up-audit-entry:hover,.up-audit-entry:focus-visible{background:#eaf4fd;border-color:#398aca;outline-offset:2px}
+@media(max-width:720px){.up-heading-actions{justify-content:flex-start}.up-audit-entry{white-space:normal}}

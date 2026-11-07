@@ -1,0 +1,29 @@
+/* V20.7 Product architecture for overview, scoped to avoid side effects */
+.v163-home .pa-panel{padding:24px 25px;border:1px solid #d9e8ed;background:linear-gradient(160deg,#fff,#f8fbff)}
+.v163-home .pa-heading{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;flex-wrap:wrap;margin-bottom:20px}
+.v163-home .pa-heading h2{font-size:22px;margin:5px 0 8px;color:#152f47}
+.v163-home .pa-heading p{margin:0;max-width:920px;line-height:1.75;font-size:13px}
+.v163-home .pa-kicker{font-size:11px;font-weight:800;letter-spacing:1.1px;color:#0c827c}
+.v163-home .pa-chip{font-size:12px;color:#087d75;background:#e5f6f3;padding:8px 12px;border-radius:30px;white-space:nowrap}
+.v163-home .pa-board{border:1px solid #d9e8ec;border-radius:17px;background:#eff5f8;padding:16px;overflow:hidden}
+.v163-home .pa-lane{display:grid;grid-template-columns:180px minmax(0,1fr);gap:13px;padding:12px;background:#fff;border:1px solid #dbe6ea;border-radius:13px;min-width:0}
+.v163-home .pa-lane-label{background:#e8f4f4;border-radius:10px;padding:17px 13px;display:flex;flex-direction:column;align-items:flex-start;gap:8px;justify-content:center;color:#124450}
+.v163-home .pa-02 .pa-lane-label,.v163-home .pa-03 .pa-lane-label{background:#e5f1ff;color:#164873}
+.v163-home .pa-04 .pa-lane-label,.v163-home .pa-05 .pa-lane-label{background:#e7f7f1;color:#126459}
+.v163-home .pa-lane-label strong{font-size:16px}.v163-home .pa-lane-label small{font-size:11px;line-height:1.6;opacity:.75}
+.v163-home .pa-layer-no{font-size:12px;font-weight:800;letter-spacing:.3px;background:#ffffffbd;border-radius:6px;padding:5px 8px}
+.v163-home .pa-lane-body{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:11px;min-width:0}
+.v163-home .pa-tile{position:relative;min-width:0;padding:15px 13px;border:1px solid #dbe6e9;background:#fbfdff;border-radius:10px;display:flex;flex-direction:column;gap:8px}
+.v163-home .pa-tile-title{font-size:14px;font-weight:750;color:#183c50;line-height:1.5}
+.v163-home .pa-tile-sub{font-size:12px;line-height:1.65;color:#617a89;overflow-wrap:anywhere}
+.v163-home .pa-tile-tag{margin-top:auto;align-self:flex-start;font-size:10px;color:#0e776c;background:#e9f7f3;border-radius:5px;padding:3px 7px}
+.v163-home .pa-flow{display:flex;align-items:center;justify-content:center;gap:14px;min-height:34px;color:#228b83;font-size:23px;font-weight:800}
+.v163-home .pa-flow small{font-size:11px;color:#5e7888;font-weight:500}
+.v163-home .pa-foundation{border-radius:12px;background:#17394e;padding:16px;color:#fff;display:flex;gap:20px;align-items:center;flex-wrap:wrap;margin-top:14px}
+.v163-home .pa-foundation-heading{display:flex;gap:10px;align-items:center;min-width:170px}.v163-home .pa-foundation-heading strong{font-size:15px}.v163-home .pa-foundation .pa-layer-no{background:#2c5263}
+.v163-home .pa-foundation-items{display:flex;gap:8px;flex:1;flex-wrap:wrap}.v163-home .pa-foundation-items span{font-size:11px;padding:9px 12px;border:1px solid #476978;border-radius:8px;color:#e3eff3}
+.v163-home .pa-footer{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;font-size:11px;color:#617988;line-height:1.65;margin-top:12px}
+@media(max-width:1020px){.v163-home .pa-lane{grid-template-columns:145px minmax(0,1fr)}.v163-home .pa-lane-body{grid-template-columns:1fr}.v163-home .pa-tile{padding:12px}.v163-home .pa-lane-label{padding:12px}}
+@media(max-width:640px){.v163-home .pa-panel{padding:16px}.v163-home .pa-board{padding:9px}.v163-home .pa-lane{grid-template-columns:1fr;padding:9px}.v163-home .pa-lane-label{flex-direction:row;align-items:center;gap:9px;flex-wrap:wrap}.v163-home .pa-lane-label small{margin-left:auto}.v163-home .pa-foundation{padding:12px}.v163-home .pa-heading h2{font-size:18px}}
+
+.v163-home .pa-foundation{margin-top:0;margin-bottom:14px}

@@ -1,0 +1,113 @@
+/* V20.1 指标体系专用管理：双体系层级、修订历史、启停用、导入与智能体交接 */
+(function(){'use strict';
+const KEY='wbzy_indicator_standard_v201';
+const base={general:window.GENERAL_FRAMEWORK,teacher:window.INDICATOR_TREE};
+if(!base.general||!base.teacher){console.error('指标体系基线文件未加载');return}
+let db;try{db=JSON.parse(localStorage.getItem(KEY)||'null')}catch(e){};
+if(!db||!db.systems)db={systems:{general:{version:'V1.0',nodes:[],revisions:[]},teacher:{version:'V1.0',nodes:[],revisions:[]}},history:[]};
+for(const k of ['general','teacher'])if(!db.systems[k])db.systems[k]={version:'V1.0',nodes:[],revisions:[]};
+let sys='general',filter='',selected=null;
+for(const k of Object.keys(db.systems)){const unit=db.systems[k];if(!Array.isArray(unit.releases))unit.releases=[];if(!('publishedAt' in unit))unit.publishedAt=null}
+
+const esc=x=>String(x??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const stamp=()=>new Date().toLocaleString('zh-CN',{hour12:false});
+function baseline(k){const b=base[k]||{level1:[],level2:[],level3:[]},nodes=[];for(const [level,key] of [[1,'level1'],[2,'level2'],[3,k==='general'?'points':'level3']])for(const p of b[key]||[])nodes.push({code:p.code,name:p.name||p.description||'',description:p.description||p.name||'',level,parent:level===1?'':level===2?(p.parent||p.code.split('.')[0]):k==='general'?p.unit:(p.parent||p.code.split('.').slice(0,2).join('.')),version:'V1.0',active:true,source:'原始指标文件',original:true});return nodes}
+function all(k){const map=new Map(baseline(k).map(x=>[x.code,x]));for(const n of db.systems[k].nodes){if(n.deleted)map.delete(n.code);else map.set(n.code,n)}return [...map.values()].sort((a,b)=>a.code.localeCompare(b.code,undefined,{numeric:true}))}
+function get(code){return all(sys).find(n=>n.code===code)}
+function persist(){localStorage.setItem(KEY,JSON.stringify(db))}
+function bump(v){let m=/^(?:V)?(\d+)\.(\d+)$/.exec(v||'V1.0');return m?'V'+m[1]+'.'+(Number(m[2])+1):'V1.1'}
+function record(action,node,old){const unit=db.systems[sys];unit.revisions.unshift({id:Date.now()+'-'+Math.random().toString(36).slice(2),at:stamp(),action,code:node.code,previous:old||null,current:structuredClone(node),standardVersion:unit.version});unit.revisions=unit.revisions.slice(0,2000);db.history.unshift({at:stamp(),system:sys,action,code:node.code,version:node.version});persist()}
+function opts(){return all(sys).filter(x=>x.active).map(x=>`<option value="${esc(x.code)}">${esc(x.code)} ${esc(x.name.slice(0,65))}</option>`).join('')}
+function systemName(k){return db.systems[k]?.name||(k==='general'?'通用数智能力':k==='teacher'?'教师素智素养':k)}
+function customDeleteButton(){return `<button type="button" class="std-danger std-delete-system" onclick="WBZYStandard.deleteSystem()" aria-label="删除当前新建指标体系 ${esc(systemName(sys))}">删除当前体系</button>`}
+function toolbar(){
+ const s=db.systems[sys],last=s.releases[0],status=last?(hasUnpublished()?'有未发布更改':'已发布'):'未发布';
+ const currentName=systemName(sys);const isCustom=!['general','teacher'].includes(sys);
+ return `<section class="std-top"><div><small>STANDARDS MANAGEMENT · V20.6</small><h2>指标体系管理</h2><p>通用数智能力已接入2026-11-03报审稿原文（6领域、22单元、能力要求）。报审稿不等于正式发布；旧考评点、题库和结果须重新核验映射。每套体系独立维护、校验与发布。</p></div><div class="std-actions"><button onclick="WBZYStandard.createSystem()">＋ 新增指标体系</button><button class="secondary" onclick="document.getElementById('stdImport').click()">导入指标体系</button><input hidden type="file" id="stdImport" accept=".json,.csv" onchange="WBZYStandard.importFile(this)"><button class="secondary" onclick="WBZYStandard.exportData()">导出当前指标</button></div></section>
+ <section class="std-switch" aria-label="指标体系切换"><div class="std-framework-tabs" role="group" aria-label="选择指标体系">${Object.keys(db.systems).map(k=>`<button type="button" class="std-framework ${sys===k?'on':'off'}" aria-pressed="${sys===k}" onclick="WBZYStandard.system('${esc(k)}')">${esc(systemName(k))}</button>`).join('')}</div><div class="std-current-release"><div class="std-current-title"><strong>${currentName}</strong><span class="std-release-state ${last&&!hasUnpublished()?'released':'draft'}">${status}</span></div><p>体系版本 <b>${esc(s.version)}</b>${last?' · 最近发布：'+esc(last.at):' · 尚无发布记录'}</p><div class="std-release-actions"><button type="button" class="std-publish-btn" onclick="WBZYStandard.publish()">发布当前体系</button><button type="button" class="secondary" onclick="WBZYStandard.version()">版本管理 / 发布记录</button>${isCustom?customDeleteButton():''}</div></div></section>`
+}
+function snapshot(k=sys){return all(k).map(n=>({code:n.code,name:n.name,description:n.description,level:n.level,parent:n.parent,version:n.version,active:n.active}));}
+function hasUnpublished(){const u=db.systems[sys],last=u.releases[0];return !last||JSON.stringify(snapshot())!==JSON.stringify(last.nodes)}
+function list(){const ns=all(sys),l1=ns.filter(n=>n.level===1),word=filter.trim().toLowerCase();let rendered=0;const item=n=>{const found=!word||[n.code,n.name,n.description].join(' ').toLowerCase().includes(word);if(!found)return '';rendered++;return `<div class="std-leaf ${n.active?'':'off'}" onclick="WBZYStandard.inspect('${esc(n.code)}')" role="button" tabindex="0" onkeydown="if(event.key==='Enter')WBZYStandard.inspect('${esc(n.code)}')"><div><b>${esc(n.code)}</b><span>${esc(n.name)}</span><small>${esc(n.version)} · ${n.active?'启用':'停用'}</small></div>${n.level===3?`<button onclick="event.stopPropagation();WBZYStandard.analyze('${esc(n.code)}')">分析考评点</button>`:''}</div>`};const tree=l1.map(a=>{const children=ns.filter(x=>x.level===2&&x.parent===a.code),body=children.map(b=>{const leaf=ns.filter(x=>x.level===3&&x.parent===b.code).map(item).filter(Boolean).join('');return (!word||leaf||[b.name,b.code].join(' ').toLowerCase().includes(word))?`<details class="std-section" open><summary><span class="std-node-select" onclick="event.preventDefault();event.stopPropagation();WBZYStandard.inspect('${esc(b.code)}')">${esc(b.code)} · ${esc(b.name)}</span> <small>${ns.filter(x=>x.level===3&&x.parent===b.code).length} 条末级指标</small></summary>${leaf||'<p class="std-muted">该节点尚无匹配的末级指标</p>'}</details>`:''}).filter(Boolean).join('');return (!word||body||a.name.includes(word))?`<details open class="std-root"><summary><span class="std-node-select" onclick="event.preventDefault();event.stopPropagation();WBZYStandard.inspect('${esc(a.code)}')">${esc(a.code)} · ${esc(a.name)}</span></summary>${body}</details>`:''}).join('');return `<section class="std-body"><div class="std-left"><div class="std-filter"><input placeholder="按编码、名称或原文搜索" value="${esc(filter)}" oninput="WBZYStandard.search(this.value)"></div>${tree||'<div class="std-empty"><p>该体系尚无指标节点</p><button onclick="WBZYStandard.create()">＋ 新增一级指标</button></div>'}</div><div class="std-right" id="stdDetail">${selected&&get(selected)?detail(get(selected)):'<div class="std-empty"><h3>指标详情</h3><p>选中左侧指标节点后，可新增下级、编辑、停启用、查看版本或分析考评点。</p></div>'}</div></section>`}
+function detail(n){let revisions=db.systems[sys].revisions.filter(x=>x.code===n.code);return `<div class="std-detail"><small>指标档案 · ${esc(n.code)}</small><h3>${esc(n.name)}</h3><p class="std-meta">层级：${n.level}级 ｜ 节点版本：${esc(n.version)} ｜ ${n.active?'启用中':'已停用'} ｜ 体系版本：${esc(db.systems[sys].version)}</p><h4>指标原文</h4><div class="std-source">${esc(n.description)}</div><h4>维护操作</h4><div class="std-buttons"><button onclick="WBZYStandard.edit('${esc(n.code)}')">编辑指标</button><button class="secondary" onclick="WBZYStandard.createAt('${esc(n.code)}')">${n.level===3?'新增同级末节点':'＋ 新增下级节点'}</button>${!n.original?`<button class="std-danger" onclick="WBZYStandard.remove('${esc(n.code)}')">删除新增指标</button>`:''}<button class="secondary" onclick="WBZYStandard.toggle('${esc(n.code)}')">${n.active?'停用':'启用'}</button>${n.level===3?`<button onclick="event.stopPropagation();WBZYStandard.analyze('${esc(n.code)}')">分析考评点</button>`:''}</div><h4>历史版本（${revisions.length}）</h4>${revisions.map(r=>`<details class="std-history"><summary>${esc(r.at)} · ${esc(r.action)} · ${esc(r.current?.version)}</summary><p>修订前原文</p><pre>${esc(r.previous?.description??'首次新增，无前一版本')}</pre><p>修订后原文</p><pre>${esc(r.current?.description||'')}</pre><button class="secondary" onclick="WBZYStandard.restore('${esc(r.id)}')">从此版本创建新修订</button></details>`).join('')||'<p class="std-muted">尚未修改，当前即为原始基线版本。</p>'}</div>`}
+function page(){return `<div class="std-app">${toolbar()}<div class="std-stats">${[1,2,3].map(l=>`<div><strong>${all(sys).filter(n=>n.level===l).length}</strong><span>${l===1?'一级指标':l===2?'二级指标':'末级指标'}</span></div>`).join('')}<div><strong>${all(sys).filter(n=>!n.active).length}</strong><span>停用指标</span></div></div>${list()}</div>`}
+function redraw(){document.getElementById('main').innerHTML=page()}
+function system(k){if(!db.systems[k])return;sys=k;selected=null;filter='';redraw()}
+function search(s){filter=s;const host=document.querySelector('.std-body');if(host)host.outerHTML=list()}
+function inspect(code){selected=code;const d=document.getElementById('stdDetail');if(d)d.innerHTML=detail(get(code))}
+function form(n,context){return `<div class="std-edit"><h3>${n?'编辑指标':'新增指标'}</h3><label>编码<input id="stdCode" ${n?'readonly':''} value="${esc(n?.code||'')}"></label><label>层级<select id="stdLevel" ${n?'disabled':''}>${[1,2,3].map(l=>`<option value="${l}" ${(n?.level||context?.level||1)===l?'selected':''}>${l}级</option>`).join('')}</select></label><label>上级节点<select id="stdParent"><option value="">无（一级）</option>${all(sys).filter(x=>x.level<3).map(x=>`<option value="${esc(x.code)}" ${(n?.parent||context?.parent)===x.code?'selected':''}>${esc(x.code)} ${esc(x.name)}</option>`).join('')}</select></label><label>名称<input id="stdName" value="${esc(n?.name||'')}"></label><label>指标原文<textarea id="stdText">${esc(n?.description||'')}</textarea></label><p class="std-muted">修改后自动生成新的末级节点修订版本，原始指标文件和历史修订均保留。</p><div class="std-buttons"><button onclick="WBZYStandard.save('${esc(n?.code||'')}')">保存修订</button><button class="secondary" onclick="WBZYStandard.cancel()">取消</button></div></div>`}
+function create(){selected=null;document.getElementById('stdDetail').innerHTML=form(null,{level:1,parent:''})}
+function createAt(code){const n=get(code);if(!n)return alert('当前节点不存在');const context=n.level===3?{level:3,parent:n.parent}:{level:n.level+1,parent:n.code};selected=code;document.getElementById('stdDetail').innerHTML=form(null,context);const level=document.getElementById('stdLevel');level.value=String(context.level);document.getElementById('stdParent').value=context.parent;const siblings=all(sys).filter(x=>x.level===context.level&&x.parent===context.parent);const parts=context.parent?context.parent.split('.'):[];const siblingNums=siblings.map(x=>Number(x.code.split('.').at(-1))).filter(Number.isFinite);const next=Math.max(0,...siblingNums)+1;let suggested=context.parent?context.parent+'.'+next:String(next);if(context.level===3&&sys==='general')suggested=context.parent+'-K'+String(next).padStart(2,'0');document.getElementById('stdCode').value=suggested;document.getElementById('stdName').focus();}
+
+function edit(code){selected=code;document.getElementById('stdDetail').innerHTML=form(get(code))}
+function cancel(){document.getElementById('stdDetail').innerHTML=selected?detail(get(selected)):'<p>请选择指标</p>'}
+function save(code){try{let l=Number(document.getElementById('stdLevel').value),parent=document.getElementById('stdParent').value,c=(code||document.getElementById('stdCode').value).trim(),name=document.getElementById('stdName').value.trim(),desc=document.getElementById('stdText').value.trim();if(!c||!name||!desc)throw Error('编码、名称和原文不能为空');let old=get(c);if(!old&&all(sys).some(x=>x.code===c))throw Error('编码重复');if(l===1&&parent)throw Error('一级指标不能指定上级');if(l>1&&!all(sys).some(x=>x.code===parent&&x.level===l-1))throw Error('上级节点与层级不匹配');if(old&&old.level!==l)throw Error('不允许直接更改现有编码的层级');if(old&&!confirm('保存修订并保留历史版本？'))return;let n={...old,code:c,name,description:desc,level:l,parent,active:old?.active??true,version:old?bump(old.version):'V1.0',original:false,source:old?.source||'后台新建'};db.systems[sys].nodes=db.systems[sys].nodes.filter(x=>x.code!==c);db.systems[sys].nodes.push(n);record(old?'编辑':'新增',n,old);selected=c;redraw()}catch(e){alert('保存失败：'+e.message)}}
+function remove(code){const n=get(code);if(!n)return alert('节点不存在');if(n.original)return alert('原始基线节点不允许删除，可停用。');const children=all(sys).filter(x=>x.parent===code);if(children.length)return alert('该节点下还有'+children.length+'个子节点，请先处理子节点。');if(!confirm('删除新增指标 '+code+'？本次删除将保留修订记录，发布前可导出备份。'))return;const tomb={...n,deleted:true,version:bump(n.version)};db.systems[sys].nodes=db.systems[sys].nodes.filter(x=>x.code!==code).concat(tomb);record('删除',tomb,n);selected=null;redraw()}
+function toggle(code){const old=get(code);if(!confirm('确定'+(old.active?'停用':'启用')+'指标 '+code+'？'))return;let n={...old,active:!old.active,version:bump(old.version)};db.systems[sys].nodes=db.systems[sys].nodes.filter(x=>x.code!==code).concat(n);record(n.active?'启用':'停用',n,old);selected=code;redraw()}
+function restore(id){const r=db.systems[sys].revisions.find(x=>x.id===id);if(!r||!confirm('从该历史版本创建新修订？不会覆盖历史。'))return;let old=get(r.code),n={...r.current,version:bump(old.version)};db.systems[sys].nodes=db.systems[sys].nodes.filter(x=>x.code!==n.code).concat(n);record('历史版本恢复',n,old);selected=n.code;redraw()}
+function auditPublish(){const ns=all(sys),issues=[],codes=new Set(),parents=new Map(ns.map(x=>[x.code,x]));for(const n of ns){if(codes.has(n.code))issues.push('编码重复：'+n.code);codes.add(n.code);if(!n.name?.trim()||!n.description?.trim())issues.push('名称或原文为空：'+n.code);if(n.level>1&&(!parents.has(n.parent)||parents.get(n.parent).level!==n.level-1))issues.push('父节点层级错误：'+n.code);if(n.level===1&&n.parent)issues.push('一级节点不能有上级：'+n.code);if(n.active&&n.level>1&&parents.has(n.parent)&&!parents.get(n.parent).active)issues.push('启用节点的上级已停用：'+n.code)}if(!ns.some(x=>x.level===3))issues.push('没有末级指标');return issues}
+function publish(){const s=db.systems[sys],problems=auditPublish();if(problems.length){alert('发布校验未通过（'+problems.length+'项）：\n'+problems.slice(0,12).join('\n'));return}if(!hasUnpublished())return alert('当前内容与最近发布版本一致，无需重复发布。');const current=s.releases[0],suggest=current?bump(current.version):s.version;let next=prompt('确认本次整套指标的发布版本（例如 V1.1）',suggest);if(next===null)return;next=next.trim();if(!/^V\d+\.\d+(?:\.\d+)?$/.test(next))return alert('发布版本格式不正确');if(s.releases.some(r=>r.version===next))return alert('该发布版本已存在，不允许覆盖历史快照');const note=prompt('填写本次发布说明（必填）','指标层级与原文修订');if(note===null)return;if(!note.trim())return alert('发布说明不能为空');const nodes=snapshot();const msg='准备发布'+systemName(sys)+' '+next+'\n指标：'+nodes.length+'条（末级'+nodes.filter(n=>n.level===3).length+'条）\n发布后保存不可变快照，后续修改成为新的草稿。确认发布？';if(!confirm(msg))return;s.version=next;s.publishedAt=stamp();s.releases.unshift({version:next,at:s.publishedAt,note:note.trim(),nodes:structuredClone(nodes),stats:{total:nodes.length,leaf:nodes.filter(n=>n.level===3).length}});db.history.unshift({at:s.publishedAt,system:sys,action:'发布整套指标',code:'*',version:next});persist();redraw();alert('整套指标体系 '+next+' 发布成功。本地发布记录已保存，请及时导出备份。')}
+function version(){const s=db.systems[sys],rows=s.releases.map(r=>`<div class="std-release"><strong>${esc(r.version)}</strong><small>${esc(r.at)} · ${r.stats?.total||r.nodes.length} 条指标</small><p>${esc(r.note)}</p><button class="secondary" onclick="WBZYStandard.exportRelease('${esc(r.version)}')">导出此发布版本</button></div>`).join('')||'<p class="std-muted">尚无发布记录。当前处于草稿阶段。</p>';document.getElementById('stdDetail').innerHTML=`<div class="std-detail"><h3>指标体系发布管理</h3><p class="std-meta">当前版本 ${esc(s.version)} · ${hasUnpublished()?'存在未发布修改':'已与发布版本一致'}</p><p>发布前校验编码、父子层级、原文完整性及节点状态；发布后保留整套指标不可变快照。</p><div class="std-buttons"><button onclick="WBZYStandard.publish()">校验并发布整个指标</button><button class="secondary" onclick="WBZYStandard.exportData()">导出草稿及修订历史</button></div><h4>历史发布版本</h4>${rows}</div>`}
+function exportRelease(v){const r=db.systems[sys].releases.find(x=>x.version===v);if(r)download('WBZY-'+sys+'-'+v+'-published.json',{system:sys,...r})}
+function analyze(code){const n=get(code);if(!n||n.level!==3||!n.active)return alert('请使用启用的末级指标分析考评点');window.WBZYStandardPending={system:sys,code,text:n.description,version:n.version};switchView('agent-points');setTimeout(()=>{const system=document.getElementById('apSystem'),source=document.getElementById('apSource'),text=document.getElementById('apText');if(system){system.value=sys;window.WBZYAgents?.onSystemChange()}if(source){if([...source.options].some(x=>x.value===code)){source.value=code;window.WBZYAgents?.fillSource()}else source.insertAdjacentHTML('afterbegin',`<option value="${esc(code)}">${esc(code)} · 当前修订版本</option>`),source.value=code;}if(text)text.value=n.description;const h=document.querySelector('#apText');if(h)h.insertAdjacentHTML('beforebegin',`<p class="std-agent-note">来源：${esc(sys==='general'?'通用数智能力':'教师素智素养')} / ${esc(code)} / 节点 ${esc(n.version)}（本地修订）</p>`)},0)}
+function download(name,data){const a=document.createElement('a'),u=URL.createObjectURL(new Blob([JSON.stringify(data,null,2)],{type:'application/json'}));a.href=u;a.download=name;a.click();setTimeout(()=>URL.revokeObjectURL(u),1000)}
+function exportData(){download('WBZY-'+sys+'-standard-'+db.systems[sys].version+'.json',{system:sys,name:systemName(sys),version:db.systems[sys].version,nodes:all(sys),revisions:db.systems[sys].revisions,releases:db.systems[sys].releases})}
+function createSystem(){
+ const host=document.getElementById('stdDetail');if(!host)return;
+ host.innerHTML=`<div class="std-detail"><h3>新增指标体系</h3><p class="std-muted">建立独立的新标准，不修改现有两套指标。保存后可进入新体系的指标树，逐层添加一级、二级和末级指标。</p><div class="std-edit"><label>体系名称<input id="newStdName" placeholder="例如：企业人工智能应用能力"></label><label>体系唯一标识（英文、小写）<input id="newStdId" placeholder="例如：enterprise-ai"></label><label>体系初始版本<input id="newStdVersion" value="V1.0" readonly></label><label>体系简介<textarea id="newStdDesc" placeholder="标准定位、适用对象与用途"></textarea></label></div><div class="std-buttons"><button onclick="WBZYStandard.saveNewSystem()">建立指标体系</button><button class="secondary" onclick="WBZYStandard.cancel()">取消</button></div></div>`;
+ document.getElementById('newStdName')?.focus();
+}
+function saveNewSystem(){
+ const name=document.getElementById('newStdName')?.value.trim(),id=document.getElementById('newStdId')?.value.trim().toLowerCase(),description=document.getElementById('newStdDesc')?.value.trim();
+ if(!name||!id) return alert('体系名称和唯一标识不能为空');
+ if(!/^[a-z][a-z0-9-]{2,35}$/.test(id))return alert('唯一标识须为3—36位小写英文字母、数字或连字符，并以字母开头');
+ if(db.systems[id])return alert('体系标识已存在，请更换');
+ if(Object.keys(db.systems).some(k=>systemName(k)===name))return alert('已有同名指标体系');
+ db.systems[id]={name,description,version:'V1.0',nodes:[],revisions:[],releases:[],publishedAt:null};
+ persist();sys=id;selected=null;filter='';redraw();
+}
+function deleteSystem(){
+ if(['general','teacher'].includes(sys))return alert('通用数智能力和教师素智素养属于原始基线指标体系，不能删除。');
+ const unit=db.systems[sys];if(!unit)return alert('指标体系不存在，可能已经删除。');
+ const key=sys,name=systemName(key),nodes=all(key),count=nodes.length,releases=unit.releases?.length||0;
+ const message=`确定删除新建指标体系「${name}」？\n\n当前指标节点：${count} 条\n历史发布版本：${releases} 个\n\n删除将清除当前浏览器中的该体系、节点草稿和发布历史；不会删除原始两套指标体系，也不会改写题库。建议先导出备份。`;
+ if(!confirm(message))return;
+ const verify=prompt(`删除确认：请输入体系唯一标识「${key}」以继续（区分大小写）`,'');
+ if(verify!==key){if(verify!==null)alert('标识不匹配，已取消删除。');return}
+ delete db.systems[key];db.history.unshift({at:stamp(),system:key,action:'删除新建指标体系',code:'*',version:unit.version,name,nodeCount:count,releaseCount:releases});
+ try{persist()}catch(e){db.systems[key]=unit;alert('删除失败：本地保存异常。'+e.message);return}
+ sys='general';selected=null;filter='';redraw();
+ alert(`指标体系「${name}」已从当前浏览器的管理数据中删除，已切换到通用数智能力。`);
+}
+function parseCsv(input){
+ const lines=input.replace(/^\ufeff/,'').trim().split(/\r?\n/),parse=line=>{let arr=[],cur='',q=false;for(let i=0;i<line.length;i++){let ch=line[i];if(ch==='"'){if(q&&line[i+1]==='"'){cur+='"';i++}else q=!q}else if(ch===','&&!q){arr.push(cur);cur=''}else cur+=ch}return [...arr,cur]};
+ let fields=parse(lines[0]);return lines.slice(1).filter(Boolean).map(line=>Object.fromEntries(parse(line).map((v,i)=>[fields[i],v])));
+}
+async function importFile(el){try{
+ const file=el.files?.[0];if(!file)return;
+ const content=await file.text(),isJson=file.name.toLowerCase().endsWith('.json');
+ const obj=isJson?JSON.parse(content):{nodes:parseCsv(content)};
+ const items=Array.isArray(obj)?obj:obj.nodes;
+ if(!Array.isArray(items)||!items.length)throw Error('文件没有可导入的节点数组');
+ if(items.length>1500)throw Error('单次导入最多1500条节点');
+ const newName=(obj.name||obj.standardName||obj.体系名称||'').trim()||prompt('为导入的指标体系输入名称（将创建新体系）','');
+ if(!newName)return;
+ let newId=String(obj.system||obj.id||'').toLowerCase().trim();
+ if(!/^[a-z][a-z0-9-]{2,35}$/.test(newId)||db.systems[newId])newId=prompt('设置新体系唯一英文标识（不可与现有体系重复）','new-standard')?.toLowerCase().trim()||'';
+ if(!/^[a-z][a-z0-9-]{2,35}$/.test(newId)||db.systems[newId])throw Error('体系标识不合法或已存在');
+ if(Object.keys(db.systems).some(k=>systemName(k)===newName))throw Error('指标体系名称已存在');
+ const seen=new Set();const nodes=items.map(x=>{
+  const code=String(x.code||x.编码||'').trim(),level=Number(x.level||x.层级),parent=String(x.parent||x.上级编码||'').trim(),name=String(x.name||x.名称||'').trim(),description=String(x.description||x.原文||x.指标原文||'').trim();
+  if(!code||![1,2,3].includes(level)||!name||!description||seen.has(code))throw Error('指标字段缺失、编码重复或层级不正确：'+code);
+  seen.add(code);return {code,level,parent,name,description,active:x.active!==false&&x.active!=='false',version:'V1.0',original:false,source:'新体系导入'};
+ });
+ const byId=new Map(nodes.map(x=>[x.code,x]));for(const n of nodes){if(n.level===1&&n.parent)throw Error('一级指标不能有上级：'+n.code);if(n.level>1&&(!byId.has(n.parent)||byId.get(n.parent).level!==n.level-1))throw Error('父节点不存在或层级不匹配：'+n.code)}
+ if(!confirm(`准备新建「${newName}」体系，导入 ${nodes.length} 条指标；不会修改当前现有体系。确认？`))return;
+ db.systems[newId]={name:newName,description:String(obj.description||'导入创建').trim(),version:'V1.0',nodes,revisions:[],releases:[],publishedAt:null};
+ persist();sys=newId;selected=null;filter='';redraw();
+}catch(e){alert('导入指标体系失败：'+e.message)}finally{el.value=''}}
+
+window.WBZYStandard={page,system,search,inspect,create,createAt,createSystem,saveNewSystem,deleteSystem,edit,cancel,save,toggle,remove,restore,version,publish,exportRelease,analyze,exportData,importFile};
+const oldRender=window.render;window.render=function(){if(view==='indicators'){document.getElementById('main').innerHTML=page();return}return oldRender()};
+window.indicators=page;
+})();
