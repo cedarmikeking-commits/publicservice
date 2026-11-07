@@ -147,21 +147,6 @@
   margin-top: 8px;
   font-size: 11px;
 }
-.mveri-personal-sample-list {
-  display: flex;
-  gap: 8px;
-  margin-top: 10px;
-  flex-wrap: wrap;
-}
-.mveri-personal-sample-list button {
-  border: 1px solid #cbdaf5;
-  background: #eef4ff;
-  color: #2452ad;
-  border-radius: 8px;
-  padding: 8px 12px;
-  font-size: 12px;
-  cursor: pointer;
-}
 .mveri-personal-register {
   text-align: center;
   font-size: 12px;
@@ -187,7 +172,10 @@
 }
 
 /* V33: Hero personal-entry contrast fix (regular / hover / focus / active). */
-body.public-mode .home-v22-hero .site-hero-actions > button.home-v22-outline[data-personal-modal] {
+body.public-mode
+  .home-v22-hero
+  .site-hero-actions
+  > button.home-v22-outline[data-personal-modal] {
   background: rgba(19, 53, 125, 0.17) !important;
   border: 1px solid rgba(255, 255, 255, 0.92) !important;
   color: #fff !important;
@@ -195,17 +183,30 @@ body.public-mode .home-v22-hero .site-hero-actions > button.home-v22-outline[dat
   -webkit-text-fill-color: #fff;
   box-shadow: none !important;
 }
-body.public-mode .home-v22-hero .site-hero-actions > button.home-v22-outline[data-personal-modal] span {
+body.public-mode
+  .home-v22-hero
+  .site-hero-actions
+  > button.home-v22-outline[data-personal-modal]
+  span {
   color: #fff !important;
   -webkit-text-fill-color: #fff;
 }
-body.public-mode .home-v22-hero .site-hero-actions > button.home-v22-outline[data-personal-modal]:hover,
-body.public-mode .home-v22-hero .site-hero-actions > button.home-v22-outline[data-personal-modal]:focus-visible {
+body.public-mode
+  .home-v22-hero
+  .site-hero-actions
+  > button.home-v22-outline[data-personal-modal]:hover,
+body.public-mode
+  .home-v22-hero
+  .site-hero-actions
+  > button.home-v22-outline[data-personal-modal]:focus-visible {
   background: rgba(255, 255, 255, 0.18) !important;
   border-color: #fff !important;
   color: #fff !important;
 }
-body.public-mode .home-v22-hero .site-hero-actions > button.home-v22-outline[data-personal-modal]:active {
+body.public-mode
+  .home-v22-hero
+  .site-hero-actions
+  > button.home-v22-outline[data-personal-modal]:active {
   background: rgba(11, 40, 104, 0.34) !important;
   color: #fff !important;
 }

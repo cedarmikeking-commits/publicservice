@@ -1770,7 +1770,7 @@
  <label class="mveri-personal-check"><input id="mveri-personal-show" type="checkbox"> 显示密码</label>
  <p class="mveri-personal-error" id="mveri-personal-error" role="alert" hidden></p>
  <button class="mveri-personal-submit" type="submit">进入个人服务中心 →</button></form>
- <div class="mveri-personal-samples"><div class="mveri-demo-heading"><b>八类用户演示账号</b><span>点击直接填入</span></div><div class="mveri-personal-sample-list">${(window.MVERI_PERSONAL_DEMO_ACCOUNTS || []).map((u) => `<button type="button" data-personal-sample="${esc(u.account)}" aria-label="选择${esc(u.identity)}演示账号"><strong>${esc(u.identity)}</strong><small>${esc(u.account)}</small></button>`).join("")}</div><small>统一演示密码：<code>Demo@123456</code> · 仅用于本地功能体验</small></div>
+ <div class="mveri-personal-samples"><div class="mveri-demo-heading"><b>八类用户演示账号</b><span>选择后自动填入</span></div><select id="mveri-personal-demo-select" class="mveri-demo-select" aria-label="选择演示账号身份"><option value="">选择职业身份，自动填入账号</option>${(window.MVERI_PERSONAL_DEMO_ACCOUNTS || []).map((u) => `<option value="${esc(u.account)}">${esc(u.identity)} · ${esc(u.account)}</option>`).join("")}</select><small>统一演示密码：<code>Demo@123456</code> · 仅用于本地功能体验</small></div>
  <p class="mveri-personal-register">首次使用？<a href="../auth/register.html">创建个人账号并设置职业身份 →</a></p><a class="career-login-full" href="../auth/login.html">使用完整登录页面</a></div>
  </section>`;
     document.body.appendChild(overlay);
@@ -1787,18 +1787,20 @@
     overlay.addEventListener("click", (e) => {
       if (e.target === overlay || e.target.closest(".mveri-personal-close"))
         close();
-      const b = e.target.closest("[data-personal-sample]");
-      if (b) {
-        overlay.querySelector("#mveri-personal-account").value =
-          b.dataset.personalSample;
+    });
+    overlay
+      .querySelector("#mveri-personal-demo-select")
+      .addEventListener("change", (e) => {
+        const account = e.target.value;
+        if (!account) return;
+        overlay.querySelector("#mveri-personal-account").value = account;
         overlay.querySelector("#mveri-personal-password").value =
           (window.MVERI_PERSONAL_DEMO_ACCOUNTS || []).find(
-            (u) => u.account === b.dataset.personalSample,
-          )?.password || "123456";
+            (u) => u.account === account,
+          )?.password || "Demo@123456";
         overlay.querySelector("#mveri-personal-error").hidden = true;
-        overlay.querySelector("#mveri-personal-password").focus();
-      }
-    });
+        e.target.blur();
+      });
     overlay
       .querySelector("#mveri-personal-show")
       .addEventListener("change", (e) => {

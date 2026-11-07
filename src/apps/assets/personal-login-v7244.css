@@ -10,7 +10,7 @@
   border-radius: 20px;
 }
 .career-login-modal .career-login-story {
-  padding: 39px 38px;
+  padding: 32px 38px;
   background: linear-gradient(140deg, #153777, #2454ae 74%, #3379c1);
   color: #fff;
   min-width: 0;
@@ -19,7 +19,7 @@
   display: flex;
   gap: 12px;
   align-items: center;
-  margin-bottom: 47px;
+  margin-bottom: 32px;
 }
 .career-login-brand img {
   width: 46px;
@@ -101,23 +101,39 @@
   line-height: 1.7;
 }
 .career-login-modal .career-login-formside {
-  padding: 44px 36px 30px;
+  padding: 28px 34px 16px;
   min-width: 0;
   background: #fff;
 }
 .career-login-formside .mveri-personal-heading {
-  margin: 18px 0 26px;
+  margin: 10px 0 14px;
+}
+.career-login-modal .mveri-personal-card form {
+  gap: 12px;
+}
+.career-login-modal
+  .mveri-personal-card
+  form
+  > label:not(.mveri-personal-check) {
+  gap: 6px;
+}
+.career-login-modal .mveri-personal-card input:not([type="checkbox"]) {
+  height: 42px;
+  padding: 9px 12px;
+}
+.career-login-modal .mveri-personal-submit {
+  height: 44px;
 }
 .career-login-formside .mveri-personal-heading h2 {
   font-size: 27px;
 }
 .career-login-formside .mveri-personal-register {
-  margin-top: 20px;
+  margin-top: 12px;
 }
 .career-login-full {
   display: block;
   text-align: center;
-  margin-top: 14px;
+  margin-top: 10px;
   font-size: 11px;
   color: #5476b3;
 }
@@ -494,8 +510,8 @@
 
 /* V72.46 · 8-role demo login selector */
 .career-login-modal .mveri-personal-samples {
-  margin-top: 20px;
-  padding-top: 17px;
+  margin-top: 10px;
+  padding-top: 10px;
   border-top: 1px solid #e4eafa;
 }
 .mveri-demo-heading {
@@ -512,44 +528,23 @@
   font-size: 11px;
   color: #637fa8;
 }
-.career-login-modal .mveri-personal-sample-list {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 8px;
-  margin-top: 12px;
-}
-.career-login-modal .mveri-personal-sample-list button {
-  display: block;
-  text-align: left;
-  min-width: 0;
-  padding: 10px 12px;
-  background: #f6f8ff;
-  border: 1px solid #dce6f8;
+.career-login-modal .mveri-demo-select {
+  box-sizing: border-box;
+  width: 100%;
+  height: 42px;
+  margin-top: 10px;
+  padding: 0 12px;
+  border: 1px solid #d3e0f5;
   border-radius: 10px;
-  color: #274a8c;
-  transition:
-    background 0.15s,
-    border-color 0.15s;
-}
-.career-login-modal .mveri-personal-sample-list button:hover,
-.career-login-modal .mveri-personal-sample-list button:focus-visible {
-  background: #e8efff;
-  border-color: #7596e5;
-  outline-offset: 2px;
-}
-.career-login-modal .mveri-personal-sample-list button strong,
-.career-login-modal .mveri-personal-sample-list button small {
-  display: block;
-  white-space: normal;
-  overflow-wrap: anywhere;
-}
-.career-login-modal .mveri-personal-sample-list button strong {
+  background: #f6f9ff;
+  color: #23478a;
+  font: inherit;
   font-size: 12px;
+  cursor: pointer;
 }
-.career-login-modal .mveri-personal-sample-list button small {
-  font-size: 10px;
-  margin-top: 5px;
-  color: #6983a6;
+.career-login-modal .mveri-demo-select:focus-visible {
+  outline: 2px solid #4a76d8;
+  outline-offset: 2px;
 }
 .career-login-modal .mveri-personal-samples > small {
   line-height: 1.6;
@@ -573,12 +568,6 @@
   outline-offset: 2px;
 }
 @media (max-width: 460px) {
-  .career-login-modal .mveri-personal-sample-list {
-    gap: 6px;
-  }
-  .career-login-modal .mveri-personal-sample-list button {
-    padding: 8px;
-  }
   .career-auth-samples {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
