@@ -1,0 +1,17 @@
+/* V72.12 - Isolated question-bank page blue visual theme. */
+:root{--brand:#315CC5;--primary:#315CC5;accent-color:#315CC5}
+body.is-embedded{background:#F3F6FC;color:#173B68}
+/* Only ordinary action controls; avoid painting row/cards, status, or deleted actions. */
+body.is-embedded button:not(.secondary):not(.warn):not(.danger):not(.q-danger):not(.q-status):not(.q-filter):not(.type-card-main):not(.q-card):not([class*="delete"]):not([class*="remove"]){background:#315CC5;color:#fff;border-color:#315CC5}
+body.is-embedded button.secondary{background:#EAF0FF;color:#315CC5;border-color:#D9E4FA}
+body.is-embedded button:not(.secondary):not(.warn):not(.danger):not(.q-danger):not(.q-status):not(.q-filter):hover{background:#244BA8}
+body.is-embedded :is(button,a):focus-visible{outline:2px solid #315CC5;outline-offset:2px}
+body.is-embedded :is(input,select,textarea):focus{border-color:#315CC5;box-shadow:0 0 0 3px #315CC522}
+body.is-embedded .wbzy-list-loading{background:#F3F6FC;border-color:#D9E4FA;color:#173B68}
+body.is-embedded .wbzy-list-loading-head strong{color:#315CC5}
+body.is-embedded .wbzy-list-loading-track{background:#E3EAF6}
+body.is-embedded #wbzy-list-loading-bar{background:#315CC5}
+body.is-embedded #wbzy-operation-progress .op-bar{background:#315CC5}
+body.is-embedded #wbzy-operation-progress .op-track{background:#E3EAF6}
+body.is-embedded #wbzy-operation-progress{background:#F3F6FC;border-color:#D9E4FA;color:#173B68}
+body.is-embedded #list .q-maint-table th{background:#F3F6FC;color:#173B68}

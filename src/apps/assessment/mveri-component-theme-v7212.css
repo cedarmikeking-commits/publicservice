@@ -1,0 +1,68 @@
+/* V72.12 - Precise component-level visual system for HQ assessment.
+   Do not paint button-shaped cards. Preserve semantic status colors. */
+html.mveri-workbench-embed main#main{
+ --mveri-primary:#315CC5;--mveri-primary-hover:#244BA8;
+ --mveri-text:#173B68;--mveri-muted:#60758F;--mveri-border:#DCE5F1;
+ --mveri-subtle:#EAF0FF;--mveri-surface:#fff;
+}
+/* Explicit business action buttons only: direct children of toolbars/rows and key forms.
+   Excluding link-like/clickable card components prevents the blue-card regression. */
+html.mveri-workbench-embed main#main .panel .row > button:not(.secondary):not(.warn):not(.danger):not(.type-card-main):not(.workflow-step):not(.wf-example):not(.agent-catalog-card),
+html.mveri-workbench-embed main#main .agent-actions > button:not(.secondary):not(.warn):not(.danger),
+html.mveri-workbench-embed main#main .panel .h > button:not(.secondary):not(.warn):not(.danger),
+html.mveri-workbench-embed main#main .panel .h > div > button:not(.secondary):not(.warn):not(.danger),
+html.mveri-workbench-embed main#main button.primary,
+html.mveri-workbench-embed main#main .std-app button.std-publish-btn{
+ background:#315CC5!important;border-color:#315CC5!important;color:#fff!important;
+}
+html.mveri-workbench-embed main#main .panel .row > button:not(.secondary):not(.warn):not(.danger):hover,
+html.mveri-workbench-embed main#main .agent-actions > button:not(.secondary):not(.warn):not(.danger):hover,
+html.mveri-workbench-embed main#main button.primary:hover{
+ background:#244BA8!important;border-color:#244BA8!important;color:#fff!important;
+}
+/* Secondary actions preserve pale surface + readable primary label. */
+html.mveri-workbench-embed main#main button.secondary,
+html.mveri-workbench-embed main#main .btn.secondary,
+html.mveri-workbench-embed main#main .agent-actions > button.secondary{
+ background:#EAF0FF!important;color:#315CC5!important;border:1px solid #DCE5F6!important;
+}
+html.mveri-workbench-embed main#main button.secondary:hover{background:#DCE7FB!important}
+/* Neutral card controls: never inherit button-fill brand styling. */
+html.mveri-workbench-embed main#main button.agent-catalog-card,
+html.mveri-workbench-embed main#main button.wf-example,
+html.mveri-workbench-embed main#main button.workflow-step,
+html.mveri-workbench-embed main#main button.type-card-main,
+html.mveri-workbench-embed main#main button.std-leaf,
+html.mveri-workbench-embed main#main button.std-node-select{
+ background:#fff!important;color:#173B68!important;
+}
+html.mveri-workbench-embed main#main button.agent-catalog-card,
+html.mveri-workbench-embed main#main button.wf-example{
+ border-color:#DCE5F1!important;
+}
+/* Keep workflow-specific warning/error/success states meaningful. */
+html.mveri-workbench-embed main#main button.wf-example.warn{background:#FFF8EC!important;border-left-color:#E0A536!important}
+html.mveri-workbench-embed main#main button.wf-example.bad{background:#FFF3F3!important;border-left-color:#D56C75!important}
+html.mveri-workbench-embed main#main button.wf-example.ok{background:#F2FAF5!important;border-left-color:#2B9468!important}
+html.mveri-workbench-embed main#main button.wf-example.active{border-left-color:#315CC5!important}
+html.mveri-workbench-embed main#main button.wf-example strong,
+html.mveri-workbench-embed main#main button.workflow-step strong{color:#173B68!important}
+html.mveri-workbench-embed main#main button.wf-example small,
+html.mveri-workbench-embed main#main button.workflow-step small{color:#60758F!important}
+/* Agent heroes/titles use contrast-safe colors; avoid blue labels on dark surfaces. */
+html.mveri-workbench-embed main#main .agent-hero h1,
+html.mveri-workbench-embed main#main .agent-hero h2,
+html.mveri-workbench-embed main#main .agent-hero h3{color:#fff!important}
+html.mveri-workbench-embed main#main .agent-hero p{color:#E7F0FF!important}
+html.mveri-workbench-embed main#main .agent-card-link{color:#315CC5!important}
+html.mveri-workbench-embed main#main .wf-kpi strong{color:#173B68!important}
+html.mveri-workbench-embed main#main .wf-kpi{background:#F7F9FD!important;border-color:#DCE5F1!important}
+html.mveri-workbench-embed main#main .agent-chip:not([class*="status"]){background:#EAF0FF;color:#315CC5}
+html.mveri-workbench-embed main#main .panel .metric{background:#F5F8FD!important}
+/* Shared focus treatment across all assessment business modules. */
+html.mveri-workbench-embed main#main :is(button,a,[role="button"]):focus-visible{outline:2px solid #315CC5!important;outline-offset:3px!important}
+html.mveri-workbench-embed main#main :is(input,select,textarea):focus{border-color:#315CC5!important;box-shadow:0 0 0 3px #315CC522!important}
+/* Brand action bar versus semantic success/progress indication. */
+html.mveri-workbench-embed main#main .wbzy-bank-bar,
+html.mveri-workbench-embed main#main .wbzy-bank-track>span{background:#315CC5!important}
+html.mveri-workbench-embed main#main .wbzy-bank-loading strong{color:#315CC5!important}
