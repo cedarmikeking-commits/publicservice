@@ -1,2 +1,0 @@
-/* V59 shared user management loader */
-(function(){'use strict';if(!window.MVERI_PORTAL_BRIDGED)return;function load(file,done){let s=document.createElement('script');s.src=file+'?v=60';s.onload=()=>done&&done();s.onerror=()=>{document.body.textContent='资源加载失败：'+file+'，请完整部署 V59 文件夹。'};document.body.appendChild(s)}load('../assets/school-licenses-v58.js',()=>load('../assets/registered-users-v60.js',()=>load('../assets/user-directory-v59.js',()=>load('data.js',()=>load('app.js')))));})();
