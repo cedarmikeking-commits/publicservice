@@ -1,125 +1,926 @@
 /* V19.7 增能专项智能体：离线规则与人工审核工作台；非在线大模型 */
-(function(){'use strict';
-const KEY='wbzy_special_agents_v197';
-const defs=[['points','考评点拆解智能体','从最末级指标原文萃取可测量要素','指标原文 → 候选考评点'],['types','题型生成智能体','针对考评点匹配交互题型及数据结构','考评点 → 题型方案'],['questions','命题智能体','依据题型和命题规则生成待审核的任务草案','考评点 + 题型 → 待审定试题'],['reports','报告智能体','基于测评数据生成个人与团队分析草案','测评记录 → 报告草案']];
-let data;try{data=JSON.parse(localStorage.getItem(KEY)||'null')}catch(e){}if(!data||typeof data!=='object')data={history:[],last:{},sampleMode:true};
-const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-const str=s=>String(s??'');
-const gp=()=>{try{const a=JSON.parse(localStorage.getItem('digital_assessment_general_point_records_v152')||'null');if(Array.isArray(a)&&a.length)return a}catch(e){}return window.EXTRACTED_GENERAL_POINTS||[]};
-const tp=()=>{try{const a=JSON.parse(localStorage.getItem('teacher_assessment_points_v11')||'null');if(Array.isArray(a)&&a.length)return a}catch(e){}return window.ASSESSMENT_POINTS||[]};
-const points=system=>system==='teacher'?tp():gp();
-function sources(system){if(system==='general'){const f=window.GENERAL_FRAMEWORK||{};const rows=(f.points||[]).map(x=>({code:x.code,text:x.description||x.text||x.content||'',root:x.root||'',unit:x.unit||''}));const by=new Map();rows.forEach(x=>{if(!x.code)return;by.set(x.code,x)});const arr=gp();arr.forEach(x=>{const code=x.sourceRequirementCode||x.sourceCode;if(code&&!by.has(code))by.set(code,{code,text:x.sourceText||'',unit:x.unit||'',root:x.root||''})});return [...by.values()].filter(x=>x.text)}
- const idx=window.INDICATOR_TREE||{};let arr=(idx.level3||[]).map(x=>({code:x.code,text:x.description||x.content||x.requirement||x.name||'',unit:x.level2Code||x.code?.split('.').slice(0,2).join('.'),root:x.rootCode||x.code?.split('.')[0]})); if(!arr.length){const by=new Map();tp().forEach(x=>{let code=x.level3Code||x.indicator;if(code&&!by.has(code))by.set(code,{code,text:x.sourceText||'',unit:x.level2Code,root:x.rootCode})});arr=[...by.values()]};return arr.filter(x=>x.text)
-}
-function opt(items,getval,getlabel){return items.map(x=>`<option value="${esc(getval(x))}">${esc(getlabel(x))}</option>`).join('')}
-function systemSelect(id){return `<label class="agent-label" for="${id}">指标体系</label><select class="agent-field" id="${id}" onchange="WBZYAgents.onSystemChange()"><option value="general">通用数智能力</option><option value="teacher">教师素智素养</option></select>`}
-function hero(title,sub){return `<div class="agent-hero"><h2>${title}</h2><p>${sub}</p></div>`}
-function shell(title,sub,inner){return `<div class="agent-space">${hero(title,sub)}${inner}</div>`}
-function foot(){return `<p class="agent-foot">运行方式：离线规则辅助与可编辑初稿。需专家复核；不会调用在线模型、自动发布试题或修改正式测评成绩。</p>`}
-function store(kind,record){data.last[kind]=record;data.history.unshift({kind,at:new Date().toLocaleString('zh-CN'),title:record.title||record.code||'',record});data.history=data.history.slice(0,100);try{localStorage.setItem(KEY,JSON.stringify(data))}catch(e){alert('存储空间不足；请先导出当前成果。')} }
-function resultHtml(kind){const v=data.last[kind];return v?display(kind,v):'<div class="agent-result">尚未生成成果。先选择数据并运行该专项智能体。</div>'}
-function display(kind,v){if(kind==='points')return `<div class="agent-result"><b>${esc(v.code)} · 原文</b><p>${esc(v.source)}</p><p>萃取方法：知识对象、行为动词、作用关系与评价证据分别核查。</p>${v.items.map((x,i)=>`<details ${i===0?'open':''}><summary>${i+1}. ${esc(x.title)}</summary><div><b>可观察行为：</b>${esc(x.behavior)}</div><div><b>评价证据：</b>${esc(x.evidence)}</div><div><b>风险：</b>${esc(x.risk)}</div></details>`).join('')}<p class="agent-foot">此处为机器规则建议，不自动覆盖考评点主数据；完成专家审定后再录入考评点管理。</p></div>`;
-if(kind==='types')return `<div class="agent-result"><b>${esc(v.point)} · 推荐题型及交互结构</b>${v.items.map((x,i)=>`<details open><summary>${i+1}. ${esc(x.name)} · ${esc(x.priority)}</summary><div>交互：${esc(x.interaction)}</div><div>结构：${esc(x.schema)}</div><div>评价：${esc(x.scoring)}</div></details>`).join('')}</div>`;
-if(kind==='questions')return `<div class="agent-result"><p><b>${esc(v.code)} · ${esc(v.typeName)} · 待专家审定草案</b></p><p><b>题干 / 任务：</b>${esc(v.stem)}</p><p><b>作答结构：</b>${esc(v.input)}</p><p><b>参考要求：</b>${esc(v.reference)}</p><p><b>质量检查：</b>${v.checks.map(x=>esc(x)).join('；')}</p><p class="agent-foot">尚未生成足以自动判分的正式选项/素材，不自动写入已发布题库。</p></div>`;
-if(kind==='reports')return `<div class="agent-result"><b>${esc(v.title)}</b><div class="agent-statrow"><div class="agent-stat">有效记录<b>${v.count}</b></div><div class="agent-stat">平均得分<b>${v.avg===null?'—':v.avg+'%'}</b></div><div class="agent-stat">样本模式<b>${v.isDemo?'演示':'导入'}</b></div></div><p>${esc(v.summary)}</p><h4>能力维度</h4><table><thead><tr><th>维度</th><th>均分</th><th>样本数</th></tr></thead><tbody>${v.dimensions.map(x=>`<tr><td>${esc(x.name)}</td><td>${x.avg}%</td><td>${x.n}</td></tr>`).join('')}</tbody></table><p>${esc(v.suggestion)}</p></div>`;
-return ''}
-const catalog=[
- {id:'center',name:'智能体协同中心',icon:'◎',purpose:'协调四个专项智能体的执行顺序、成果交接、记录与追踪',input:'指标、考评点、题型、题库和测评记录',output:'执行链路、阶段交付物、运行日志',tasks:['识别业务目标与所需输入','规划四智能体的执行顺序和依赖','检查各阶段产出是否具备来源与版本','追踪任务记录并导出全链路证据'],prompt:'你是多体系数智能力测评平台的协同编排助手。先识别任务目标与输入依据，再规划考评点拆解、题型设计、命题和报告生成的依赖关系。每一步必须输出：输入来源、执行条件、交付物、质量门槛、人工审核节点和异常处理方案。禁止把规则模拟结果描述为大模型推理或已审定成果。'},
- {id:'points',name:'考评点拆解智能体',icon:'◇',purpose:'根据指标末节点原文，逐层拆解可独立评价的考评点',input:'末级指标原文、编码、能力动词',output:'考评点清单、行为证据、追溯关系',tasks:['读取并保留末节点完整原文','识别能力行为动词与知识对象','分析前置认知、理解、应用及迁移要求','萃取独立考评点并检查重复与遗漏','输出可观察行为、证据和待审定标记'],prompt:'你是考评点深度萃取专家。严格依据给定指标末节点原文，提取能力动词、知识对象、应用情境和前置知识；按认知—理解—操作—迁移形成必要且不重复的候选考评点。每点输出编码建议、对应原文片段、可观察行为、评价证据、建议难度、风险及理由。不得改变标准原文，不得机械凑数，所有产出标注待专家核验。'},
- {id:'types',name:'题型生成智能体',icon:'▤',purpose:'把考评点转成适用题型及可执行的交互和评分结构',input:'考评点、评价行为、证据要求',output:'题型方案、字段结构、交互方式、评分策略',tasks:['读取考评点及证据需求','判断客观题或实操评价是否适合','设计选项、步骤、交互对象或任务素材','定义答题数据结构和可判分规则','检查题型覆盖与交互组件可用性'],prompt:'你是数字能力测评题型架构师。依据考评点的可观察行为与评价证据推荐最适切的题型，输出题型名称、推荐理由、答题交互方式、所需素材、JSON字段结构、答案结构、自动或人工评分方式、风险和前端组件需求。不能因为追求题型多样而推荐不适合的题型。'},
- {id:'questions',name:'命题智能体',icon:'✎',purpose:'依据考评点、题型与命题规则形成可审定试题草案',input:'考评点、题型方案、任务约束、命题规则',output:'试题、参考答案/证据、评分量规、质检记录',tasks:['核对标准原文和考评点的可追溯性','加载推荐题型结构与素材约束','设计具体题干、作答任务和干扰项','配置标准答案或人工评分量规','执行可答性、重复性及格式检查','提交人工审定，不自动发布'],prompt:'你是职业能力测评命题专家。依据指定考评点及题型方案出题，严格检验能力目标、情境真实性、题目可答性、答案准确性和评分一致性。客观题必须有明确答案与合理干扰项；操作题必须有真实可执行的任务及过程证据；开放题提供量规。输出溯源编码、题干、选项或操作任务、答案、解析、难度、评分依据和待审核问题，未经专家审定不得发布。'},
- {id:'reports',name:'报告智能体',icon:'▥',purpose:'基于个人和团队测评记录形成证据驱动的能力分析',input:'用户答题、评分、维度及团队记录',output:'个人/团队能力报告、薄弱项和补训建议',tasks:['检查导入数据完整性与有效性','区分个人记录与团队汇总','计算维度得分和样本覆盖率','结合题目证据识别优势及薄弱环节','形成建议、局限说明和待审定报告'],prompt:'你是能力测评报告分析助手。只使用提供的个人或团队测评记录，核对样本、分数和维度范围；给出描述性统计、能力画像、证据支持的优势与短板、针对性的补训与复测建议。不得虚构测评记录、信效度结论或群体常模；明确演示数据与真实导入数据。'}
-];
-function cardOverview(){return shell('专项智能体','五个专项智能体按测评业务链组织。选择卡片进入任务明细、提示词和执行工作台。',`<div class="agent-catalog">${catalog.map((x,i)=>`<button type="button" class="agent-catalog-card" onclick="switchView('${x.id==='center'?'agent-center':'agent-'+x.id}')"><span class="agent-card-icon">${x.icon}</span><span class="agent-card-step">${String(i+1).padStart(2,'0')} / 05</span><strong>${x.name}</strong><span class="agent-card-purpose">${x.purpose}</span><span class="agent-card-flow">${x.input} → ${x.output}</span><span class="agent-card-link">查看任务与提示词 →</span></button>`).join('')}</div><div class="agent-box"><h3>运行说明</h3><p>当前是离线规则辅助工作台，五张卡片均有详细任务与提示词配置。拆解、题型和命题结果需要人工审核；报告智能体仅分析已提供的记录。</p><div class="agent-statrow"><div class="agent-stat">通用候选考评点<b>${gp().length}</b></div><div class="agent-stat">教师候选考评点<b>${tp().length}</b></div><div class="agent-stat">本地执行记录<b>${data.history.length}</b></div></div></div>`)}
-// V19.9 协同编排：工作流实例、状态机、交付审核、审计轨迹；仅在本机运行
-const WF_KEY='wbzy_agent_workflows_v199';
-const stages=[{id:'points',title:'考评点拆解',need:'末级指标原文与编码',give:'候选考评点及评价证据'},{id:'types',title:'题型生成',need:'已复核的考评点',give:'题型结构及交互方案'},{id:'questions',title:'命题',need:'已复核的题型方案',give:'试题草案及质检记录'},{id:'reports',title:'报告分析',need:'实际测评记录（或明确标记的演示数据）',give:'个人或团队报告草案'}];
-let flowdb;try{flowdb=JSON.parse(localStorage.getItem(WF_KEY)||'null')}catch(e){}if(!flowdb||!Array.isArray(flowdb.flows))flowdb={flows:[],selected:null};
-const time=()=>new Date().toLocaleString('zh-CN',{hour12:false});
-function persistFlows(){try{localStorage.setItem(WF_KEY,JSON.stringify(flowdb));return true}catch(e){alert('流程数据保存失败，请先导出：'+e.message);return false}}
-function currentFlow(){return flowdb.flows.find(x=>x.id===flowdb.selected)||flowdb.flows[0]||null}
-function logFlow(f,action,detail){f.logs.unshift({at:time(),action,detail});f.updated=time();f.logs=f.logs.slice(0,300)}
-const stateText={pending:'未开始',running:'执行中',review:'待人工验收',passed:'已验收',blocked:'阻塞',skipped:'不适用'};
-const stateColor={pending:'dim',running:'active',review:'warn',passed:'ok',blocked:'bad',skipped:'dim'};
-function runStatus(f,i){if(f.nodes[i].status==='passed')return 'passed';if(i>0&&f.nodes[i-1].status!=='passed')return 'blocked';return f.nodes[i].status}
-function wfSummary(f){const passed=f.nodes.filter(n=>n.status==='passed').length;return passed===4?'已完成':f.nodes.some(n=>n.status==='review')?'待审核':f.nodes.some(n=>n.status==='running')?'运行中':passed?'进行中':'待执行'}
-function renderWorkflow(f){return `<section class="wf-layout"><div class="agent-box"><div class="wf-title"><h3>编排画布 · ${esc(f.title)}</h3>${f.demo?'<span class="wf-demo-tag">演示数据</span>':''}<span class="agent-chip">${esc(wfSummary(f))}</span></div><p class="agent-foot">顺序：指标原文 → 考评点 → 题型 → 命题 → 测评数据 → 报告。各阶段通过人工验收后才能解锁下游。</p><div class="wf-pipeline">${stages.map((s,i)=>{const n=f.nodes[i],status=runStatus(f,i);return `<div class="wf-node ${stateColor[status]}"><div class="wf-node-top"><b>${String(i+1).padStart(2,'0')} · ${s.title}</b><span class="wf-status">${stateText[status]}</span></div><p><b>输入：</b>${s.need}</p><p><b>交付：</b>${s.give}</p>${i===3?'<p class="agent-foot">此阶段必须在测评记录可用后执行；演示报告须明确标记。</p>':''}<div class="wf-node-actions">${status==='pending'||(status==='blocked'&&i===0)?`<button ${i>0&&f.nodes[i-1].status!=='passed'?'disabled':''} onclick="WBZYAgents.wfBegin(${i})">开始执行</button>`:''}${status==='running'?`<button onclick="WBZYAgents.wfCheck(${i})">检查成果</button><button class="secondary" onclick="WBZYAgents.wfOpen(${i})">进入工作台</button>`:''}${status==='review'?`<button onclick="WBZYAgents.wfApprove(${i})">验收并放行</button><button class="secondary" onclick="WBZYAgents.wfReject(${i})">退回重做</button>`:''}${status==='passed'?`<button class="secondary" onclick="WBZYAgents.wfInspect(${i})">查看交付摘要</button>`:''}</div></div>${i<3?'<div class="wf-connector">↓ 交付物 / 人工质量闸门</div>':''}`}).join('')}</div></div><div class="wf-side"><div class="agent-box"><h3>流程概况</h3><div class="agent-statrow"><div class="agent-stat">节点<b>4</b></div><div class="agent-stat">已验收<b>${f.nodes.filter(n=>n.status==='passed').length}</b></div><div class="agent-stat">待复核<b>${f.nodes.filter(n=>n.status==='review').length}</b></div></div><p class="agent-meta">体系：${f.system==='teacher'?'教师素智素养':'通用数智能力'}</p><p class="agent-meta">原文：${esc(f.source||'未指定')}</p><p class="agent-meta">创建：${esc(f.created)}</p><div class="agent-actions"><button class="secondary" onclick="WBZYAgents.wfExport()">导出流程、交付及日志</button><button class="secondary" onclick="WBZYAgents.wfArchive()">归档当前流程</button></div></div><div class="agent-box"><h3>执行轨迹 / 审计日志</h3><div class="wf-log">${f.logs.length?f.logs.slice(0,25).map(l=>`<div class="wf-log-item"><small>${esc(l.at)} · ${esc(l.action)}</small><p>${esc(l.detail)}</p></div>`).join(''):'<p class="muted">暂无日志</p>'}</div></div></div></section>`}
-function workflowSummaryPanel(){
- const all=flowdb.flows.filter(f=>!f.archived), count=x=>all.filter(f=>wfSummary(f)===x).length;
- const vals=[['流程总数',all.length],['执行中',count('运行中')+count('进行中')],['待验收',count('待审核')],['已完成',count('已完成')]];
- const cards=vals.map(([name,n])=>`<div class="wf-kpi"><small>${name}</small><strong>${n}</strong></div>`).join('');
- const legend=['未启动','执行中','待人工验收','已验收','异常退回'].map((x,i)=>`<span class="wf-legend wf-legend-${i}">${x}</span>`).join('');
- return `<section class="agent-box wf-dashboard"><div class="wf-dash-header"><div><h3>编排运行总览</h3><p class="agent-foot">管理流程实例、节点依赖、成果验收与执行轨迹。选择下方示例即可查看各阶段的不同状态。</p></div><span class="agent-chip">${flowdb.flows.some(f=>f.demo)?'包含演示流程 · 非真实执行':'本地工作流 · 尚无演示流程'}</span></div><div class="wf-kpis">${cards}</div><div class="wf-legend-row">${legend}</div></section>`;
-}
-function demoFlow(kind,i){
- const definitions={
- pending:['通用数智能力 · 新建考评点拆解','general','G-1.1-K01',0,'未启动'],
- running:['教师素智素养 · 教师课堂工具题型设计','teacher','1.1.2',1,'执行中'],
- review:['通用数智能力 · 数字安全命题审核','general','G-2.1-K02',2,'待验收'],
- passed:['教师素智素养 · 教师能力测评报告','teacher','2.1.1',4,'已完成'],
- rejected:['通用数智能力 · 应用任务退回重做','general','G-3.1-K01',1,'退回重做']
- };
- const [title,system,source,n,status]=definitions[kind],nodes=stages.map(()=>({status:'pending',baseline:null,result:null,started:null,accepted:null}));
- if(kind==='running'){nodes[0]={...nodes[0],status:'passed',result:{demo:true,summary:'考评点拆解示例成果'},accepted:time()};nodes[1].status='running';nodes[1].started=time()}
- if(kind==='review'){for(let j=0;j<2;j++)nodes[j]={...nodes[j],status:'passed',result:{demo:true,summary:'已验收的演示交付物'},accepted:time()};nodes[2]={...nodes[2],status:'review',result:{demo:true,summary:'3道案例试题草案及评分量规，等待人工验收'}}}
- if(kind==='passed')nodes.forEach((o,j)=>{o.status='passed';o.result={demo:true,summary:['候选考评点','题型及交互结构','试题草案','团队报告草案'][j]};o.accepted=time()});
- if(kind==='rejected'){nodes[0]={...nodes[0],status:'passed',result:{demo:true,summary:'考评点拆解示例成果'},accepted:time()};nodes[1].status='pending'}
- const f={id:'DEMO-WF-'+kind,title,system,source,created:time(),updated:time(),archived:false,demo:true,nodes,logs:[]};
- const descriptions={pending:'示例任务已创建，尚未启动考评点拆解',running:'考评点已通过验收，题型生成正在运行',review:'命题智能体提交成果，正在等待人工审核',passed:'四个阶段均已完成演示验收（仅用于界面展示）',rejected:'题型设计因缺少交互步骤和证据字段而被退回，等待重新执行'};
- logFlow(f,'演示流程 · '+status,descriptions[kind]);
- if(kind==='rejected')logFlow(f,'退回原因','缺少交互素材及可核验评分依据，需补充后重新执行');
- return f;
-}
-function wfSeedDemos(){
- const names=['pending','running','review','passed','rejected'];let added=0;
- names.forEach((name,i)=>{if(!flowdb.flows.some(f=>f.id==='DEMO-WF-'+name)){flowdb.flows.push(demoFlow(name,i));added++}});
- flowdb.selected='DEMO-WF-running';persistFlows();wfRender();
-}
-function wfSelectDemo(id){if(!flowdb.flows.some(f=>f.id===id))return;wfChoose(id)}
-function wfClearDemos(){if(!confirm('仅清除五条演示流程，不影响你创建的真实流程，确认？'))return;flowdb.flows=flowdb.flows.filter(f=>!f.demo);flowdb.selected=flowdb.flows[0]?.id||null;persistFlows();wfRender()}
-function workflowDemoPanel(){
- const specs=[['pending','未启动','等待任务启动','dim'],['running','执行中','题型生成运行中','active'],['review','待验收','命题成果等待审核','warn'],['passed','已完成','全流程示例完结','ok'],['rejected','退回重做','需要修订后重新执行','bad']];
- const existing=flowdb.flows.filter(f=>f.demo).length;
- return `<section class="agent-box wf-demo-section"><div class="wf-dash-header"><div><h3>示例流程 · 不同执行状态</h3><p class="agent-foot">五个流程均为内置演示记录，不代表智能体实际运行结果。点击卡片切换下方编排画布。</p></div><div class="agent-actions"><button onclick="WBZYAgents.wfSeedDemos()">${existing?'补齐演示流程':'载入5条演示流程'}</button>${existing?'<button class="secondary" onclick="WBZYAgents.wfClearDemos()">清除演示</button>':''}</div></div><div class="wf-example-grid">${specs.map(([id,label,detail,color])=>`<button type="button" class="wf-example ${color} ${flowdb.selected==='DEMO-WF-'+id?'is-selected':''}" ${flowdb.flows.some(f=>f.id==='DEMO-WF-'+id)?`onclick="WBZYAgents.wfSelectDemo('DEMO-WF-${id}')"`:'disabled'}><span class="wf-example-badge">${label}</span><strong>${detail}</strong><small>${flowdb.flows.some(f=>f.id==='DEMO-WF-'+id)?'点击查看编排':'载入示例后可查看'}</small></button>`).join('')}</div></section>`;
-}
-function centerPage(){const f=currentFlow();return shell('智能体协同中心','流程编排 · 执行跟踪 · 跨智能体交付与人工审核。',`${workflowSummaryPanel()}${workflowDemoPanel()}<div class="wf-toolbar agent-box"><div><h3>流程实例与编排画布</h3><p class="agent-foot">选择已有流程或新建编排。演示数据仅用于体验，真实流程需人工执行、审核。</p></div><div class="wf-controls"><select class="agent-field" id="wfSelect" onchange="WBZYAgents.wfChoose(this.value)">${flowdb.flows.length?flowdb.flows.map(x=>`<option value="${esc(x.id)}" ${f?.id===x.id?'selected':''}>${x.demo?'[演示] ':''}${esc(x.title)} · ${esc(wfSummary(x))}</option>`).join(''):'<option>尚无流程</option>'}</select><button onclick="WBZYAgents.wfShowCreate()">＋ 新建编排</button></div></div><div id="wfCreate" class="agent-box wf-create" hidden><h3>创建编排任务</h3><div class="wf-create-grid"><label>流程名称<input class="agent-field" id="wfName" placeholder="如：通用数智能力 1.1 考评与命题" maxlength="80"></label><label>指标体系<select class="agent-field" id="wfSystem"><option value="general">通用数智能力</option><option value="teacher">教师素智素养</option></select></label><label>源指标编码<input class="agent-field" id="wfSource" placeholder="如 G-1.1-K01"></label></div><div class="agent-actions"><button onclick="WBZYAgents.wfCreate()">创建流程</button><button class="secondary" onclick="document.getElementById('wfCreate').hidden=true">取消</button></div></div>${f?`${f.demo?'<div class="wf-demo-notice">当前显示演示流程，仅用于查看不同状态及操作体验；其中的成果与日志不是实际智能体运行结果。</div>':''}${renderWorkflow(f)}`:'<div class="agent-box wf-empty"><h3>暂无正在查看的流程</h3><p>上方已展示任务状态示意。点击“载入5条演示流程”可直接体验完整编排画布，或使用“新建编排”创建真实流程。</p><button onclick="WBZYAgents.wfSeedDemos()">载入演示流程并查看编排</button></div>'}${foot()}`)}
-function wfRender(){switchView('agent-center')}
-function wfShowCreate(){const x=document.getElementById('wfCreate');if(x){x.hidden=false;x.scrollIntoView({block:'nearest',behavior:'smooth'})}}
-function wfCreate(){let title=document.getElementById('wfName')?.value.trim(),system=document.getElementById('wfSystem')?.value,source=document.getElementById('wfSource')?.value.trim();if(!title)return alert('请输入流程名称');const f={id:'WF-'+Date.now()+'-'+Math.random().toString(36).slice(2,6),title,system,source,created:time(),updated:time(),archived:false,nodes:stages.map(()=>({status:'pending',baseline:null,result:null,started:null,accepted:null})),logs:[]};logFlow(f,'创建编排','建立四阶段执行链；各阶段人工验收放行');flowdb.flows.unshift(f);flowdb.selected=f.id;persistFlows();wfRender()}
-function wfChoose(id){flowdb.selected=id;persistFlows();wfRender()}
-function wfBegin(i){const f=currentFlow();if(!f)return;if(f.demo)return alert('这是演示流程，请新建真实编排后执行任务');if(i>0&&f.nodes[i-1].status!=='passed')return alert('上游成果尚未人工验收，不能开始下游');const n=f.nodes[i];if(n.status==='passed')return;const kind=stages[i].id;n.status='running';n.baseline=JSON.stringify(data.last[kind]||null);n.started=time();n.result=null;logFlow(f,'启动执行',stages[i].title+'：进入专项工作台并生成本轮成果');persistFlows();switchView('agent-'+kind)}
-function wfOpen(i){switchView('agent-'+stages[i].id)}
-function wfCheck(i){const f=currentFlow();if(!f)return;if(f.demo)return alert('演示流程只展示状态，不读取实际执行成果');const n=f.nodes[i],kind=stages[i].id,rec=data.last[kind];if(n.status!=='running')return alert('请先启动该节点');if(!rec||JSON.stringify(rec)===n.baseline)return alert('尚未检测到本轮新成果。请进入对应工作台运行，再回协同中心检查。');n.result=JSON.parse(JSON.stringify(rec));n.status='review';logFlow(f,'提交验收',stages[i].title+'已产生新成果，等待人工核验');persistFlows();wfRender()}
-function wfApprove(i){const f=currentFlow();if(!f)return;if(f.demo)return alert('演示流程不可作为正式审核记录，请新建真实编排');const n=f.nodes[i];if(n.status!=='review'||!n.result)return alert('请先产生并检查本轮成果');if(!confirm('确认已核对来源、完整性和质量要求？放行后下游任务将解锁，但不会自动写入正式题库。'))return;n.status='passed';n.accepted=time();logFlow(f,'人工验收',stages[i].title+'成果已确认放行；成果快照已保存');persistFlows();wfRender()}
-function wfReject(i){const f=currentFlow();if(!f)return;if(f.demo)return alert('演示流程不可修改，需真实审核请新建编排');const n=f.nodes[i];const reason=prompt('请输入退回原因（将记录到审计轨迹）');if(reason===null)return;if(!reason.trim())return alert('请填写退回原因');n.status='pending';n.result=null;logFlow(f,'退回重做',stages[i].title+'：'+reason.trim());persistFlows();wfRender()}
-function wfInspect(i){const f=currentFlow(),n=f?.nodes[i];if(!n?.result)return alert('暂无已验收成果');alert('交付物：'+stages[i].give+'\n验收时间：'+n.accepted+'\n摘要：'+JSON.stringify(n.result).slice(0,900)+'\n可使用“导出流程”获取完整内容')}
-function wfExport(){const f=currentFlow();if(f)download(f.id+'-orchestration.json',f)}
-function wfArchive(){const f=currentFlow();if(!f)return;if(f.demo)return alert('演示流程可通过“清除演示”移除');if(!confirm('归档流程？数据仍保留并可查看。'))return;f.archived=true;logFlow(f,'归档流程','人工归档，历史记录保留');persistFlows();wfRender()}
-function pointsPage(){return shell('考评点拆解智能体','输入来自指标体系最末节点的原文，检查知识对象、能力行为和可测证据，形成待核验的候选考评点。',`<div class="agent-columns"><div class="agent-box"><h3>01 · 选择指标末节点</h3>${systemSelect('apSystem')}<label class="agent-label">原文节点</label><select class="agent-field" id="apSource" onchange="WBZYAgents.fillSource()"></select><label class="agent-label">末节点原文（可修订草稿，不修改标准原文）</label><textarea id="apText"></textarea><div class="agent-actions"><button onclick="WBZYAgents.runPoints()">分析并拆解</button><button class="secondary" onclick="WBZYAgents.fillSource()">恢复原文</button></div>${foot()}</div><div class="agent-box"><h3>拆解成果 / 核验</h3><div id="apResult">${resultHtml('points')}</div><div class="agent-actions"><button class="secondary" onclick="WBZYAgents.exportResult('points')">导出考评点草案 JSON</button><button class="secondary" onclick="switchView('agent-types')">下一步：题型生成 →</button></div></div></div>`)}
-function typePage(){return shell('题型生成智能体','根据考评点的认知、操作和评价证据需求选择题型，输出题型名称、交互方案、字段结构与评分方式。',`<div class="agent-columns"><div class="agent-box"><h3>02 · 选择考评点</h3>${systemSelect('atSystem')}<label class="agent-label">候选考评点</label><select class="agent-field" id="atPoint" onchange="WBZYAgents.fillPoint()"></select><label class="agent-label">能力行为及证据</label><textarea id="atDescription"></textarea><div class="agent-actions"><button onclick="WBZYAgents.runTypes()">生成题型方案</button></div>${foot()}</div><div class="agent-box"><h3>题型结构与交互</h3><div id="atResult">${resultHtml('types')}</div><div class="agent-actions"><button class="secondary" onclick="WBZYAgents.exportResult('types')">导出题型方案 JSON</button><button class="secondary" onclick="switchView('agent-questions')">下一步：命题 →</button></div></div></div>`)}
-function questionsPage(){return shell('命题智能体','结合考评点和题型生成可检查的命题草案。规则校验包括来源追溯、可答性、证据与评分要求；正式发布仍需审定。',`<div class="agent-columns"><div class="agent-box"><h3>03 · 命题参数</h3>${systemSelect('aqSystem')}<label class="agent-label">关联考评点</label><select class="agent-field" id="aqPoint" onchange="WBZYAgents.fillPoint()"></select><label class="agent-label">适用题型</label><select class="agent-field" id="aqType"><option value="case">案例分析</option><option value="single">单选（待补选项）</option><option value="multiple">多选（待补选项）</option><option value="ordering">流程排序</option><option value="config">参数配置</option><option value="practice">流程实训</option><option value="device">设备仿真</option><option value="spreadsheet">表格计算</option><option value="portfolio">成果任务</option><option value="prompt">提示词编写</option></select><label class="agent-label">题目情境 / 约束</label><textarea id="aqContext" placeholder="例如：职业院校教师在课前准备过程中，设备、时间与数据权限受限。">职业院校实际工作任务；需要提供可核查的操作或判断证据。</textarea><div class="agent-actions"><button onclick="WBZYAgents.runQuestion()">生成待审核命题草案</button></div>${foot()}</div><div class="agent-box"><h3>命题草案与规则检查</h3><div id="aqResult">${resultHtml('questions')}</div><div class="agent-actions"><button class="secondary" onclick="WBZYAgents.exportResult('questions')">导出命题 JSON</button><button class="secondary" onclick="switchView('bank')">进入试题维护 →</button></div></div></div>`)}
-function reportsPage(){return shell('报告智能体','从真实测评数据生成个人或团队的能力分析。当前支持 CSV / JSON 导入和演示样本；不会冒充当前浏览器有真实历史成绩。',`<div class="agent-columns"><div class="agent-box"><h3>04 · 选择测评数据</h3><label class="agent-label">报告维度</label><select id="arScope" class="agent-field"><option value="personal">个人能力报告</option><option value="team">团队能力报告</option></select><label class="agent-label">数据来源</label><select id="arMode" class="agent-field"><option value="sample">内置演示测评记录（明确标识）</option><option value="import">粘贴 JSON 测评记录</option></select><label class="agent-label">测评记录 JSON（导入模式）</label><textarea id="arInput" placeholder='[{"user":"学员A","dimension":"数字技术","score":75},...]'></textarea><p class="agent-foot">每条需包含 user、dimension、score(0～100)。仅分析有分数和维度的记录，不推断没有提供的数据。</p><div class="agent-actions"><button onclick="WBZYAgents.runReport()">生成报告草案</button><button class="secondary" onclick="WBZYAgents.insertSample()">填入示例数据</button></div>${foot()}</div><div class="agent-box"><h3>个人 / 团队分析结果</h3><div id="arResult">${resultHtml('reports')}</div><div class="agent-actions"><button class="secondary" onclick="WBZYAgents.exportResult('reports')">导出报告 JSON</button><button class="secondary" onclick="window.open('report-builder.html','_blank')">打开原报告构建器</button></div></div></div>`)}
-function promptBlock(kind){const item=catalog.find(x=>x.id===kind)||catalog[0];const key='wbzy_agent_prompt_v198_'+kind;let val=item.prompt;try{val=localStorage.getItem(key)||val}catch(e){}const steps=item.tasks.map((x,i)=>`<li><span>${String(i+1).padStart(2,'0')}</span>${esc(x)}</li>`).join('');return `<section class="agent-detail-info"><div class="agent-detail-head"><button class="secondary" type="button" onclick="switchView('agent-center')">← 返回协同中心</button><button class="secondary" type="button" onclick="switchView('agents')">智能体总览</button><span class="agent-chip">离线规则辅助 · 待人工审核</span></div><div class="agent-detail-grid"><div class="agent-box"><h3>执行任务明细</h3><p>${esc(item.purpose)}</p><ol class="agent-task-list">${steps}</ol><p class="agent-meta"><b>输入：</b>${esc(item.input)}</p><p class="agent-meta"><b>输出：</b>${esc(item.output)}</p></div><div class="agent-box"><div class="agent-prompt-head"><h3>智能体提示词模板</h3><span class="agent-chip">可编辑 · 本地保存</span></div><textarea class="agent-prompt-input" id="agentPrompt_${kind}" aria-label="${item.name}提示词">${esc(val)}</textarea><p class="agent-foot">提示词为后续模型接入的可编辑规范；当前规则执行不会把此文本发送给在线模型。</p><div class="agent-actions"><button class="secondary" onclick="WBZYAgents.savePrompt('${kind}')">保存提示词</button><button class="secondary" onclick="WBZYAgents.copyPrompt('${kind}')">复制</button><button class="secondary" onclick="WBZYAgents.resetPrompt('${kind}')">恢复默认</button></div></div></div></section>`}
-function page(view){if(view==='agents')return cardOverview();const kind=view==='agent-center'?'center':view.slice(6);const render=({center:centerPage,points:pointsPage,types:typePage,questions:questionsPage,reports:reportsPage}[kind]||cardOverview);return render().replace('</div>', '</div>')+promptBlock(kind)}
-function savePrompt(k){const el=document.getElementById('agentPrompt_'+k);if(!el)return;try{localStorage.setItem('wbzy_agent_prompt_v198_'+k,el.value);alert('提示词已保存到当前浏览器')}catch(e){alert('提示词保存失败：'+e.message)}}
-function copyPrompt(k){const el=document.getElementById('agentPrompt_'+k);if(!el)return;const content=el.value;if(navigator.clipboard?.writeText){navigator.clipboard.writeText(content).then(()=>alert('已复制提示词')).catch(()=>{el.select();document.execCommand('copy');alert('已复制提示词')})}else{el.select();document.execCommand('copy');alert('已复制提示词')}}
-function resetPrompt(k){const item=catalog.find(x=>x.id===k);const el=document.getElementById('agentPrompt_'+k);if(!item||!el)return;if(!confirm('恢复该智能体的默认提示词？'))return;el.value=item.prompt;try{localStorage.removeItem('wbzy_agent_prompt_v198_'+k)}catch(e){}}
-function fillSource(){const sys=document.getElementById('apSystem')?.value||'general',v=document.getElementById('apSource')?.value;const s=sources(sys).find(x=>x.code===v);const el=document.getElementById('apText');if(el)el.value=s?.text||''}
-function fillPoint(){['at','aq'].forEach(prefix=>{const sel=document.getElementById(prefix+'Point');if(!sel)return;const sys=document.getElementById(prefix+'System')?.value||'general';const p=points(sys).find(x=>x.code===sel.value);if(prefix==='at'){const el=document.getElementById('atDescription');if(el)el.value=[p?.name,p?.action,p?.evidence].filter(Boolean).join('\n')}})}
-function updateSelects(){const ap=document.getElementById('apSource');if(ap){const ss=sources(document.getElementById('apSystem').value);ap.innerHTML=opt(ss,x=>x.code,x=>x.code+' · '+x.text.slice(0,52));fillSource()}
- ['at','aq'].forEach(prefix=>{let sel=document.getElementById(prefix+'Point');if(!sel)return;const pp=points(document.getElementById(prefix+'System').value);sel.innerHTML=opt(pp,x=>x.code,x=>x.code+' · '+(x.name||'').slice(0,45));fillPoint()})}
-function after(){updateSelects()}
-function onSystemChange(){updateSelects()}
-function runPoints(){const code=document.getElementById('apSource').value;const text=document.getElementById('apText').value.trim();if(!text)return alert('请先选择有原文的末节点');const objects=(text.match(/数字技术|数字系统|数据资源|人工智能|教学资源|数据安全|网络安全|隐私|设备|技术|平台|数据|资源|学习|就业|工作|教学|协同|评价|认证/g)||[]).filter((x,i,a)=>a.indexOf(x)===i).slice(0,5);const words=objects.length?objects:['关键知识或工具'];const verb=(text.match(/能够?(?:理解|掌握|识别|分析|评价|应用|设计|使用|操作|保护|管理|开发|实施)|理解|掌握|识别|分析|评价|应用|设计|使用|操作|保护/)||[])[0]||'识别并解释';const items=words.map((x,i)=>({title:`${x}：概念与适用边界`,behavior:`在给定场景识别${x}及其用途，说明其与原文“${verb}”要求的关联。`,evidence:`准确的概念判断＋场景实例＋理由说明`,risk:'须核实该知识对象是否属于原文要求，避免只考识记'}));items.push({title:'跨知识对象的作用关系与情境迁移',behavior:'在给定的真实或模拟场景中，解释至少两个原文知识对象的作用关系并提出可验证的判断。',evidence:'因果或流程分析、场景任务结果、适用边界',risk:'该建议为综合能力点，需防止与分项点重复'});let r={code,source:text,title:code,verb,items,status:'待专家核验'};store('points',r);document.getElementById('apResult').innerHTML=display('points',r)}
-function runTypes(){const sys=document.getElementById('atSystem').value, code=document.getElementById('atPoint').value,p=points(sys).find(x=>x.code===code);if(!p)return;const d=document.getElementById('atDescription').value;const practical=/操作|使用|配置|完成|应用|流程|设备|处理|运行|制作|创建|生成|开展|实施|提交|验证|记录|编辑/.test(d);const analytic=/分析|评价|评估|判断|风险|影响|原因|方案|决策|比较/.test(d);const items=[];if(practical)items.push({name:'流程实训 / 参数配置',priority:'优先',interaction:'步骤操作、配置控件、过程记录及提交',schema:'scenario,steps[],expectedStates[],evidence[],rubric[]',scoring:'结果状态＋关键操作节点＋违规操作扣分'});if(analytic)items.push({name:'情境决策 / 案例分析',priority:'优先',interaction:'情境证据阅读、选择决策并填写理由',schema:'scenario,observations[],choices[],rationale,rubric[]',scoring:'证据引用、因果链与风险权衡量规'});items.push({name:'概念判断 / 匹配',priority:practical||analytic?'辅助':'优先',interaction:'单选、多选或对象—用途配对',schema:'stem,options[],answer,explain',scoring:'可核对答案和干扰项合理性'});let r={point:code,title:code,source:p.sourceText||'',items,status:'待题型审定'};store('types',r);document.getElementById('atResult').innerHTML=display('types',r)}
-const names={case:'案例分析',single:'单选',multiple:'多选',ordering:'流程排序',config:'参数配置',practice:'流程实训',device:'设备仿真',spreadsheet:'表格计算',portfolio:'成果任务',prompt:'提示词编写'};
-function runQuestion(){const sys=document.getElementById('aqSystem').value,code=document.getElementById('aqPoint').value,p=points(sys).find(x=>x.code===code);if(!p)return;const type=document.getElementById('aqType').value,context=document.getElementById('aqContext').value.trim(),name=p.name||'能力目标';const v={code,title:code,type,typeName:names[type],stem:`【${names[type]}】${context}\n请围绕“${name}”完成可核验的任务：${p.action||'说明判断依据并提交结果'}。`,input:['single','multiple'].includes(type)?'需要人工补全具有唯一/明确答案的选项与干扰项；未配置前不得发布。':`按${names[type]}提交作答、步骤或成果证据`,reference:p.evidence||'需结合原文与操作任务制定清晰的标准答案或量规',checks:['指标原文可追溯','考评点编码已绑定','需核验可答性与评分依据','未审定不发布'],status:'待审定草案',approved:false};store('questions',v);document.getElementById('aqResult').innerHTML=display('questions',v)}
-const sample=[{user:'演示学员甲',dimension:'数字环境认知',score:78},{user:'演示学员甲',dimension:'数据处理',score:65},{user:'演示学员甲',dimension:'安全伦理',score:86},{user:'演示学员乙',dimension:'数字环境认知',score:88},{user:'演示学员乙',dimension:'数据处理',score:72},{user:'演示学员乙',dimension:'安全伦理',score:80}];
-function insertSample(){const el=document.getElementById('arInput');if(el){el.value=JSON.stringify(sample,null,2);document.getElementById('arMode').value='import'}}
-function runReport(){const mode=document.getElementById('arMode').value,scope=document.getElementById('arScope').value;let arr;if(mode==='sample')arr=sample;else{try{arr=JSON.parse(document.getElementById('arInput').value)}catch(e){return alert('JSON解析失败：'+e.message)}}if(!Array.isArray(arr))return alert('需要JSON记录数组');arr=arr.filter(x=>x&&typeof x.dimension==='string'&&typeof x.user==='string'&&Number.isFinite(Number(x.score))&&Number(x.score)>=0&&Number(x.score)<=100);if(!arr.length)return alert('没有可分析的有效记录。');if(scope==='personal'){const first=arr[0].user;arr=arr.filter(x=>x.user===first)}const by=new Map();for(const x of arr){const a=by.get(x.dimension)||[];a.push(+x.score);by.set(x.dimension,a)}const dimensions=[...by].map(([name,v])=>({name,n:v.length,avg:Math.round(v.reduce((a,b)=>a+b,0)/v.length)})).sort((a,b)=>a.avg-b.avg);const avg=Math.round(arr.reduce((a,x)=>a+ +x.score,0)/arr.length);const low=dimensions[0];const r={title:(scope==='personal'?'个人':'团队')+'能力诊断报告（'+(mode==='sample'?'演示数据':'导入数据')+'）',count:arr.length,avg,dimensions,isDemo:mode==='sample',summary:`本次只基于${arr.length}条有效测评记录。各维度均分范围为 ${dimensions[0].avg}%～${dimensions[dimensions.length-1].avg}%；此为描述性统计，未进行信效度或群体常模校准。`,suggestion:`建议优先复核“${low.name}”维度的测评证据，并结合题目覆盖率制定有针对性的补训与复测。`,scope,status:'报告草案'};store('reports',r);document.getElementById('arResult').innerHTML=display('reports',r)}
-function download(filename,value){const blob=new Blob([JSON.stringify(value,null,2)],{type:'application/json;charset=utf-8'}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download=filename;a.click();setTimeout(()=>URL.revokeObjectURL(url),1000)}
-function exportResult(k){if(!data.last[k])return alert('尚无可导出的结果');download('WBZY-'+k+'-draft.json',data.last[k])}
-function exportAll(){download('WBZY-special-agents-history.json',data)}
-function clear(){if(!confirm('仅清空本地智能体历史和草稿，不影响原有题库和测评数据。确认？'))return;data={history:[],last:{}};localStorage.removeItem(KEY);switchView('agents')}
-window.WBZYAgents={page,after,savePrompt,copyPrompt,resetPrompt,onSystemChange,fillSource,fillPoint,runPoints,runTypes,runQuestion,runReport,insertSample,exportResult,exportAll,clear,wfShowCreate,wfCreate,wfChoose,wfBegin,wfOpen,wfCheck,wfApprove,wfReject,wfInspect,wfExport,wfArchive,wfSeedDemos,wfSelectDemo,wfClearDemos};
+(function () {
+  "use strict";
+  const KEY = "wbzy_special_agents_v197";
+  const defs = [
+    ["points", "考评点拆解智能体", "从最末级指标原文萃取可测量要素", "指标原文 → 候选考评点"],
+    ["types", "题型生成智能体", "针对考评点匹配交互题型及数据结构", "考评点 → 题型方案"],
+    ["questions", "命题智能体", "依据题型和命题规则生成待审核的任务草案", "考评点 + 题型 → 待审定试题"],
+    ["reports", "报告智能体", "基于测评数据生成个人与团队分析草案", "测评记录 → 报告草案"],
+  ];
+  let data;
+  try {
+    data = JSON.parse(localStorage.getItem(KEY) || "null");
+  } catch (e) {}
+  if (!data || typeof data !== "object") data = { history: [], last: {}, sampleMode: true };
+  const esc = (s) =>
+    String(s ?? "").replace(
+      /[&<>"']/g,
+      (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[c],
+    );
+  const str = (s) => String(s ?? "");
+  const gp = () => {
+    try {
+      const a = JSON.parse(localStorage.getItem("digital_assessment_general_point_records_v152") || "null");
+      if (Array.isArray(a) && a.length) return a;
+    } catch (e) {}
+    return window.EXTRACTED_GENERAL_POINTS || [];
+  };
+  const tp = () => {
+    try {
+      const a = JSON.parse(localStorage.getItem("teacher_assessment_points_v11") || "null");
+      if (Array.isArray(a) && a.length) return a;
+    } catch (e) {}
+    return window.ASSESSMENT_POINTS || [];
+  };
+  const points = (system) => (system === "teacher" ? tp() : gp());
+  function sources(system) {
+    if (system === "general") {
+      const f = window.GENERAL_FRAMEWORK || {};
+      const rows = (f.points || []).map((x) => ({
+        code: x.code,
+        text: x.description || x.text || x.content || "",
+        root: x.root || "",
+        unit: x.unit || "",
+      }));
+      const by = new Map();
+      rows.forEach((x) => {
+        if (!x.code) return;
+        by.set(x.code, x);
+      });
+      const arr = gp();
+      arr.forEach((x) => {
+        const code = x.sourceRequirementCode || x.sourceCode;
+        if (code && !by.has(code))
+          by.set(code, { code, text: x.sourceText || "", unit: x.unit || "", root: x.root || "" });
+      });
+      return [...by.values()].filter((x) => x.text);
+    }
+    const idx = window.INDICATOR_TREE || {};
+    let arr = (idx.level3 || []).map((x) => ({
+      code: x.code,
+      text: x.description || x.content || x.requirement || x.name || "",
+      unit: x.level2Code || x.code?.split(".").slice(0, 2).join("."),
+      root: x.rootCode || x.code?.split(".")[0],
+    }));
+    if (!arr.length) {
+      const by = new Map();
+      tp().forEach((x) => {
+        let code = x.level3Code || x.indicator;
+        if (code && !by.has(code))
+          by.set(code, { code, text: x.sourceText || "", unit: x.level2Code, root: x.rootCode });
+      });
+      arr = [...by.values()];
+    }
+    return arr.filter((x) => x.text);
+  }
+  function opt(items, getval, getlabel) {
+    return items.map((x) => `<option value="${esc(getval(x))}">${esc(getlabel(x))}</option>`).join("");
+  }
+  function systemSelect(id) {
+    return `<label class="agent-label" for="${id}">指标体系</label><select class="agent-field" id="${id}" onchange="WBZYAgents.onSystemChange()"><option value="general">通用数智能力</option><option value="teacher">教师素智素养</option></select>`;
+  }
+  function hero(title, sub) {
+    return `<div class="agent-hero"><h2>${title}</h2><p>${sub}</p></div>`;
+  }
+  function shell(title, sub, inner) {
+    return `<div class="agent-space">${hero(title, sub)}${inner}</div>`;
+  }
+  function foot() {
+    return `<p class="agent-foot">运行方式：离线规则辅助与可编辑初稿。需专家复核；不会调用在线模型、自动发布试题或修改正式测评成绩。</p>`;
+  }
+  function store(kind, record) {
+    data.last[kind] = record;
+    data.history.unshift({
+      kind,
+      at: new Date().toLocaleString("zh-CN"),
+      title: record.title || record.code || "",
+      record,
+    });
+    data.history = data.history.slice(0, 100);
+    try {
+      localStorage.setItem(KEY, JSON.stringify(data));
+    } catch (e) {
+      alert("存储空间不足；请先导出当前成果。");
+    }
+  }
+  function resultHtml(kind) {
+    const v = data.last[kind];
+    return v ? display(kind, v) : '<div class="agent-result">尚未生成成果。先选择数据并运行该专项智能体。</div>';
+  }
+  function display(kind, v) {
+    if (kind === "points")
+      return `<div class="agent-result"><b>${esc(v.code)} · 原文</b><p>${esc(v.source)}</p><p>萃取方法：知识对象、行为动词、作用关系与评价证据分别核查。</p>${v.items.map((x, i) => `<details ${i === 0 ? "open" : ""}><summary>${i + 1}. ${esc(x.title)}</summary><div><b>可观察行为：</b>${esc(x.behavior)}</div><div><b>评价证据：</b>${esc(x.evidence)}</div><div><b>风险：</b>${esc(x.risk)}</div></details>`).join("")}<p class="agent-foot">此处为机器规则建议，不自动覆盖考评点主数据；完成专家审定后再录入考评点管理。</p></div>`;
+    if (kind === "types")
+      return `<div class="agent-result"><b>${esc(v.point)} · 推荐题型及交互结构</b>${v.items.map((x, i) => `<details open><summary>${i + 1}. ${esc(x.name)} · ${esc(x.priority)}</summary><div>交互：${esc(x.interaction)}</div><div>结构：${esc(x.schema)}</div><div>评价：${esc(x.scoring)}</div></details>`).join("")}</div>`;
+    if (kind === "questions")
+      return `<div class="agent-result"><p><b>${esc(v.code)} · ${esc(v.typeName)} · 待专家审定草案</b></p><p><b>题干 / 任务：</b>${esc(v.stem)}</p><p><b>作答结构：</b>${esc(v.input)}</p><p><b>参考要求：</b>${esc(v.reference)}</p><p><b>质量检查：</b>${v.checks.map((x) => esc(x)).join("；")}</p><p class="agent-foot">尚未生成足以自动判分的正式选项/素材，不自动写入已发布题库。</p></div>`;
+    if (kind === "reports")
+      return `<div class="agent-result"><b>${esc(v.title)}</b><div class="agent-statrow"><div class="agent-stat">有效记录<b>${v.count}</b></div><div class="agent-stat">平均得分<b>${v.avg === null ? "—" : v.avg + "%"}</b></div><div class="agent-stat">样本模式<b>${v.isDemo ? "演示" : "导入"}</b></div></div><p>${esc(v.summary)}</p><h4>能力维度</h4><table><thead><tr><th>维度</th><th>均分</th><th>样本数</th></tr></thead><tbody>${v.dimensions.map((x) => `<tr><td>${esc(x.name)}</td><td>${x.avg}%</td><td>${x.n}</td></tr>`).join("")}</tbody></table><p>${esc(v.suggestion)}</p></div>`;
+    return "";
+  }
+  const catalog = [
+    {
+      id: "center",
+      name: "智能体协同中心",
+      icon: "◎",
+      purpose: "协调四个专项智能体的执行顺序、成果交接、记录与追踪",
+      input: "指标、考评点、题型、题库和测评记录",
+      output: "执行链路、阶段交付物、运行日志",
+      tasks: [
+        "识别业务目标与所需输入",
+        "规划四智能体的执行顺序和依赖",
+        "检查各阶段产出是否具备来源与版本",
+        "追踪任务记录并导出全链路证据",
+      ],
+      prompt:
+        "你是多体系数智能力测评平台的协同编排助手。先识别任务目标与输入依据，再规划考评点拆解、题型设计、命题和报告生成的依赖关系。每一步必须输出：输入来源、执行条件、交付物、质量门槛、人工审核节点和异常处理方案。禁止把规则模拟结果描述为大模型推理或已审定成果。",
+    },
+    {
+      id: "points",
+      name: "考评点拆解智能体",
+      icon: "◇",
+      purpose: "根据指标末节点原文，逐层拆解可独立评价的考评点",
+      input: "末级指标原文、编码、能力动词",
+      output: "考评点清单、行为证据、追溯关系",
+      tasks: [
+        "读取并保留末节点完整原文",
+        "识别能力行为动词与知识对象",
+        "分析前置认知、理解、应用及迁移要求",
+        "萃取独立考评点并检查重复与遗漏",
+        "输出可观察行为、证据和待审定标记",
+      ],
+      prompt:
+        "你是考评点深度萃取专家。严格依据给定指标末节点原文，提取能力动词、知识对象、应用情境和前置知识；按认知—理解—操作—迁移形成必要且不重复的候选考评点。每点输出编码建议、对应原文片段、可观察行为、评价证据、建议难度、风险及理由。不得改变标准原文，不得机械凑数，所有产出标注待专家核验。",
+    },
+    {
+      id: "types",
+      name: "题型生成智能体",
+      icon: "▤",
+      purpose: "把考评点转成适用题型及可执行的交互和评分结构",
+      input: "考评点、评价行为、证据要求",
+      output: "题型方案、字段结构、交互方式、评分策略",
+      tasks: [
+        "读取考评点及证据需求",
+        "判断客观题或实操评价是否适合",
+        "设计选项、步骤、交互对象或任务素材",
+        "定义答题数据结构和可判分规则",
+        "检查题型覆盖与交互组件可用性",
+      ],
+      prompt:
+        "你是数字能力测评题型架构师。依据考评点的可观察行为与评价证据推荐最适切的题型，输出题型名称、推荐理由、答题交互方式、所需素材、JSON字段结构、答案结构、自动或人工评分方式、风险和前端组件需求。不能因为追求题型多样而推荐不适合的题型。",
+    },
+    {
+      id: "questions",
+      name: "命题智能体",
+      icon: "✎",
+      purpose: "依据考评点、题型与命题规则形成可审定试题草案",
+      input: "考评点、题型方案、任务约束、命题规则",
+      output: "试题、参考答案/证据、评分量规、质检记录",
+      tasks: [
+        "核对标准原文和考评点的可追溯性",
+        "加载推荐题型结构与素材约束",
+        "设计具体题干、作答任务和干扰项",
+        "配置标准答案或人工评分量规",
+        "执行可答性、重复性及格式检查",
+        "提交人工审定，不自动发布",
+      ],
+      prompt:
+        "你是职业能力测评命题专家。依据指定考评点及题型方案出题，严格检验能力目标、情境真实性、题目可答性、答案准确性和评分一致性。客观题必须有明确答案与合理干扰项；操作题必须有真实可执行的任务及过程证据；开放题提供量规。输出溯源编码、题干、选项或操作任务、答案、解析、难度、评分依据和待审核问题，未经专家审定不得发布。",
+    },
+    {
+      id: "reports",
+      name: "报告智能体",
+      icon: "▥",
+      purpose: "基于个人和团队测评记录形成证据驱动的能力分析",
+      input: "用户答题、评分、维度及团队记录",
+      output: "个人/团队能力报告、薄弱项和补训建议",
+      tasks: [
+        "检查导入数据完整性与有效性",
+        "区分个人记录与团队汇总",
+        "计算维度得分和样本覆盖率",
+        "结合题目证据识别优势及薄弱环节",
+        "形成建议、局限说明和待审定报告",
+      ],
+      prompt:
+        "你是能力测评报告分析助手。只使用提供的个人或团队测评记录，核对样本、分数和维度范围；给出描述性统计、能力画像、证据支持的优势与短板、针对性的补训与复测建议。不得虚构测评记录、信效度结论或群体常模；明确演示数据与真实导入数据。",
+    },
+  ];
+  function cardOverview() {
+    return shell(
+      "专项智能体",
+      "五个专项智能体按测评业务链组织。选择卡片进入任务明细、提示词和执行工作台。",
+      `<div class="agent-catalog">${catalog.map((x, i) => `<button type="button" class="agent-catalog-card" onclick="switchView('${x.id === "center" ? "agent-center" : "agent-" + x.id}')"><span class="agent-card-icon">${x.icon}</span><span class="agent-card-step">${String(i + 1).padStart(2, "0")} / 05</span><strong>${x.name}</strong><span class="agent-card-purpose">${x.purpose}</span><span class="agent-card-flow">${x.input} → ${x.output}</span><span class="agent-card-link">查看任务与提示词 →</span></button>`).join("")}</div><div class="agent-box"><h3>运行说明</h3><p>当前是离线规则辅助工作台，五张卡片均有详细任务与提示词配置。拆解、题型和命题结果需要人工审核；报告智能体仅分析已提供的记录。</p><div class="agent-statrow"><div class="agent-stat">通用候选考评点<b>${gp().length}</b></div><div class="agent-stat">教师候选考评点<b>${tp().length}</b></div><div class="agent-stat">本地执行记录<b>${data.history.length}</b></div></div></div>`,
+    );
+  }
+  // V19.9 协同编排：工作流实例、状态机、交付审核、审计轨迹；仅在本机运行
+  const WF_KEY = "wbzy_agent_workflows_v199";
+  const stages = [
+    { id: "points", title: "考评点拆解", need: "末级指标原文与编码", give: "候选考评点及评价证据" },
+    { id: "types", title: "题型生成", need: "已复核的考评点", give: "题型结构及交互方案" },
+    { id: "questions", title: "命题", need: "已复核的题型方案", give: "试题草案及质检记录" },
+    { id: "reports", title: "报告分析", need: "实际测评记录（或明确标记的演示数据）", give: "个人或团队报告草案" },
+  ];
+  let flowdb;
+  try {
+    flowdb = JSON.parse(localStorage.getItem(WF_KEY) || "null");
+  } catch (e) {}
+  if (!flowdb || !Array.isArray(flowdb.flows)) flowdb = { flows: [], selected: null };
+  const time = () => new Date().toLocaleString("zh-CN", { hour12: false });
+  function persistFlows() {
+    try {
+      localStorage.setItem(WF_KEY, JSON.stringify(flowdb));
+      return true;
+    } catch (e) {
+      alert("流程数据保存失败，请先导出：" + e.message);
+      return false;
+    }
+  }
+  function currentFlow() {
+    return flowdb.flows.find((x) => x.id === flowdb.selected) || flowdb.flows[0] || null;
+  }
+  function logFlow(f, action, detail) {
+    f.logs.unshift({ at: time(), action, detail });
+    f.updated = time();
+    f.logs = f.logs.slice(0, 300);
+  }
+  const stateText = {
+    pending: "未开始",
+    running: "执行中",
+    review: "待人工验收",
+    passed: "已验收",
+    blocked: "阻塞",
+    skipped: "不适用",
+  };
+  const stateColor = {
+    pending: "dim",
+    running: "active",
+    review: "warn",
+    passed: "ok",
+    blocked: "bad",
+    skipped: "dim",
+  };
+  function runStatus(f, i) {
+    if (f.nodes[i].status === "passed") return "passed";
+    if (i > 0 && f.nodes[i - 1].status !== "passed") return "blocked";
+    return f.nodes[i].status;
+  }
+  function wfSummary(f) {
+    const passed = f.nodes.filter((n) => n.status === "passed").length;
+    return passed === 4
+      ? "已完成"
+      : f.nodes.some((n) => n.status === "review")
+        ? "待审核"
+        : f.nodes.some((n) => n.status === "running")
+          ? "运行中"
+          : passed
+            ? "进行中"
+            : "待执行";
+  }
+  function renderWorkflow(f) {
+    return `<section class="wf-layout"><div class="agent-box"><div class="wf-title"><h3>编排画布 · ${esc(f.title)}</h3>${f.demo ? '<span class="wf-demo-tag">演示数据</span>' : ""}<span class="agent-chip">${esc(wfSummary(f))}</span></div><p class="agent-foot">顺序：指标原文 → 考评点 → 题型 → 命题 → 测评数据 → 报告。各阶段通过人工验收后才能解锁下游。</p><div class="wf-pipeline">${stages
+      .map((s, i) => {
+        const n = f.nodes[i],
+          status = runStatus(f, i);
+        return `<div class="wf-node ${stateColor[status]}"><div class="wf-node-top"><b>${String(i + 1).padStart(2, "0")} · ${s.title}</b><span class="wf-status">${stateText[status]}</span></div><p><b>输入：</b>${s.need}</p><p><b>交付：</b>${s.give}</p>${i === 3 ? '<p class="agent-foot">此阶段必须在测评记录可用后执行；演示报告须明确标记。</p>' : ""}<div class="wf-node-actions">${status === "pending" || (status === "blocked" && i === 0) ? `<button ${i > 0 && f.nodes[i - 1].status !== "passed" ? "disabled" : ""} onclick="WBZYAgents.wfBegin(${i})">开始执行</button>` : ""}${status === "running" ? `<button onclick="WBZYAgents.wfCheck(${i})">检查成果</button><button class="secondary" onclick="WBZYAgents.wfOpen(${i})">进入工作台</button>` : ""}${status === "review" ? `<button onclick="WBZYAgents.wfApprove(${i})">验收并放行</button><button class="secondary" onclick="WBZYAgents.wfReject(${i})">退回重做</button>` : ""}${status === "passed" ? `<button class="secondary" onclick="WBZYAgents.wfInspect(${i})">查看交付摘要</button>` : ""}</div></div>${i < 3 ? '<div class="wf-connector">↓ 交付物 / 人工质量闸门</div>' : ""}`;
+      })
+      .join(
+        "",
+      )}</div></div><div class="wf-side"><div class="agent-box"><h3>流程概况</h3><div class="agent-statrow"><div class="agent-stat">节点<b>4</b></div><div class="agent-stat">已验收<b>${f.nodes.filter((n) => n.status === "passed").length}</b></div><div class="agent-stat">待复核<b>${f.nodes.filter((n) => n.status === "review").length}</b></div></div><p class="agent-meta">体系：${f.system === "teacher" ? "教师素智素养" : "通用数智能力"}</p><p class="agent-meta">原文：${esc(f.source || "未指定")}</p><p class="agent-meta">创建：${esc(f.created)}</p><div class="agent-actions"><button class="secondary" onclick="WBZYAgents.wfExport()">导出流程、交付及日志</button><button class="secondary" onclick="WBZYAgents.wfArchive()">归档当前流程</button></div></div><div class="agent-box"><h3>执行轨迹 / 审计日志</h3><div class="wf-log">${
+      f.logs.length
+        ? f.logs
+            .slice(0, 25)
+            .map(
+              (l) =>
+                `<div class="wf-log-item"><small>${esc(l.at)} · ${esc(l.action)}</small><p>${esc(l.detail)}</p></div>`,
+            )
+            .join("")
+        : '<p class="muted">暂无日志</p>'
+    }</div></div></div></section>`;
+  }
+  function workflowSummaryPanel() {
+    const all = flowdb.flows.filter((f) => !f.archived),
+      count = (x) => all.filter((f) => wfSummary(f) === x).length;
+    const vals = [
+      ["流程总数", all.length],
+      ["执行中", count("运行中") + count("进行中")],
+      ["待验收", count("待审核")],
+      ["已完成", count("已完成")],
+    ];
+    const cards = vals
+      .map(([name, n]) => `<div class="wf-kpi"><small>${name}</small><strong>${n}</strong></div>`)
+      .join("");
+    const legend = ["未启动", "执行中", "待人工验收", "已验收", "异常退回"]
+      .map((x, i) => `<span class="wf-legend wf-legend-${i}">${x}</span>`)
+      .join("");
+    return `<section class="agent-box wf-dashboard"><div class="wf-dash-header"><div><h3>编排运行总览</h3><p class="agent-foot">管理流程实例、节点依赖、成果验收与执行轨迹。选择下方示例即可查看各阶段的不同状态。</p></div><span class="agent-chip">${flowdb.flows.some((f) => f.demo) ? "包含演示流程 · 非真实执行" : "本地工作流 · 尚无演示流程"}</span></div><div class="wf-kpis">${cards}</div><div class="wf-legend-row">${legend}</div></section>`;
+  }
+  function demoFlow(kind, i) {
+    const definitions = {
+      pending: ["通用数智能力 · 新建考评点拆解", "general", "G-1.1-K01", 0, "未启动"],
+      running: ["教师素智素养 · 教师课堂工具题型设计", "teacher", "1.1.2", 1, "执行中"],
+      review: ["通用数智能力 · 数字安全命题审核", "general", "G-2.1-K02", 2, "待验收"],
+      passed: ["教师素智素养 · 教师能力测评报告", "teacher", "2.1.1", 4, "已完成"],
+      rejected: ["通用数智能力 · 应用任务退回重做", "general", "G-3.1-K01", 1, "退回重做"],
+    };
+    const [title, system, source, n, status] = definitions[kind],
+      nodes = stages.map(() => ({ status: "pending", baseline: null, result: null, started: null, accepted: null }));
+    if (kind === "running") {
+      nodes[0] = {
+        ...nodes[0],
+        status: "passed",
+        result: { demo: true, summary: "考评点拆解示例成果" },
+        accepted: time(),
+      };
+      nodes[1].status = "running";
+      nodes[1].started = time();
+    }
+    if (kind === "review") {
+      for (let j = 0; j < 2; j++)
+        nodes[j] = {
+          ...nodes[j],
+          status: "passed",
+          result: { demo: true, summary: "已验收的演示交付物" },
+          accepted: time(),
+        };
+      nodes[2] = {
+        ...nodes[2],
+        status: "review",
+        result: { demo: true, summary: "3道案例试题草案及评分量规，等待人工验收" },
+      };
+    }
+    if (kind === "passed")
+      nodes.forEach((o, j) => {
+        o.status = "passed";
+        o.result = { demo: true, summary: ["候选考评点", "题型及交互结构", "试题草案", "团队报告草案"][j] };
+        o.accepted = time();
+      });
+    if (kind === "rejected") {
+      nodes[0] = {
+        ...nodes[0],
+        status: "passed",
+        result: { demo: true, summary: "考评点拆解示例成果" },
+        accepted: time(),
+      };
+      nodes[1].status = "pending";
+    }
+    const f = {
+      id: "DEMO-WF-" + kind,
+      title,
+      system,
+      source,
+      created: time(),
+      updated: time(),
+      archived: false,
+      demo: true,
+      nodes,
+      logs: [],
+    };
+    const descriptions = {
+      pending: "示例任务已创建，尚未启动考评点拆解",
+      running: "考评点已通过验收，题型生成正在运行",
+      review: "命题智能体提交成果，正在等待人工审核",
+      passed: "四个阶段均已完成演示验收（仅用于界面展示）",
+      rejected: "题型设计因缺少交互步骤和证据字段而被退回，等待重新执行",
+    };
+    logFlow(f, "演示流程 · " + status, descriptions[kind]);
+    if (kind === "rejected") logFlow(f, "退回原因", "缺少交互素材及可核验评分依据，需补充后重新执行");
+    return f;
+  }
+  function wfSeedDemos() {
+    const names = ["pending", "running", "review", "passed", "rejected"];
+    let added = 0;
+    names.forEach((name, i) => {
+      if (!flowdb.flows.some((f) => f.id === "DEMO-WF-" + name)) {
+        flowdb.flows.push(demoFlow(name, i));
+        added++;
+      }
+    });
+    flowdb.selected = "DEMO-WF-running";
+    persistFlows();
+    wfRender();
+  }
+  function wfSelectDemo(id) {
+    if (!flowdb.flows.some((f) => f.id === id)) return;
+    wfChoose(id);
+  }
+  function wfClearDemos() {
+    if (!confirm("仅清除五条演示流程，不影响你创建的真实流程，确认？")) return;
+    flowdb.flows = flowdb.flows.filter((f) => !f.demo);
+    flowdb.selected = flowdb.flows[0]?.id || null;
+    persistFlows();
+    wfRender();
+  }
+  function workflowDemoPanel() {
+    const specs = [
+      ["pending", "未启动", "等待任务启动", "dim"],
+      ["running", "执行中", "题型生成运行中", "active"],
+      ["review", "待验收", "命题成果等待审核", "warn"],
+      ["passed", "已完成", "全流程示例完结", "ok"],
+      ["rejected", "退回重做", "需要修订后重新执行", "bad"],
+    ];
+    const existing = flowdb.flows.filter((f) => f.demo).length;
+    return `<section class="agent-box wf-demo-section"><div class="wf-dash-header"><div><h3>示例流程 · 不同执行状态</h3><p class="agent-foot">五个流程均为内置演示记录，不代表智能体实际运行结果。点击卡片切换下方编排画布。</p></div><div class="agent-actions"><button onclick="WBZYAgents.wfSeedDemos()">${existing ? "补齐演示流程" : "载入5条演示流程"}</button>${existing ? '<button class="secondary" onclick="WBZYAgents.wfClearDemos()">清除演示</button>' : ""}</div></div><div class="wf-example-grid">${specs.map(([id, label, detail, color]) => `<button type="button" class="wf-example ${color} ${flowdb.selected === "DEMO-WF-" + id ? "is-selected" : ""}" ${flowdb.flows.some((f) => f.id === "DEMO-WF-" + id) ? `onclick="WBZYAgents.wfSelectDemo('DEMO-WF-${id}')"` : "disabled"}><span class="wf-example-badge">${label}</span><strong>${detail}</strong><small>${flowdb.flows.some((f) => f.id === "DEMO-WF-" + id) ? "点击查看编排" : "载入示例后可查看"}</small></button>`).join("")}</div></section>`;
+  }
+  function centerPage() {
+    const f = currentFlow();
+    return shell(
+      "智能体协同中心",
+      "流程编排 · 执行跟踪 · 跨智能体交付与人工审核。",
+      `${workflowSummaryPanel()}${workflowDemoPanel()}<div class="wf-toolbar agent-box"><div><h3>流程实例与编排画布</h3><p class="agent-foot">选择已有流程或新建编排。演示数据仅用于体验，真实流程需人工执行、审核。</p></div><div class="wf-controls"><select class="agent-field" id="wfSelect" onchange="WBZYAgents.wfChoose(this.value)">${flowdb.flows.length ? flowdb.flows.map((x) => `<option value="${esc(x.id)}" ${f?.id === x.id ? "selected" : ""}>${x.demo ? "[演示] " : ""}${esc(x.title)} · ${esc(wfSummary(x))}</option>`).join("") : "<option>尚无流程</option>"}</select><button onclick="WBZYAgents.wfShowCreate()">＋ 新建编排</button></div></div><div id="wfCreate" class="agent-box wf-create" hidden><h3>创建编排任务</h3><div class="wf-create-grid"><label>流程名称<input class="agent-field" id="wfName" placeholder="如：通用数智能力 1.1 考评与命题" maxlength="80"></label><label>指标体系<select class="agent-field" id="wfSystem"><option value="general">通用数智能力</option><option value="teacher">教师素智素养</option></select></label><label>源指标编码<input class="agent-field" id="wfSource" placeholder="如 G-1.1-K01"></label></div><div class="agent-actions"><button onclick="WBZYAgents.wfCreate()">创建流程</button><button class="secondary" onclick="document.getElementById('wfCreate').hidden=true">取消</button></div></div>${f ? `${f.demo ? '<div class="wf-demo-notice">当前显示演示流程，仅用于查看不同状态及操作体验；其中的成果与日志不是实际智能体运行结果。</div>' : ""}${renderWorkflow(f)}` : '<div class="agent-box wf-empty"><h3>暂无正在查看的流程</h3><p>上方已展示任务状态示意。点击“载入5条演示流程”可直接体验完整编排画布，或使用“新建编排”创建真实流程。</p><button onclick="WBZYAgents.wfSeedDemos()">载入演示流程并查看编排</button></div>'}${foot()}`,
+    );
+  }
+  function wfRender() {
+    switchView("agent-center");
+  }
+  function wfShowCreate() {
+    const x = document.getElementById("wfCreate");
+    if (x) {
+      x.hidden = false;
+      x.scrollIntoView({ block: "nearest", behavior: "smooth" });
+    }
+  }
+  function wfCreate() {
+    let title = document.getElementById("wfName")?.value.trim(),
+      system = document.getElementById("wfSystem")?.value,
+      source = document.getElementById("wfSource")?.value.trim();
+    if (!title) return alert("请输入流程名称");
+    const f = {
+      id: "WF-" + Date.now() + "-" + Math.random().toString(36).slice(2, 6),
+      title,
+      system,
+      source,
+      created: time(),
+      updated: time(),
+      archived: false,
+      nodes: stages.map(() => ({ status: "pending", baseline: null, result: null, started: null, accepted: null })),
+      logs: [],
+    };
+    logFlow(f, "创建编排", "建立四阶段执行链；各阶段人工验收放行");
+    flowdb.flows.unshift(f);
+    flowdb.selected = f.id;
+    persistFlows();
+    wfRender();
+  }
+  function wfChoose(id) {
+    flowdb.selected = id;
+    persistFlows();
+    wfRender();
+  }
+  function wfBegin(i) {
+    const f = currentFlow();
+    if (!f) return;
+    if (f.demo) return alert("这是演示流程，请新建真实编排后执行任务");
+    if (i > 0 && f.nodes[i - 1].status !== "passed") return alert("上游成果尚未人工验收，不能开始下游");
+    const n = f.nodes[i];
+    if (n.status === "passed") return;
+    const kind = stages[i].id;
+    n.status = "running";
+    n.baseline = JSON.stringify(data.last[kind] || null);
+    n.started = time();
+    n.result = null;
+    logFlow(f, "启动执行", stages[i].title + "：进入专项工作台并生成本轮成果");
+    persistFlows();
+    switchView("agent-" + kind);
+  }
+  function wfOpen(i) {
+    switchView("agent-" + stages[i].id);
+  }
+  function wfCheck(i) {
+    const f = currentFlow();
+    if (!f) return;
+    if (f.demo) return alert("演示流程只展示状态，不读取实际执行成果");
+    const n = f.nodes[i],
+      kind = stages[i].id,
+      rec = data.last[kind];
+    if (n.status !== "running") return alert("请先启动该节点");
+    if (!rec || JSON.stringify(rec) === n.baseline)
+      return alert("尚未检测到本轮新成果。请进入对应工作台运行，再回协同中心检查。");
+    n.result = JSON.parse(JSON.stringify(rec));
+    n.status = "review";
+    logFlow(f, "提交验收", stages[i].title + "已产生新成果，等待人工核验");
+    persistFlows();
+    wfRender();
+  }
+  function wfApprove(i) {
+    const f = currentFlow();
+    if (!f) return;
+    if (f.demo) return alert("演示流程不可作为正式审核记录，请新建真实编排");
+    const n = f.nodes[i];
+    if (n.status !== "review" || !n.result) return alert("请先产生并检查本轮成果");
+    if (!confirm("确认已核对来源、完整性和质量要求？放行后下游任务将解锁，但不会自动写入正式题库。")) return;
+    n.status = "passed";
+    n.accepted = time();
+    logFlow(f, "人工验收", stages[i].title + "成果已确认放行；成果快照已保存");
+    persistFlows();
+    wfRender();
+  }
+  function wfReject(i) {
+    const f = currentFlow();
+    if (!f) return;
+    if (f.demo) return alert("演示流程不可修改，需真实审核请新建编排");
+    const n = f.nodes[i];
+    const reason = prompt("请输入退回原因（将记录到审计轨迹）");
+    if (reason === null) return;
+    if (!reason.trim()) return alert("请填写退回原因");
+    n.status = "pending";
+    n.result = null;
+    logFlow(f, "退回重做", stages[i].title + "：" + reason.trim());
+    persistFlows();
+    wfRender();
+  }
+  function wfInspect(i) {
+    const f = currentFlow(),
+      n = f?.nodes[i];
+    if (!n?.result) return alert("暂无已验收成果");
+    alert(
+      "交付物：" +
+        stages[i].give +
+        "\n验收时间：" +
+        n.accepted +
+        "\n摘要：" +
+        JSON.stringify(n.result).slice(0, 900) +
+        "\n可使用“导出流程”获取完整内容",
+    );
+  }
+  function wfExport() {
+    const f = currentFlow();
+    if (f) download(f.id + "-orchestration.json", f);
+  }
+  function wfArchive() {
+    const f = currentFlow();
+    if (!f) return;
+    if (f.demo) return alert("演示流程可通过“清除演示”移除");
+    if (!confirm("归档流程？数据仍保留并可查看。")) return;
+    f.archived = true;
+    logFlow(f, "归档流程", "人工归档，历史记录保留");
+    persistFlows();
+    wfRender();
+  }
+  function pointsPage() {
+    return shell(
+      "考评点拆解智能体",
+      "输入来自指标体系最末节点的原文，检查知识对象、能力行为和可测证据，形成待核验的候选考评点。",
+      `<div class="agent-columns"><div class="agent-box"><h3>01 · 选择指标末节点</h3>${systemSelect("apSystem")}<label class="agent-label">原文节点</label><select class="agent-field" id="apSource" onchange="WBZYAgents.fillSource()"></select><label class="agent-label">末节点原文（可修订草稿，不修改标准原文）</label><textarea id="apText"></textarea><div class="agent-actions"><button onclick="WBZYAgents.runPoints()">分析并拆解</button><button class="secondary" onclick="WBZYAgents.fillSource()">恢复原文</button></div>${foot()}</div><div class="agent-box"><h3>拆解成果 / 核验</h3><div id="apResult">${resultHtml("points")}</div><div class="agent-actions"><button class="secondary" onclick="WBZYAgents.exportResult('points')">导出考评点草案 JSON</button><button class="secondary" onclick="switchView('agent-types')">下一步：题型生成 →</button></div></div></div>`,
+    );
+  }
+  function typePage() {
+    return shell(
+      "题型生成智能体",
+      "根据考评点的认知、操作和评价证据需求选择题型，输出题型名称、交互方案、字段结构与评分方式。",
+      `<div class="agent-columns"><div class="agent-box"><h3>02 · 选择考评点</h3>${systemSelect("atSystem")}<label class="agent-label">候选考评点</label><select class="agent-field" id="atPoint" onchange="WBZYAgents.fillPoint()"></select><label class="agent-label">能力行为及证据</label><textarea id="atDescription"></textarea><div class="agent-actions"><button onclick="WBZYAgents.runTypes()">生成题型方案</button></div>${foot()}</div><div class="agent-box"><h3>题型结构与交互</h3><div id="atResult">${resultHtml("types")}</div><div class="agent-actions"><button class="secondary" onclick="WBZYAgents.exportResult('types')">导出题型方案 JSON</button><button class="secondary" onclick="switchView('agent-questions')">下一步：命题 →</button></div></div></div>`,
+    );
+  }
+  function questionsPage() {
+    return shell(
+      "命题智能体",
+      "结合考评点和题型生成可检查的命题草案。规则校验包括来源追溯、可答性、证据与评分要求；正式发布仍需审定。",
+      `<div class="agent-columns"><div class="agent-box"><h3>03 · 命题参数</h3>${systemSelect("aqSystem")}<label class="agent-label">关联考评点</label><select class="agent-field" id="aqPoint" onchange="WBZYAgents.fillPoint()"></select><label class="agent-label">适用题型</label><select class="agent-field" id="aqType"><option value="case">案例分析</option><option value="single">单选（待补选项）</option><option value="multiple">多选（待补选项）</option><option value="ordering">流程排序</option><option value="config">参数配置</option><option value="practice">流程实训</option><option value="device">设备仿真</option><option value="spreadsheet">表格计算</option><option value="portfolio">成果任务</option><option value="prompt">提示词编写</option></select><label class="agent-label">题目情境 / 约束</label><textarea id="aqContext" placeholder="例如：职业院校教师在课前准备过程中，设备、时间与数据权限受限。">职业院校实际工作任务；需要提供可核查的操作或判断证据。</textarea><div class="agent-actions"><button onclick="WBZYAgents.runQuestion()">生成待审核命题草案</button></div>${foot()}</div><div class="agent-box"><h3>命题草案与规则检查</h3><div id="aqResult">${resultHtml("questions")}</div><div class="agent-actions"><button class="secondary" onclick="WBZYAgents.exportResult('questions')">导出命题 JSON</button><button class="secondary" onclick="switchView('bank')">进入试题维护 →</button></div></div></div>`,
+    );
+  }
+  function reportsPage() {
+    return shell(
+      "报告智能体",
+      "从真实测评数据生成个人或团队的能力分析。当前支持 CSV / JSON 导入和演示样本；不会冒充当前浏览器有真实历史成绩。",
+      `<div class="agent-columns"><div class="agent-box"><h3>04 · 选择测评数据</h3><label class="agent-label">报告维度</label><select id="arScope" class="agent-field"><option value="personal">个人能力报告</option><option value="team">团队能力报告</option></select><label class="agent-label">数据来源</label><select id="arMode" class="agent-field"><option value="sample">内置演示测评记录（明确标识）</option><option value="import">粘贴 JSON 测评记录</option></select><label class="agent-label">测评记录 JSON（导入模式）</label><textarea id="arInput" placeholder='[{"user":"学员A","dimension":"数字技术","score":75},...]'></textarea><p class="agent-foot">每条需包含 user、dimension、score(0～100)。仅分析有分数和维度的记录，不推断没有提供的数据。</p><div class="agent-actions"><button onclick="WBZYAgents.runReport()">生成报告草案</button><button class="secondary" onclick="WBZYAgents.insertSample()">填入示例数据</button></div>${foot()}</div><div class="agent-box"><h3>个人 / 团队分析结果</h3><div id="arResult">${resultHtml("reports")}</div><div class="agent-actions"><button class="secondary" onclick="WBZYAgents.exportResult('reports')">导出报告 JSON</button><button class="secondary" onclick="window.open('report-builder.html','_blank')">打开原报告构建器</button></div></div></div>`,
+    );
+  }
+  function promptBlock(kind) {
+    const item = catalog.find((x) => x.id === kind) || catalog[0];
+    const key = "wbzy_agent_prompt_v198_" + kind;
+    let val = item.prompt;
+    try {
+      val = localStorage.getItem(key) || val;
+    } catch (e) {}
+    const steps = item.tasks.map((x, i) => `<li><span>${String(i + 1).padStart(2, "0")}</span>${esc(x)}</li>`).join("");
+    return `<section class="agent-detail-info"><div class="agent-detail-head"><button class="secondary" type="button" onclick="switchView('agent-center')">← 返回协同中心</button><button class="secondary" type="button" onclick="switchView('agents')">智能体总览</button><span class="agent-chip">离线规则辅助 · 待人工审核</span></div><div class="agent-detail-grid"><div class="agent-box"><h3>执行任务明细</h3><p>${esc(item.purpose)}</p><ol class="agent-task-list">${steps}</ol><p class="agent-meta"><b>输入：</b>${esc(item.input)}</p><p class="agent-meta"><b>输出：</b>${esc(item.output)}</p></div><div class="agent-box"><div class="agent-prompt-head"><h3>智能体提示词模板</h3><span class="agent-chip">可编辑 · 本地保存</span></div><textarea class="agent-prompt-input" id="agentPrompt_${kind}" aria-label="${item.name}提示词">${esc(val)}</textarea><p class="agent-foot">提示词为后续模型接入的可编辑规范；当前规则执行不会把此文本发送给在线模型。</p><div class="agent-actions"><button class="secondary" onclick="WBZYAgents.savePrompt('${kind}')">保存提示词</button><button class="secondary" onclick="WBZYAgents.copyPrompt('${kind}')">复制</button><button class="secondary" onclick="WBZYAgents.resetPrompt('${kind}')">恢复默认</button></div></div></div></section>`;
+  }
+  function page(view) {
+    if (view === "agents") return cardOverview();
+    const kind = view === "agent-center" ? "center" : view.slice(6);
+    const render =
+      { center: centerPage, points: pointsPage, types: typePage, questions: questionsPage, reports: reportsPage }[
+        kind
+      ] || cardOverview;
+    return render().replace("</div>", "</div>") + promptBlock(kind);
+  }
+  function savePrompt(k) {
+    const el = document.getElementById("agentPrompt_" + k);
+    if (!el) return;
+    try {
+      localStorage.setItem("wbzy_agent_prompt_v198_" + k, el.value);
+      alert("提示词已保存到当前浏览器");
+    } catch (e) {
+      alert("提示词保存失败：" + e.message);
+    }
+  }
+  function copyPrompt(k) {
+    const el = document.getElementById("agentPrompt_" + k);
+    if (!el) return;
+    const content = el.value;
+    if (navigator.clipboard?.writeText) {
+      navigator.clipboard
+        .writeText(content)
+        .then(() => alert("已复制提示词"))
+        .catch(() => {
+          el.select();
+          document.execCommand("copy");
+          alert("已复制提示词");
+        });
+    } else {
+      el.select();
+      document.execCommand("copy");
+      alert("已复制提示词");
+    }
+  }
+  function resetPrompt(k) {
+    const item = catalog.find((x) => x.id === k);
+    const el = document.getElementById("agentPrompt_" + k);
+    if (!item || !el) return;
+    if (!confirm("恢复该智能体的默认提示词？")) return;
+    el.value = item.prompt;
+    try {
+      localStorage.removeItem("wbzy_agent_prompt_v198_" + k);
+    } catch (e) {}
+  }
+  function fillSource() {
+    const sys = document.getElementById("apSystem")?.value || "general",
+      v = document.getElementById("apSource")?.value;
+    const s = sources(sys).find((x) => x.code === v);
+    const el = document.getElementById("apText");
+    if (el) el.value = s?.text || "";
+  }
+  function fillPoint() {
+    ["at", "aq"].forEach((prefix) => {
+      const sel = document.getElementById(prefix + "Point");
+      if (!sel) return;
+      const sys = document.getElementById(prefix + "System")?.value || "general";
+      const p = points(sys).find((x) => x.code === sel.value);
+      if (prefix === "at") {
+        const el = document.getElementById("atDescription");
+        if (el) el.value = [p?.name, p?.action, p?.evidence].filter(Boolean).join("\n");
+      }
+    });
+  }
+  function updateSelects() {
+    const ap = document.getElementById("apSource");
+    if (ap) {
+      const ss = sources(document.getElementById("apSystem").value);
+      ap.innerHTML = opt(
+        ss,
+        (x) => x.code,
+        (x) => x.code + " · " + x.text.slice(0, 52),
+      );
+      fillSource();
+    }
+    ["at", "aq"].forEach((prefix) => {
+      let sel = document.getElementById(prefix + "Point");
+      if (!sel) return;
+      const pp = points(document.getElementById(prefix + "System").value);
+      sel.innerHTML = opt(
+        pp,
+        (x) => x.code,
+        (x) => x.code + " · " + (x.name || "").slice(0, 45),
+      );
+      fillPoint();
+    });
+  }
+  function after() {
+    updateSelects();
+  }
+  function onSystemChange() {
+    updateSelects();
+  }
+  function runPoints() {
+    const code = document.getElementById("apSource").value;
+    const text = document.getElementById("apText").value.trim();
+    if (!text) return alert("请先选择有原文的末节点");
+    const objects = (
+      text.match(
+        /数字技术|数字系统|数据资源|人工智能|教学资源|数据安全|网络安全|隐私|设备|技术|平台|数据|资源|学习|就业|工作|教学|协同|评价|认证/g,
+      ) || []
+    )
+      .filter((x, i, a) => a.indexOf(x) === i)
+      .slice(0, 5);
+    const words = objects.length ? objects : ["关键知识或工具"];
+    const verb =
+      (text.match(
+        /能够?(?:理解|掌握|识别|分析|评价|应用|设计|使用|操作|保护|管理|开发|实施)|理解|掌握|识别|分析|评价|应用|设计|使用|操作|保护/,
+      ) || [])[0] || "识别并解释";
+    const items = words.map((x, i) => ({
+      title: `${x}：概念与适用边界`,
+      behavior: `在给定场景识别${x}及其用途，说明其与原文“${verb}”要求的关联。`,
+      evidence: `准确的概念判断＋场景实例＋理由说明`,
+      risk: "须核实该知识对象是否属于原文要求，避免只考识记",
+    }));
+    items.push({
+      title: "跨知识对象的作用关系与情境迁移",
+      behavior: "在给定的真实或模拟场景中，解释至少两个原文知识对象的作用关系并提出可验证的判断。",
+      evidence: "因果或流程分析、场景任务结果、适用边界",
+      risk: "该建议为综合能力点，需防止与分项点重复",
+    });
+    let r = { code, source: text, title: code, verb, items, status: "待专家核验" };
+    store("points", r);
+    document.getElementById("apResult").innerHTML = display("points", r);
+  }
+  function runTypes() {
+    const sys = document.getElementById("atSystem").value,
+      code = document.getElementById("atPoint").value,
+      p = points(sys).find((x) => x.code === code);
+    if (!p) return;
+    const d = document.getElementById("atDescription").value;
+    const practical = /操作|使用|配置|完成|应用|流程|设备|处理|运行|制作|创建|生成|开展|实施|提交|验证|记录|编辑/.test(
+      d,
+    );
+    const analytic = /分析|评价|评估|判断|风险|影响|原因|方案|决策|比较/.test(d);
+    const items = [];
+    if (practical)
+      items.push({
+        name: "流程实训 / 参数配置",
+        priority: "优先",
+        interaction: "步骤操作、配置控件、过程记录及提交",
+        schema: "scenario,steps[],expectedStates[],evidence[],rubric[]",
+        scoring: "结果状态＋关键操作节点＋违规操作扣分",
+      });
+    if (analytic)
+      items.push({
+        name: "情境决策 / 案例分析",
+        priority: "优先",
+        interaction: "情境证据阅读、选择决策并填写理由",
+        schema: "scenario,observations[],choices[],rationale,rubric[]",
+        scoring: "证据引用、因果链与风险权衡量规",
+      });
+    items.push({
+      name: "概念判断 / 匹配",
+      priority: practical || analytic ? "辅助" : "优先",
+      interaction: "单选、多选或对象—用途配对",
+      schema: "stem,options[],answer,explain",
+      scoring: "可核对答案和干扰项合理性",
+    });
+    let r = { point: code, title: code, source: p.sourceText || "", items, status: "待题型审定" };
+    store("types", r);
+    document.getElementById("atResult").innerHTML = display("types", r);
+  }
+  const names = {
+    case: "案例分析",
+    single: "单选",
+    multiple: "多选",
+    ordering: "流程排序",
+    config: "参数配置",
+    practice: "流程实训",
+    device: "设备仿真",
+    spreadsheet: "表格计算",
+    portfolio: "成果任务",
+    prompt: "提示词编写",
+  };
+  function runQuestion() {
+    const sys = document.getElementById("aqSystem").value,
+      code = document.getElementById("aqPoint").value,
+      p = points(sys).find((x) => x.code === code);
+    if (!p) return;
+    const type = document.getElementById("aqType").value,
+      context = document.getElementById("aqContext").value.trim(),
+      name = p.name || "能力目标";
+    const v = {
+      code,
+      title: code,
+      type,
+      typeName: names[type],
+      stem: `【${names[type]}】${context}\n请围绕“${name}”完成可核验的任务：${p.action || "说明判断依据并提交结果"}。`,
+      input: ["single", "multiple"].includes(type)
+        ? "需要人工补全具有唯一/明确答案的选项与干扰项；未配置前不得发布。"
+        : `按${names[type]}提交作答、步骤或成果证据`,
+      reference: p.evidence || "需结合原文与操作任务制定清晰的标准答案或量规",
+      checks: ["指标原文可追溯", "考评点编码已绑定", "需核验可答性与评分依据", "未审定不发布"],
+      status: "待审定草案",
+      approved: false,
+    };
+    store("questions", v);
+    document.getElementById("aqResult").innerHTML = display("questions", v);
+  }
+  const sample = [
+    { user: "演示学员甲", dimension: "数字环境认知", score: 78 },
+    { user: "演示学员甲", dimension: "数据处理", score: 65 },
+    { user: "演示学员甲", dimension: "安全伦理", score: 86 },
+    { user: "演示学员乙", dimension: "数字环境认知", score: 88 },
+    { user: "演示学员乙", dimension: "数据处理", score: 72 },
+    { user: "演示学员乙", dimension: "安全伦理", score: 80 },
+  ];
+  function insertSample() {
+    const el = document.getElementById("arInput");
+    if (el) {
+      el.value = JSON.stringify(sample, null, 2);
+      document.getElementById("arMode").value = "import";
+    }
+  }
+  function runReport() {
+    const mode = document.getElementById("arMode").value,
+      scope = document.getElementById("arScope").value;
+    let arr;
+    if (mode === "sample") arr = sample;
+    else {
+      try {
+        arr = JSON.parse(document.getElementById("arInput").value);
+      } catch (e) {
+        return alert("JSON解析失败：" + e.message);
+      }
+    }
+    if (!Array.isArray(arr)) return alert("需要JSON记录数组");
+    arr = arr.filter(
+      (x) =>
+        x &&
+        typeof x.dimension === "string" &&
+        typeof x.user === "string" &&
+        Number.isFinite(Number(x.score)) &&
+        Number(x.score) >= 0 &&
+        Number(x.score) <= 100,
+    );
+    if (!arr.length) return alert("没有可分析的有效记录。");
+    if (scope === "personal") {
+      const first = arr[0].user;
+      arr = arr.filter((x) => x.user === first);
+    }
+    const by = new Map();
+    for (const x of arr) {
+      const a = by.get(x.dimension) || [];
+      a.push(+x.score);
+      by.set(x.dimension, a);
+    }
+    const dimensions = [...by]
+      .map(([name, v]) => ({ name, n: v.length, avg: Math.round(v.reduce((a, b) => a + b, 0) / v.length) }))
+      .sort((a, b) => a.avg - b.avg);
+    const avg = Math.round(arr.reduce((a, x) => a + +x.score, 0) / arr.length);
+    const low = dimensions[0];
+    const r = {
+      title:
+        (scope === "personal" ? "个人" : "团队") +
+        "能力诊断报告（" +
+        (mode === "sample" ? "演示数据" : "导入数据") +
+        "）",
+      count: arr.length,
+      avg,
+      dimensions,
+      isDemo: mode === "sample",
+      summary: `本次只基于${arr.length}条有效测评记录。各维度均分范围为 ${dimensions[0].avg}%～${dimensions[dimensions.length - 1].avg}%；此为描述性统计，未进行信效度或群体常模校准。`,
+      suggestion: `建议优先复核“${low.name}”维度的测评证据，并结合题目覆盖率制定有针对性的补训与复测。`,
+      scope,
+      status: "报告草案",
+    };
+    store("reports", r);
+    document.getElementById("arResult").innerHTML = display("reports", r);
+  }
+  function download(filename, value) {
+    const blob = new Blob([JSON.stringify(value, null, 2)], { type: "application/json;charset=utf-8" }),
+      url = URL.createObjectURL(blob),
+      a = document.createElement("a");
+    a.href = url;
+    a.download = filename;
+    a.click();
+    setTimeout(() => URL.revokeObjectURL(url), 1000);
+  }
+  function exportResult(k) {
+    if (!data.last[k]) return alert("尚无可导出的结果");
+    download("WBZY-" + k + "-draft.json", data.last[k]);
+  }
+  function exportAll() {
+    download("WBZY-special-agents-history.json", data);
+  }
+  function clear() {
+    if (!confirm("仅清空本地智能体历史和草稿，不影响原有题库和测评数据。确认？")) return;
+    data = { history: [], last: {} };
+    localStorage.removeItem(KEY);
+    switchView("agents");
+  }
+  window.WBZYAgents = {
+    page,
+    after,
+    savePrompt,
+    copyPrompt,
+    resetPrompt,
+    onSystemChange,
+    fillSource,
+    fillPoint,
+    runPoints,
+    runTypes,
+    runQuestion,
+    runReport,
+    insertSample,
+    exportResult,
+    exportAll,
+    clear,
+    wfShowCreate,
+    wfCreate,
+    wfChoose,
+    wfBegin,
+    wfOpen,
+    wfCheck,
+    wfApprove,
+    wfReject,
+    wfInspect,
+    wfExport,
+    wfArchive,
+    wfSeedDemos,
+    wfSelectDemo,
+    wfClearDemos,
+  };
 })();

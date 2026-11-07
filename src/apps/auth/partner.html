@@ -1,1 +1,122 @@
-<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#315CC5"><title>生态合作伙伴登录 · 合作伙伴平台</title><link rel="stylesheet" href="../assets/partner-portal-v7238.css?v=7238"></head><body class="pt-login-page"><header class="pt-login-header"><a class="pt-brand" href="../site/index.html"><img src="../assets/mveri-logo.png" alt="研究院标识"><span><strong>合作伙伴平台</strong><small>职业能力发展 · 生态合作伙伴门户</small></span></a><a class="pt-back" href="access.html">← 返回身份选择</a></header><main class="pt-login-layout"><section class="pt-login-story"><div class="pt-kicker">PARTNER ECOSYSTEM · 资源共建 / 项目协同</div><h1>让合作资源转化为<br><em>职业能力发展服务</em></h1><p>汇聚教育、科技、产业与人才培养资源，围绕能力标准、测评、培训、认证与成果应用开展可信协作。</p><div class="pt-benefit-grid"><div><span>01</span><strong>标准共建</strong><small>参与标准及评价方法协作</small></div><div><span>02</span><strong>资源共建</strong><small>共享课程、案例、专家与工具</small></div><div><span>03</span><strong>项目协同</strong><small>共同推进培训、测评和区域服务</small></div><div><span>04</span><strong>授权管理</strong><small>按业务方向分配合作范围</small></div></div><div class="pt-types"><b>合作领域</b><span>科技企业</span><span>职业院校</span><span>央企 / 国企</span><span>行业组织</span><span>培训服务</span></div></section><section class="pt-login-side"><div class="pt-login-form"><div class="pt-login-icon">⇄</div><small>PARTNER SIGN IN</small><h2>合作伙伴登录</h2><p>使用总部审核通过并开通的合作机构账号。</p><form id="login" autocomplete="on"><label>机构登录账号<input name="account" value="partner_demo" required autocomplete="username" maxlength="64" placeholder="请输入合作伙伴账号"></label><label>登录密码<div class="pt-pass-field"><input id="password" name="password" type="password" required autocomplete="current-password" placeholder="请输入登录密码"><button id="showPassword" type="button" aria-label="显示或隐藏密码">显示</button></div></label><div class="pt-remember"><label class="pt-check"><input type="checkbox" id="remember" checked> 记住账号</label><a href="#" id="forgot">无法登录？</a></div><p id="error" class="pt-error" role="alert" hidden></p><button type="submit" class="pt-btn pt-primary pt-full">登录合作工作台 <span>→</span></button></form><div class="pt-login-links"><a href="../partner/apply.html">申请成为合作伙伴</a><a href="../partner/guide.html">合作指南</a></div></div><div class="pt-demo-tip"><b>体验说明</b>　本机演示账号：<code>partner_demo</code>，密码：<code>Demo@123456</code>。演示数据不代表真实合作授权。</div></section></main><footer class="pt-login-footer">现代职业教育研究院 · 合作伙伴服务门户｜当前为本地演示环境，不能提交正式商业合作材料</footer><script src="../assets/partner-registry-v7237.js?v=7238"></script><script>const api=MVERI_PARTNER_REGISTRY;const l=document.getElementById('login');try{const remembered=localStorage.getItem('mveri_partner_remembered_account');if(remembered)l.elements.account.value=remembered}catch{}document.getElementById('showPassword').onclick=()=>{const p=document.getElementById('password');p.type=p.type==='password'?'text':'password';document.getElementById('showPassword').textContent=p.type==='password'?'显示':'隐藏'};document.getElementById('forgot').onclick=e=>{e.preventDefault();const x=document.getElementById('error');x.hidden=false;x.textContent='请联系总部管理员核对授权状态并重置演示账号密码。'};l.onsubmit=e=>{e.preventDefault();const d=new FormData(l);const account=String(d.get('account')||'').trim();const p=api.get().find(x=>x.account===account);const err=document.getElementById('error');if(!p||p.status!=='已通过'||!api.validPassword(p,String(d.get('password')))){err.hidden=false;err.textContent='账号、密码错误，或机构尚未通过总部审核及账号授权。';return}try{if(document.getElementById('remember').checked)localStorage.setItem('mveri_partner_remembered_account',account);else localStorage.removeItem('mveri_partner_remembered_account')}catch{}sessionStorage.setItem(api.sessionKey,JSON.stringify({id:p.id,account:p.account}));location.href='../partner/index.html'};</script></body></html>
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="theme-color" content="#315CC5" />
+    <title>生态合作伙伴登录 · 合作伙伴平台</title>
+    <link rel="stylesheet" href="../assets/partner-portal-v7238.css?v=7238" />
+  </head>
+  <body class="pt-login-page">
+    <header class="pt-login-header">
+      <a class="pt-brand" href="../site/index.html"
+        ><img src="../assets/mveri-logo.png" alt="研究院标识" /><span
+          ><strong>合作伙伴平台</strong><small>职业能力发展 · 生态合作伙伴门户</small></span
+        ></a
+      ><a class="pt-back" href="access.html">← 返回身份选择</a>
+    </header>
+    <main class="pt-login-layout">
+      <section class="pt-login-story">
+        <div class="pt-kicker">PARTNER ECOSYSTEM · 资源共建 / 项目协同</div>
+        <h1>让合作资源转化为<br /><em>职业能力发展服务</em></h1>
+        <p>汇聚教育、科技、产业与人才培养资源，围绕能力标准、测评、培训、认证与成果应用开展可信协作。</p>
+        <div class="pt-benefit-grid">
+          <div><span>01</span><strong>标准共建</strong><small>参与标准及评价方法协作</small></div>
+          <div><span>02</span><strong>资源共建</strong><small>共享课程、案例、专家与工具</small></div>
+          <div><span>03</span><strong>项目协同</strong><small>共同推进培训、测评和区域服务</small></div>
+          <div><span>04</span><strong>授权管理</strong><small>按业务方向分配合作范围</small></div>
+        </div>
+        <div class="pt-types">
+          <b>合作领域</b><span>科技企业</span><span>职业院校</span><span>央企 / 国企</span><span>行业组织</span
+          ><span>培训服务</span>
+        </div>
+      </section>
+      <section class="pt-login-side">
+        <div class="pt-login-form">
+          <div class="pt-login-icon">⇄</div>
+          <small>PARTNER SIGN IN</small>
+          <h2>合作伙伴登录</h2>
+          <p>使用总部审核通过并开通的合作机构账号。</p>
+          <form id="login" autocomplete="on">
+            <label
+              >机构登录账号<input
+                name="account"
+                value="partner_demo"
+                required
+                autocomplete="username"
+                maxlength="64"
+                placeholder="请输入合作伙伴账号" /></label
+            ><label
+              >登录密码
+              <div class="pt-pass-field">
+                <input
+                  id="password"
+                  name="password"
+                  type="password"
+                  required
+                  autocomplete="current-password"
+                  placeholder="请输入登录密码"
+                /><button id="showPassword" type="button" aria-label="显示或隐藏密码">显示</button>
+              </div></label
+            >
+            <div class="pt-remember">
+              <label class="pt-check"><input type="checkbox" id="remember" checked /> 记住账号</label
+              ><a href="#" id="forgot">无法登录？</a>
+            </div>
+            <p id="error" class="pt-error" role="alert" hidden></p>
+            <button type="submit" class="pt-btn pt-primary pt-full">登录合作工作台 <span>→</span></button>
+          </form>
+          <div class="pt-login-links">
+            <a href="../partner/apply.html">申请成为合作伙伴</a><a href="../partner/guide.html">合作指南</a>
+          </div>
+        </div>
+        <div class="pt-demo-tip">
+          <b>体验说明</b
+          >　本机演示账号：<code>partner_demo</code>，密码：<code>Demo@123456</code>。演示数据不代表真实合作授权。
+        </div>
+      </section>
+    </main>
+    <footer class="pt-login-footer">
+      现代职业教育研究院 · 合作伙伴服务门户｜当前为本地演示环境，不能提交正式商业合作材料
+    </footer>
+    <script src="../assets/partner-registry-v7237.js?v=7238"></script>
+    <script>
+      const api = MVERI_PARTNER_REGISTRY;
+      const l = document.getElementById("login");
+      try {
+        const remembered = localStorage.getItem("mveri_partner_remembered_account");
+        if (remembered) l.elements.account.value = remembered;
+      } catch {}
+      document.getElementById("showPassword").onclick = () => {
+        const p = document.getElementById("password");
+        p.type = p.type === "password" ? "text" : "password";
+        document.getElementById("showPassword").textContent = p.type === "password" ? "显示" : "隐藏";
+      };
+      document.getElementById("forgot").onclick = (e) => {
+        e.preventDefault();
+        const x = document.getElementById("error");
+        x.hidden = false;
+        x.textContent = "请联系总部管理员核对授权状态并重置演示账号密码。";
+      };
+      l.onsubmit = (e) => {
+        e.preventDefault();
+        const d = new FormData(l);
+        const account = String(d.get("account") || "").trim();
+        const p = api.get().find((x) => x.account === account);
+        const err = document.getElementById("error");
+        if (!p || p.status !== "已通过" || !api.validPassword(p, String(d.get("password")))) {
+          err.hidden = false;
+          err.textContent = "账号、密码错误，或机构尚未通过总部审核及账号授权。";
+          return;
+        }
+        try {
+          if (document.getElementById("remember").checked)
+            localStorage.setItem("mveri_partner_remembered_account", account);
+          else localStorage.removeItem("mveri_partner_remembered_account");
+        } catch {}
+        sessionStorage.setItem(api.sessionKey, JSON.stringify({ id: p.id, account: p.account }));
+        location.href = "../partner/index.html";
+      };
+    </script>
+  </body>
+</html>

@@ -1,2 +1,138 @@
 /* V21.2 主数据模型 */
-.pm-muted{color:#68818d;font-size:13px;line-height:1.65}.pm-tag{display:inline-block;background:#e5f5f1;color:#0a7569;padding:5px 10px;border-radius:8px;font-size:12px;white-space:nowrap}.pm-kpis{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin-bottom:18px}.pm-kpis>div{background:#fff;padding:17px 20px;border:1px solid #dfeaec;border-radius:14px}.pm-kpis b{display:block;font-size:27px;color:#153944}.pm-kpis span{font-size:12px;color:#728891}.pm-chain{background:#f2f8f8;border-radius:12px;line-height:2;padding:16px;margin-top:12px;font-weight:600}.pm-chain span{color:#0b8c7e;margin:0 8px}.pm-schema{min-width:730px;margin-top:15px}.pm-controls{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-bottom:16px}.pm-controls select{min-width:180px}.pm-controls input{flex:1;min-width:240px}.pm-table-scroll{overflow:auto;max-height:500px}.pm-table{min-width:830px}.pm-table td{vertical-align:middle}.pm-resulttop{display:flex;justify-content:space-between;gap:12px;margin-bottom:10px;color:#395967}.pm-pager{display:flex;justify-content:center;gap:15px;align-items:center;margin-top:15px}.pm-detail-title{display:flex;align-items:center;justify-content:space-between;gap:15px;border-bottom:1px solid #e2eded;padding-bottom:14px;margin-bottom:16px}.pm-detail-title h3{font-size:19px;margin:4px 0}.pm-detail-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.pm-detail-row{border:1px solid #e0eaed;border-radius:10px;padding:14px;min-width:0;overflow-wrap:anywhere}.pm-detail-row>b{display:block;color:#637d87;font-size:12px;margin-bottom:9px}.pm-detail-row>div{white-space:pre-wrap;line-height:1.7}.pm-empty{text-align:center;padding:36px;color:#708994}@media(max-width:850px){.pm-kpis{grid-template-columns:repeat(2,1fr)}.pm-detail-grid{grid-template-columns:1fr}}
+.pm-muted {
+  color: #68818d;
+  font-size: 13px;
+  line-height: 1.65;
+}
+.pm-tag {
+  display: inline-block;
+  background: #e5f5f1;
+  color: #0a7569;
+  padding: 5px 10px;
+  border-radius: 8px;
+  font-size: 12px;
+  white-space: nowrap;
+}
+.pm-kpis {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
+  margin-bottom: 18px;
+}
+.pm-kpis > div {
+  background: #fff;
+  padding: 17px 20px;
+  border: 1px solid #dfeaec;
+  border-radius: 14px;
+}
+.pm-kpis b {
+  display: block;
+  font-size: 27px;
+  color: #153944;
+}
+.pm-kpis span {
+  font-size: 12px;
+  color: #728891;
+}
+.pm-chain {
+  background: #f2f8f8;
+  border-radius: 12px;
+  line-height: 2;
+  padding: 16px;
+  margin-top: 12px;
+  font-weight: 600;
+}
+.pm-chain span {
+  color: #0b8c7e;
+  margin: 0 8px;
+}
+.pm-schema {
+  min-width: 730px;
+  margin-top: 15px;
+}
+.pm-controls {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-bottom: 16px;
+}
+.pm-controls select {
+  min-width: 180px;
+}
+.pm-controls input {
+  flex: 1;
+  min-width: 240px;
+}
+.pm-table-scroll {
+  overflow: auto;
+  max-height: 500px;
+}
+.pm-table {
+  min-width: 830px;
+}
+.pm-table td {
+  vertical-align: middle;
+}
+.pm-resulttop {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 10px;
+  color: #395967;
+}
+.pm-pager {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  align-items: center;
+  margin-top: 15px;
+}
+.pm-detail-title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+  border-bottom: 1px solid #e2eded;
+  padding-bottom: 14px;
+  margin-bottom: 16px;
+}
+.pm-detail-title h3 {
+  font-size: 19px;
+  margin: 4px 0;
+}
+.pm-detail-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+.pm-detail-row {
+  border: 1px solid #e0eaed;
+  border-radius: 10px;
+  padding: 14px;
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+.pm-detail-row > b {
+  display: block;
+  color: #637d87;
+  font-size: 12px;
+  margin-bottom: 9px;
+}
+.pm-detail-row > div {
+  white-space: pre-wrap;
+  line-height: 1.7;
+}
+.pm-empty {
+  text-align: center;
+  padding: 36px;
+  color: #708994;
+}
+@media (max-width: 850px) {
+  .pm-kpis {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .pm-detail-grid {
+    grid-template-columns: 1fr;
+  }
+}

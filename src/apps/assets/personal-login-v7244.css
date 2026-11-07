@@ -1,20 +1,585 @@
 /* V72.44: personal login and registration, eight-user career development entrance */
-.career-login-modal .career-login-card{width:min(950px,96vw);max-height:92vh;display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);padding:0;overflow:auto;border:0;border-radius:20px}
-.career-login-modal .career-login-story{padding:39px 38px;background:linear-gradient(140deg,#153777,#2454ae 74%,#3379c1);color:#fff;min-width:0}
-.career-login-modal .career-login-brand{display:flex;gap:12px;align-items:center;margin-bottom:47px}.career-login-brand img{width:46px;height:46px;object-fit:contain;background:#fff;border-radius:50%}.career-login-brand strong{font-size:17px;color:#fff;display:block}.career-login-brand small{font-size:10px;color:#bed5ff;letter-spacing:1.7px}
-.career-login-eyebrow{font-size:11px;color:#bcdcff;letter-spacing:1px;font-weight:700}.career-login-story h2{font-size:29px;line-height:1.55;color:#fff;margin:14px 0}.career-login-story h2 span{color:#b3e9f1}.career-login-story p{font-size:13px;line-height:2;color:#e3efff}.career-login-steps{display:flex;gap:7px;align-items:center;flex-wrap:wrap;margin:22px 0 32px}.career-login-steps span{background:#ffffff21;border:1px solid #ffffff44;border-radius:9px;padding:9px 12px;font-size:12px}.career-login-steps i{font-style:normal;color:#c9ddfb}.career-login-group-title{font-weight:700;font-size:13px;margin-bottom:13px}.career-login-groups{display:flex;flex-wrap:wrap;gap:8px}.career-login-groups span{border:1px solid #ffffff50;background:#ffffff15;border-radius:999px;padding:7px 10px;font-size:11px;color:#fff}.career-login-story-note{font-size:11px;color:#c9dcfa;margin-top:21px;line-height:1.7}
-.career-login-modal .career-login-formside{padding:44px 36px 30px;min-width:0;background:#fff}.career-login-formside .mveri-personal-heading{margin:18px 0 26px}.career-login-formside .mveri-personal-heading h2{font-size:27px}.career-login-formside .mveri-personal-register{margin-top:20px}.career-login-full{display:block;text-align:center;margin-top:14px;font-size:11px;color:#5476b3}.career-login-modal .mveri-personal-close{z-index:2;top:15px;right:15px}
-@media(max-width:790px){.career-login-modal .career-login-card{grid-template-columns:1fr;max-width:500px}.career-login-modal .career-login-story{padding:22px 25px}.career-login-brand{margin-bottom:18px!important}.career-login-story h2{font-size:22px;margin:9px 0}.career-login-steps{margin:12px 0}.career-login-groups{gap:5px}.career-login-modal .career-login-formside{padding:20px 25px 28px}.career-login-story-note{display:none}}
-.career-auth-page{margin:0;min-height:100vh;background:#f5f8ff;color:#173b80;font-family:system-ui,"Microsoft YaHei",sans-serif}.career-auth-page *{box-sizing:border-box}.career-auth-top{display:flex;align-items:center;justify-content:space-between;gap:20px;background:#fff;border-bottom:1px solid #e1e9f6;padding:18px clamp(22px,5vw,90px)}.career-auth-logo{display:flex;align-items:center;gap:12px;text-decoration:none;color:#173b80}.career-auth-logo img{width:49px;height:49px;object-fit:contain}.career-auth-logo strong{font-size:18px;display:block;line-height:1.4}.career-auth-logo small{display:block;color:#8395b5;letter-spacing:1.2px;font-size:10px}.career-auth-back{color:#3e67b9;font-size:13px;text-decoration:none;white-space:nowrap}.career-auth-main{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(340px,.85fr);max-width:1260px;padding:32px 22px 48px;margin:0 auto;gap:0;align-items:stretch}.career-auth-intro{background:linear-gradient(138deg,#173c7f,#315cc5 74%,#357fb7);border-radius:20px 0 0 20px;color:#fff;padding:52px 46px;min-height:610px}.career-auth-eyebrow{font-size:11px;font-weight:800;letter-spacing:1.2px;color:#537ccb}.career-auth-intro .career-auth-eyebrow{color:#bed5ff}.career-auth-intro h1{font-size:38px;line-height:1.5;margin:25px 0;color:#fff}.career-auth-intro em{font-style:normal;color:#c3f0fa}.career-auth-intro p{line-height:1.95;font-size:14px;color:#e1ebff;max-width:570px}.career-auth-journey{display:flex;gap:8px;flex-wrap:wrap;margin:25px 0 39px}.career-auth-journey span{padding:10px;border:1px solid #ffffff45;background:#ffffff16;border-radius:9px;font-size:12px}.career-auth-audience>b{display:block;font-size:13px;margin-bottom:12px}.career-auth-audience>div{display:flex;flex-wrap:wrap;gap:9px}.career-auth-audience span{border:1px solid #ffffff45;background:#ffffff1b;border-radius:999px;font-size:12px;padding:8px 11px}.career-auth-footnote{margin-top:25px;font-size:12px!important;color:#c5d9ff!important}.career-auth-panel{background:#fff;border-radius:0 20px 20px 0;padding:50px 46px;box-shadow:0 20px 40px #183d7910;min-width:0}.career-auth-panel h2{font-size:27px;margin:13px 0;color:#193b7d}.career-auth-sub{font-size:13px;color:#7186a3;line-height:1.8;margin-bottom:26px}.career-auth-panel form{display:grid;gap:15px}.career-auth-field{font-size:13px;color:#294977;font-weight:700;display:grid;gap:8px}.career-auth-field input,.career-auth-field select{width:100%;min-width:0;height:47px;border:1px solid #cfdaec;background:#fff;padding:10px 12px;border-radius:9px;font:inherit;color:#173b80;font-weight:400}.career-auth-field small{font-size:11px;font-weight:400;color:#7b8ca5}.career-auth-field input:focus,.career-auth-field select:focus{outline:2px solid #315cc5;outline-offset:0}.career-auth-field[hidden]{display:none}.career-auth-show,.career-auth-consent{font-size:12px;display:flex;align-items:center;gap:8px;color:#607893;line-height:1.5}.career-auth-show input,.career-auth-consent input{width:15px;height:15px;accent-color:#315cc5;flex-shrink:0}.career-auth-error{background:#fff1f2;border:1px solid #f6ccd1;border-radius:9px;color:#9f263a;padding:12px;font-size:12px}.career-auth-error[hidden]{display:none}.career-auth-submit{min-height:48px;border:none;color:#fff;background:#315cc5;border-radius:9px;font-size:14px;font-weight:750;cursor:pointer}.career-auth-submit:hover{background:#234da9}.career-auth-switch{font-size:12px;text-align:center;margin:20px 0;color:#68809c}.career-auth-switch a,.career-auth-alt{color:#315cc5;text-decoration:none;font-weight:700}.career-auth-sample{margin-top:25px;border-top:1px solid #e5ecf7;padding-top:18px}.career-auth-sample b{font-size:12px;color:#294977}.career-auth-sample small{display:block;font-size:11px;color:#7d8faa;margin-top:12px}.career-auth-samples{display:flex;flex-wrap:wrap;gap:9px;margin-top:10px}.career-auth-samples button{border-radius:10px;padding:11px 13px;border:1px solid #d0ddf3;background:#f2f6ff;color:#315cc5;cursor:pointer;text-align:left}.career-auth-samples strong,.career-auth-samples small{display:block;font-size:12px}.career-auth-alt{display:block;text-align:center;margin-top:20px;font-size:12px}.career-auth-footer{color:#7286a5;text-align:center;font-size:11px;padding:16px 20px 30px}.career-auth-register .career-auth-panel{padding-top:34px}.career-auth-register .career-auth-intro{min-height:760px}@media(max-width:850px){.career-auth-main{grid-template-columns:1fr;max-width:640px}.career-auth-intro{border-radius:18px 18px 0 0;min-height:0;padding:28px}.career-auth-panel{border-radius:0 0 18px 18px;padding:28px}.career-auth-intro h1{font-size:26px;margin:14px 0}.career-auth-journey{margin:17px 0}.career-auth-audience span{font-size:11px}.career-auth-register .career-auth-intro{min-height:0}}@media(max-width:470px){.career-auth-top{padding:14px 16px}.career-auth-logo strong{font-size:13px}.career-auth-logo small{font-size:8px}.career-auth-logo img{width:35px;height:35px}.career-auth-back{font-size:11px}.career-auth-main{padding:12px 10px 26px}.career-auth-intro,.career-auth-panel{padding:24px 20px}}
+.career-login-modal .career-login-card {
+  width: min(950px, 96vw);
+  max-height: 92vh;
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+  padding: 0;
+  overflow: auto;
+  border: 0;
+  border-radius: 20px;
+}
+.career-login-modal .career-login-story {
+  padding: 39px 38px;
+  background: linear-gradient(140deg, #153777, #2454ae 74%, #3379c1);
+  color: #fff;
+  min-width: 0;
+}
+.career-login-modal .career-login-brand {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  margin-bottom: 47px;
+}
+.career-login-brand img {
+  width: 46px;
+  height: 46px;
+  object-fit: contain;
+  background: #fff;
+  border-radius: 50%;
+}
+.career-login-brand strong {
+  font-size: 17px;
+  color: #fff;
+  display: block;
+}
+.career-login-brand small {
+  font-size: 10px;
+  color: #bed5ff;
+  letter-spacing: 1.7px;
+}
+.career-login-eyebrow {
+  font-size: 11px;
+  color: #bcdcff;
+  letter-spacing: 1px;
+  font-weight: 700;
+}
+.career-login-story h2 {
+  font-size: 29px;
+  line-height: 1.55;
+  color: #fff;
+  margin: 14px 0;
+}
+.career-login-story h2 span {
+  color: #b3e9f1;
+}
+.career-login-story p {
+  font-size: 13px;
+  line-height: 2;
+  color: #e3efff;
+}
+.career-login-steps {
+  display: flex;
+  gap: 7px;
+  align-items: center;
+  flex-wrap: wrap;
+  margin: 22px 0 32px;
+}
+.career-login-steps span {
+  background: #ffffff21;
+  border: 1px solid #ffffff44;
+  border-radius: 9px;
+  padding: 9px 12px;
+  font-size: 12px;
+}
+.career-login-steps i {
+  font-style: normal;
+  color: #c9ddfb;
+}
+.career-login-group-title {
+  font-weight: 700;
+  font-size: 13px;
+  margin-bottom: 13px;
+}
+.career-login-groups {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.career-login-groups span {
+  border: 1px solid #ffffff50;
+  background: #ffffff15;
+  border-radius: 999px;
+  padding: 7px 10px;
+  font-size: 11px;
+  color: #fff;
+}
+.career-login-story-note {
+  font-size: 11px;
+  color: #c9dcfa;
+  margin-top: 21px;
+  line-height: 1.7;
+}
+.career-login-modal .career-login-formside {
+  padding: 44px 36px 30px;
+  min-width: 0;
+  background: #fff;
+}
+.career-login-formside .mveri-personal-heading {
+  margin: 18px 0 26px;
+}
+.career-login-formside .mveri-personal-heading h2 {
+  font-size: 27px;
+}
+.career-login-formside .mveri-personal-register {
+  margin-top: 20px;
+}
+.career-login-full {
+  display: block;
+  text-align: center;
+  margin-top: 14px;
+  font-size: 11px;
+  color: #5476b3;
+}
+.career-login-modal .mveri-personal-close {
+  z-index: 2;
+  top: 15px;
+  right: 15px;
+}
+@media (max-width: 790px) {
+  .career-login-modal .career-login-card {
+    grid-template-columns: 1fr;
+    max-width: 500px;
+  }
+  .career-login-modal .career-login-story {
+    padding: 22px 25px;
+  }
+  .career-login-brand {
+    margin-bottom: 18px !important;
+  }
+  .career-login-story h2 {
+    font-size: 22px;
+    margin: 9px 0;
+  }
+  .career-login-steps {
+    margin: 12px 0;
+  }
+  .career-login-groups {
+    gap: 5px;
+  }
+  .career-login-modal .career-login-formside {
+    padding: 20px 25px 28px;
+  }
+  .career-login-story-note {
+    display: none;
+  }
+}
+.career-auth-page {
+  margin: 0;
+  min-height: 100vh;
+  background: #f5f8ff;
+  color: #173b80;
+  font-family: system-ui, "Microsoft YaHei", sans-serif;
+}
+.career-auth-page * {
+  box-sizing: border-box;
+}
+.career-auth-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  background: #fff;
+  border-bottom: 1px solid #e1e9f6;
+  padding: 18px clamp(22px, 5vw, 90px);
+}
+.career-auth-logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+  color: #173b80;
+}
+.career-auth-logo img {
+  width: 49px;
+  height: 49px;
+  object-fit: contain;
+}
+.career-auth-logo strong {
+  font-size: 18px;
+  display: block;
+  line-height: 1.4;
+}
+.career-auth-logo small {
+  display: block;
+  color: #8395b5;
+  letter-spacing: 1.2px;
+  font-size: 10px;
+}
+.career-auth-back {
+  color: #3e67b9;
+  font-size: 13px;
+  text-decoration: none;
+  white-space: nowrap;
+}
+.career-auth-main {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(340px, 0.85fr);
+  max-width: 1260px;
+  padding: 32px 22px 48px;
+  margin: 0 auto;
+  gap: 0;
+  align-items: stretch;
+}
+.career-auth-intro {
+  background: linear-gradient(138deg, #173c7f, #315cc5 74%, #357fb7);
+  border-radius: 20px 0 0 20px;
+  color: #fff;
+  padding: 52px 46px;
+  min-height: 610px;
+}
+.career-auth-eyebrow {
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 1.2px;
+  color: #537ccb;
+}
+.career-auth-intro .career-auth-eyebrow {
+  color: #bed5ff;
+}
+.career-auth-intro h1 {
+  font-size: 38px;
+  line-height: 1.5;
+  margin: 25px 0;
+  color: #fff;
+}
+.career-auth-intro em {
+  font-style: normal;
+  color: #c3f0fa;
+}
+.career-auth-intro p {
+  line-height: 1.95;
+  font-size: 14px;
+  color: #e1ebff;
+  max-width: 570px;
+}
+.career-auth-journey {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin: 25px 0 39px;
+}
+.career-auth-journey span {
+  padding: 10px;
+  border: 1px solid #ffffff45;
+  background: #ffffff16;
+  border-radius: 9px;
+  font-size: 12px;
+}
+.career-auth-audience > b {
+  display: block;
+  font-size: 13px;
+  margin-bottom: 12px;
+}
+.career-auth-audience > div {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 9px;
+}
+.career-auth-audience span {
+  border: 1px solid #ffffff45;
+  background: #ffffff1b;
+  border-radius: 999px;
+  font-size: 12px;
+  padding: 8px 11px;
+}
+.career-auth-footnote {
+  margin-top: 25px;
+  font-size: 12px !important;
+  color: #c5d9ff !important;
+}
+.career-auth-panel {
+  background: #fff;
+  border-radius: 0 20px 20px 0;
+  padding: 50px 46px;
+  box-shadow: 0 20px 40px #183d7910;
+  min-width: 0;
+}
+.career-auth-panel h2 {
+  font-size: 27px;
+  margin: 13px 0;
+  color: #193b7d;
+}
+.career-auth-sub {
+  font-size: 13px;
+  color: #7186a3;
+  line-height: 1.8;
+  margin-bottom: 26px;
+}
+.career-auth-panel form {
+  display: grid;
+  gap: 15px;
+}
+.career-auth-field {
+  font-size: 13px;
+  color: #294977;
+  font-weight: 700;
+  display: grid;
+  gap: 8px;
+}
+.career-auth-field input,
+.career-auth-field select {
+  width: 100%;
+  min-width: 0;
+  height: 47px;
+  border: 1px solid #cfdaec;
+  background: #fff;
+  padding: 10px 12px;
+  border-radius: 9px;
+  font: inherit;
+  color: #173b80;
+  font-weight: 400;
+}
+.career-auth-field small {
+  font-size: 11px;
+  font-weight: 400;
+  color: #7b8ca5;
+}
+.career-auth-field input:focus,
+.career-auth-field select:focus {
+  outline: 2px solid #315cc5;
+  outline-offset: 0;
+}
+.career-auth-field[hidden] {
+  display: none;
+}
+.career-auth-show,
+.career-auth-consent {
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #607893;
+  line-height: 1.5;
+}
+.career-auth-show input,
+.career-auth-consent input {
+  width: 15px;
+  height: 15px;
+  accent-color: #315cc5;
+  flex-shrink: 0;
+}
+.career-auth-error {
+  background: #fff1f2;
+  border: 1px solid #f6ccd1;
+  border-radius: 9px;
+  color: #9f263a;
+  padding: 12px;
+  font-size: 12px;
+}
+.career-auth-error[hidden] {
+  display: none;
+}
+.career-auth-submit {
+  min-height: 48px;
+  border: none;
+  color: #fff;
+  background: #315cc5;
+  border-radius: 9px;
+  font-size: 14px;
+  font-weight: 750;
+  cursor: pointer;
+}
+.career-auth-submit:hover {
+  background: #234da9;
+}
+.career-auth-switch {
+  font-size: 12px;
+  text-align: center;
+  margin: 20px 0;
+  color: #68809c;
+}
+.career-auth-switch a,
+.career-auth-alt {
+  color: #315cc5;
+  text-decoration: none;
+  font-weight: 700;
+}
+.career-auth-sample {
+  margin-top: 25px;
+  border-top: 1px solid #e5ecf7;
+  padding-top: 18px;
+}
+.career-auth-sample b {
+  font-size: 12px;
+  color: #294977;
+}
+.career-auth-sample small {
+  display: block;
+  font-size: 11px;
+  color: #7d8faa;
+  margin-top: 12px;
+}
+.career-auth-samples {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 9px;
+  margin-top: 10px;
+}
+.career-auth-samples button {
+  border-radius: 10px;
+  padding: 11px 13px;
+  border: 1px solid #d0ddf3;
+  background: #f2f6ff;
+  color: #315cc5;
+  cursor: pointer;
+  text-align: left;
+}
+.career-auth-samples strong,
+.career-auth-samples small {
+  display: block;
+  font-size: 12px;
+}
+.career-auth-alt {
+  display: block;
+  text-align: center;
+  margin-top: 20px;
+  font-size: 12px;
+}
+.career-auth-footer {
+  color: #7286a5;
+  text-align: center;
+  font-size: 11px;
+  padding: 16px 20px 30px;
+}
+.career-auth-register .career-auth-panel {
+  padding-top: 34px;
+}
+.career-auth-register .career-auth-intro {
+  min-height: 760px;
+}
+@media (max-width: 850px) {
+  .career-auth-main {
+    grid-template-columns: 1fr;
+    max-width: 640px;
+  }
+  .career-auth-intro {
+    border-radius: 18px 18px 0 0;
+    min-height: 0;
+    padding: 28px;
+  }
+  .career-auth-panel {
+    border-radius: 0 0 18px 18px;
+    padding: 28px;
+  }
+  .career-auth-intro h1 {
+    font-size: 26px;
+    margin: 14px 0;
+  }
+  .career-auth-journey {
+    margin: 17px 0;
+  }
+  .career-auth-audience span {
+    font-size: 11px;
+  }
+  .career-auth-register .career-auth-intro {
+    min-height: 0;
+  }
+}
+@media (max-width: 470px) {
+  .career-auth-top {
+    padding: 14px 16px;
+  }
+  .career-auth-logo strong {
+    font-size: 13px;
+  }
+  .career-auth-logo small {
+    font-size: 8px;
+  }
+  .career-auth-logo img {
+    width: 35px;
+    height: 35px;
+  }
+  .career-auth-back {
+    font-size: 11px;
+  }
+  .career-auth-main {
+    padding: 12px 10px 26px;
+  }
+  .career-auth-intro,
+  .career-auth-panel {
+    padding: 24px 20px;
+  }
+}
 
 /* V72.46 · 8-role demo login selector */
-.career-login-modal .mveri-personal-samples{margin-top:20px;padding-top:17px;border-top:1px solid #e4eafa}
-.mveri-demo-heading{display:flex;justify-content:space-between;align-items:center;gap:10px}.mveri-demo-heading b{font-size:13px;color:#183d80}.mveri-demo-heading span{font-size:11px;color:#637fa8}
-.career-login-modal .mveri-personal-sample-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin-top:12px}
-.career-login-modal .mveri-personal-sample-list button{display:block;text-align:left;min-width:0;padding:10px 12px;background:#f6f8ff;border:1px solid #dce6f8;border-radius:10px;color:#274a8c;transition:background .15s,border-color .15s}
-.career-login-modal .mveri-personal-sample-list button:hover,.career-login-modal .mveri-personal-sample-list button:focus-visible{background:#e8efff;border-color:#7596e5;outline-offset:2px}
-.career-login-modal .mveri-personal-sample-list button strong,.career-login-modal .mveri-personal-sample-list button small{display:block;white-space:normal;overflow-wrap:anywhere}
-.career-login-modal .mveri-personal-sample-list button strong{font-size:12px}.career-login-modal .mveri-personal-sample-list button small{font-size:10px;margin-top:5px;color:#6983a6}
-.career-login-modal .mveri-personal-samples>small{line-height:1.6}.career-login-modal .mveri-personal-samples code{font-weight:700;color:#2450a8}
-.career-auth-samples{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.career-auth-samples button{min-width:0}.career-auth-samples button:hover,.career-auth-samples button:focus-visible{border-color:#7d9ee5;background:#eaf0ff;outline-offset:2px}
-@media(max-width:460px){.career-login-modal .mveri-personal-sample-list{gap:6px}.career-login-modal .mveri-personal-sample-list button{padding:8px}.career-auth-samples{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.career-login-modal .mveri-personal-samples {
+  margin-top: 20px;
+  padding-top: 17px;
+  border-top: 1px solid #e4eafa;
+}
+.mveri-demo-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+}
+.mveri-demo-heading b {
+  font-size: 13px;
+  color: #183d80;
+}
+.mveri-demo-heading span {
+  font-size: 11px;
+  color: #637fa8;
+}
+.career-login-modal .mveri-personal-sample-list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+  margin-top: 12px;
+}
+.career-login-modal .mveri-personal-sample-list button {
+  display: block;
+  text-align: left;
+  min-width: 0;
+  padding: 10px 12px;
+  background: #f6f8ff;
+  border: 1px solid #dce6f8;
+  border-radius: 10px;
+  color: #274a8c;
+  transition:
+    background 0.15s,
+    border-color 0.15s;
+}
+.career-login-modal .mveri-personal-sample-list button:hover,
+.career-login-modal .mveri-personal-sample-list button:focus-visible {
+  background: #e8efff;
+  border-color: #7596e5;
+  outline-offset: 2px;
+}
+.career-login-modal .mveri-personal-sample-list button strong,
+.career-login-modal .mveri-personal-sample-list button small {
+  display: block;
+  white-space: normal;
+  overflow-wrap: anywhere;
+}
+.career-login-modal .mveri-personal-sample-list button strong {
+  font-size: 12px;
+}
+.career-login-modal .mveri-personal-sample-list button small {
+  font-size: 10px;
+  margin-top: 5px;
+  color: #6983a6;
+}
+.career-login-modal .mveri-personal-samples > small {
+  line-height: 1.6;
+}
+.career-login-modal .mveri-personal-samples code {
+  font-weight: 700;
+  color: #2450a8;
+}
+.career-auth-samples {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+}
+.career-auth-samples button {
+  min-width: 0;
+}
+.career-auth-samples button:hover,
+.career-auth-samples button:focus-visible {
+  border-color: #7d9ee5;
+  background: #eaf0ff;
+  outline-offset: 2px;
+}
+@media (max-width: 460px) {
+  .career-login-modal .mveri-personal-sample-list {
+    gap: 6px;
+  }
+  .career-login-modal .mveri-personal-sample-list button {
+    padding: 8px;
+  }
+  .career-auth-samples {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}

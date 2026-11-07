@@ -1,17 +1,40 @@
 /* V72.25: ecology only - applied after brand-v19.css and all legacy style sheets */
 .public-mode .ecology-page .ecology-intro h2,
 .public-mode .ecology-page .ecology-intro .ecology-copy h2 {
-  color:#fff !important; -webkit-text-fill-color:#fff !important;
-  text-shadow:0 2px 12px rgba(8,28,58,.3) !important; opacity:1 !important;
+  color: #fff !important;
+  -webkit-text-fill-color: #fff !important;
+  text-shadow: 0 2px 12px rgba(8, 28, 58, 0.3) !important;
+  opacity: 1 !important;
 }
 .public-mode .ecology-page .ecology-intro .site-eyebrow,
 .public-mode .ecology-page .ecology-intro .ecology-copy .site-eyebrow {
-  color:#bdeef8 !important;-webkit-text-fill-color:#bdeef8 !important;
+  color: #bdeef8 !important;
+  -webkit-text-fill-color: #bdeef8 !important;
 }
-.public-mode .ecology-page .ecology-intro p{color:#edf7fc!important;opacity:1!important}
-.public-mode .ecology-page .partner-showcase{display:block!important}
-.public-mode .ecology-page .partner-showcase .site-eyebrow{color:#315CC5!important}
-.public-mode .ecology-page .partner-logo-card{background:#fff!important;color:#173b60!important}
-.public-mode .ecology-page .partner-logo-name{color:#173b60!important}
-.public-mode .ecology-page .ecology-intro .site-primary{background:#315CC5!important;border-color:#315CC5!important;color:#fff!important}
-@media(prefers-reduced-motion: reduce){.public-mode .ecology-page .partner-track{animation:none!important}}
+.public-mode .ecology-page .ecology-intro p {
+  color: #edf7fc !important;
+  opacity: 1 !important;
+}
+.public-mode .ecology-page .partner-showcase {
+  display: block !important;
+}
+.public-mode .ecology-page .partner-showcase .site-eyebrow {
+  color: #315cc5 !important;
+}
+.public-mode .ecology-page .partner-logo-card {
+  background: #fff !important;
+  color: #173b60 !important;
+}
+.public-mode .ecology-page .partner-logo-name {
+  color: #173b60 !important;
+}
+.public-mode .ecology-page .ecology-intro .site-primary {
+  background: #315cc5 !important;
+  border-color: #315cc5 !important;
+  color: #fff !important;
+}
+@media (prefers-reduced-motion: reduce) {
+  .public-mode .ecology-page .partner-track {
+    animation: none !important;
+  }
+}

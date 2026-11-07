@@ -1,6 +1,103 @@
-<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#315CC5"><title>区域中心登录 · 现代职业教育公共服务平台</title><link rel="stylesheet" href="../assets/auth-login-v39.css?v=40"><link rel="stylesheet" href="../assets/auth-one-screen-v41.css?v=41"></head>
-<body class="v39-auth v39-region" data-login-role="region">
-<header class="v39-header"><div class="v39-header-inner"><a class="v39-brand" href="../site/index.html"><img src="../assets/mveri-logo.png" alt="现代职业教育研究院徽标"><span><strong>现代职业教育研究院</strong><small>公共服务平台 · 区域运营</small></span></a><nav class="v39-head-links"><a href="access.html">切换身份</a><a href="../site/index.html">返回官网</a></nav></div></header>
-<main class="v39-main"><div class="v39-container"><section class="v39-story"><div class="v39-overline"><i></i>MVERI / REGIONAL SERVICE CENTER</div><div class="v39-story-core"><div class="v39-story-tag">02 / 区域协同中枢</div><h1>连接总部与院校，推动区域合作和项目运营高效落地。</h1><p>面向区域服务中心负责人及业务人员，管理区域合作院校、培训项目、推进任务与成果汇总，形成区域运营闭环。</p><div class="v39-scene-grid"><article class="v39-scene-card"><small>覆盖范围</small><strong>所属区域统一视图</strong><span>先确认所属区域，再加载该区域下的院校、项目与业务数据。</span></article><article class="v39-scene-card"><small>运营职责</small><strong>合作推进与过程协调</strong><span>统筹区域实施、项目进度、服务成果和反馈问题。</span></article></div><div class="v39-story-lines"><div><span>✓</span>区域授权范围与登录账号双重校验</div><div><span>✓</span>院校合作、项目推进与成果协同管理</div><div><span>✓</span>区域运营数据集中跟踪与汇总分析</div></div><div class="v39-role-tags"><b>区域协同</b><b>合作院校</b><b>项目推进</b></div></div><div class="v39-story-bottom"><div class="v39-brand-emblem">MVERI<small>PUBLIC SERVICE</small></div><span>MODERN VOCATIONAL EDUCATION RESEARCH INSTITUTE</span></div></section>
-<section class="v39-login-area"><div class="v39-login-content"><div class="v39-eyebrow">SECURE ACCESS / 02</div><h2>区域中心登录</h2><p class="v39-sub">选择所属区域，使用区域中心授权账号登录。</p><form id="login" novalidate><label class="v39-field">所属区域<select id="region" required><option value="">请选择所属区域</option><option value="R001">华北区域服务中心</option><option value="R002">华东区域服务中心</option><option value="R003">华中区域服务中心</option></select></label><label class="v39-field">登录账号<input id="account" type="text" required autocomplete="username" placeholder="请输入授权账号"></label><label class="v39-field">登录密码<div class="v39-password-wrap"><input id="password" type="password" required autocomplete="current-password" placeholder="请输入登录密码"><button class="v39-eye" type="button" id="toggle-password" aria-label="显示密码">显示</button></div></label><div class="v39-form-note">所选区域必须与该账号的区域授权一致。</div><div class="v39-error" id="error" role="alert" hidden></div><button class="v39-submit" type="submit">进入区域工作台 <span>→</span></button></form><div class="v39-sample-area"><div class="v39-sample-title"><strong>体验账号</strong><span>点击对应账号，自动填入</span></div><div class="v39-samples" id="samples"></div></div><div class="v39-foot-links"><a href="access.html">← 返回身份选择</a><span>忘记账号？请联系所属组织管理员</span></div></div></section></div></main>
-<footer class="v39-footer">© 现代职业教育研究院 · 公共服务平台</footer><script src="../assets/user-directory-v59.js?v=59"></script><script src="../assets/auth-login-v39.js?v=7233"></script></body></html>
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="theme-color" content="#315CC5" />
+    <title>区域中心登录 · 现代职业教育公共服务平台</title>
+    <link rel="stylesheet" href="../assets/auth-login-v39.css?v=40" />
+    <link rel="stylesheet" href="../assets/auth-one-screen-v41.css?v=41" />
+  </head>
+  <body class="v39-auth v39-region" data-login-role="region">
+    <header class="v39-header">
+      <div class="v39-header-inner">
+        <a class="v39-brand" href="../site/index.html"
+          ><img src="../assets/mveri-logo.png" alt="现代职业教育研究院徽标" /><span
+            ><strong>现代职业教育研究院</strong><small>公共服务平台 · 区域运营</small></span
+          ></a
+        >
+        <nav class="v39-head-links"><a href="access.html">切换身份</a><a href="../site/index.html">返回官网</a></nav>
+      </div>
+    </header>
+    <main class="v39-main">
+      <div class="v39-container">
+        <section class="v39-story">
+          <div class="v39-overline"><i></i>MVERI / REGIONAL SERVICE CENTER</div>
+          <div class="v39-story-core">
+            <div class="v39-story-tag">02 / 区域协同中枢</div>
+            <h1>连接总部与院校，推动区域合作和项目运营高效落地。</h1>
+            <p>面向区域服务中心负责人及业务人员，管理区域合作院校、培训项目、推进任务与成果汇总，形成区域运营闭环。</p>
+            <div class="v39-scene-grid">
+              <article class="v39-scene-card">
+                <small>覆盖范围</small><strong>所属区域统一视图</strong
+                ><span>先确认所属区域，再加载该区域下的院校、项目与业务数据。</span>
+              </article>
+              <article class="v39-scene-card">
+                <small>运营职责</small><strong>合作推进与过程协调</strong
+                ><span>统筹区域实施、项目进度、服务成果和反馈问题。</span>
+              </article>
+            </div>
+            <div class="v39-story-lines">
+              <div><span>✓</span>区域授权范围与登录账号双重校验</div>
+              <div><span>✓</span>院校合作、项目推进与成果协同管理</div>
+              <div><span>✓</span>区域运营数据集中跟踪与汇总分析</div>
+            </div>
+            <div class="v39-role-tags"><b>区域协同</b><b>合作院校</b><b>项目推进</b></div>
+          </div>
+          <div class="v39-story-bottom">
+            <div class="v39-brand-emblem">MVERI<small>PUBLIC SERVICE</small></div>
+            <span>MODERN VOCATIONAL EDUCATION RESEARCH INSTITUTE</span>
+          </div>
+        </section>
+        <section class="v39-login-area">
+          <div class="v39-login-content">
+            <div class="v39-eyebrow">SECURE ACCESS / 02</div>
+            <h2>区域中心登录</h2>
+            <p class="v39-sub">选择所属区域，使用区域中心授权账号登录。</p>
+            <form id="login" novalidate>
+              <label class="v39-field"
+                >所属区域<select id="region" required>
+                  <option value="">请选择所属区域</option>
+                  <option value="R001">华北区域服务中心</option>
+                  <option value="R002">华东区域服务中心</option>
+                  <option value="R003">华中区域服务中心</option>
+                </select></label
+              ><label class="v39-field"
+                >登录账号<input
+                  id="account"
+                  type="text"
+                  required
+                  autocomplete="username"
+                  placeholder="请输入授权账号" /></label
+              ><label class="v39-field"
+                >登录密码
+                <div class="v39-password-wrap">
+                  <input
+                    id="password"
+                    type="password"
+                    required
+                    autocomplete="current-password"
+                    placeholder="请输入登录密码"
+                  /><button class="v39-eye" type="button" id="toggle-password" aria-label="显示密码">显示</button>
+                </div></label
+              >
+              <div class="v39-form-note">所选区域必须与该账号的区域授权一致。</div>
+              <div class="v39-error" id="error" role="alert" hidden></div>
+              <button class="v39-submit" type="submit">进入区域工作台 <span>→</span></button>
+            </form>
+            <div class="v39-sample-area">
+              <div class="v39-sample-title"><strong>体验账号</strong><span>点击对应账号，自动填入</span></div>
+              <div class="v39-samples" id="samples"></div>
+            </div>
+            <div class="v39-foot-links">
+              <a href="access.html">← 返回身份选择</a><span>忘记账号？请联系所属组织管理员</span>
+            </div>
+          </div>
+        </section>
+      </div>
+    </main>
+    <footer class="v39-footer">© 现代职业教育研究院 · 公共服务平台</footer>
+    <script src="../assets/user-directory-v59.js?v=59"></script>
+    <script src="../assets/auth-login-v39.js?v=7233"></script>
+  </body>
+</html>

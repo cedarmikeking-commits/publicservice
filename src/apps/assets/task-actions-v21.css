@@ -1,14 +1,75 @@
 /* Standalone eight-task experience · cohesive MVERI controls */
-:root{--purple:#315CC5;--mint:#DDF4EE;--line:#DFE7F5;--ink:#203650;--muted:#627691}
-.btn{border-radius:9px;border:1px solid #C5D5F5;background:#fff;color:#244DAD;transition:background .18s,border-color .18s}
-.btn:hover{background:#EAF1FF;border-color:#93AFF0}
-.btn.primary,.primary{background:#315CC5!important;border-color:#315CC5!important;color:#fff!important}
-.btn.primary:hover,.primary:hover{background:#254DAE!important;border-color:#254DAE!important}
-.btn.ghost{background:transparent;border-color:transparent;color:#385E98}
-.btn.ghost:hover{background:#EAF1FF;color:#315CC5}
-.btn.mint,.mint{background:#E6F6F0!important;border-color:#B9E5D4!important;color:#176B55!important}
-.btn.danger,.danger{color:#B42335!important}
-button:disabled,.btn:disabled{background:#E9EEF7!important;border-color:#DDE5F1!important;color:#8291A8!important;opacity:1!important;cursor:not-allowed}
-button:focus-visible,a:focus-visible{outline:3px solid #86A7F0!important;outline-offset:3px}
-.mveri-return{background:#315CC5!important}.mveri-return:hover{background:#254DAE!important}
-@media(prefers-reduced-motion:reduce){.btn{transition:none}}
+:root {
+  --purple: #315cc5;
+  --mint: #ddf4ee;
+  --line: #dfe7f5;
+  --ink: #203650;
+  --muted: #627691;
+}
+.btn {
+  border-radius: 9px;
+  border: 1px solid #c5d5f5;
+  background: #fff;
+  color: #244dad;
+  transition:
+    background 0.18s,
+    border-color 0.18s;
+}
+.btn:hover {
+  background: #eaf1ff;
+  border-color: #93aff0;
+}
+.btn.primary,
+.primary {
+  background: #315cc5 !important;
+  border-color: #315cc5 !important;
+  color: #fff !important;
+}
+.btn.primary:hover,
+.primary:hover {
+  background: #254dae !important;
+  border-color: #254dae !important;
+}
+.btn.ghost {
+  background: transparent;
+  border-color: transparent;
+  color: #385e98;
+}
+.btn.ghost:hover {
+  background: #eaf1ff;
+  color: #315cc5;
+}
+.btn.mint,
+.mint {
+  background: #e6f6f0 !important;
+  border-color: #b9e5d4 !important;
+  color: #176b55 !important;
+}
+.btn.danger,
+.danger {
+  color: #b42335 !important;
+}
+button:disabled,
+.btn:disabled {
+  background: #e9eef7 !important;
+  border-color: #dde5f1 !important;
+  color: #8291a8 !important;
+  opacity: 1 !important;
+  cursor: not-allowed;
+}
+button:focus-visible,
+a:focus-visible {
+  outline: 3px solid #86a7f0 !important;
+  outline-offset: 3px;
+}
+.mveri-return {
+  background: #315cc5 !important;
+}
+.mveri-return:hover {
+  background: #254dae !important;
+}
+@media (prefers-reduced-motion: reduce) {
+  .btn {
+    transition: none;
+  }
+}

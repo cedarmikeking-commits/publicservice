@@ -1,6 +1,104 @@
-<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#315CC5"><title>院校人员登录 · 现代职业教育公共服务平台</title><link rel="stylesheet" href="../assets/auth-login-v39.css?v=40"><link rel="stylesheet" href="../assets/auth-one-screen-v41.css?v=41"></head>
-<body class="v39-auth v39-school" data-login-role="school">
-<header class="v39-header"><div class="v39-header-inner"><a class="v39-brand" href="../site/index.html"><img src="../assets/mveri-logo.png" alt="现代职业教育研究院徽标"><span><strong>现代职业教育研究院</strong><small>公共服务平台 · 院校服务</small></span></a><nav class="v39-head-links"><a href="access.html">切换身份</a><a href="../site/index.html">返回官网</a></nav></div></header>
-<main class="v39-main"><div class="v39-container"><section class="v39-story"><div class="v39-overline"><i></i>MVERI / CAMPUS WORKSPACE</div><div class="v39-story-core"><div class="v39-story-tag">01 / 院校服务空间</div><h1>让院校服务、学习组织与能力发展形成闭环。</h1><p>面向院校项目负责人、教学管理人员与服务人员，统一管理本校项目、学员成长、测评学习和认证成果。</p><div class="v39-scene-grid"><article class="v39-scene-card"><small>核心对象</small><strong>本校项目与学员</strong><span>围绕院校内训、专项培训和测评认证形成统一服务台账。</span></article><article class="v39-scene-card"><small>关键场景</small><strong>培训组织与过程跟踪</strong><span>查看学习进度、考试成绩、认证申请和证书结果。</span></article></div><div class="v39-story-lines"><div><span>✓</span>院校项目、班级与学员统一组织</div><div><span>✓</span>培训、测评、学习、考试过程联动</div><div><span>✓</span>认证进度和服务成果可追溯可汇总</div></div><div class="v39-role-tags"><b>培训项目</b><b>学员成长</b><b>认证成果</b></div></div><div class="v39-story-bottom"><div class="v39-brand-emblem">MVERI<small>PUBLIC SERVICE</small></div><span>MODERN VOCATIONAL EDUCATION RESEARCH INSTITUTE</span></div></section>
-<section class="v39-login-area"><div class="v39-login-content"><div class="v39-eyebrow">SECURE ACCESS / 01</div><h2>院校人员登录</h2><p class="v39-sub">使用已授权院校账号，进入本校管理工作空间。</p><form id="login" novalidate><label class="v39-field">所属院校<select id="school" required><option value="">请选择所属院校</option><option value="SCH-001">北京信息职业技术学院</option><option value="SCH-002">河北工业职业技术大学</option><option value="SCH-003">山西职业技术学院</option></select></label><label class="v39-field">登录账号<input id="account" type="text" required autocomplete="username" placeholder="请输入授权账号"></label><label class="v39-field">登录密码<div class="v39-password-wrap"><input id="password" type="password" required autocomplete="current-password" placeholder="请输入登录密码"><button class="v39-eye" type="button" id="toggle-password" aria-label="显示密码">显示</button></div></label><div class="v39-form-note">请先选择所属院校，再使用对应的授权账号登录。</div><div class="v39-error" id="error" role="alert" hidden></div><button class="v39-submit" type="submit">进入院校工作台 <span>→</span></button></form><div class="v39-sample-area"><div class="v39-sample-title"><strong>体验账号</strong><span>点击对应账号，自动填入</span></div><div class="v39-samples" id="samples"></div></div><div class="v39-foot-links"><a href="access.html">← 返回身份选择</a><span>忘记账号？请联系所属组织管理员</span></div></div></section></div></main>
-<footer class="v39-footer">© 现代职业教育研究院 · 公共服务平台</footer><script src="../assets/school-licenses-v58.js?v=58"></script><script src="../assets/user-directory-v59.js?v=59"></script><script src="../assets/auth-login-v39.js?v=7233"></script></body></html>
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="theme-color" content="#315CC5" />
+    <title>院校人员登录 · 现代职业教育公共服务平台</title>
+    <link rel="stylesheet" href="../assets/auth-login-v39.css?v=40" />
+    <link rel="stylesheet" href="../assets/auth-one-screen-v41.css?v=41" />
+  </head>
+  <body class="v39-auth v39-school" data-login-role="school">
+    <header class="v39-header">
+      <div class="v39-header-inner">
+        <a class="v39-brand" href="../site/index.html"
+          ><img src="../assets/mveri-logo.png" alt="现代职业教育研究院徽标" /><span
+            ><strong>现代职业教育研究院</strong><small>公共服务平台 · 院校服务</small></span
+          ></a
+        >
+        <nav class="v39-head-links"><a href="access.html">切换身份</a><a href="../site/index.html">返回官网</a></nav>
+      </div>
+    </header>
+    <main class="v39-main">
+      <div class="v39-container">
+        <section class="v39-story">
+          <div class="v39-overline"><i></i>MVERI / CAMPUS WORKSPACE</div>
+          <div class="v39-story-core">
+            <div class="v39-story-tag">01 / 院校服务空间</div>
+            <h1>让院校服务、学习组织与能力发展形成闭环。</h1>
+            <p>面向院校项目负责人、教学管理人员与服务人员，统一管理本校项目、学员成长、测评学习和认证成果。</p>
+            <div class="v39-scene-grid">
+              <article class="v39-scene-card">
+                <small>核心对象</small><strong>本校项目与学员</strong
+                ><span>围绕院校内训、专项培训和测评认证形成统一服务台账。</span>
+              </article>
+              <article class="v39-scene-card">
+                <small>关键场景</small><strong>培训组织与过程跟踪</strong
+                ><span>查看学习进度、考试成绩、认证申请和证书结果。</span>
+              </article>
+            </div>
+            <div class="v39-story-lines">
+              <div><span>✓</span>院校项目、班级与学员统一组织</div>
+              <div><span>✓</span>培训、测评、学习、考试过程联动</div>
+              <div><span>✓</span>认证进度和服务成果可追溯可汇总</div>
+            </div>
+            <div class="v39-role-tags"><b>培训项目</b><b>学员成长</b><b>认证成果</b></div>
+          </div>
+          <div class="v39-story-bottom">
+            <div class="v39-brand-emblem">MVERI<small>PUBLIC SERVICE</small></div>
+            <span>MODERN VOCATIONAL EDUCATION RESEARCH INSTITUTE</span>
+          </div>
+        </section>
+        <section class="v39-login-area">
+          <div class="v39-login-content">
+            <div class="v39-eyebrow">SECURE ACCESS / 01</div>
+            <h2>院校人员登录</h2>
+            <p class="v39-sub">使用已授权院校账号，进入本校管理工作空间。</p>
+            <form id="login" novalidate>
+              <label class="v39-field"
+                >所属院校<select id="school" required>
+                  <option value="">请选择所属院校</option>
+                  <option value="SCH-001">北京信息职业技术学院</option>
+                  <option value="SCH-002">河北工业职业技术大学</option>
+                  <option value="SCH-003">山西职业技术学院</option>
+                </select></label
+              ><label class="v39-field"
+                >登录账号<input
+                  id="account"
+                  type="text"
+                  required
+                  autocomplete="username"
+                  placeholder="请输入授权账号" /></label
+              ><label class="v39-field"
+                >登录密码
+                <div class="v39-password-wrap">
+                  <input
+                    id="password"
+                    type="password"
+                    required
+                    autocomplete="current-password"
+                    placeholder="请输入登录密码"
+                  /><button class="v39-eye" type="button" id="toggle-password" aria-label="显示密码">显示</button>
+                </div></label
+              >
+              <div class="v39-form-note">请先选择所属院校，再使用对应的授权账号登录。</div>
+              <div class="v39-error" id="error" role="alert" hidden></div>
+              <button class="v39-submit" type="submit">进入院校工作台 <span>→</span></button>
+            </form>
+            <div class="v39-sample-area">
+              <div class="v39-sample-title"><strong>体验账号</strong><span>点击对应账号，自动填入</span></div>
+              <div class="v39-samples" id="samples"></div>
+            </div>
+            <div class="v39-foot-links">
+              <a href="access.html">← 返回身份选择</a><span>忘记账号？请联系所属组织管理员</span>
+            </div>
+          </div>
+        </section>
+      </div>
+    </main>
+    <footer class="v39-footer">© 现代职业教育研究院 · 公共服务平台</footer>
+    <script src="../assets/school-licenses-v58.js?v=58"></script>
+    <script src="../assets/user-directory-v59.js?v=59"></script>
+    <script src="../assets/auth-login-v39.js?v=7233"></script>
+  </body>
+</html>

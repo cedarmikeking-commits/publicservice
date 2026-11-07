@@ -1,16 +1,91 @@
 /* 共用命题业务流：两套指标保持独立编码，考评点匹配统一题型 */
-(function(){
-const originalNav=nav,originalRender=render,originalHome=home,originalIndicators=indicators;
-let selectedFramework='teacher';
-window.selectIndicatorFramework=function(which){selectedFramework=which;render()};
-function generalView(){const f=window.GENERAL_FRAMEWORK,b=window.GENERAL_BANK;return `<div class="panel"><h2>通用数智能力 · 独立指标体系</h2><p class="muted">依据《通用数智能力框架》3.3报审稿。按6个一级领域→22个二级单元→78条能力要求建立候选考评点。与教师指标体系独立编码，共享命题、审核与测评引擎。</p><div class="grid">${[['一级能力领域',f.level1.length],['二级能力单元',f.level2.length],['待审定考评点',f.points.length],['训练示例题',b.length],['每点10题计划',f.points.length*10]].map(x=>`<div class="metric"><span>${x[0]}</span><b>${x[1]}</b></div>`).join('')}</div><p class="muted">说明：通用能力训练题为自动构建的候选示例，尚未进行专家审定；不能作为正式考试题库发布使用。</p></div><div class="panel"><div class="formgrid"><div class="field"><label>一级领域</label><select id="gfL1" onchange="generalFilter()"><option value="">全部领域</option>${f.level1.map(x=>`<option value="${x.code}">${x.code} ${x.name}</option>`).join('')}</select></div><div class="field"><label>二级单元</label><select id="gfL2" onchange="generalFilter()"><option value="">全部单元</option>${f.level2.map(x=>`<option value="${x.code}">${x.code} ${x.name}</option>`).join('')}</select></div><div class="field"><label>搜索考评点</label><input id="gfWord" oninput="generalFilter()" placeholder="编码、任务或原文"></div></div><div id="generalRows"></div></div>`}
-window.generalFilter=function(){const f=window.GENERAL_FRAMEWORK;const root=document.getElementById('gfL1')?.value||'',unit=document.getElementById('gfL2')?.value||'',word=document.getElementById('gfWord')?.value.toLowerCase()||'';const u=document.getElementById('gfL2');if(root&&u&&u.value&&!u.value.startsWith(root+'.'))u.value='';const realUnit=u?.value||'';u.querySelectorAll('option').forEach(o=>{o.hidden=Boolean(root&&o.value&&!o.value.startsWith(root+'.'))});let ps=f.points.filter(p=>(!root||p.root===root)&&(!realUnit||p.unit===realUnit)&&(!word||[p.code,p.name,p.description].join(' ').toLowerCase().includes(word)));document.getElementById('generalRows').innerHTML=`<p class="muted">找到${ps.length}条候选考评点 · 每点默认10题命题计划 · 当前示例题不代表完成正式审定</p><div class="scroll"><table><thead><tr><th>考评点</th><th>一级/二级</th><th>原文能力要求</th><th>命题与提示词</th></tr></thead><tbody>${ps.slice(0,100).map(p=>`<tr><td>${p.code}</td><td>${f.level1.find(x=>x.code===p.root)?.name||''} / ${f.level2.find(x=>x.code===p.unit)?.name||''}</td><td>${p.description}</td><td><button onclick="showGeneralPrompt('${p.code}')">查看提示词</button></td></tr>`).join('')}</tbody></table></div>`};
-window.showGeneralPrompt=function(code){const p=window.GENERAL_FRAMEWORK.points.find(x=>x.code===code);if(!p)return;const txt=`你是数智能力评价命题专家。依据《通用数智能力框架》3.3报审稿。一级领域：${window.GENERAL_FRAMEWORK.level1.find(x=>x.code===p.root)?.name}；二级单元：${window.GENERAL_FRAMEWORK.level2.find(x=>x.code===p.unit)?.name}；考评点：${p.code}；原文能力要求：${p.description}。请围绕该能力行为设计10道彼此不同的任务题。先判断最适合的题型，再制定答题交互、步骤或成果要求、可观察证据、自动评分条件与人工评价量规。至少包含工具操作、情境任务或成果型题目（适用时），不得全部转成选择题。每题输出题干、场景、题型、标准答案、错误反馈、评分量规、原文追溯、人工审核检查表；不可虚构政策依据。所有题目标注待专家审定。`;if(navigator.clipboard&&window.isSecureContext){navigator.clipboard.writeText(txt).then(()=>alert('已复制命题提示词')).catch(()=>prompt('复制提示词',txt))}else prompt('复制下方提示词',txt)};
-function unifiedIndicators(){return `<div class="panel"><h2>指标体系管理</h2><p class="muted">两套指标体系统一管理、分别保留原始层级和编码；后续考评点、题型和命题按所选体系追溯。</p><div class="row"><button class="${selectedFramework==='general'?'':'secondary'}" onclick="selectIndicatorFramework('general')">通用数智能力 · 6领域 / 22单元</button><button class="${selectedFramework==='teacher'?'':'secondary'}" onclick="selectIndicatorFramework('teacher')">教师素智素养 · 5 / 13 / 33</button></div></div>`+(selectedFramework==='general'?generalView():originalIndicators())}
-indicators=unifiedIndicators;
-// 不再增加“通用数智能力”独立菜单，统一从“指标体系”进入。
-nav=function(){originalNav()};
-render=function(){if(view==='general'){view='indicators';selectedFramework='general'};originalRender();if(view==='indicators'&&selectedFramework==='general')generalFilter()};
-home=function(){return `<div class="panel"><h2>双体系共用题库生产链</h2><p class="muted">指标体系（通用 / 教师） → 考评点 → 题型 → 人工/智能体辅助命题 → 审核 → 试题库</p><div class="grid"><div class="metric"><span>通用数智能力</span><b>6 / 22 / 78</b><small>一级 / 二级 / 候选考评点</small><button onclick="selectIndicatorFramework('general');switchView('indicators')">查看通用能力指标</button></div><div class="metric"><span>教师素智素养</span><b>5 / 13 / 33</b><small>一级 / 二级 / 三级</small><button onclick="selectIndicatorFramework('teacher');switchView('indicators')">查看教师能力指标</button></div></div><p class="muted">前台统一按通用能力→教师能力顺序测评，最终分别分析。通用题目目前为候选训练示例，尚未进入正式已审定题库。</p></div>`+originalHome()};
-nav();render();
+(function () {
+  const originalNav = nav,
+    originalRender = render,
+    originalHome = home,
+    originalIndicators = indicators;
+  let selectedFramework = "teacher";
+  window.selectIndicatorFramework = function (which) {
+    selectedFramework = which;
+    render();
+  };
+  function generalView() {
+    const f = window.GENERAL_FRAMEWORK,
+      b = window.GENERAL_BANK;
+    return `<div class="panel"><h2>通用数智能力 · 独立指标体系</h2><p class="muted">依据《通用数智能力框架》3.3报审稿。按6个一级领域→22个二级单元→78条能力要求建立候选考评点。与教师指标体系独立编码，共享命题、审核与测评引擎。</p><div class="grid">${[
+      ["一级能力领域", f.level1.length],
+      ["二级能力单元", f.level2.length],
+      ["待审定考评点", f.points.length],
+      ["训练示例题", b.length],
+      ["每点10题计划", f.points.length * 10],
+    ]
+      .map((x) => `<div class="metric"><span>${x[0]}</span><b>${x[1]}</b></div>`)
+      .join(
+        "",
+      )}</div><p class="muted">说明：通用能力训练题为自动构建的候选示例，尚未进行专家审定；不能作为正式考试题库发布使用。</p></div><div class="panel"><div class="formgrid"><div class="field"><label>一级领域</label><select id="gfL1" onchange="generalFilter()"><option value="">全部领域</option>${f.level1.map((x) => `<option value="${x.code}">${x.code} ${x.name}</option>`).join("")}</select></div><div class="field"><label>二级单元</label><select id="gfL2" onchange="generalFilter()"><option value="">全部单元</option>${f.level2.map((x) => `<option value="${x.code}">${x.code} ${x.name}</option>`).join("")}</select></div><div class="field"><label>搜索考评点</label><input id="gfWord" oninput="generalFilter()" placeholder="编码、任务或原文"></div></div><div id="generalRows"></div></div>`;
+  }
+  window.generalFilter = function () {
+    const f = window.GENERAL_FRAMEWORK;
+    const root = document.getElementById("gfL1")?.value || "",
+      unit = document.getElementById("gfL2")?.value || "",
+      word = document.getElementById("gfWord")?.value.toLowerCase() || "";
+    const u = document.getElementById("gfL2");
+    if (root && u && u.value && !u.value.startsWith(root + ".")) u.value = "";
+    const realUnit = u?.value || "";
+    u.querySelectorAll("option").forEach((o) => {
+      o.hidden = Boolean(root && o.value && !o.value.startsWith(root + "."));
+    });
+    let ps = f.points.filter(
+      (p) =>
+        (!root || p.root === root) &&
+        (!realUnit || p.unit === realUnit) &&
+        (!word || [p.code, p.name, p.description].join(" ").toLowerCase().includes(word)),
+    );
+    document.getElementById("generalRows").innerHTML =
+      `<p class="muted">找到${ps.length}条候选考评点 · 每点默认10题命题计划 · 当前示例题不代表完成正式审定</p><div class="scroll"><table><thead><tr><th>考评点</th><th>一级/二级</th><th>原文能力要求</th><th>命题与提示词</th></tr></thead><tbody>${ps
+        .slice(0, 100)
+        .map(
+          (p) =>
+            `<tr><td>${p.code}</td><td>${f.level1.find((x) => x.code === p.root)?.name || ""} / ${f.level2.find((x) => x.code === p.unit)?.name || ""}</td><td>${p.description}</td><td><button onclick="showGeneralPrompt('${p.code}')">查看提示词</button></td></tr>`,
+        )
+        .join("")}</tbody></table></div>`;
+  };
+  window.showGeneralPrompt = function (code) {
+    const p = window.GENERAL_FRAMEWORK.points.find((x) => x.code === code);
+    if (!p) return;
+    const txt = `你是数智能力评价命题专家。依据《通用数智能力框架》3.3报审稿。一级领域：${window.GENERAL_FRAMEWORK.level1.find((x) => x.code === p.root)?.name}；二级单元：${window.GENERAL_FRAMEWORK.level2.find((x) => x.code === p.unit)?.name}；考评点：${p.code}；原文能力要求：${p.description}。请围绕该能力行为设计10道彼此不同的任务题。先判断最适合的题型，再制定答题交互、步骤或成果要求、可观察证据、自动评分条件与人工评价量规。至少包含工具操作、情境任务或成果型题目（适用时），不得全部转成选择题。每题输出题干、场景、题型、标准答案、错误反馈、评分量规、原文追溯、人工审核检查表；不可虚构政策依据。所有题目标注待专家审定。`;
+    if (navigator.clipboard && window.isSecureContext) {
+      navigator.clipboard
+        .writeText(txt)
+        .then(() => alert("已复制命题提示词"))
+        .catch(() => prompt("复制提示词", txt));
+    } else prompt("复制下方提示词", txt);
+  };
+  function unifiedIndicators() {
+    return (
+      `<div class="panel"><h2>指标体系管理</h2><p class="muted">两套指标体系统一管理、分别保留原始层级和编码；后续考评点、题型和命题按所选体系追溯。</p><div class="row"><button class="${selectedFramework === "general" ? "" : "secondary"}" onclick="selectIndicatorFramework('general')">通用数智能力 · 6领域 / 22单元</button><button class="${selectedFramework === "teacher" ? "" : "secondary"}" onclick="selectIndicatorFramework('teacher')">教师素智素养 · 5 / 13 / 33</button></div></div>` +
+      (selectedFramework === "general" ? generalView() : originalIndicators())
+    );
+  }
+  indicators = unifiedIndicators;
+  // 不再增加“通用数智能力”独立菜单，统一从“指标体系”进入。
+  nav = function () {
+    originalNav();
+  };
+  render = function () {
+    if (view === "general") {
+      view = "indicators";
+      selectedFramework = "general";
+    }
+    originalRender();
+    if (view === "indicators" && selectedFramework === "general") generalFilter();
+  };
+  home = function () {
+    return (
+      `<div class="panel"><h2>双体系共用题库生产链</h2><p class="muted">指标体系（通用 / 教师） → 考评点 → 题型 → 人工/智能体辅助命题 → 审核 → 试题库</p><div class="grid"><div class="metric"><span>通用数智能力</span><b>6 / 22 / 78</b><small>一级 / 二级 / 候选考评点</small><button onclick="selectIndicatorFramework('general');switchView('indicators')">查看通用能力指标</button></div><div class="metric"><span>教师素智素养</span><b>5 / 13 / 33</b><small>一级 / 二级 / 三级</small><button onclick="selectIndicatorFramework('teacher');switchView('indicators')">查看教师能力指标</button></div></div><p class="muted">前台统一按通用能力→教师能力顺序测评，最终分别分析。通用题目目前为候选训练示例，尚未进入正式已审定题库。</p></div>` +
+      originalHome()
+    );
+  };
+  nav();
+  render();
 })();

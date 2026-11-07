@@ -1,81 +1,292 @@
 /* V72.4: assessment business content under the ONE persistent HQ workbench shell. */
-:root{--primary:#315CC5;--mveri-blue:#315CC5;--mveri-green:#00A990}
-html.mveri-workbench-embed,html.mveri-workbench-embed body{margin:0!important;min-height:100%!important;background:#f3f6fc!important;color:#173b68!important}
-html.mveri-workbench-embed body.hq52-body>.hq52-shell{display:block!important;grid-template-columns:minmax(0,1fr)!important;width:100%!important;min-height:100vh!important;height:auto!important;overflow:visible!important}
-html.mveri-workbench-embed .hq52-sidebar,html.mveri-workbench-embed .hq52-top,html.mveri-workbench-embed #hq52menu{display:none!important}
-html.mveri-workbench-embed .hq52-main{height:auto!important;min-height:100vh!important;overflow:visible!important;max-width:none!important}
-html.mveri-workbench-embed .hq52-content{padding:0!important;margin:0!important;max-width:none!important;width:100%!important}
-html.mveri-workbench-embed .hq52-assessment-layout{display:block!important;min-height:0!important;grid-template-columns:1fr!important;background:#f3f6fc!important;padding:0!important}
-html.mveri-workbench-embed nav#nav{display:none!important}
-html.mveri-workbench-embed main#main{padding:20px 22px!important;margin:0!important;max-width:none!important;width:100%!important;height:auto!important;max-height:none!important;overflow:visible!important;color:#173b68!important}
-html.mveri-workbench-embed main#main .panel{border-color:#e0e8f5!important;border-radius:14px!important;box-shadow:0 5px 18px rgba(23,59,128,.045)!important;background:#fff}
-html.mveri-workbench-embed main#main h1,html.mveri-workbench-embed main#main h2,html.mveri-workbench-embed main#main h3{color:#173b68!important}
-html.mveri-workbench-embed main#main button.primary,html.mveri-workbench-embed main#main .btn.primary,html.mveri-workbench-embed main#main button.btn:not(.secondary):not(.gray):not(.danger){background:#315CC5!important;border-color:#315CC5!important;color:#fff!important}
-html.mveri-workbench-embed main#main .active,html.mveri-workbench-embed main#main .selected{--theme-primary:#315CC5}
-html.mveri-workbench-embed main#main a{accent-color:#315CC5}
-html.mveri-workbench-embed input:focus,html.mveri-workbench-embed select:focus,html.mveri-workbench-embed textarea:focus{outline-color:#315CC5!important}
-@media(max-width:760px){html.mveri-workbench-embed main#main{padding:12px!important}}
+:root {
+  --primary: #315cc5;
+  --mveri-blue: #315cc5;
+  --mveri-green: #00a990;
+}
+html.mveri-workbench-embed,
+html.mveri-workbench-embed body {
+  margin: 0 !important;
+  min-height: 100% !important;
+  background: #f3f6fc !important;
+  color: #173b68 !important;
+}
+html.mveri-workbench-embed body.hq52-body > .hq52-shell {
+  display: block !important;
+  grid-template-columns: minmax(0, 1fr) !important;
+  width: 100% !important;
+  min-height: 100vh !important;
+  height: auto !important;
+  overflow: visible !important;
+}
+html.mveri-workbench-embed .hq52-sidebar,
+html.mveri-workbench-embed .hq52-top,
+html.mveri-workbench-embed #hq52menu {
+  display: none !important;
+}
+html.mveri-workbench-embed .hq52-main {
+  height: auto !important;
+  min-height: 100vh !important;
+  overflow: visible !important;
+  max-width: none !important;
+}
+html.mveri-workbench-embed .hq52-content {
+  padding: 0 !important;
+  margin: 0 !important;
+  max-width: none !important;
+  width: 100% !important;
+}
+html.mveri-workbench-embed .hq52-assessment-layout {
+  display: block !important;
+  min-height: 0 !important;
+  grid-template-columns: 1fr !important;
+  background: #f3f6fc !important;
+  padding: 0 !important;
+}
+html.mveri-workbench-embed nav#nav {
+  display: none !important;
+}
+html.mveri-workbench-embed main#main {
+  padding: 20px 22px !important;
+  margin: 0 !important;
+  max-width: none !important;
+  width: 100% !important;
+  height: auto !important;
+  max-height: none !important;
+  overflow: visible !important;
+  color: #173b68 !important;
+}
+html.mveri-workbench-embed main#main .panel {
+  border-color: #e0e8f5 !important;
+  border-radius: 14px !important;
+  box-shadow: 0 5px 18px rgba(23, 59, 128, 0.045) !important;
+  background: #fff;
+}
+html.mveri-workbench-embed main#main h1,
+html.mveri-workbench-embed main#main h2,
+html.mveri-workbench-embed main#main h3 {
+  color: #173b68 !important;
+}
+html.mveri-workbench-embed main#main button.primary,
+html.mveri-workbench-embed main#main .btn.primary,
+html.mveri-workbench-embed main#main button.btn:not(.secondary):not(.gray):not(.danger) {
+  background: #315cc5 !important;
+  border-color: #315cc5 !important;
+  color: #fff !important;
+}
+html.mveri-workbench-embed main#main .active,
+html.mveri-workbench-embed main#main .selected {
+  --theme-primary: #315cc5;
+}
+html.mveri-workbench-embed main#main a {
+  accent-color: #315cc5;
+}
+html.mveri-workbench-embed input:focus,
+html.mveri-workbench-embed select:focus,
+html.mveri-workbench-embed textarea:focus {
+  outline-color: #315cc5 !important;
+}
+@media (max-width: 760px) {
+  html.mveri-workbench-embed main#main {
+    padding: 12px !important;
+  }
+}
 
 /* V72.5: suppress EVERY legacy header in embedded assessment, not the business content. */
-html.mveri-workbench-embed body.hq52-body>.hq52-shell>.hq52-main>.hq52-top,
-html.mveri-workbench-embed body.hq52-body>.hq52-shell>.hq52-sidebar,
+html.mveri-workbench-embed body.hq52-body > .hq52-shell > .hq52-main > .hq52-top,
+html.mveri-workbench-embed body.hq52-body > .hq52-shell > .hq52-sidebar,
 html.mveri-workbench-embed body.hq52-body .hq52-breadcrumb,
-html.mveri-workbench-embed body.hq52-body .hq52-status{display:none!important;visibility:hidden!important;height:0!important;min-height:0!important;padding:0!important;margin:0!important;border:0!important}
-html.mveri-workbench-embed body.hq52-body>.hq52-shell>.hq52-main{display:block!important;width:100%!important;max-width:100%!important;min-width:0!important;margin:0!important;padding:0!important}
-html.mveri-workbench-embed body.hq52-body .hq52-content{padding:0!important;margin:0!important;max-width:100%!important;width:100%!important}
-html.mveri-workbench-embed body.hq52-body main#main{max-width:100%!important;min-width:0!important;box-sizing:border-box!important;padding:18px 22px!important}
+html.mveri-workbench-embed body.hq52-body .hq52-status {
+  display: none !important;
+  visibility: hidden !important;
+  height: 0 !important;
+  min-height: 0 !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  border: 0 !important;
+}
+html.mveri-workbench-embed body.hq52-body > .hq52-shell > .hq52-main {
+  display: block !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  min-width: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+html.mveri-workbench-embed body.hq52-body .hq52-content {
+  padding: 0 !important;
+  margin: 0 !important;
+  max-width: 100% !important;
+  width: 100% !important;
+}
+html.mveri-workbench-embed body.hq52-body main#main {
+  max-width: 100% !important;
+  min-width: 0 !important;
+  box-sizing: border-box !important;
+  padding: 18px 22px !important;
+}
 
 /* V72.6 - Brand color tokens for the embedded assessment business area */
-html.mveri-workbench-embed{
- --primary:#315CC5!important;--blue:#315CC5!important;--brand:#315CC5!important;
- --accent:#315CC5!important;--theme-primary:#315CC5!important;
- --primary-hover:#244BA8!important;--primary-soft:#EAF0FF!important;
- --teal:#315CC5!important;--green:#00A990;
- accent-color:#315CC5;
+html.mveri-workbench-embed {
+  --primary: #315cc5 !important;
+  --blue: #315cc5 !important;
+  --brand: #315cc5 !important;
+  --accent: #315cc5 !important;
+  --theme-primary: #315cc5 !important;
+  --primary-hover: #244ba8 !important;
+  --primary-soft: #eaf0ff !important;
+  --teal: #315cc5 !important;
+  --green: #00a990;
+  accent-color: #315cc5;
 }
-html.mveri-workbench-embed body{color:#173B68!important;background:#F3F6FC!important}
+html.mveri-workbench-embed body {
+  color: #173b68 !important;
+  background: #f3f6fc !important;
+}
 /* Main action colors apply to explicit action controls only; never to full-card buttons. */
 html.mveri-workbench-embed main#main button.primary,
 html.mveri-workbench-embed main#main button.btn:not(.secondary):not(.gray):not(.danger):not(.warn),
-html.mveri-workbench-embed main#main .type-toolbar>button,
-html.mveri-workbench-embed main#main input[type=submit]:not(.secondary){background:#315CC5!important;border-color:#315CC5!important;color:#fff!important}
+html.mveri-workbench-embed main#main .type-toolbar > button,
+html.mveri-workbench-embed main#main input[type="submit"]:not(.secondary) {
+  background: #315cc5 !important;
+  border-color: #315cc5 !important;
+  color: #fff !important;
+}
 html.mveri-workbench-embed main#main button.primary:hover,
-html.mveri-workbench-embed main#main .type-toolbar>button:hover{background:#244BA8!important}
+html.mveri-workbench-embed main#main .type-toolbar > button:hover {
+  background: #244ba8 !important;
+}
 html.mveri-workbench-embed main#main button.secondary,
-html.mveri-workbench-embed main#main .btn.secondary{background:#EAF0FF!important;color:#315CC5!important;border-color:#D9E4FA!important}
+html.mveri-workbench-embed main#main .btn.secondary {
+  background: #eaf0ff !important;
+  color: #315cc5 !important;
+  border-color: #d9e4fa !important;
+}
 html.mveri-workbench-embed main#main button:focus-visible,
-html.mveri-workbench-embed main#main a:focus-visible{outline:2px solid #315CC5!important;outline-offset:2px}
+html.mveri-workbench-embed main#main a:focus-visible {
+  outline: 2px solid #315cc5 !important;
+  outline-offset: 2px;
+}
 html.mveri-workbench-embed main#main input:focus,
 html.mveri-workbench-embed main#main select:focus,
-html.mveri-workbench-embed main#main textarea:focus{border-color:#315CC5!important;box-shadow:0 0 0 3px #315CC522!important}
-html.mveri-workbench-embed main#main .progress-bar>span,
-html.mveri-workbench-embed main#main .wbzy-bank-track>span{background:#315CC5!important}
+html.mveri-workbench-embed main#main textarea:focus {
+  border-color: #315cc5 !important;
+  box-shadow: 0 0 0 3px #315cc522 !important;
+}
+html.mveri-workbench-embed main#main .progress-bar > span,
+html.mveri-workbench-embed main#main .wbzy-bank-track > span {
+  background: #315cc5 !important;
+}
 html.mveri-workbench-embed main#main .tab.active,
-html.mveri-workbench-embed main#main .tabs button.active{background:#315CC5!important;color:#fff!important}
-html.mveri-workbench-embed main#main .panel{border-color:#E0E8F5!important}
+html.mveri-workbench-embed main#main .tabs button.active {
+  background: #315cc5 !important;
+  color: #fff !important;
+}
+html.mveri-workbench-embed main#main .panel {
+  border-color: #e0e8f5 !important;
+}
 
 /* V72.7: keep question type cards readable, never paint their content button blue. */
-html.mveri-workbench-embed main#main .type-card{background:#fff!important;border-left:1px solid #e3e9ed!important;border-right:1px solid #e3e9ed!important;border-bottom:1px solid #e3e9ed!important}
+html.mveri-workbench-embed main#main .type-card {
+  background: #fff !important;
+  border-left: 1px solid #e3e9ed !important;
+  border-right: 1px solid #e3e9ed !important;
+  border-bottom: 1px solid #e3e9ed !important;
+}
 html.mveri-workbench-embed main#main .type-card .type-card-main,
 html.mveri-workbench-embed main#main .type-card button.type-card-main,
-html.mveri-workbench-embed main#main .type-card button.type-card-main:hover{background:transparent!important;color:#173b68!important;border:0!important;box-shadow:none!important;text-align:left!important;}
-html.mveri-workbench-embed main#main .type-card .type-card-main p{color:#5e747f!important;}
-html.mveri-workbench-embed main#main .type-card .type-card-main:hover h4{color:#315cc5!important}
+html.mveri-workbench-embed main#main .type-card button.type-card-main:hover {
+  background: transparent !important;
+  color: #173b68 !important;
+  border: 0 !important;
+  box-shadow: none !important;
+  text-align: left !important;
+}
+html.mveri-workbench-embed main#main .type-card .type-card-main p {
+  color: #5e747f !important;
+}
+html.mveri-workbench-embed main#main .type-card .type-card-main:hover h4 {
+  color: #315cc5 !important;
+}
 /* Fixed-sized embedded viewport with the actual assessment content scrolling independently. */
-html.mveri-workbench-embed,html.mveri-workbench-embed body.hq52-body{height:100dvh!important;min-height:0!important;overflow:hidden!important}
-html.mveri-workbench-embed body.hq52-body>.hq52-shell{height:100dvh!important;min-height:0!important;display:block!important;overflow:hidden!important}
-html.mveri-workbench-embed body.hq52-body>.hq52-shell>.hq52-main{height:100dvh!important;min-height:0!important;display:flex!important;flex-direction:column!important;overflow:hidden!important}
-html.mveri-workbench-embed body.hq52-body .hq52-content{display:flex!important;flex:1 1 auto!important;min-height:0!important;overflow:hidden!important}
-html.mveri-workbench-embed body.hq52-body .hq52-assessment-layout{display:flex!important;flex:1 1 auto!important;flex-direction:column!important;min-height:0!important;overflow:hidden!important}
-html.mveri-workbench-embed body.hq52-body main#main{display:block!important;flex:1 1 auto!important;height:100%!important;min-height:0!important;max-height:100%!important;overflow-y:auto!important;overflow-x:hidden!important;overscroll-behavior-y:contain!important;scrollbar-gutter:stable!important;-webkit-overflow-scrolling:touch}
+html.mveri-workbench-embed,
+html.mveri-workbench-embed body.hq52-body {
+  height: 100dvh !important;
+  min-height: 0 !important;
+  overflow: hidden !important;
+}
+html.mveri-workbench-embed body.hq52-body > .hq52-shell {
+  height: 100dvh !important;
+  min-height: 0 !important;
+  display: block !important;
+  overflow: hidden !important;
+}
+html.mveri-workbench-embed body.hq52-body > .hq52-shell > .hq52-main {
+  height: 100dvh !important;
+  min-height: 0 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  overflow: hidden !important;
+}
+html.mveri-workbench-embed body.hq52-body .hq52-content {
+  display: flex !important;
+  flex: 1 1 auto !important;
+  min-height: 0 !important;
+  overflow: hidden !important;
+}
+html.mveri-workbench-embed body.hq52-body .hq52-assessment-layout {
+  display: flex !important;
+  flex: 1 1 auto !important;
+  flex-direction: column !important;
+  min-height: 0 !important;
+  overflow: hidden !important;
+}
+html.mveri-workbench-embed body.hq52-body main#main {
+  display: block !important;
+  flex: 1 1 auto !important;
+  height: 100% !important;
+  min-height: 0 !important;
+  max-height: 100% !important;
+  overflow-y: auto !important;
+  overflow-x: hidden !important;
+  overscroll-behavior-y: contain !important;
+  scrollbar-gutter: stable !important;
+  -webkit-overflow-scrolling: touch;
+}
 
 /* V72.8 audited assessment styles: semantic colors preserved; no button/card conflation */
 html.mveri-workbench-embed main#main button.type-card-main,
 html.mveri-workbench-embed main#main button.type-card-main:hover,
-html.mveri-workbench-embed main#main .type-grid .type-card-main{background:transparent!important;border:0!important;color:#173B68!important;box-shadow:none!important}
-html.mveri-workbench-embed main#main .type-filter{background:#eef3fb!important;color:#315CC5!important;border:1px solid #dbe5f5!important}
-html.mveri-workbench-embed main#main .type-filter.selected{background:#315CC5!important;border-color:#315CC5!important;color:white!important}
-html.mveri-workbench-embed main#main .type-filter.selected span{color:white!important}
-html.mveri-workbench-embed body.hq52-body main#main{height:100%!important;max-height:100%!important;min-height:0!important;overflow-y:auto!important}
-html.mveri-workbench-embed main#main .type-card-footer button:not(.danger):not(.warn){background:#eaf0ff!important;color:#315cc5!important;border-color:#d9e4fa!important}
-html.mveri-workbench-embed main#main .type-card-footer button:hover:not(.danger):not(.warn){background:#dae5fa!important}
+html.mveri-workbench-embed main#main .type-grid .type-card-main {
+  background: transparent !important;
+  border: 0 !important;
+  color: #173b68 !important;
+  box-shadow: none !important;
+}
+html.mveri-workbench-embed main#main .type-filter {
+  background: #eef3fb !important;
+  color: #315cc5 !important;
+  border: 1px solid #dbe5f5 !important;
+}
+html.mveri-workbench-embed main#main .type-filter.selected {
+  background: #315cc5 !important;
+  border-color: #315cc5 !important;
+  color: white !important;
+}
+html.mveri-workbench-embed main#main .type-filter.selected span {
+  color: white !important;
+}
+html.mveri-workbench-embed body.hq52-body main#main {
+  height: 100% !important;
+  max-height: 100% !important;
+  min-height: 0 !important;
+  overflow-y: auto !important;
+}
+html.mveri-workbench-embed main#main .type-card-footer button:not(.danger):not(.warn) {
+  background: #eaf0ff !important;
+  color: #315cc5 !important;
+  border-color: #d9e4fa !important;
+}
+html.mveri-workbench-embed main#main .type-card-footer button:hover:not(.danger):not(.warn) {
+  background: #dae5fa !important;
+}

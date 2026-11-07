@@ -1,39 +1,199 @@
 /* MVERI V21 — unified action design system. Loaded LAST on each page. */
-:root {--action:#315CC5;--action-hover:#254DAE;--action-active:#173B80;--action-soft:#EAF1FF;--action-border:#C5D5F5;--action-ink:#173B80;--action-focus:#86A7F0;--action-success:#167B63;--action-danger:#B42335;--action-danger-bg:#FFF1F2;--action-disabled:#E9EEF7;--action-disabled-text:#8291A8}
-button,a{ -webkit-tap-highlight-color:transparent }
-button:focus-visible,a:focus-visible{outline:3px solid var(--action-focus)!important;outline-offset:3px}
-button:disabled,.btn:disabled,[aria-disabled="true"]{background:var(--action-disabled)!important;border-color:#DDE5F1!important;color:var(--action-disabled-text)!important;cursor:not-allowed!important;opacity:1!important;transform:none!important;box-shadow:none!important}
+:root {
+  --action: #315cc5;
+  --action-hover: #254dae;
+  --action-active: #173b80;
+  --action-soft: #eaf1ff;
+  --action-border: #c5d5f5;
+  --action-ink: #173b80;
+  --action-focus: #86a7f0;
+  --action-success: #167b63;
+  --action-danger: #b42335;
+  --action-danger-bg: #fff1f2;
+  --action-disabled: #e9eef7;
+  --action-disabled-text: #8291a8;
+}
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+button:focus-visible,
+a:focus-visible {
+  outline: 3px solid var(--action-focus) !important;
+  outline-offset: 3px;
+}
+button:disabled,
+.btn:disabled,
+[aria-disabled="true"] {
+  background: var(--action-disabled) !important;
+  border-color: #dde5f1 !important;
+  color: var(--action-disabled-text) !important;
+  cursor: not-allowed !important;
+  opacity: 1 !important;
+  transform: none !important;
+  box-shadow: none !important;
+}
 /* Global SaaS workspace controls */
-body[data-portal="personal"] button.primary,body[data-portal="institution"] button.primary,body[data-portal="operations"] button.primary,
-body[data-portal="personal"] .primary,body[data-portal="institution"] .primary,body[data-portal="operations"] .primary{background:var(--action)!important;border:1px solid var(--action)!important;color:#fff!important}
-body[data-portal="personal"] button.primary:hover,body[data-portal="institution"] button.primary:hover,body[data-portal="operations"] button.primary:hover{background:var(--action-hover)!important;border-color:var(--action-hover)!important}
-body[data-portal="personal"] .outline,body[data-portal="institution"] .outline,body[data-portal="operations"] .outline{background:#fff!important;color:var(--action)!important;border:1px solid var(--action-border)!important}
-body[data-portal="personal"] .outline:hover,body[data-portal="institution"] .outline:hover,body[data-portal="operations"] .outline:hover{background:var(--action-soft)!important;border-color:#8EACED!important}
-body[data-portal="personal"] .ghost,body[data-portal="institution"] .ghost,body[data-portal="operations"] .ghost{background:transparent!important;color:#476384!important;border:1px solid transparent!important}
-body[data-portal="personal"] .ghost:hover,body[data-portal="institution"] .ghost:hover,body[data-portal="operations"] .ghost:hover{background:var(--action-soft)!important;color:var(--action)!important}
-body[data-portal="personal"] button[class*="danger"],body[data-portal="institution"] button[class*="danger"],body[data-portal="operations"] button[class*="danger"]{background:var(--action-danger-bg)!important;border:1px solid #F5CDD2!important;color:var(--action-danger)!important}
-body[data-portal="personal"] button[class*="danger"]:hover,body[data-portal="institution"] button[class*="danger"]:hover,body[data-portal="operations"] button[class*="danger"]:hover{background:#FFE3E7!important}
+body[data-portal="personal"] button.primary,
+body[data-portal="institution"] button.primary,
+body[data-portal="operations"] button.primary,
+body[data-portal="personal"] .primary,
+body[data-portal="institution"] .primary,
+body[data-portal="operations"] .primary {
+  background: var(--action) !important;
+  border: 1px solid var(--action) !important;
+  color: #fff !important;
+}
+body[data-portal="personal"] button.primary:hover,
+body[data-portal="institution"] button.primary:hover,
+body[data-portal="operations"] button.primary:hover {
+  background: var(--action-hover) !important;
+  border-color: var(--action-hover) !important;
+}
+body[data-portal="personal"] .outline,
+body[data-portal="institution"] .outline,
+body[data-portal="operations"] .outline {
+  background: #fff !important;
+  color: var(--action) !important;
+  border: 1px solid var(--action-border) !important;
+}
+body[data-portal="personal"] .outline:hover,
+body[data-portal="institution"] .outline:hover,
+body[data-portal="operations"] .outline:hover {
+  background: var(--action-soft) !important;
+  border-color: #8eaced !important;
+}
+body[data-portal="personal"] .ghost,
+body[data-portal="institution"] .ghost,
+body[data-portal="operations"] .ghost {
+  background: transparent !important;
+  color: #476384 !important;
+  border: 1px solid transparent !important;
+}
+body[data-portal="personal"] .ghost:hover,
+body[data-portal="institution"] .ghost:hover,
+body[data-portal="operations"] .ghost:hover {
+  background: var(--action-soft) !important;
+  color: var(--action) !important;
+}
+body[data-portal="personal"] button[class*="danger"],
+body[data-portal="institution"] button[class*="danger"],
+body[data-portal="operations"] button[class*="danger"] {
+  background: var(--action-danger-bg) !important;
+  border: 1px solid #f5cdd2 !important;
+  color: var(--action-danger) !important;
+}
+body[data-portal="personal"] button[class*="danger"]:hover,
+body[data-portal="institution"] button[class*="danger"]:hover,
+body[data-portal="operations"] button[class*="danger"]:hover {
+  background: #ffe3e7 !important;
+}
 /* Public site: light header vs. blue hero vs. white cards. */
-.public-mode .site-login{background:var(--action)!important;border:1px solid var(--action)!important;color:#fff!important;border-radius:8px}
-.public-mode .site-login:hover{background:var(--action-hover)!important;border-color:var(--action-hover)!important}
-.public-mode .site-hero .site-primary{background:#fff!important;border:1px solid #fff!important;color:var(--action-ink)!important;border-radius:8px;box-shadow:0 5px 16px #102C7A24}
-.public-mode .site-hero .site-primary:hover{background:#EAF1FF!important;border-color:#EAF1FF!important}
-.public-mode .site-hero .site-secondary{background:transparent!important;border:1px solid #D4E1FF!important;color:#fff!important;border-radius:8px}
-.public-mode .site-hero .site-secondary:hover{background:#FFFFFF21!important}
-.public-mode .site-primary:not(.site-hero .site-primary){background:var(--action)!important;border:1px solid var(--action)!important;color:white!important;border-radius:8px}
-.public-mode .site-primary:not(.site-hero .site-primary):hover{background:var(--action-hover)!important}
-.public-mode .site-nav button.selected{color:var(--action)!important;border-bottom-color:var(--action)!important}
-.public-mode .text-action,.public-mode .service-link,.public-mode .news-readmore,.public-mode .eight-link{color:var(--action)!important}
-.public-mode .text-action:hover,.public-mode .service-link:hover,.public-mode .news-readmore:hover,.public-mode .eight-link:hover{color:var(--action-hover)!important;text-decoration:underline}
+.public-mode .site-login {
+  background: var(--action) !important;
+  border: 1px solid var(--action) !important;
+  color: #fff !important;
+  border-radius: 8px;
+}
+.public-mode .site-login:hover {
+  background: var(--action-hover) !important;
+  border-color: var(--action-hover) !important;
+}
+.public-mode .site-hero .site-primary {
+  background: #fff !important;
+  border: 1px solid #fff !important;
+  color: var(--action-ink) !important;
+  border-radius: 8px;
+  box-shadow: 0 5px 16px #102c7a24;
+}
+.public-mode .site-hero .site-primary:hover {
+  background: #eaf1ff !important;
+  border-color: #eaf1ff !important;
+}
+.public-mode .site-hero .site-secondary {
+  background: transparent !important;
+  border: 1px solid #d4e1ff !important;
+  color: #fff !important;
+  border-radius: 8px;
+}
+.public-mode .site-hero .site-secondary:hover {
+  background: #ffffff21 !important;
+}
+.public-mode .site-primary:not(.site-hero .site-primary) {
+  background: var(--action) !important;
+  border: 1px solid var(--action) !important;
+  color: white !important;
+  border-radius: 8px;
+}
+.public-mode .site-primary:not(.site-hero .site-primary):hover {
+  background: var(--action-hover) !important;
+}
+.public-mode .site-nav button.selected {
+  color: var(--action) !important;
+  border-bottom-color: var(--action) !important;
+}
+.public-mode .text-action,
+.public-mode .service-link,
+.public-mode .news-readmore,
+.public-mode .eight-link {
+  color: var(--action) !important;
+}
+.public-mode .text-action:hover,
+.public-mode .service-link:hover,
+.public-mode .news-readmore:hover,
+.public-mode .eight-link:hover {
+  color: var(--action-hover) !important;
+  text-decoration: underline;
+}
 /* News listings and filters, previously still old blue */
-.public-mode .news-search-row form button,.public-mode .news-button{background:var(--action)!important;border:1px solid var(--action)!important;color:#fff!important;border-radius:8px}
-.public-mode .news-search-row form button:hover,.public-mode .news-button:hover{background:var(--action-hover)!important}
-.public-mode .news-tabs button.active{color:var(--action)!important;border-bottom-color:var(--action)!important}
-.public-mode .news-aside-box button{background:#EFF4FF!important;color:var(--action-ink)!important;border:1px solid #DFE8F9!important}
-.public-mode .news-aside-box button:hover{background:#DFEAFE!important}
-.public-mode .news-card h3 button:hover{color:var(--action)!important}
+.public-mode .news-search-row form button,
+.public-mode .news-button {
+  background: var(--action) !important;
+  border: 1px solid var(--action) !important;
+  color: #fff !important;
+  border-radius: 8px;
+}
+.public-mode .news-search-row form button:hover,
+.public-mode .news-button:hover {
+  background: var(--action-hover) !important;
+}
+.public-mode .news-tabs button.active {
+  color: var(--action) !important;
+  border-bottom-color: var(--action) !important;
+}
+.public-mode .news-aside-box button {
+  background: #eff4ff !important;
+  color: var(--action-ink) !important;
+  border: 1px solid #dfe8f9 !important;
+}
+.public-mode .news-aside-box button:hover {
+  background: #dfeafe !important;
+}
+.public-mode .news-card h3 button:hover {
+  color: var(--action) !important;
+}
 /* Authentication */
-body:has(form#login) .submit,body:has(form#register) .submit{background:var(--action)!important;color:white!important;border:1px solid var(--action)!important;border-radius:9px}
-body:has(form#login) .submit:hover,body:has(form#register) .submit:hover{background:var(--action-hover)!important}
-body:has(form#login) .sample-account:hover,body:has(form#login) .samples button:hover{border-color:#9EB8EF!important;background:#EFF5FF!important}
-@media(prefers-reduced-motion:reduce){button,.site-login,.site-primary{transition:none!important;transform:none!important}}
+body:has(form#login) .submit,
+body:has(form#register) .submit {
+  background: var(--action) !important;
+  color: white !important;
+  border: 1px solid var(--action) !important;
+  border-radius: 9px;
+}
+body:has(form#login) .submit:hover,
+body:has(form#register) .submit:hover {
+  background: var(--action-hover) !important;
+}
+body:has(form#login) .sample-account:hover,
+body:has(form#login) .samples button:hover {
+  border-color: #9eb8ef !important;
+  background: #eff5ff !important;
+}
+@media (prefers-reduced-motion: reduce) {
+  button,
+  .site-login,
+  .site-primary {
+    transition: none !important;
+    transform: none !important;
+  }
+}

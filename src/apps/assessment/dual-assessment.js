@@ -1,38 +1,268 @@
 /* 通用能力→教师能力：两阶段连续测评，分别统计并出具双体系报告 */
-(function(){
-const prevHome=home,prevExam=exam,prevReports=reports,prevDetail=detail,prevDemo=showDemoReport,prevIndicators=indicators,prevRetrain=retrain,oldFinish=finish;
-const G=window.GENERAL_FRAMEWORK,GB=(()=>{const published=window.UnifiedQuestionStore?.published('general')||[];const ids=new Set(published.map(x=>x.id));return [...published,...[...(window.GENERAL_TASK_BANK||[]),...(window.GENERAL_INTERACTIONS||[]),...(window.GENERAL_BANK||[])].filter(x=>!ids.has(x.id))];})();
-let stageOne=null;
-window.dualStage=null;
-const active=q=>!['草稿','待审定','退回修订','已停用'].includes(q.status);
-const byRoot=(items,root)=>items.filter(x=>x.q&&x.q.framework==='general'&&x.q.indicator.split('.')[0]===root);
-const avg=arr=>{const scored=arr.filter(x=>Number.isFinite(x.score));return scored.length?Math.round(scored.reduce((n,x)=>n+x.score,0)/scored.length):null;};
-const section=(items,name)=>({name,count:items.length,score:avg(items),items});
-function split(r){const gi=r.items.filter(x=>x.q?.framework==='general');const ti=r.items.filter(x=>x.q?.framework!=='general');return {gi,ti}}
-function panel(r){const {gi,ti}=split(r);const a=avg(gi),b=avg(ti);const row=(name,code,arr)=>{let v=avg(arr);return `<div class="dual-row"><span>${esc(code)} ${esc(name)}</span><div class="dual-bar"><i style="width:${v??0}%"></i></div><b>${v===null?'未测量':v+'分'}</b><small>${arr.length}题</small></div>`};
-let bars=G.level1.map(x=>`<details class="dual-domain" open><summary>${row(x.name,x.code,byRoot(gi,x.code))}</summary><div class="dual-units">${G.level2.filter(u=>u.parent===x.code).map(u=>row(u.name,u.code,gi.filter(y=>y.q?.indicator===u.code))).join('')}</div></details>`).join('');
-return `<div class="dual-report"><div class="panel"><h2>双体系个人能力分析</h2><p class="hint">顺序：第一阶段通用数智能力 → 第二阶段教师素智素养。两套指标分别计算，未覆盖领域标记未测量，分数仅是本次抽样自动评分；成果类任务需人工复核。</p><div class="dual-score"><div><small>通用数智能力</small><strong>${a??'—'}</strong><span>${gi.length}道 · 6个能力领域</span></div><div><small>教师素智素养</small><strong>${b??'—'}</strong><span>${ti.length}道 · 5个一级指标</span></div></div></div><div class="panel"><h2>第一部分 · 通用数智能力（六领域）</h2>${bars}<div class="actions"><button class="outline" onclick="nav('indicators')">查看两套指标体系</button></div><p class="hint">依据《通用数智能力框架》3.3报审稿。能力单元22项、可观察要求78条。本框架面向跨行业岗位适应与就业服务，不是教师专项能力标准；题目为训练样例，未经正式审定，报告仅用于能力发展，不作为职业技能等级认定依据。</p></div><div class="panel"><h2>第二部分 · 教师素智素养（五领域）</h2>${ti.length?'<p>下方保留原有教师素智素养能力轮盘与三级指标明细。</p>':'<p class="hint">本次没有教师素智素养实测记录。</p>'}</div></div>`}
-home=function(){return `<div class="panel dual-intro"><h1>教师多体系数智能力测评</h1><p>同一次测评中，先完成 <b>通用数智能力</b>，再完成 <b>教师素智素养</b>，最后形成一份分两部分分析的个人报告。</p><div class="dual-journey"><span>① 通用数智能力（6领域/22单元）</span><span>→</span><span>② 教师能力（5领域/33项三级）</span><span>→</span><span>③ 双体系报告</span></div><button onclick="nav('exam')">开始两阶段综合测评 →</button></div>`+prevHome()};
-exam=function(){return `<h1>两阶段综合能力测评</h1><div class="panel"><div class="dual-journey"><span>第一阶段 · 通用数智能力</span><span>→</span><span>第二阶段 · 教师素智素养</span><span>→</span><span>双体系个人报告</span></div><p class="hint">两阶段均为随机不重复抽题。每阶段结束后进入下一阶段，中途不会把通用成绩与教师指标混算。当前通用题池包含78道基础训练、22道情境训练及78道考评点任务交互样例，均未完成专家审核；教师部分沿用已发布可用题库。</p><div class="formrow"><label class="field">姓名<input id="learner" placeholder="选填" value="${esc(learner)}"></label><label class="field">通用能力题量<select id="gCount">${[6,12,18,24,30].map(n=>`<option ${n===18?'selected':''}>${n}</option>`).join('')}</select></label><label class="field">教师能力题量<select id="tCount">${[10,15,20,30,40].map(n=>`<option ${n===20?'selected':''}>${n}</option>`).join('')}</select></label><label class="field">教师能力等级<select id="level"><option value="">不限等级</option><option>初级</option><option>中级</option><option>高级</option></select></label></div><button onclick="startExam()">开始第一阶段：通用数智能力 →</button></div><div id="examhost"></div>`};
-startExam=function(){learner=$('learner').value.trim();const gc=+$('gCount').value,tc=+$('tCount').value,lv=$('level').value;
-const gPool=GB.filter(active),tPool=all().filter(q=>active(q)&&(!lv||q.level===lv));if(!gPool.length||!tPool.length){alert('当前有一个阶段缺少可用试题。');return;}
-const gPaper=[];for(const root of G.level1){const candidates=shuffle(gPool.filter(x=>x.indicator.startsWith(root.code+'.')&&x.type==='gtask'));if(candidates[0])gPaper.push(candidates[0]);}
-const targetInteractive=Math.min(gc,Math.max(6,Math.round(gc*.65)));const candidates=shuffle(gPool.filter(x=>x.type==='gtask'||x.type==='gscenario'));const usedModes=new Set(gPaper.map(x=>x.mode||x.type));for(const q of candidates)if(gPaper.length<targetInteractive&&!gPaper.some(x=>x.id===q.id)&&!usedModes.has(q.mode||q.type)){gPaper.push(q);usedModes.add(q.mode||q.type);}for(const q of candidates)if(gPaper.length<targetInteractive&&!gPaper.some(x=>x.id===q.id))gPaper.push(q);
-for(const q of shuffle(gPool))if(gPaper.length<gc&&!gPaper.some(x=>x.id===q.id))gPaper.push(q);
-const tPaper=selectedByBlueprint(tPool,tc,'mixed');if(!tPaper.length){alert('教师题池不足');return;}
-window.dualStage={phase:1,tPaper,parts:[],id:'DUAL-'+Date.now(),started:new Date().toISOString(),learner};
-session={paper:gPaper,idx:0,answers:{},id:window.dualStage.id,learner,started:window.dualStage.started,mode:'两阶段联合测评'};renderQ();let host=$('examhost');host.insertAdjacentHTML('afterbegin','<div class="status"><b>第一阶段 / 2 · 通用数智能力</b>　完成后自动进入教师素智素养。</div>');host.scrollIntoView({behavior:'smooth',block:'start'});
-};
-finish=function(){if(!window.dualStage){return oldFinish()}let d=window.dualStage;let missing=session.paper.filter(q=>session.answers[q.id]===undefined);if(missing.length&&!confirm(`本阶段还有${missing.length}题未作答，仍要继续吗？`))return;
-let part=session.paper.map(q=>{const a=session.answers[q.id];const v=grade(q,a);return {q,ans:a??null,score:v.score,ok:v.score!==null&&v.score>=60,note:v.note}});d.parts.push(...part);
-if(d.phase===1){d.phase=2;session={paper:d.tPaper,idx:0,answers:{},id:d.id,learner:d.learner,started:d.started,mode:'教师素智素养'};renderQ();let h=$('examhost');h.insertAdjacentHTML('afterbegin','<div class="status"><b>第二阶段 / 2 · 教师素智素养</b>　通用阶段已完成，现继续教师专业能力测评。</div>');h.scrollIntoView({behavior:'smooth',block:'start'});return;}
-if(!confirm('两阶段均已完成，提交并生成双体系个人报告？')){d.parts.splice(d.parts.length-part.length);return}
-const gi=d.parts.filter(x=>x.q.framework==='general'),ti=d.parts.filter(x=>x.q.framework!=='general');const rec={id:d.id,started:d.started,completed:new Date().toISOString(),total:d.parts.length,correct:d.parts.filter(x=>x.score===100).length,score:avg(d.parts),learner:d.learner,mode:'通用+教师多体系测评',sections:{general:section(gi,'通用数智能力'),teacher:section(ti,'教师素智素养')},items:d.parts};let st=PlatformStore.read();st.records.unshift(rec);st.records=st.records.slice(0,100);PlatformStore.write(st);window.dualStage=null;session=null;nav('reports');detail(0);
-};
+(function () {
+  const prevHome = home,
+    prevExam = exam,
+    prevReports = reports,
+    prevDetail = detail,
+    prevDemo = showDemoReport,
+    prevIndicators = indicators,
+    prevRetrain = retrain,
+    oldFinish = finish;
+  const G = window.GENERAL_FRAMEWORK,
+    GB = (() => {
+      const published = window.UnifiedQuestionStore?.published("general") || [];
+      const ids = new Set(published.map((x) => x.id));
+      return [
+        ...published,
+        ...[
+          ...(window.GENERAL_TASK_BANK || []),
+          ...(window.GENERAL_INTERACTIONS || []),
+          ...(window.GENERAL_BANK || []),
+        ].filter((x) => !ids.has(x.id)),
+      ];
+    })();
+  let stageOne = null;
+  window.dualStage = null;
+  const active = (q) => !["草稿", "待审定", "退回修订", "已停用"].includes(q.status);
+  const byRoot = (items, root) =>
+    items.filter((x) => x.q && x.q.framework === "general" && x.q.indicator.split(".")[0] === root);
+  const avg = (arr) => {
+    const scored = arr.filter((x) => Number.isFinite(x.score));
+    return scored.length ? Math.round(scored.reduce((n, x) => n + x.score, 0) / scored.length) : null;
+  };
+  const section = (items, name) => ({ name, count: items.length, score: avg(items), items });
+  function split(r) {
+    const gi = r.items.filter((x) => x.q?.framework === "general");
+    const ti = r.items.filter((x) => x.q?.framework !== "general");
+    return { gi, ti };
+  }
+  function panel(r) {
+    const { gi, ti } = split(r);
+    const a = avg(gi),
+      b = avg(ti);
+    const row = (name, code, arr) => {
+      let v = avg(arr);
+      return `<div class="dual-row"><span>${esc(code)} ${esc(name)}</span><div class="dual-bar"><i style="width:${v ?? 0}%"></i></div><b>${v === null ? "未测量" : v + "分"}</b><small>${arr.length}题</small></div>`;
+    };
+    let bars = G.level1
+      .map(
+        (x) =>
+          `<details class="dual-domain" open><summary>${row(x.name, x.code, byRoot(gi, x.code))}</summary><div class="dual-units">${G.level2
+            .filter((u) => u.parent === x.code)
+            .map((u) =>
+              row(
+                u.name,
+                u.code,
+                gi.filter((y) => y.q?.indicator === u.code),
+              ),
+            )
+            .join("")}</div></details>`,
+      )
+      .join("");
+    return `<div class="dual-report"><div class="panel"><h2>双体系个人能力分析</h2><p class="hint">顺序：第一阶段通用数智能力 → 第二阶段教师素智素养。两套指标分别计算，未覆盖领域标记未测量，分数仅是本次抽样自动评分；成果类任务需人工复核。</p><div class="dual-score"><div><small>通用数智能力</small><strong>${a ?? "—"}</strong><span>${gi.length}道 · 6个能力领域</span></div><div><small>教师素智素养</small><strong>${b ?? "—"}</strong><span>${ti.length}道 · 5个一级指标</span></div></div></div><div class="panel"><h2>第一部分 · 通用数智能力（六领域）</h2>${bars}<div class="actions"><button class="outline" onclick="nav('indicators')">查看两套指标体系</button></div><p class="hint">依据《通用数智能力框架》3.3报审稿。能力单元22项、可观察要求78条。本框架面向跨行业岗位适应与就业服务，不是教师专项能力标准；题目为训练样例，未经正式审定，报告仅用于能力发展，不作为职业技能等级认定依据。</p></div><div class="panel"><h2>第二部分 · 教师素智素养（五领域）</h2>${ti.length ? "<p>下方保留原有教师素智素养能力轮盘与三级指标明细。</p>" : '<p class="hint">本次没有教师素智素养实测记录。</p>'}</div></div>`;
+  }
+  home = function () {
+    return (
+      `<div class="panel dual-intro"><h1>教师多体系数智能力测评</h1><p>同一次测评中，先完成 <b>通用数智能力</b>，再完成 <b>教师素智素养</b>，最后形成一份分两部分分析的个人报告。</p><div class="dual-journey"><span>① 通用数智能力（6领域/22单元）</span><span>→</span><span>② 教师能力（5领域/33项三级）</span><span>→</span><span>③ 双体系报告</span></div><button onclick="nav('exam')">开始两阶段综合测评 →</button></div>` +
+      prevHome()
+    );
+  };
+  exam = function () {
+    return `<h1>两阶段综合能力测评</h1><div class="panel"><div class="dual-journey"><span>第一阶段 · 通用数智能力</span><span>→</span><span>第二阶段 · 教师素智素养</span><span>→</span><span>双体系个人报告</span></div><p class="hint">两阶段均为随机不重复抽题。每阶段结束后进入下一阶段，中途不会把通用成绩与教师指标混算。当前通用题池包含78道基础训练、22道情境训练及78道考评点任务交互样例，均未完成专家审核；教师部分沿用已发布可用题库。</p><div class="formrow"><label class="field">姓名<input id="learner" placeholder="选填" value="${esc(learner)}"></label><label class="field">通用能力题量<select id="gCount">${[6, 12, 18, 24, 30].map((n) => `<option ${n === 18 ? "selected" : ""}>${n}</option>`).join("")}</select></label><label class="field">教师能力题量<select id="tCount">${[10, 15, 20, 30, 40].map((n) => `<option ${n === 20 ? "selected" : ""}>${n}</option>`).join("")}</select></label><label class="field">教师能力等级<select id="level"><option value="">不限等级</option><option>初级</option><option>中级</option><option>高级</option></select></label></div><button onclick="startExam()">开始第一阶段：通用数智能力 →</button></div><div id="examhost"></div>`;
+  };
+  startExam = function () {
+    learner = $("learner").value.trim();
+    const gc = +$("gCount").value,
+      tc = +$("tCount").value,
+      lv = $("level").value;
+    const gPool = GB.filter(active),
+      tPool = all().filter((q) => active(q) && (!lv || q.level === lv));
+    if (!gPool.length || !tPool.length) {
+      alert("当前有一个阶段缺少可用试题。");
+      return;
+    }
+    const gPaper = [];
+    for (const root of G.level1) {
+      const candidates = shuffle(gPool.filter((x) => x.indicator.startsWith(root.code + ".") && x.type === "gtask"));
+      if (candidates[0]) gPaper.push(candidates[0]);
+    }
+    const targetInteractive = Math.min(gc, Math.max(6, Math.round(gc * 0.65)));
+    const candidates = shuffle(gPool.filter((x) => x.type === "gtask" || x.type === "gscenario"));
+    const usedModes = new Set(gPaper.map((x) => x.mode || x.type));
+    for (const q of candidates)
+      if (gPaper.length < targetInteractive && !gPaper.some((x) => x.id === q.id) && !usedModes.has(q.mode || q.type)) {
+        gPaper.push(q);
+        usedModes.add(q.mode || q.type);
+      }
+    for (const q of candidates)
+      if (gPaper.length < targetInteractive && !gPaper.some((x) => x.id === q.id)) gPaper.push(q);
+    for (const q of shuffle(gPool)) if (gPaper.length < gc && !gPaper.some((x) => x.id === q.id)) gPaper.push(q);
+    const tPaper = selectedByBlueprint(tPool, tc, "mixed");
+    if (!tPaper.length) {
+      alert("教师题池不足");
+      return;
+    }
+    window.dualStage = {
+      phase: 1,
+      tPaper,
+      parts: [],
+      id: "DUAL-" + Date.now(),
+      started: new Date().toISOString(),
+      learner,
+    };
+    session = {
+      paper: gPaper,
+      idx: 0,
+      answers: {},
+      id: window.dualStage.id,
+      learner,
+      started: window.dualStage.started,
+      mode: "两阶段联合测评",
+    };
+    renderQ();
+    let host = $("examhost");
+    host.insertAdjacentHTML(
+      "afterbegin",
+      '<div class="status"><b>第一阶段 / 2 · 通用数智能力</b>　完成后自动进入教师素智素养。</div>',
+    );
+    host.scrollIntoView({ behavior: "smooth", block: "start" });
+  };
+  finish = function () {
+    if (!window.dualStage) {
+      return oldFinish();
+    }
+    let d = window.dualStage;
+    let missing = session.paper.filter((q) => session.answers[q.id] === undefined);
+    if (missing.length && !confirm(`本阶段还有${missing.length}题未作答，仍要继续吗？`)) return;
+    let part = session.paper.map((q) => {
+      const a = session.answers[q.id];
+      const v = grade(q, a);
+      return { q, ans: a ?? null, score: v.score, ok: v.score !== null && v.score >= 60, note: v.note };
+    });
+    d.parts.push(...part);
+    if (d.phase === 1) {
+      d.phase = 2;
+      session = {
+        paper: d.tPaper,
+        idx: 0,
+        answers: {},
+        id: d.id,
+        learner: d.learner,
+        started: d.started,
+        mode: "教师素智素养",
+      };
+      renderQ();
+      let h = $("examhost");
+      h.insertAdjacentHTML(
+        "afterbegin",
+        '<div class="status"><b>第二阶段 / 2 · 教师素智素养</b>　通用阶段已完成，现继续教师专业能力测评。</div>',
+      );
+      h.scrollIntoView({ behavior: "smooth", block: "start" });
+      return;
+    }
+    if (!confirm("两阶段均已完成，提交并生成双体系个人报告？")) {
+      d.parts.splice(d.parts.length - part.length);
+      return;
+    }
+    const gi = d.parts.filter((x) => x.q.framework === "general"),
+      ti = d.parts.filter((x) => x.q.framework !== "general");
+    const rec = {
+      id: d.id,
+      started: d.started,
+      completed: new Date().toISOString(),
+      total: d.parts.length,
+      correct: d.parts.filter((x) => x.score === 100).length,
+      score: avg(d.parts),
+      learner: d.learner,
+      mode: "通用+教师多体系测评",
+      sections: { general: section(gi, "通用数智能力"), teacher: section(ti, "教师素智素养") },
+      items: d.parts,
+    };
+    let st = PlatformStore.read();
+    st.records.unshift(rec);
+    st.records = st.records.slice(0, 100);
+    PlatformStore.write(st);
+    window.dualStage = null;
+    session = null;
+    nav("reports");
+    detail(0);
+  };
 
-reports=function(){return `<div class="panel"><h2>双体系个人能力报告</h2><p class="hint">报告分为第一部分“通用数智能力”、第二部分“教师素智素养”，各自显示指标覆盖和诊断，不把两套指标混成一张五维轮盘。</p></div>`+prevReports()};
-detail=function(i){const records=PlatformStore.read().records||[],r=records[i];if(!r)return;if(!r.items.some(x=>x.q?.framework==='general'))return prevDetail(i);const {ti}=split(r);const teacherRec={...r,items:ti,total:ti.length,score:avg(ti),correct:ti.filter(x=>x.score===100).length};const elem=document.getElementById('details');elem.innerHTML=panel(r)+(ti.length?renderCompetenceReport(teacherRec,[teacherRec]):'')+'<div class="panel"><button onclick="nav(\'retrain\')">补训与复测 →</button></div>';elem.scrollIntoView({behavior:'smooth',block:'start'});};
-showDemoReport=function(){const teacher=demoReport(),g=G.level2.map((u,i)=>({q:{id:'GD-'+i,framework:'general',indicator:u.code,stem:'示例：'+u.name,category:'示例',type:'single'},score:65+(i*7)%32,ok:true,note:'虚拟示例'}));const rec={...teacher,items:[...g,...teacher.items],score:avg([...g,...teacher.items])};const node=document.getElementById('details');const t={...teacher};node.innerHTML='<div class="demo-banner"><b>双体系报告示例，全部为虚拟数据，不记录、不用于认证。</b></div>'+panel(rec)+renderCompetenceReport(t,[t]);node.scrollIntoView({behavior:'smooth',block:'start'});};
-indicators=function(){return `<h1>双指标体系</h1><div class="panel"><h2>体系 A · 通用数智能力</h2><p class="hint">6个一级领域、22个二级能力单元、78条能力要求（候选考评点）。严格保留附件的原始层级。</p>${G.level1.map(l=>`<details class="ind-first"><summary><b>${l.code}. ${esc(l.name)}</b></summary>${G.level2.filter(x=>x.parent===l.code).map(u=>`<details class="ind-second"><summary><b>${esc(u.code)} ${esc(u.name)}</b></summary><div class="ind-third">${G.points.filter(p=>p.unit===u.code).map(p=>`<p>${esc(p.code)}　${esc(p.description)}</p>`).join('')}</div></details>`).join('')}</details>`).join('')}</div><div class="panel"><h2>体系 B · 教师素智素养</h2></div>`+prevIndicators()};
-retrain=function(){const r=PlatformStore.read().records[0];let g=r?.items?.filter(x=>x.q?.framework==='general'&&x.score<70)||[];return `<div class="panel"><h2>通用能力补训</h2><p>${g.length?`通用数智能力低分任务 ${g.length} 项，请在复测中重点关注对应能力单元。`:'暂无通用能力低分任务记录，或尚未完成双阶段测评。'}</p><button onclick="nav('exam')">重新参加两阶段测评</button></div>`+prevRetrain()};
+  reports = function () {
+    return (
+      `<div class="panel"><h2>双体系个人能力报告</h2><p class="hint">报告分为第一部分“通用数智能力”、第二部分“教师素智素养”，各自显示指标覆盖和诊断，不把两套指标混成一张五维轮盘。</p></div>` +
+      prevReports()
+    );
+  };
+  detail = function (i) {
+    const records = PlatformStore.read().records || [],
+      r = records[i];
+    if (!r) return;
+    if (!r.items.some((x) => x.q?.framework === "general")) return prevDetail(i);
+    const { ti } = split(r);
+    const teacherRec = {
+      ...r,
+      items: ti,
+      total: ti.length,
+      score: avg(ti),
+      correct: ti.filter((x) => x.score === 100).length,
+    };
+    const elem = document.getElementById("details");
+    elem.innerHTML =
+      panel(r) +
+      (ti.length ? renderCompetenceReport(teacherRec, [teacherRec]) : "") +
+      '<div class="panel"><button onclick="nav(\'retrain\')">补训与复测 →</button></div>';
+    elem.scrollIntoView({ behavior: "smooth", block: "start" });
+  };
+  showDemoReport = function () {
+    const teacher = demoReport(),
+      g = G.level2.map((u, i) => ({
+        q: {
+          id: "GD-" + i,
+          framework: "general",
+          indicator: u.code,
+          stem: "示例：" + u.name,
+          category: "示例",
+          type: "single",
+        },
+        score: 65 + ((i * 7) % 32),
+        ok: true,
+        note: "虚拟示例",
+      }));
+    const rec = { ...teacher, items: [...g, ...teacher.items], score: avg([...g, ...teacher.items]) };
+    const node = document.getElementById("details");
+    const t = { ...teacher };
+    node.innerHTML =
+      '<div class="demo-banner"><b>双体系报告示例，全部为虚拟数据，不记录、不用于认证。</b></div>' +
+      panel(rec) +
+      renderCompetenceReport(t, [t]);
+    node.scrollIntoView({ behavior: "smooth", block: "start" });
+  };
+  indicators = function () {
+    return (
+      `<h1>双指标体系</h1><div class="panel"><h2>体系 A · 通用数智能力</h2><p class="hint">6个一级领域、22个二级能力单元、78条能力要求（候选考评点）。严格保留附件的原始层级。</p>${G.level1
+        .map(
+          (l) =>
+            `<details class="ind-first"><summary><b>${l.code}. ${esc(l.name)}</b></summary>${G.level2
+              .filter((x) => x.parent === l.code)
+              .map(
+                (u) =>
+                  `<details class="ind-second"><summary><b>${esc(u.code)} ${esc(u.name)}</b></summary><div class="ind-third">${G.points
+                    .filter((p) => p.unit === u.code)
+                    .map((p) => `<p>${esc(p.code)}　${esc(p.description)}</p>`)
+                    .join("")}</div></details>`,
+              )
+              .join("")}</details>`,
+        )
+        .join("")}</div><div class="panel"><h2>体系 B · 教师素智素养</h2></div>` + prevIndicators()
+    );
+  };
+  retrain = function () {
+    const r = PlatformStore.read().records[0];
+    let g = r?.items?.filter((x) => x.q?.framework === "general" && x.score < 70) || [];
+    return (
+      `<div class="panel"><h2>通用能力补训</h2><p>${g.length ? `通用数智能力低分任务 ${g.length} 项，请在复测中重点关注对应能力单元。` : "暂无通用能力低分任务记录，或尚未完成双阶段测评。"}</p><button onclick="nav('exam')">重新参加两阶段测评</button></div>` +
+      prevRetrain()
+    );
+  };
 })();

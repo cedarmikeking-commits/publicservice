@@ -1,34 +1,330 @@
-import {groups,registry,can} from './core/catalog.js';
-import {Router} from './core/router.js';
-import {Store} from './core/store.js';
-import {esc,heading} from './core/format.js';
-import {specs,genericPage,recordDialog,dashboard,journey,auditPage,schoolPage,schoolDialog,usersPage,usersTable,userDialog,openDialog} from './modules/business.js';
-import {standardsPage,pointsPage,pointsTable,pointDialog,questionsPage,questionsTable,questionDialog,agentPage} from './modules/assessment.js';
-const app=document.getElementById('app');
-const dataFiles=['operations.json','point-review.json','question-bank.json'];
-let state={role:sessionStorage.getItem('mveri70_role')||'',actor:sessionStorage.getItem('mveri70_actor')||'',expanded:sessionStorage.getItem('mveri70_group')||'workspace',collapsed:localStorage.getItem('mveri70_collapsed')==='1'};
-let store,router,activeView='dashboard';
-const userRole={hq:'研究院总部管理员',region:'区域服务中心',school:'院校管理员',reviewer:'认证审核人员'};
-const seedAccounts=[['admin','123456','hq'],['region01','123456','region'],['school01','123456','school'],['reviewer','123456','reviewer']];
-async function bootstrap(){try{let [ops,review,bank]=await Promise.all(dataFiles.map(x=>fetch(`./public/data/${x}`).then(r=>{if(!r.ok)throw Error('缺少数据文件 '+x);return r.json()})));
- const seed={...ops,points:review.points,items:bank.items,pointDecisions:{},questionDecisions:{},schools:ops.colleges.map(c=>({id:c.id,name:c.name,region:c.region,seats:20,status:'启用'})),users:[{id:'U001',name:'总部管理员',account:'admin',password:'123456',type:'hq',role:'平台管理员',status:'启用'},{id:'U002',name:'华北区域负责人',account:'region01',password:'123456',type:'region',region:'R001',role:'负责人',status:'启用'},{id:'U003',name:'院校管理员',account:'school01',password:'123456',type:'school',schoolId:'C001',role:'院校管理员',status:'启用'}]};store=new Store(seed);store.data.pointDecisions??={};store.data.questionDecisions??={};router=new Router(showPage,()=>state.role);if(state.role)renderShell();else showLogin();}
- catch(error){app.innerHTML=`<div class="error-panel"><h2>工作台初始化失败</h2><p>${esc(error.message)}</p><p>请通过本项目根目录运行 npm run dev，不要直接用 file:// 打开。</p></div>`;console.error(error)}}
-function showLogin(){app.innerHTML=`<main class="login-screen"><form class="login-panel" id="login"><img src="./public/assets/logo.png" alt="MVERI"><h1>现代职业教育公共服务平台</h1><p class="hint">统一工作台 · 一套菜单 · 一套路由 · 一套权限定义</p><label class="field">账号<input name="account" value="admin" required autocomplete="username"></label><label class="field">密码<input name="password" value="123456" type="password" required autocomplete="current-password"></label><button class="primary" type="submit">进入工作台</button><p class="hint">体验账号：admin / region01 / school01 / reviewer，密码均为 123456</p><p class="readonly-note">当前为离线开发工程。正式部署须替换为服务端认证和数据权限校验。</p></form></main>`;app.querySelector('form').onsubmit=e=>{e.preventDefault();const v=Object.fromEntries(new FormData(e.target));let a=store.get('users').find(x=>x.account===v.account&&x.password===v.password&&x.status==='启用');let fallback=seedAccounts.find(x=>x[0]===v.account&&x[1]===v.password);if(!a&&!fallback){alert('账号或密码错误，或账号已停用');return}state.role=a?(a.type==='hq'?'hq':a.type==='region'?'region':a.type==='school'?'school':'school'):fallback[2];state.actor=v.account;sessionStorage.setItem('mveri70_role',state.role);sessionStorage.setItem('mveri70_actor',state.actor);renderShell()}}
-function renderShell(){app.innerHTML=`<div class="shell ${state.collapsed?'collapsed':''}" id="shell"><aside class="sidebar"><div class="brand"><img src="./public/assets/logo.png" alt="研究院徽标"><strong>${state.role==='hq'||state.role==='reviewer'?'总部运营平台':state.role==='region'?'全国区域服务协作平台':'院校服务平台'}</strong><button class="icon-button" id="collapse" title="收起或展开侧栏">${state.collapsed?'»':'«'}</button></div><nav class="side-scroll" id="sidebar-nav"></nav><footer class="sidefoot"><strong>${userRole[state.role]||'平台用户'}</strong><button id="signout">退出登录</button></footer></aside><main class="main"><header class="topbar"><div><small id="breadcrumb"></small><h1 id="pageTitle"></h1></div><div class="role-tag">● ${userRole[state.role]||'平台用户'}</div></header><section id="content" class="workspace" aria-live="polite"></section></main></div><dialog id="dialog"></dialog>`;
- document.getElementById('collapse').onclick=()=>{state.collapsed=!state.collapsed;localStorage.setItem('mveri70_collapsed',state.collapsed?'1':'0');document.getElementById('shell').classList.toggle('collapsed',state.collapsed);document.getElementById('collapse').textContent=state.collapsed?'»':'«'};
- document.getElementById('signout').onclick=()=>{sessionStorage.removeItem('mveri70_role');sessionStorage.removeItem('mveri70_actor');state.role='';showLogin()};
- document.getElementById('sidebar-nav').addEventListener('click',e=>{const g=e.target.closest('[data-group]');if(g){let id=g.dataset.group;if(state.collapsed){state.collapsed=false;localStorage.setItem('mveri70_collapsed','0');document.getElementById('shell').classList.remove('collapsed');document.getElementById('collapse').textContent='«'}state.expanded=state.expanded===id?'':id;sessionStorage.setItem('mveri70_group',state.expanded);renderNav();return}const link=e.target.closest('[data-view]');if(link){e.preventDefault();router.open(link.dataset.view)}});
- document.getElementById('content').addEventListener('click',handleAction);document.getElementById('content').addEventListener('input',filterList);document.getElementById('content').addEventListener('change',filterList);router.render()}
-function renderNav(){const root=document.getElementById('sidebar-nav');if(!root)return;root.innerHTML=groups.filter(g=>g.items.some(([id])=>can(state.role,id))).map(g=>{let open=g.id===state.expanded;return `<div class="group ${open?'open':''}"><button class="group-toggle" data-group="${g.id}" aria-expanded="${open}" title="${g.label}"><span class="group-icon">${g.icon}</span><span class="group-title">${g.label}</span><span class="chevron">${open?'⌃':'⌄'}</span></button>${open?`<div class="group-items">${g.items.filter(([id])=>can(state.role,id)).map(([id,title])=>`<a href="?view=${id}" class="nav-item ${id===activeView?'active':''}" data-view="${id}">${title}</a>`).join('')}</div>`:''}</div>`}).join('')}
-function showPage(id){activeView=id;const meta=registry[id];if(!meta)return;const grp=groups.find(x=>x.id===meta.group);state.expanded=meta.group;sessionStorage.setItem('mveri70_group',state.expanded);renderNav();document.getElementById('breadcrumb').textContent=`${state.role==='hq'?'总部运营':'业务平台'} / ${grp.label}`;document.getElementById('pageTitle').textContent=meta.label;const root=document.getElementById('content');try{let html='';switch(id){case'dashboard':html=dashboard(store,state.role);break;case'journey':html=journey(store);break;case'audit':html=auditPage(store);break;case'school-admin':html=schoolPage(store);break;case'users':html=usersPage(store);break;case'standards':html=standardsPage(store);break;case'master':case'points':html=pointsPage(store,id);break;case'questions':html=questionsPage(store);break;case'agents':html=agentPage(store);break;case'settings':html=`${heading('平台配置','统一菜单、角色权限及数据管理')}<section class="panel"><h3>统一架构</h3><p>所有菜单都在同一工作台和同一路由中运行。</p><p class="hint">当前离线数据保存在浏览器 localStorage。正式商用须提供服务端存储与授权。</p><button class="primary" data-action="export-all">导出当前业务数据备份</button></section>`;break;default:html=specs[id]?genericPage(store,id,notify,state.actor):heading(meta.label)}root.innerHTML=html;root.scrollTop=0}catch(err){root.innerHTML=`<div class="error-panel"><h3>模块运行异常</h3><p>${esc(err.message)}</p><button class="primary" data-action="refresh">重试模块</button></div>`;console.error(err)}}
-function notify(x){alert(x)}
-function redraw(){showPage(activeView)}
-function download(obj,name){let blob=new Blob([JSON.stringify(obj,null,2)],{type:'application/json;charset=utf-8'}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download=name;a.click();setTimeout(()=>URL.revokeObjectURL(url),500)}
-function handleAction(e){let b=e.target.closest('[data-action]');if(!b)return;let a=b.dataset.action,id=b.dataset.id;try{if(a==='new-record'||a==='edit-record')recordDialog(store,b.dataset.collection,id,state.actor,redraw);else if(a==='new-school'||a==='edit-school')schoolDialog(store,id,state.actor,redraw);else if(a==='new-user'||a==='edit-user')userDialog(store,id,state.actor,redraw);else if(a==='review-point')pointDialog(store,b.dataset.code,state.actor,redraw);else if(a==='inspect-question')questionDialog(store,id,state.actor,redraw);else if(a==='export-all')download(store.data,'mveri-business-backup.json');else if(a==='export-points')download(store.get('points'),'mveri-points.json');else if(a==='export-questions')download(store.get('items'),'mveri-questions.json');else if(a==='refresh')redraw()}catch(error){alert('操作失败：'+error.message);console.error(error)}}
-function filterList(e){if(!e.target.matches('[data-search],[data-user-filter],[data-standard]'))return;let c=document.getElementById('content'),search=(c.querySelector('[data-search]')?.value||'').trim().toLowerCase(),status=c.querySelector('[data-user-filter]')?.value||'',standard=c.querySelector('[data-standard]')?.value||'',rows=[],render;
- if(activeView==='users'){rows=store.get('users').filter(x=>(!status||x.type===status)&&JSON.stringify(x).toLowerCase().includes(search));render=usersTable}
- else if(activeView==='master'||activeView==='points'){rows=store.get('points').filter(x=>(!standard||x.system===standard)&&[x.pointCode,x.pointName,x.system,x.observableTask].join(' ').toLowerCase().includes(search)).slice(0,120);render=items=>pointsTable(items,store)}
- else if(activeView==='questions'){rows=store.get('items').filter(x=>(!standard||x.framework===standard)&&[x.id,x.stem,x.pointCode].join(' ').toLowerCase().includes(search)).slice(0,80);render=items=>questionsTable(items,store)}
- else if(specs[activeView]){let s=specs[activeView];rows=store.get(s.key).filter(x=>JSON.stringify(x).toLowerCase().includes(search));render=()=>genericPage({get:()=>rows},activeView,notify,state.actor).match(/<div class="table-slot">([\s\S]*?)<\/div><\/section>/)?.[1]||''}
- if(render){let slot=c.querySelector('.table-slot');if(slot)slot.innerHTML=render(rows)}}
+import { groups, registry, can } from "./core/catalog.js";
+import { Router } from "./core/router.js";
+import { Store } from "./core/store.js";
+import { esc, heading } from "./core/format.js";
+import {
+  specs,
+  genericPage,
+  recordDialog,
+  dashboard,
+  journey,
+  auditPage,
+  schoolPage,
+  schoolDialog,
+  usersPage,
+  usersTable,
+  userDialog,
+  openDialog,
+} from "./modules/business.js";
+import {
+  standardsPage,
+  pointsPage,
+  pointsTable,
+  pointDialog,
+  questionsPage,
+  questionsTable,
+  questionDialog,
+  agentPage,
+} from "./modules/assessment.js";
+const app = document.getElementById("app");
+const dataFiles = ["operations.json", "point-review.json", "question-bank.json"];
+let state = {
+  role: sessionStorage.getItem("mveri70_role") || "",
+  actor: sessionStorage.getItem("mveri70_actor") || "",
+  expanded: sessionStorage.getItem("mveri70_group") || "workspace",
+  collapsed: localStorage.getItem("mveri70_collapsed") === "1",
+};
+let store,
+  router,
+  activeView = "dashboard";
+const userRole = { hq: "研究院总部管理员", region: "区域服务中心", school: "院校管理员", reviewer: "认证审核人员" };
+const seedAccounts = [
+  ["admin", "123456", "hq"],
+  ["region01", "123456", "region"],
+  ["school01", "123456", "school"],
+  ["reviewer", "123456", "reviewer"],
+];
+async function bootstrap() {
+  try {
+    let [ops, review, bank] = await Promise.all(
+      dataFiles.map((x) =>
+        fetch(`./public/data/${x}`).then((r) => {
+          if (!r.ok) throw Error("缺少数据文件 " + x);
+          return r.json();
+        }),
+      ),
+    );
+    const seed = {
+      ...ops,
+      points: review.points,
+      items: bank.items,
+      pointDecisions: {},
+      questionDecisions: {},
+      schools: ops.colleges.map((c) => ({ id: c.id, name: c.name, region: c.region, seats: 20, status: "启用" })),
+      users: [
+        {
+          id: "U001",
+          name: "总部管理员",
+          account: "admin",
+          password: "123456",
+          type: "hq",
+          role: "平台管理员",
+          status: "启用",
+        },
+        {
+          id: "U002",
+          name: "华北区域负责人",
+          account: "region01",
+          password: "123456",
+          type: "region",
+          region: "R001",
+          role: "负责人",
+          status: "启用",
+        },
+        {
+          id: "U003",
+          name: "院校管理员",
+          account: "school01",
+          password: "123456",
+          type: "school",
+          schoolId: "C001",
+          role: "院校管理员",
+          status: "启用",
+        },
+      ],
+    };
+    store = new Store(seed);
+    store.data.pointDecisions ??= {};
+    store.data.questionDecisions ??= {};
+    router = new Router(showPage, () => state.role);
+    if (state.role) renderShell();
+    else showLogin();
+  } catch (error) {
+    app.innerHTML = `<div class="error-panel"><h2>工作台初始化失败</h2><p>${esc(error.message)}</p><p>请通过本项目根目录运行 npm run dev，不要直接用 file:// 打开。</p></div>`;
+    console.error(error);
+  }
+}
+function showLogin() {
+  app.innerHTML = `<main class="login-screen"><form class="login-panel" id="login"><img src="./public/assets/logo.png" alt="MVERI"><h1>现代职业教育公共服务平台</h1><p class="hint">统一工作台 · 一套菜单 · 一套路由 · 一套权限定义</p><label class="field">账号<input name="account" value="admin" required autocomplete="username"></label><label class="field">密码<input name="password" value="123456" type="password" required autocomplete="current-password"></label><button class="primary" type="submit">进入工作台</button><p class="hint">体验账号：admin / region01 / school01 / reviewer，密码均为 123456</p><p class="readonly-note">当前为离线开发工程。正式部署须替换为服务端认证和数据权限校验。</p></form></main>`;
+  app.querySelector("form").onsubmit = (e) => {
+    e.preventDefault();
+    const v = Object.fromEntries(new FormData(e.target));
+    let a = store.get("users").find((x) => x.account === v.account && x.password === v.password && x.status === "启用");
+    let fallback = seedAccounts.find((x) => x[0] === v.account && x[1] === v.password);
+    if (!a && !fallback) {
+      alert("账号或密码错误，或账号已停用");
+      return;
+    }
+    state.role = a
+      ? a.type === "hq"
+        ? "hq"
+        : a.type === "region"
+          ? "region"
+          : a.type === "school"
+            ? "school"
+            : "school"
+      : fallback[2];
+    state.actor = v.account;
+    sessionStorage.setItem("mveri70_role", state.role);
+    sessionStorage.setItem("mveri70_actor", state.actor);
+    renderShell();
+  };
+}
+function renderShell() {
+  app.innerHTML = `<div class="shell ${state.collapsed ? "collapsed" : ""}" id="shell"><aside class="sidebar"><div class="brand"><img src="./public/assets/logo.png" alt="研究院徽标"><strong>${state.role === "hq" || state.role === "reviewer" ? "总部运营平台" : state.role === "region" ? "全国区域服务协作平台" : "院校服务平台"}</strong><button class="icon-button" id="collapse" title="收起或展开侧栏">${state.collapsed ? "»" : "«"}</button></div><nav class="side-scroll" id="sidebar-nav"></nav><footer class="sidefoot"><strong>${userRole[state.role] || "平台用户"}</strong><button id="signout">退出登录</button></footer></aside><main class="main"><header class="topbar"><div><small id="breadcrumb"></small><h1 id="pageTitle"></h1></div><div class="role-tag">● ${userRole[state.role] || "平台用户"}</div></header><section id="content" class="workspace" aria-live="polite"></section></main></div><dialog id="dialog"></dialog>`;
+  document.getElementById("collapse").onclick = () => {
+    state.collapsed = !state.collapsed;
+    localStorage.setItem("mveri70_collapsed", state.collapsed ? "1" : "0");
+    document.getElementById("shell").classList.toggle("collapsed", state.collapsed);
+    document.getElementById("collapse").textContent = state.collapsed ? "»" : "«";
+  };
+  document.getElementById("signout").onclick = () => {
+    sessionStorage.removeItem("mveri70_role");
+    sessionStorage.removeItem("mveri70_actor");
+    state.role = "";
+    showLogin();
+  };
+  document.getElementById("sidebar-nav").addEventListener("click", (e) => {
+    const g = e.target.closest("[data-group]");
+    if (g) {
+      let id = g.dataset.group;
+      if (state.collapsed) {
+        state.collapsed = false;
+        localStorage.setItem("mveri70_collapsed", "0");
+        document.getElementById("shell").classList.remove("collapsed");
+        document.getElementById("collapse").textContent = "«";
+      }
+      state.expanded = state.expanded === id ? "" : id;
+      sessionStorage.setItem("mveri70_group", state.expanded);
+      renderNav();
+      return;
+    }
+    const link = e.target.closest("[data-view]");
+    if (link) {
+      e.preventDefault();
+      router.open(link.dataset.view);
+    }
+  });
+  document.getElementById("content").addEventListener("click", handleAction);
+  document.getElementById("content").addEventListener("input", filterList);
+  document.getElementById("content").addEventListener("change", filterList);
+  router.render();
+}
+function renderNav() {
+  const root = document.getElementById("sidebar-nav");
+  if (!root) return;
+  root.innerHTML = groups
+    .filter((g) => g.items.some(([id]) => can(state.role, id)))
+    .map((g) => {
+      let open = g.id === state.expanded;
+      return `<div class="group ${open ? "open" : ""}"><button class="group-toggle" data-group="${g.id}" aria-expanded="${open}" title="${g.label}"><span class="group-icon">${g.icon}</span><span class="group-title">${g.label}</span><span class="chevron">${open ? "⌃" : "⌄"}</span></button>${
+        open
+          ? `<div class="group-items">${g.items
+              .filter(([id]) => can(state.role, id))
+              .map(
+                ([id, title]) =>
+                  `<a href="?view=${id}" class="nav-item ${id === activeView ? "active" : ""}" data-view="${id}">${title}</a>`,
+              )
+              .join("")}</div>`
+          : ""
+      }</div>`;
+    })
+    .join("");
+}
+function showPage(id) {
+  activeView = id;
+  const meta = registry[id];
+  if (!meta) return;
+  const grp = groups.find((x) => x.id === meta.group);
+  state.expanded = meta.group;
+  sessionStorage.setItem("mveri70_group", state.expanded);
+  renderNav();
+  document.getElementById("breadcrumb").textContent = `${state.role === "hq" ? "总部运营" : "业务平台"} / ${grp.label}`;
+  document.getElementById("pageTitle").textContent = meta.label;
+  const root = document.getElementById("content");
+  try {
+    let html = "";
+    switch (id) {
+      case "dashboard":
+        html = dashboard(store, state.role);
+        break;
+      case "journey":
+        html = journey(store);
+        break;
+      case "audit":
+        html = auditPage(store);
+        break;
+      case "school-admin":
+        html = schoolPage(store);
+        break;
+      case "users":
+        html = usersPage(store);
+        break;
+      case "standards":
+        html = standardsPage(store);
+        break;
+      case "master":
+      case "points":
+        html = pointsPage(store, id);
+        break;
+      case "questions":
+        html = questionsPage(store);
+        break;
+      case "agents":
+        html = agentPage(store);
+        break;
+      case "settings":
+        html = `${heading("平台配置", "统一菜单、角色权限及数据管理")}<section class="panel"><h3>统一架构</h3><p>所有菜单都在同一工作台和同一路由中运行。</p><p class="hint">当前离线数据保存在浏览器 localStorage。正式商用须提供服务端存储与授权。</p><button class="primary" data-action="export-all">导出当前业务数据备份</button></section>`;
+        break;
+      default:
+        html = specs[id] ? genericPage(store, id, notify, state.actor) : heading(meta.label);
+    }
+    root.innerHTML = html;
+    root.scrollTop = 0;
+  } catch (err) {
+    root.innerHTML = `<div class="error-panel"><h3>模块运行异常</h3><p>${esc(err.message)}</p><button class="primary" data-action="refresh">重试模块</button></div>`;
+    console.error(err);
+  }
+}
+function notify(x) {
+  alert(x);
+}
+function redraw() {
+  showPage(activeView);
+}
+function download(obj, name) {
+  let blob = new Blob([JSON.stringify(obj, null, 2)], { type: "application/json;charset=utf-8" }),
+    url = URL.createObjectURL(blob),
+    a = document.createElement("a");
+  a.href = url;
+  a.download = name;
+  a.click();
+  setTimeout(() => URL.revokeObjectURL(url), 500);
+}
+function handleAction(e) {
+  let b = e.target.closest("[data-action]");
+  if (!b) return;
+  let a = b.dataset.action,
+    id = b.dataset.id;
+  try {
+    if (a === "new-record" || a === "edit-record") recordDialog(store, b.dataset.collection, id, state.actor, redraw);
+    else if (a === "new-school" || a === "edit-school") schoolDialog(store, id, state.actor, redraw);
+    else if (a === "new-user" || a === "edit-user") userDialog(store, id, state.actor, redraw);
+    else if (a === "review-point") pointDialog(store, b.dataset.code, state.actor, redraw);
+    else if (a === "inspect-question") questionDialog(store, id, state.actor, redraw);
+    else if (a === "export-all") download(store.data, "mveri-business-backup.json");
+    else if (a === "export-points") download(store.get("points"), "mveri-points.json");
+    else if (a === "export-questions") download(store.get("items"), "mveri-questions.json");
+    else if (a === "refresh") redraw();
+  } catch (error) {
+    alert("操作失败：" + error.message);
+    console.error(error);
+  }
+}
+function filterList(e) {
+  if (!e.target.matches("[data-search],[data-user-filter],[data-standard]")) return;
+  let c = document.getElementById("content"),
+    search = (c.querySelector("[data-search]")?.value || "").trim().toLowerCase(),
+    status = c.querySelector("[data-user-filter]")?.value || "",
+    standard = c.querySelector("[data-standard]")?.value || "",
+    rows = [],
+    render;
+  if (activeView === "users") {
+    rows = store
+      .get("users")
+      .filter((x) => (!status || x.type === status) && JSON.stringify(x).toLowerCase().includes(search));
+    render = usersTable;
+  } else if (activeView === "master" || activeView === "points") {
+    rows = store
+      .get("points")
+      .filter(
+        (x) =>
+          (!standard || x.system === standard) &&
+          [x.pointCode, x.pointName, x.system, x.observableTask].join(" ").toLowerCase().includes(search),
+      )
+      .slice(0, 120);
+    render = (items) => pointsTable(items, store);
+  } else if (activeView === "questions") {
+    rows = store
+      .get("items")
+      .filter(
+        (x) =>
+          (!standard || x.framework === standard) &&
+          [x.id, x.stem, x.pointCode].join(" ").toLowerCase().includes(search),
+      )
+      .slice(0, 80);
+    render = (items) => questionsTable(items, store);
+  } else if (specs[activeView]) {
+    let s = specs[activeView];
+    rows = store.get(s.key).filter((x) => JSON.stringify(x).toLowerCase().includes(search));
+    render = () =>
+      genericPage({ get: () => rows }, activeView, notify, state.actor).match(
+        /<div class="table-slot">([\s\S]*?)<\/div><\/section>/,
+      )?.[1] || "";
+  }
+  if (render) {
+    let slot = c.querySelector(".table-slot");
+    if (slot) slot.innerHTML = render(rows);
+  }
+}
 bootstrap();

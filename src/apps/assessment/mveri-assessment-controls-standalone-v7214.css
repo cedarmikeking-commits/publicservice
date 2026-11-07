@@ -1,47 +1,89 @@
 /* V72.14: semantic component color policy, not a broad button recoloring. */
-:root{--mveri-brand:#315CC5;--mveri-brand-hover:#244BA8;--mveri-brand-soft:#EAF0FF}
+:root {
+  --mveri-brand: #315cc5;
+  --mveri-brand-hover: #244ba8;
+  --mveri-brand-soft: #eaf0ff;
+}
 /* Indicator standards: only direct action controls, excluding content cards, warnings & state badges. */
-body main#main .std-app :is(.std-actions,.std-buttons,.std-leaf,.std-empty) > button:not(.secondary):not(.std-danger):not(.danger):not(.warn),
+body
+  main#main
+  .std-app
+  :is(.std-actions, .std-buttons, .std-leaf, .std-empty)
+  > button:not(.secondary):not(.std-danger):not(.danger):not(.warn),
 body main#main .std-app button.std-publish-btn,
 body main#main .std-app .std-switch button.on,
-body main#main .std-app .std-framework.on{
- background:#315CC5!important;border-color:#315CC5!important;color:#fff!important;
+body main#main .std-app .std-framework.on {
+  background: #315cc5 !important;
+  border-color: #315cc5 !important;
+  color: #fff !important;
 }
-body main#main .std-app :is(.std-actions,.std-buttons,.std-leaf,.std-empty) > button:not(.secondary):not(.std-danger):not(.danger):not(.warn):hover,
+body
+  main#main
+  .std-app
+  :is(.std-actions, .std-buttons, .std-leaf, .std-empty)
+  > button:not(.secondary):not(.std-danger):not(.danger):not(.warn):hover,
 body main#main .std-app button.std-publish-btn:hover,
-body main#main .std-app .std-switch button.on:hover{
- background:#244BA8!important;border-color:#244BA8!important;color:#fff!important;
+body main#main .std-app .std-switch button.on:hover {
+  background: #244ba8 !important;
+  border-color: #244ba8 !important;
+  color: #fff !important;
 }
 body main#main .std-app .std-switch button:not(.on),
-body main#main .std-app :is(.std-actions,.std-buttons) > button.secondary{
- background:#EAF0FF!important;border-color:#D5E3FA!important;color:#315CC5!important;
+body main#main .std-app :is(.std-actions, .std-buttons) > button.secondary {
+  background: #eaf0ff !important;
+  border-color: #d5e3fa !important;
+  color: #315cc5 !important;
 }
-body main#main .std-app .std-switch button:not(.on):hover{
- background:#DDE8FE!important;color:#244BA8!important;
+body main#main .std-app .std-switch button:not(.on):hover {
+  background: #dde8fe !important;
+  color: #244ba8 !important;
 }
 /* Keep leaf descriptions readable and prevent action buttons from crowding text. */
-body main#main .std-leaf > div{min-width:0;overflow-wrap:anywhere}
-body main#main .std-leaf > button{flex:0 0 auto;min-width:max-content}
+body main#main .std-leaf > div {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+body main#main .std-leaf > button {
+  flex: 0 0 auto;
+  min-width: max-content;
+}
 /* Assessment point overview: selected framework filter and entry actions. */
 body main#main .up-tabs button.up-selected,
-body main#main .up-framework-card > button{
- background:#315CC5!important;border-color:#315CC5!important;color:#fff!important;
+body main#main .up-framework-card > button {
+  background: #315cc5 !important;
+  border-color: #315cc5 !important;
+  color: #fff !important;
 }
 body main#main .up-tabs button.up-selected:hover,
-body main#main .up-framework-card > button:hover{
- background:#244BA8!important;border-color:#244BA8!important;color:#fff!important;
+body main#main .up-framework-card > button:hover {
+  background: #244ba8 !important;
+  border-color: #244ba8 !important;
+  color: #fff !important;
 }
-body main#main .up-tabs button.up-selected span{color:#E2EBFF!important}
-body main#main .up-tabs button:not(.up-selected){background:#fff!important;color:#345372!important;border-color:#D8E4F5!important}
-body main#main .up-tabs button:not(.up-selected):hover{background:#EAF0FF!important;color:#315CC5!important}
+body main#main .up-tabs button.up-selected span {
+  color: #e2ebff !important;
+}
+body main#main .up-tabs button:not(.up-selected) {
+  background: #fff !important;
+  color: #345372 !important;
+  border-color: #d8e4f5 !important;
+}
+body main#main .up-tabs button:not(.up-selected):hover {
+  background: #eaf0ff !important;
+  color: #315cc5 !important;
+}
 /* Action focus and disabled states; never repaint status indicators or full-card buttons. */
-body main#main :is(.std-app,.up-page) button:focus-visible{
- outline:2px solid #315CC5!important;outline-offset:3px!important;
+body main#main :is(.std-app, .up-page) button:focus-visible {
+  outline: 2px solid #315cc5 !important;
+  outline-offset: 3px !important;
 }
-body main#main :is(.std-app,.up-page) button:disabled{
- cursor:not-allowed!important;opacity:.45!important;
+body main#main :is(.std-app, .up-page) button:disabled {
+  cursor: not-allowed !important;
+  opacity: 0.45 !important;
 }
 /* Semantic warning, destructive, and success controls retain their own meaning. */
-body main#main .std-app button.std-danger{
- background:#FFF0EC!important;border-color:#E8B8B0!important;color:#B64232!important;
+body main#main .std-app button.std-danger {
+  background: #fff0ec !important;
+  border-color: #e8b8b0 !important;
+  color: #b64232 !important;
 }

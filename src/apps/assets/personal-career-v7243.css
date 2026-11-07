@@ -1,58 +1,379 @@
 /* V72.43 — personal career services. Scoped to avoid impacting other portals. */
-body[data-portal="personal"]{--cp-blue:#315cc5;--cp-navy:#173b80;--cp-border:#dce6f5;--cp-muted:#667d9b}
-body[data-portal="personal"] .content{max-width:none;width:100%;min-width:0;margin:0;overflow-x:hidden;padding:26px clamp(18px,2.2vw,38px) 55px}
-body[data-portal="personal"] .cp-kicker,body[data-portal="personal"] .cp-section-title span{color:#5778bd;font-size:11px;letter-spacing:.14em;font-weight:800}
-body[data-portal="personal"] .cp-hero{display:flex;align-items:center;justify-content:space-between;gap:22px;padding:32px clamp(22px,3vw,44px);background:linear-gradient(112deg,#143a7b,#315cc5 68%,#3779c9);border-radius:19px;color:white;margin-bottom:18px;box-shadow:0 12px 28px #254b9b14}
-body[data-portal="personal"] .cp-hero .cp-kicker{color:#bed8ff}
-body[data-portal="personal"] .cp-hero h1{color:#fff;font-size:28px;line-height:1.3;margin:12px 0 10px}
-body[data-portal="personal"] .cp-hero p{max-width:790px;color:#edf4ff;font-size:14px;line-height:1.9;margin:0 0 17px}
-body[data-portal="personal"] .cp-hero-badges{display:flex;gap:8px;flex-wrap:wrap}
-body[data-portal="personal"] .cp-hero-badges span{padding:7px 12px;border:1px solid #ffffff60;background:#ffffff1c;border-radius:999px;font-size:12px;color:#fff}
-body[data-portal="personal"] .cp-hero .primary{border:0;background:white;color:var(--cp-navy);white-space:nowrap;font-weight:750;min-height:43px}
-body[data-portal="personal"] .cp-summary{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:13px;margin-bottom:18px}
-body[data-portal="personal"] .cp-summary>div{border:1px solid var(--cp-border);background:#fff;border-radius:15px;padding:20px;display:flex;flex-direction:column;gap:6px}
-body[data-portal="personal"] .cp-summary span{color:var(--cp-muted);font-size:12px}
-body[data-portal="personal"] .cp-summary strong{font-size:29px;color:var(--cp-navy);line-height:1.3}
-body[data-portal="personal"] .cp-summary small{color:#8799b1;font-size:11px}
-body[data-portal="personal"] .cp-panel{border:1px solid var(--cp-border);background:#fff;border-radius:16px;padding:22px 24px;margin-bottom:18px;min-width:0}
-body[data-portal="personal"] .cp-section-title{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:20px}
-body[data-portal="personal"] .cp-section-title h2{color:var(--cp-navy);font-size:18px;margin:7px 0 0}
-body[data-portal="personal"] .cp-path{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:10px}
-body[data-portal="personal"] .cp-path button{position:relative;display:flex;flex-direction:column;align-items:flex-start;text-align:left;gap:12px;min-width:0;padding:17px 13px;background:#f6f9ff;border:1px solid #e0e9fa;color:#213e70;border-radius:12px;transition:background .2s,border-color .2s}
-body[data-portal="personal"] .cp-path button:hover{background:#e9f1ff;border-color:#90adee}
-body[data-portal="personal"] .cp-path em{font-style:normal;color:#5177ca;font-size:12px;font-weight:800}
-body[data-portal="personal"] .cp-path strong{font-size:13px;white-space:normal}
-body[data-portal="personal"] .cp-path small{color:#768cae;font-size:11px}
-body[data-portal="personal"] .cp-columns{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:18px;align-items:start}
-body[data-portal="personal"] .cp-next{display:flex;gap:13px;margin-bottom:18px;align-items:flex-start}
-body[data-portal="personal"] .cp-next-icon{display:grid;place-items:center;flex:none;width:44px;height:44px;background:#e9f0ff;color:#315cc5;font-size:22px;border-radius:13px}
-body[data-portal="personal"] .cp-next strong{display:block;font-size:15px;color:#23477e;margin:2px 0 5px}
-body[data-portal="personal"] .cp-next p,body[data-portal="personal"] .cp-muted{color:var(--cp-muted);line-height:1.8;font-size:12px}
-body[data-portal="personal"] .cp-next p{margin:0}
-body[data-portal="personal"] .cp-standards{display:grid;gap:10px}
-body[data-portal="personal"] .cp-standards>div{padding:13px 15px;border-radius:10px;background:#f5f8fe;border:1px solid #e2eafa}
-body[data-portal="personal"] .cp-standards b,body[data-portal="personal"] .cp-standards small{display:block}
-body[data-portal="personal"] .cp-standards b{font-size:13px;color:#214d9d}
-body[data-portal="personal"] .cp-standards small{font-size:12px;color:#7488a4;margin-top:5px}
-body[data-portal="personal"] .cp-page-title{margin-bottom:20px}
-body[data-portal="personal"] .cp-page-title h1{font-size:26px;color:var(--cp-navy);margin:9px 0}
-body[data-portal="personal"] .cp-page-title p{font-size:13px;color:var(--cp-muted);line-height:1.8}
-body[data-portal="personal"] .cp-plan-columns{grid-template-columns:minmax(0,1.4fr) minmax(320px,.8fr)}
-body[data-portal="personal"] .cp-audience-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:11px}
-body[data-portal="personal"] .cp-audience-grid button{min-width:0;display:flex;flex-direction:column;text-align:left;gap:6px;align-items:flex-start;padding:16px;background:#fff;border:1px solid #dfe8f7;border-radius:13px;color:#1d426e;transition:border-color .2s,background .2s,box-shadow .2s}
-body[data-portal="personal"] .cp-audience-grid button:hover{border-color:#7d9edb;background:#f7faff}
-body[data-portal="personal"] .cp-audience-grid button.selected{background:#edf3ff;border-color:#315cc5;box-shadow:inset 3px 0 #315cc5}
-body[data-portal="personal"] .cp-group-mark{display:grid;place-items:center;width:27px;height:27px;border-radius:8px;background:#eaf1ff;color:#315cc5}
-body[data-portal="personal"] .cp-audience-grid b{font-size:14px}
-body[data-portal="personal"] .cp-audience-grid small{font-size:11px;color:#7589a4;line-height:1.7}
-body[data-portal="personal"] .cp-field{display:flex;flex-direction:column;gap:9px;font-size:13px;color:#344f72;margin-bottom:17px;font-weight:650}
-body[data-portal="personal"] .cp-field select,body[data-portal="personal"] .cp-field textarea{width:100%;min-width:0;border-radius:10px;border:1px solid #cbd9eb;background:#fff;color:#24415e;padding:11px 12px;font-weight:400;outline-offset:2px}
-body[data-portal="personal"] .cp-field textarea{resize:vertical}
-body[data-portal="personal"] .cp-guidance{margin-top:22px;padding:17px;background:#f4f8ff;border-left:3px solid #315cc5;border-radius:10px}
-body[data-portal="personal"] .cp-guidance b{font-size:13px;color:#244e93}
-body[data-portal="personal"] .cp-guidance p{color:#647e9c;font-size:12px;line-height:1.8;margin:7px 0 0}
-body[data-portal="personal"] .cp-save{width:100%;min-height:44px}
-body[data-portal="personal"] .cp-disclaimer{font-size:12px;line-height:1.8;color:#667c99}
-@media(max-width:1120px){body[data-portal="personal"] .cp-path{grid-template-columns:repeat(3,minmax(0,1fr))}body[data-portal="personal"] .cp-plan-columns{grid-template-columns:1fr}}
-@media(max-width:760px){body[data-portal="personal"] .cp-hero{flex-direction:column;align-items:flex-start;padding:24px}body[data-portal="personal"] .cp-hero h1{font-size:23px}body[data-portal="personal"] .cp-summary{grid-template-columns:repeat(2,minmax(0,1fr))}body[data-portal="personal"] .cp-columns{grid-template-columns:1fr}body[data-portal="personal"] .cp-panel{padding:18px}body[data-portal="personal"] .cp-path{grid-template-columns:repeat(2,minmax(0,1fr))}body[data-portal="personal"] .cp-section-title{align-items:flex-start;flex-wrap:wrap}}
-@media(max-width:480px){body[data-portal="personal"] .cp-audience-grid{grid-template-columns:1fr}body[data-portal="personal"] .cp-path{grid-template-columns:1fr 1fr}body[data-portal="personal"] .cp-summary>div{padding:14px}}
+body[data-portal="personal"] {
+  --cp-blue: #315cc5;
+  --cp-navy: #173b80;
+  --cp-border: #dce6f5;
+  --cp-muted: #667d9b;
+}
+body[data-portal="personal"] .content {
+  max-width: none;
+  width: 100%;
+  min-width: 0;
+  margin: 0;
+  overflow-x: hidden;
+  padding: 26px clamp(18px, 2.2vw, 38px) 55px;
+}
+body[data-portal="personal"] .cp-kicker,
+body[data-portal="personal"] .cp-section-title span {
+  color: #5778bd;
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  font-weight: 800;
+}
+body[data-portal="personal"] .cp-hero {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 22px;
+  padding: 32px clamp(22px, 3vw, 44px);
+  background: linear-gradient(112deg, #143a7b, #315cc5 68%, #3779c9);
+  border-radius: 19px;
+  color: white;
+  margin-bottom: 18px;
+  box-shadow: 0 12px 28px #254b9b14;
+}
+body[data-portal="personal"] .cp-hero .cp-kicker {
+  color: #bed8ff;
+}
+body[data-portal="personal"] .cp-hero h1 {
+  color: #fff;
+  font-size: 28px;
+  line-height: 1.3;
+  margin: 12px 0 10px;
+}
+body[data-portal="personal"] .cp-hero p {
+  max-width: 790px;
+  color: #edf4ff;
+  font-size: 14px;
+  line-height: 1.9;
+  margin: 0 0 17px;
+}
+body[data-portal="personal"] .cp-hero-badges {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+body[data-portal="personal"] .cp-hero-badges span {
+  padding: 7px 12px;
+  border: 1px solid #ffffff60;
+  background: #ffffff1c;
+  border-radius: 999px;
+  font-size: 12px;
+  color: #fff;
+}
+body[data-portal="personal"] .cp-hero .primary {
+  border: 0;
+  background: white;
+  color: var(--cp-navy);
+  white-space: nowrap;
+  font-weight: 750;
+  min-height: 43px;
+}
+body[data-portal="personal"] .cp-summary {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 13px;
+  margin-bottom: 18px;
+}
+body[data-portal="personal"] .cp-summary > div {
+  border: 1px solid var(--cp-border);
+  background: #fff;
+  border-radius: 15px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+body[data-portal="personal"] .cp-summary span {
+  color: var(--cp-muted);
+  font-size: 12px;
+}
+body[data-portal="personal"] .cp-summary strong {
+  font-size: 29px;
+  color: var(--cp-navy);
+  line-height: 1.3;
+}
+body[data-portal="personal"] .cp-summary small {
+  color: #8799b1;
+  font-size: 11px;
+}
+body[data-portal="personal"] .cp-panel {
+  border: 1px solid var(--cp-border);
+  background: #fff;
+  border-radius: 16px;
+  padding: 22px 24px;
+  margin-bottom: 18px;
+  min-width: 0;
+}
+body[data-portal="personal"] .cp-section-title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+body[data-portal="personal"] .cp-section-title h2 {
+  color: var(--cp-navy);
+  font-size: 18px;
+  margin: 7px 0 0;
+}
+body[data-portal="personal"] .cp-path {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 10px;
+}
+body[data-portal="personal"] .cp-path button {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+  gap: 12px;
+  min-width: 0;
+  padding: 17px 13px;
+  background: #f6f9ff;
+  border: 1px solid #e0e9fa;
+  color: #213e70;
+  border-radius: 12px;
+  transition:
+    background 0.2s,
+    border-color 0.2s;
+}
+body[data-portal="personal"] .cp-path button:hover {
+  background: #e9f1ff;
+  border-color: #90adee;
+}
+body[data-portal="personal"] .cp-path em {
+  font-style: normal;
+  color: #5177ca;
+  font-size: 12px;
+  font-weight: 800;
+}
+body[data-portal="personal"] .cp-path strong {
+  font-size: 13px;
+  white-space: normal;
+}
+body[data-portal="personal"] .cp-path small {
+  color: #768cae;
+  font-size: 11px;
+}
+body[data-portal="personal"] .cp-columns {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+  gap: 18px;
+  align-items: start;
+}
+body[data-portal="personal"] .cp-next {
+  display: flex;
+  gap: 13px;
+  margin-bottom: 18px;
+  align-items: flex-start;
+}
+body[data-portal="personal"] .cp-next-icon {
+  display: grid;
+  place-items: center;
+  flex: none;
+  width: 44px;
+  height: 44px;
+  background: #e9f0ff;
+  color: #315cc5;
+  font-size: 22px;
+  border-radius: 13px;
+}
+body[data-portal="personal"] .cp-next strong {
+  display: block;
+  font-size: 15px;
+  color: #23477e;
+  margin: 2px 0 5px;
+}
+body[data-portal="personal"] .cp-next p,
+body[data-portal="personal"] .cp-muted {
+  color: var(--cp-muted);
+  line-height: 1.8;
+  font-size: 12px;
+}
+body[data-portal="personal"] .cp-next p {
+  margin: 0;
+}
+body[data-portal="personal"] .cp-standards {
+  display: grid;
+  gap: 10px;
+}
+body[data-portal="personal"] .cp-standards > div {
+  padding: 13px 15px;
+  border-radius: 10px;
+  background: #f5f8fe;
+  border: 1px solid #e2eafa;
+}
+body[data-portal="personal"] .cp-standards b,
+body[data-portal="personal"] .cp-standards small {
+  display: block;
+}
+body[data-portal="personal"] .cp-standards b {
+  font-size: 13px;
+  color: #214d9d;
+}
+body[data-portal="personal"] .cp-standards small {
+  font-size: 12px;
+  color: #7488a4;
+  margin-top: 5px;
+}
+body[data-portal="personal"] .cp-page-title {
+  margin-bottom: 20px;
+}
+body[data-portal="personal"] .cp-page-title h1 {
+  font-size: 26px;
+  color: var(--cp-navy);
+  margin: 9px 0;
+}
+body[data-portal="personal"] .cp-page-title p {
+  font-size: 13px;
+  color: var(--cp-muted);
+  line-height: 1.8;
+}
+body[data-portal="personal"] .cp-plan-columns {
+  grid-template-columns: minmax(0, 1.4fr) minmax(320px, 0.8fr);
+}
+body[data-portal="personal"] .cp-audience-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 11px;
+}
+body[data-portal="personal"] .cp-audience-grid button {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  gap: 6px;
+  align-items: flex-start;
+  padding: 16px;
+  background: #fff;
+  border: 1px solid #dfe8f7;
+  border-radius: 13px;
+  color: #1d426e;
+  transition:
+    border-color 0.2s,
+    background 0.2s,
+    box-shadow 0.2s;
+}
+body[data-portal="personal"] .cp-audience-grid button:hover {
+  border-color: #7d9edb;
+  background: #f7faff;
+}
+body[data-portal="personal"] .cp-audience-grid button.selected {
+  background: #edf3ff;
+  border-color: #315cc5;
+  box-shadow: inset 3px 0 #315cc5;
+}
+body[data-portal="personal"] .cp-group-mark {
+  display: grid;
+  place-items: center;
+  width: 27px;
+  height: 27px;
+  border-radius: 8px;
+  background: #eaf1ff;
+  color: #315cc5;
+}
+body[data-portal="personal"] .cp-audience-grid b {
+  font-size: 14px;
+}
+body[data-portal="personal"] .cp-audience-grid small {
+  font-size: 11px;
+  color: #7589a4;
+  line-height: 1.7;
+}
+body[data-portal="personal"] .cp-field {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+  font-size: 13px;
+  color: #344f72;
+  margin-bottom: 17px;
+  font-weight: 650;
+}
+body[data-portal="personal"] .cp-field select,
+body[data-portal="personal"] .cp-field textarea {
+  width: 100%;
+  min-width: 0;
+  border-radius: 10px;
+  border: 1px solid #cbd9eb;
+  background: #fff;
+  color: #24415e;
+  padding: 11px 12px;
+  font-weight: 400;
+  outline-offset: 2px;
+}
+body[data-portal="personal"] .cp-field textarea {
+  resize: vertical;
+}
+body[data-portal="personal"] .cp-guidance {
+  margin-top: 22px;
+  padding: 17px;
+  background: #f4f8ff;
+  border-left: 3px solid #315cc5;
+  border-radius: 10px;
+}
+body[data-portal="personal"] .cp-guidance b {
+  font-size: 13px;
+  color: #244e93;
+}
+body[data-portal="personal"] .cp-guidance p {
+  color: #647e9c;
+  font-size: 12px;
+  line-height: 1.8;
+  margin: 7px 0 0;
+}
+body[data-portal="personal"] .cp-save {
+  width: 100%;
+  min-height: 44px;
+}
+body[data-portal="personal"] .cp-disclaimer {
+  font-size: 12px;
+  line-height: 1.8;
+  color: #667c99;
+}
+@media (max-width: 1120px) {
+  body[data-portal="personal"] .cp-path {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+  body[data-portal="personal"] .cp-plan-columns {
+    grid-template-columns: 1fr;
+  }
+}
+@media (max-width: 760px) {
+  body[data-portal="personal"] .cp-hero {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 24px;
+  }
+  body[data-portal="personal"] .cp-hero h1 {
+    font-size: 23px;
+  }
+  body[data-portal="personal"] .cp-summary {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  body[data-portal="personal"] .cp-columns {
+    grid-template-columns: 1fr;
+  }
+  body[data-portal="personal"] .cp-panel {
+    padding: 18px;
+  }
+  body[data-portal="personal"] .cp-path {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  body[data-portal="personal"] .cp-section-title {
+    align-items: flex-start;
+    flex-wrap: wrap;
+  }
+}
+@media (max-width: 480px) {
+  body[data-portal="personal"] .cp-audience-grid {
+    grid-template-columns: 1fr;
+  }
+  body[data-portal="personal"] .cp-path {
+    grid-template-columns: 1fr 1fr;
+  }
+  body[data-portal="personal"] .cp-summary > div {
+    padding: 14px;
+  }
+}

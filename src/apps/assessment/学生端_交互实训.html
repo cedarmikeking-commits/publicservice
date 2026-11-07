@@ -1,1 +1,120 @@
-<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>四类交互实训 · 学生端</title><style>body{margin:0;font:15px/1.7 system-ui,"PingFang SC",sans-serif;color:#1f414c;background:#f4f8f9}header{padding:15px 5%;background:#fff;border-bottom:1px solid #dfe8e9;display:flex;justify-content:space-between}main{max-width:1050px;margin:25px auto;padding:0 16px}.panel{background:#fff;border:1px solid #dfebec;border-radius:14px;padding:24px;margin-bottom:15px}button,select{font:inherit;padding:10px;border:1px solid #bdd9d8;border-radius:9px;background:#ecf7f5;color:#087c70;cursor:pointer}#act{background:#078678;color:white}.bar{display:flex;gap:10px;flex-wrap:wrap}h1{font-size:22px;margin:0}h2{font-size:19px}.muted{color:#617c86}#result{margin-top:12px;padding:12px;border-radius:8px;background:#e8f7f2}button:disabled{opacity:.5}</style></head><body><header><strong>伟博智优 · 四类真实交互实训</strong><a href="index.html">返回学生端首页</a></header><main><div class="panel"><h1>学生端 · 离线交互训练</h1><p class="muted">与后台“查看试题”共用 wbzy-interactive-engine.js。当前场景为示例题，结果不计入正式测评。</p><div class="bar"><select id="kind" aria-label="选择题型"><option value="device">设备仿真</option><option value="hotspot">交互标注</option><option value="spreadsheet">表格计算</option><option value="practice">流程实训</option></select><button id="restart">重新开始</button></div></div><div class="panel"><h2 id="stem"></h2><div id="workspace"></div><div class="bar" style="margin-top:15px"><button id="act">提交并查看反馈</button></div><div id="result" hidden></div></div></main><script src="wbzy-interactive-engine.js"></script><script>let instance;const $=id=>document.getElementById(id);function show(){const q=WBZY_INTERACTIVE.demo[$('kind').value];$('stem').textContent=q.stem;instance=WBZY_INTERACTIVE.mount($('workspace'),q);$('result').hidden=true;$('act').disabled=false} $('kind').onchange=show;$('restart').onclick=show;$('act').onclick=()=>{const r=instance.submit();$('result').hidden=false;$('result').textContent=r.title+'：'+r.details;$('act').disabled=true};show();</script></body></html>
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>四类交互实训 · 学生端</title>
+    <style>
+      body {
+        margin: 0;
+        font:
+          15px/1.7 system-ui,
+          "PingFang SC",
+          sans-serif;
+        color: #1f414c;
+        background: #f4f8f9;
+      }
+      header {
+        padding: 15px 5%;
+        background: #fff;
+        border-bottom: 1px solid #dfe8e9;
+        display: flex;
+        justify-content: space-between;
+      }
+      main {
+        max-width: 1050px;
+        margin: 25px auto;
+        padding: 0 16px;
+      }
+      .panel {
+        background: #fff;
+        border: 1px solid #dfebec;
+        border-radius: 14px;
+        padding: 24px;
+        margin-bottom: 15px;
+      }
+      button,
+      select {
+        font: inherit;
+        padding: 10px;
+        border: 1px solid #bdd9d8;
+        border-radius: 9px;
+        background: #ecf7f5;
+        color: #087c70;
+        cursor: pointer;
+      }
+      #act {
+        background: #078678;
+        color: white;
+      }
+      .bar {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+      }
+      h1 {
+        font-size: 22px;
+        margin: 0;
+      }
+      h2 {
+        font-size: 19px;
+      }
+      .muted {
+        color: #617c86;
+      }
+      #result {
+        margin-top: 12px;
+        padding: 12px;
+        border-radius: 8px;
+        background: #e8f7f2;
+      }
+      button:disabled {
+        opacity: 0.5;
+      }
+    </style>
+  </head>
+  <body>
+    <header><strong>伟博智优 · 四类真实交互实训</strong><a href="index.html">返回学生端首页</a></header>
+    <main>
+      <div class="panel">
+        <h1>学生端 · 离线交互训练</h1>
+        <p class="muted">与后台“查看试题”共用 wbzy-interactive-engine.js。当前场景为示例题，结果不计入正式测评。</p>
+        <div class="bar">
+          <select id="kind" aria-label="选择题型">
+            <option value="device">设备仿真</option>
+            <option value="hotspot">交互标注</option>
+            <option value="spreadsheet">表格计算</option>
+            <option value="practice">流程实训</option></select
+          ><button id="restart">重新开始</button>
+        </div>
+      </div>
+      <div class="panel">
+        <h2 id="stem"></h2>
+        <div id="workspace"></div>
+        <div class="bar" style="margin-top: 15px"><button id="act">提交并查看反馈</button></div>
+        <div id="result" hidden></div>
+      </div>
+    </main>
+    <script src="wbzy-interactive-engine.js"></script>
+    <script>
+      let instance;
+      const $ = (id) => document.getElementById(id);
+      function show() {
+        const q = WBZY_INTERACTIVE.demo[$("kind").value];
+        $("stem").textContent = q.stem;
+        instance = WBZY_INTERACTIVE.mount($("workspace"), q);
+        $("result").hidden = true;
+        $("act").disabled = false;
+      }
+      $("kind").onchange = show;
+      $("restart").onclick = show;
+      $("act").onclick = () => {
+        const r = instance.submit();
+        $("result").hidden = false;
+        $("result").textContent = r.title + "：" + r.details;
+        $("act").disabled = true;
+      };
+      show();
+    </script>
+  </body>
+</html>
