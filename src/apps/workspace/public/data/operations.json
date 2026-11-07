@@ -1,0 +1,186 @@
+{
+  "partners": [
+    {
+      "id": "R001",
+      "name": "华北区域服务中心",
+      "area": "北京/天津/河北",
+      "owner": "王主任",
+      "status": "有效",
+      "fee": 120000,
+      "paid": 120000,
+      "quota": 1500,
+      "start": "2026-01-01",
+      "end": "2026-12-31"
+    },
+    {
+      "id": "R002",
+      "name": "华东区域服务中心",
+      "area": "上海/江苏/浙江",
+      "owner": "陈主任",
+      "status": "有效",
+      "fee": 150000,
+      "paid": 90000,
+      "quota": 2000,
+      "start": "2026-03-01",
+      "end": "2027-02-28"
+    },
+    {
+      "id": "R003",
+      "name": "华中区域服务中心",
+      "area": "湖北/湖南/江西",
+      "owner": "李主任",
+      "status": "待审核",
+      "fee": 100000,
+      "paid": 0,
+      "quota": 1200,
+      "start": "2026-11-01",
+      "end": "2027-10-31"
+    }
+  ],
+  "colleges": [
+    {
+      "id": "C001",
+      "region": "R001",
+      "name": "北京现代职业技术学院",
+      "contact": "张老师",
+      "phone": "13800001001",
+      "status": "合作中",
+      "source": "区域"
+    },
+    {
+      "id": "C002",
+      "region": "R001",
+      "name": "天津工程职业学院",
+      "contact": "刘老师",
+      "phone": "13800001002",
+      "status": "意向",
+      "source": "区域"
+    },
+    {
+      "id": "C003",
+      "region": "R002",
+      "name": "江南职业技术学院",
+      "contact": "周老师",
+      "phone": "13800002001",
+      "status": "合作中",
+      "source": "区域"
+    },
+    {
+      "id": "C004",
+      "region": "HQ",
+      "name": "研究院直属合作院校",
+      "contact": "赵老师",
+      "phone": "13800000001",
+      "status": "合作中",
+      "source": "总部"
+    }
+  ],
+  "programs": [
+    {
+      "id": "P001",
+      "region": "R001",
+      "college": "C001",
+      "name": "教师素智素养提升研修班",
+      "start": "2026-09-15",
+      "end": "2026-10-20",
+      "planned": 180,
+      "enrolled": 170,
+      "completed": 158,
+      "status": "已结班"
+    },
+    {
+      "id": "P002",
+      "region": "R001",
+      "college": "C002",
+      "name": "AI教学能力培训班",
+      "start": "2026-11-10",
+      "end": "2026-12-05",
+      "planned": 120,
+      "enrolled": 85,
+      "completed": 0,
+      "status": "招生中"
+    },
+    {
+      "id": "P003",
+      "region": "R002",
+      "college": "C003",
+      "name": "数智能力认证师资班",
+      "start": "2026-10-01",
+      "end": "2026-11-10",
+      "planned": 220,
+      "enrolled": 205,
+      "completed": 0,
+      "status": "培训中"
+    }
+  ],
+  "certificates": [
+    {
+      "id": "A001",
+      "region": "R001",
+      "program": "P001",
+      "count": 150,
+      "pass": 146,
+      "status": "待总部审核",
+      "opinion": "",
+      "date": "2026-10-22"
+    },
+    {
+      "id": "A002",
+      "region": "R002",
+      "program": "P003",
+      "count": 50,
+      "pass": 0,
+      "status": "草稿",
+      "opinion": "",
+      "date": "2026-10-27"
+    }
+  ],
+  "targets": [
+    {
+      "id": "T001",
+      "region": "R001",
+      "year": 2026,
+      "students": 1500,
+      "colleges": 12,
+      "certificates": 1200
+    },
+    {
+      "id": "T002",
+      "region": "R002",
+      "year": 2026,
+      "students": 2000,
+      "colleges": 16,
+      "certificates": 1700
+    }
+  ],
+  "payments": [
+    {
+      "id": "F001",
+      "region": "R001",
+      "type": "区域年度合作费",
+      "amount": 120000,
+      "date": "2026-01-15",
+      "status": "已核销"
+    },
+    {
+      "id": "F002",
+      "region": "R002",
+      "type": "区域年度合作费首期",
+      "amount": 90000,
+      "date": "2026-03-20",
+      "status": "已核销"
+    }
+  ],
+  "logs": [
+    {
+      "time": "2026-10-28 09:30",
+      "role": "总部",
+      "action": "创建年度任务 T002"
+    },
+    {
+      "time": "2026-10-27 15:10",
+      "role": "区域",
+      "action": "创建认证申请 A002"
+    }
+  ]
+}

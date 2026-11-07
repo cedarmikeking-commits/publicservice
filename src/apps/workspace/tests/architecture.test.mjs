@@ -1,0 +1,4 @@
+import test from 'node:test';import assert from 'node:assert/strict';import {groups,registry,can} from '../src/core/catalog.js';import {Store,activeSeats,validateSeat} from '../src/core/store.js';
+test('每个路由唯一，全部属于统一菜单',()=>{const ids=groups.flatMap(x=>x.items.map(y=>y[0]));assert.equal(new Set(ids).size,ids.length);ids.forEach(id=>assert.ok(registry[id]))});
+test('权限隔离：区域用户不能管理总部院校席位',()=>{assert.equal(can('region','school-admin'),false);assert.equal(can('hq','school-admin'),true);assert.equal(can('region','points'),false)});
+test('席位上限、释放与再次启用',()=>{const s=new Store({schools:[{id:'S',seats:1}],users:[{id:'U',schoolId:'S',type:'school',status:'启用'}]});assert.equal(activeSeats(s,'S'),1);assert.throws(()=>validateSeat(s,'S'),/席位/);validateSeat(s,'S','U');s.data.users[0].status='停用';assert.equal(activeSeats(s,'S'),0);validateSeat(s,'S')});
