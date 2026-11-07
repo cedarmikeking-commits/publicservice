@@ -1,0 +1,6 @@
+V19.3 交互答题预览按钮修复
+
+问题：qpReset、qpSubmit、qpCollect 定义在 wbzyStartBank 函数局部作用域，HTML 内联 onclick / onchange 无法解析。
+修复：将这三个函数与既有 edit/viewQuestion 一起注册到 window；同步更新 admin 内嵌题库 build 标识及弹窗 V19.3 标识。
+预期：提交反馈后展示参考答案及量规，重新作答清除所选答案并隐藏反馈；选项变更能够正常收集。
+检查：内联 JavaScript 语法检查通过、事件函数定义和导出一致；浏览器访问在运行环境被限制，未声称完成点击验收。

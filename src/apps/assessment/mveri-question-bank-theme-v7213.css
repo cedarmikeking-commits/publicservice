@@ -1,0 +1,27 @@
+/* V72.13 — self-contained question bank theme; avoids parent iframe styles. */
+:root { --bank-brand:#315CC5; --bank-brand-hover:#244BA8; --bank-soft:#EAF0FF; --bank-ink:#173B68; accent-color:#315CC5; }
+/* The question bank is a standalone document: its CSS must not depend on its parent. */
+body { background:#F3F6FC; color:var(--bank-ink); }
+body .panel { border-color:#E0E8F5; }
+body .muted, body .wbzy-list-loading p { color:#647B96; }
+body .tools > button:not(.secondary):not(.warn):not(.danger),
+body .modal .row > button:not(.secondary):not(.warn):not(.danger) {
+ background:#315CC5 !important; color:#fff !important; border-color:#315CC5 !important;
+}
+body .tools > button:not(.secondary):not(.warn):not(.danger):hover,
+body .modal .row > button:not(.secondary):not(.warn):not(.danger):hover {
+ background:#244BA8 !important; border-color:#244BA8 !important;
+}
+body .tools > button.secondary, body .row > button.secondary,
+body .modal button.secondary { background:#EAF0FF !important; color:#315CC5 !important; border:1px solid #D9E4FA !important; }
+body .tools > button.secondary:hover, body .row > button.secondary:hover { background:#DDE8FF !important; }
+body .wbzy-list-loading { background:#F3F6FC !important; border-color:#D9E4FA !important; color:#173B68 !important; }
+body .wbzy-list-loading-head strong { color:#315CC5 !important; }
+body .wbzy-list-loading-track, body #wbzy-operation-progress .op-track { background:#E3EAF6 !important; }
+body #wbzy-list-loading-bar, body #wbzy-operation-progress .op-bar {
+ background:#315CC5 !important; background-image:none !important;
+}
+body #wbzy-operation-progress { background:#F3F6FC !important; border-color:#D9E4FA !important; color:#173B68 !important; }
+body :is(button,a):focus-visible { outline:2px solid #315CC5 !important; outline-offset:2px; }
+body :is(input,select,textarea):focus { border-color:#315CC5 !important; box-shadow:0 0 0 3px #315CC522 !important; }
+/* Preserve semantic warning/danger/status colors and content cards. */
