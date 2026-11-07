@@ -216,7 +216,7 @@
         ["services", "▦", "服务体系"],
         ["news", "▤", "资讯动态"],
         ["standards", "◈", "标准体系"],
-        ["verify", "✓", "证书核验"],
+        ["verify", "✓", "认证中心"],
         ["ecology", "♧", "生态合作"],
       ];
     if (role === "personal")
@@ -227,7 +227,7 @@
         ["learning", "▤", "学习与提升"],
         ["certification", "◈", "评价认证"],
         ["portfolio", "▧", "成长档案"],
-        ["verify", "✓", "证书核验"],
+        ["verify", "✓", "认证中心"],
       ];
     if (role === "institution")
       return [
@@ -235,7 +235,7 @@
         ["members", "♙", "人员档案"],
         ["projects", "▤", "培训项目"],
         ["reports", "▥", "测评与认证"],
-        ["verify", "✓", "证书核验"],
+        ["verify", "✓", "认证中心"],
       ];
     return [
       ["dashboard", "▣", "运营总览"],
@@ -271,7 +271,7 @@
           ["services", "公共服务"],
           ["news", "资讯动态"],
           ["standards", "标准体系"],
-          ["verify", "证书核验"],
+          ["verify", "认证中心"],
           ["ecology", "生态合作"],
         ]
           .map(([k, t]) => `<button class="${page === k ? "selected" : ""}" data-page="${k}">${t}</button>`)
@@ -296,7 +296,7 @@
   function home() {
     const latest = (window.MVERI_NEWS || []).slice(0, 3);
     content(`<section class="site-hero home-v22-hero"><div class="site-wrap site-hero-grid"><div class="home-v22-intro"><div class="site-kicker"><span></span> MODERN VOCATIONAL EDUCATION · PUBLIC SERVICE</div><h1>构建开放、专业、可信赖的<br><em>职业教育公共服务体系</em></h1><p>聚焦能力标准、测评评价、人才培养与评价认证，面向院校、教师、学生和行业企业，提供贯通能力发展全过程的数字化服务。</p><div class="site-hero-actions"><button class="site-primary" data-page="services">探索公共服务 <span>→</span></button><button type="button" class="home-v22-outline" data-personal-modal="true">进入个人服务中心 <span aria-hidden="true">↗</span></button></div><div class="home-v22-hero-meta"><span>开放标准查询</span><span>公益互动体验</span><span>证书公开核验</span></div></div><div class="hero-graphic" aria-label="MVERI 标准、评价、培养、认证、合作公共服务生态"><div class="orbit orbit-one"></div><div class="orbit orbit-two"></div><div class="orbit-system"><span class="orbit-node node-a"><span>标准</span></span><span class="orbit-node node-b"><span>评价</span></span><span class="orbit-node node-c"><span>培养</span></span><span class="orbit-node node-d"><span>认证</span></span><span class="orbit-node node-e"><span>合作</span></span></div><div class="orbit-center">MVERI<small>公共服务生态</small></div></div></div></section>
-<section class="home-v22-quick site-wrap" aria-label="常用服务快捷入口"><button data-page="standards"><span class="qicon">◈</span><span><b>查看能力标准</b><small>通用能力与教师素智素养框架</small></span><span class="quick-arrow">↗</span></button><a href="eight-questions.html"><span class="qicon">◇</span><span><b>快速8题体验</b><small>无需登录，交互任务与结果解析</small></span><span class="quick-arrow">↗</span></a><button data-page="verify"><span class="qicon">✓</span><span><b>证书核验</b><small>根据证书编号查询记录</small></span><span class="quick-arrow">↗</span></button></section>
+<section class="home-v22-quick site-wrap" aria-label="常用服务快捷入口"><button data-page="standards"><span class="qicon">◈</span><span><b>查看能力标准</b><small>通用能力与教师素智素养框架</small></span><span class="quick-arrow">↗</span></button><a href="eight-questions.html"><span class="qicon">◇</span><span><b>快速8题体验</b><small>无需登录，交互任务与结果解析</small></span><span class="quick-arrow">↗</span></a><button data-page="verify"><span class="qicon">✓</span><span><b>认证中心</b><small>根据证书编号查询记录</small></span><span class="quick-arrow">↗</span></button></section>
 <section class="site-section site-wrap home-v22-services" id="public-services"><div class="site-section-header"><div><span class="site-eyebrow">PUBLIC SERVICES</span><h2>公共服务，覆盖能力发展全过程</h2><p>按服务目的进入业务，而不是先选择复杂的管理系统。</p></div><button class="text-action" data-page="services">全部公共服务 →</button></div><div class="service-grid">${[
       ["01", "标准体系", "查询能力标准、版本与指标结构，了解测评依据。", "◈", "standards"],
       ["02", "能力测评", "通过真实任务了解个人数智能力与发展方向。", "◇", "services"],
@@ -314,7 +314,7 @@
 <section class="site-section site-wrap home-v22-news"><div class="site-section-header"><div><span class="site-eyebrow">POLICY & NEWS</span><h2>政策资讯与行业动态</h2><p>精选有来源的政策、职业教育新闻与研究动态，详情可查看官方原文。</p></div><button class="text-action" data-page="news">进入资讯动态 →</button></div><div class="home-v22-news-grid">${latest.map((n, i) => `<article class="home-v22-news-card"><div class="home-v22-news-image"><img src="../assets/news-images/${esc(n.art)}" alt="${esc(n.category)}专题配图" loading="lazy"></div><div class="home-v22-news-body"><div class="home-v22-news-meta"><span>${esc(n.category)}</span><time>${esc(n.date)}</time></div><h3>${esc(n.title)}</h3><p>${esc(n.lead)}</p><button class="service-link" data-news-id="${esc(n.id)}">阅读详情 →</button></div></article>`).join("")}</div></section>
 <section class="site-band home-v22-process"><div class="site-wrap band-inner"><div><span class="site-eyebrow">SERVICE JOURNEY</span><h2>从标准依据到能力发展</h2><p>个人的测评、培训、考试和认证形成关联记录；标准与认证规则由平台统一管理。</p><button class="text-action" data-page="services">了解业务流程 →</button></div><div class="band-steps">${["标准依据", "能力测评", "学习发展", "考试评价", "认证核验"].map((x, i) => `<div><strong>0${i + 1}</strong><span>${x}</span></div>`).join("")}</div></div></section>
 <section class="site-section site-wrap home-v22-audience"><div class="site-section-header"><div><span class="site-eyebrow">SERVICE ENTRANCE</span><h2>面向不同用户的统一服务入口</h2><p>官网内容开放浏览，办理个人或机构业务时使用统一账号登录。</p></div></div><div class="audience-grid"><article><span>PERSONAL SERVICE</span><h3>教师、学生与社会学习者</h3><p>进行能力测评、课程学习、考试与认证申请，查看个人记录和证书。</p><button class="home-v22-audience-btn" data-personal-modal="true">进入个人服务 →</button></article><article><span>INSTITUTIONAL SERVICE</span><h3>院校、企业与区域服务中心</h3><p>开展成员管理、培训项目与测评组织，查看授权范围内的业务成果。</p><button class="home-v22-audience-btn" data-act="institution-login">进入机构服务 →</button></article></div></section>
-<section class="site-verify-band home-v22-verify"><div class="site-wrap"><div><span class="site-eyebrow">CERTIFICATE VERIFICATION</span><h2>证书信息公开核验</h2><p>输入证书编号，查询平台已有的证书记录与状态。</p></div><button class="home-v22-verify-btn" data-page="verify">前往证书核验 →</button></div></section>`);
+<section class="site-verify-band home-v22-verify"><div class="site-wrap"><div><span class="site-eyebrow">CERTIFICATE VERIFICATION</span><h2>证书信息公开核验</h2><p>输入证书编号，查询平台已有的证书记录与状态。</p></div><button class="home-v22-verify-btn" data-page="verify">前往认证中心 →</button></div></section>`);
   }
   function news(category = "全部资讯", term = "") {
     const list = window.MVERI_NEWS || [],
@@ -1160,7 +1160,7 @@
   function verify() {
     const publicView = role === "public";
     const result = `<div id="verify-result" class="verification-result" aria-live="polite"></div>`;
-    const view = `<section class="verification-page ${publicView ? "verification-public" : ""}"><div class="verification-head"><span class="verification-kicker">CERTIFICATE VERIFICATION · MVERI</span><h1>数字证书核验</h1><p>查询证书编号、核对发证记录与当前状态。核验结果仅代表当前平台存储记录，不公开个人测评和考试明细。</p><div class="verification-warning"><b>演示环境说明</b>：当前核验数据保存在浏览器本地，示例证书不具有正式认证效力，也无法跨设备保证记录一致。正式上线须对接服务器端证书数据库和签名核验服务。</div></div><div class="verification-layout"><div class="verification-main"><section class="verification-panel"><div class="verification-panel-heading"><div><span class="verification-step">01 · 查询</span><h2>证书信息查询</h2></div><span class="verification-secure">编号精确匹配</span></div><form id="mveri-verify-form" class="verification-form"><label for="verify-id">证书编号</label><div class="verification-search"><input id="verify-id" name="certificateNumber" autocomplete="off" maxlength="80" placeholder="请输入证书编号，例如 MVERI-2026-0001" value="${esc(query)}" required><button type="submit">查询证书</button></div><p>支持复制粘贴编号。核验不要求身份证号、手机号或其他敏感信息。</p></form>${result}</section><section class="verification-panel"><div class="verification-panel-heading"><div><span class="verification-step">02 · 记录</span><h2>本次访问的核验记录</h2></div><button type="button" class="verification-clear" data-verify-clear="true">清空记录</button></div><div id="verification-history"></div></section></div><aside class="verification-aside"><section class="verification-panel"><h2>核验说明</h2><ol><li>在证书上找到唯一编号并准确输入。</li><li>查看系统是否存在对应的发证记录。</li><li>核对证书状态、发证日期和认证项目。</li><li>出现不一致或无法查询时联系发证机构核实。</li></ol></section><section class="verification-panel"><h2>常见问题</h2><details><summary>查不到证书怎么办？</summary><p>检查编号是否正确；只有已写入当前数据库的证书才能查询。未通过审核、尚未发证的申请不会出现在此处。</p></details><details><summary>“有效”意味着什么？</summary><p>代表当前平台记录的证书状态。演示版不能独立证明证书真实性或现实世界中的法律效力。</p></details><details><summary>可以使用截图作为证明吗？</summary><p>截图无法证明证书实时状态。正式业务应使用官方服务器核验地址或数字签名核验。</p></details></section></aside></div></section>`;
+    const view = `<section class="verification-page ${publicView ? "verification-public" : ""}"><div class="verification-head"><span class="verification-kicker">CERTIFICATE VERIFICATION · MVERI</span><h1>认证中心</h1><p>查询证书编号、核对发证记录与当前状态。核验结果仅代表当前平台存储记录，不公开个人测评和考试明细。</p><div class="verification-warning"><b>演示环境说明</b>：当前核验数据保存在浏览器本地，示例证书不具有正式认证效力，也无法跨设备保证记录一致。正式上线须对接服务器端证书数据库和签名核验服务。</div></div><div class="verification-layout"><div class="verification-main"><section class="verification-panel"><div class="verification-panel-heading"><div><span class="verification-step">01 · 查询</span><h2>证书信息查询</h2></div><span class="verification-secure">编号精确匹配</span></div><form id="mveri-verify-form" class="verification-form"><label for="verify-id">证书编号</label><div class="verification-search"><input id="verify-id" name="certificateNumber" autocomplete="off" maxlength="80" placeholder="请输入证书编号，例如 MVERI-2026-0001" value="${esc(query)}" required><button type="submit">查询证书</button></div><p>支持复制粘贴编号。核验不要求身份证号、手机号或其他敏感信息。</p></form>${result}</section><section class="verification-panel"><div class="verification-panel-heading"><div><span class="verification-step">02 · 记录</span><h2>本次访问的核验记录</h2></div><button type="button" class="verification-clear" data-verify-clear="true">清空记录</button></div><div id="verification-history"></div></section></div><aside class="verification-aside"><section class="verification-panel"><h2>核验说明</h2><ol><li>在证书上找到唯一编号并准确输入。</li><li>查看系统是否存在对应的发证记录。</li><li>核对证书状态、发证日期和认证项目。</li><li>出现不一致或无法查询时联系发证机构核实。</li></ol></section><section class="verification-panel"><h2>常见问题</h2><details><summary>查不到证书怎么办？</summary><p>检查编号是否正确；只有已写入当前数据库的证书才能查询。未通过审核、尚未发证的申请不会出现在此处。</p></details><details><summary>“有效”意味着什么？</summary><p>代表当前平台记录的证书状态。演示版不能独立证明证书真实性或现实世界中的法律效力。</p></details><details><summary>可以使用截图作为证明吗？</summary><p>截图无法证明证书实时状态。正式业务应使用官方服务器核验地址或数字签名核验。</p></details></section></aside></div></section>`;
     if (publicView) content(view);
     else content(header("电子证书核验", "证书核验服务，演示数据仅在当前浏览器有效") + view);
     verifyResult();
