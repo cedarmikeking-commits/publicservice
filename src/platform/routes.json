@@ -1,0 +1,73 @@
+{
+  "version": "72.0.0",
+  "default": "site",
+  "apps": [
+    {
+      "id": "site",
+      "name": "公共服务官网",
+      "entry": "/src/apps/site/index.html",
+      "audience": [
+        "public"
+      ]
+    },
+    {
+      "id": "auth",
+      "name": "身份登录",
+      "entry": "/src/apps/auth/access.html",
+      "audience": [
+        "public"
+      ]
+    },
+    {
+      "id": "personal",
+      "name": "个人服务",
+      "entry": "/src/apps/personal/index.html",
+      "audience": [
+        "individual"
+      ]
+    },
+    {
+      "id": "institution",
+      "name": "院校服务",
+      "entry": "/src/apps/institution/index.html",
+      "audience": [
+        "school"
+      ]
+    },
+    {
+      "id": "area",
+      "name": "区域与总部经营",
+      "entry": "/src/apps/area/index.html",
+      "audience": [
+        "hq",
+        "regional"
+      ]
+    },
+    {
+      "id": "assessment",
+      "name": "能力评价",
+      "entry": "/src/apps/assessment/admin-hq.html",
+      "audience": [
+        "hq"
+      ]
+    },
+    {
+      "id": "operations",
+      "name": "培训运营",
+      "entry": "/src/apps/operations/index.html",
+      "audience": [
+        "hq",
+        "regional"
+      ]
+    },
+    {
+      "id": "workspace",
+      "name": "新工作台实验模块",
+      "entry": "/src/apps/workspace/index.html",
+      "audience": [
+        "hq"
+      ],
+      "experimental": true
+    }
+  ]
+}
