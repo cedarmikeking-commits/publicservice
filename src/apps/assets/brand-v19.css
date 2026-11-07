@@ -1,0 +1,77 @@
+/* MVERI V19 · brand visual system · loaded after the retained V18 styles */
+:root{--brand:#315CC5;--brand-dark:#173B80;--brand-deep:#102A63;--brand-light:#527FE0;--brand-soft:#EAF1FF;--brand-ink:#173B80;--brand-teal:#19A99B;--brand-border:#DCE6F6;--brand-canvas:#F5F8FE;--brand-hover:#244FAF;accent-color:var(--brand)}
+body{background:var(--brand-canvas);color:#203650}
+:focus-visible{outline:3px solid #789CF0!important;outline-offset:2px}
+/* Public website */
+.public-mode .site-utility{background:var(--brand-deep);color:#DBE7FF}
+.public-mode .site-header{background:#fff;border-color:var(--brand-border)}
+.site-identity,.site-identity b{color:var(--brand-ink)!important}
+.site-nav button.selected{color:var(--brand)!important;border-color:var(--brand)!important}
+.site-nav button:hover{color:var(--brand)!important}
+.site-login,.site-primary{background:var(--brand)!important;border-color:var(--brand)!important;color:#fff!important;transition:background .2s,transform .2s}
+.site-login:hover,.site-primary:hover{background:var(--brand-hover)!important;transform:translateY(-1px)}
+.site-hero{background:radial-gradient(circle at 82% 30%,rgba(82,127,224,.44),transparent 41%),linear-gradient(120deg,#102A63 0%,#173B80 55%,#315CC5 100%)!important}
+.site-hero em{color:#D5E2FF!important}.site-kicker{color:#D0E0FF!important}.site-kicker span{background:var(--brand-teal)!important}
+.site-secondary{border-color:#A6BEF4!important;color:#F7FAFF!important}
+.site-secondary:hover{background:#FFFFFF19!important}
+.hero-graphic .orbit{border-color:#8EAAF166!important}
+.hero-graphic .orbit-center{background:radial-gradient(circle at 28% 22%,#527FE0,#173B80 74%)!important;border-color:#A8C2FF99!important;box-shadow:0 0 70px #6895F044!important}
+.hero-graphic .orbit-node>span{background:linear-gradient(150deg,#315CC5,#173B80)!important;border-color:#A6BEF4!important;color:#fff!important;box-shadow:0 8px 24px #0F2A6266!important}
+.site-eyebrow,.service-symbol{color:var(--brand)!important}
+.site-section h2,.site-band h2,.site-verify-band h2,.service-tile h3,.audience-grid h3{color:var(--brand-ink)}
+.service-tile,.panel{border-color:var(--brand-border)}
+.service-tile:hover{border-color:#9DB8F0;box-shadow:0 12px 30px #315CC51C}
+.text-action,.service-link,.eight-link{color:var(--brand)!important}
+.site-band{background:#EDF3FF}.audience-grid article{background:#EDF3FF;border-color:#DCE6F8}.audience-grid article:nth-child(2){background:#F0F8FB;border-color:#D8EBEC}
+.band-steps strong{border-color:#CAD9F4;color:var(--brand)}
+.site-verify-band{background:var(--brand-dark)!important}
+.site-footer{background:var(--brand-deep)!important;color:#D5E2FF}.site-footer .site-disclaimer{border-color:#435F9C;color:#BACBF0}
+.site-footer a{color:#D9E7FF}.site-footer a:hover{text-decoration:underline;color:#fff}
+/* Independent business desktops */
+.topbar{background:white;border-color:var(--brand-border)}.topbar .brand{color:var(--brand-ink)}
+.sidebar{background:#173B80!important;color:#DFE8FF!important}.sidebar .navhead{color:#AEC6F4}
+.sidebar .nav{color:#E3ECFF}.sidebar .nav:hover{background:#2D56A1!important}.sidebar .nav.active{background:var(--brand)!important;color:#fff!important}
+.shell .content{background:var(--brand-canvas)}
+.titleline h1,.panel h2,.content h1{color:var(--brand-ink)}
+.outline:hover,.ghost:hover{border-color:#9AB5EA;color:var(--brand)}
+.pill{background:#EAF1FF!important;color:var(--brand)!important}
+button.primary,.content button.primary{background:var(--brand)!important;border-color:var(--brand)!important;color:#fff!important}
+button.primary:hover,.content button.primary:hover{background:var(--brand-hover)!important}
+input:focus,select:focus,textarea:focus{border-color:var(--brand)!important;box-shadow:0 0 0 3px #315CC51B}
+/* Offline task experience entry */
+.eight-experience{border-color:#C9D9F8!important;box-shadow:0 16px 40px #315CC51A!important}
+.eight-toolbar{background:#EAF1FF!important}.eight-toolbar b{color:var(--brand-ink)!important}
+.eight-symbol{background:var(--brand)!important}.eight-placeholder h3{color:var(--brand-ink)!important}
+/* News and policy */
+.news-landing{background:var(--brand-canvas)!important}
+.news-titleband h1,.news-article h1{color:var(--brand-ink)!important}
+.news-tabs button.active{color:var(--brand)!important;border-color:var(--brand)!important}
+.news-card:hover,.news-feature:hover{border-color:#A6BFF2!important}
+.news-search-row button,.news-readmore{color:var(--brand)}
+/* Accessibility: avoid losing normal link underlines on keyboard focus */
+a:focus-visible{text-decoration:underline}
+
+/* Login and registration */
+body:has(.wrap .intro){background:linear-gradient(140deg,#F5F8FE 0%,#EAF1FF 100%)}
+body:has(.wrap .intro) .brand,body:has(.wrap .intro) .intro h1{color:var(--brand-ink)!important}
+body:has(.wrap .intro) .eyebrow,body:has(.wrap .intro) .back,body:has(.wrap .intro) .other a{color:var(--brand)!important}
+body:has(.wrap .intro) .panel{background:#fff;border:1px solid var(--brand-border);box-shadow:0 20px 60px #173B8012}
+body:has(.wrap .intro) .submit{background:var(--brand)!important;color:#fff!important;border-color:var(--brand)!important}
+body:has(.wrap .intro) .submit:hover{background:var(--brand-hover)!important}
+body:has(.wrap .intro) .chip{background:#EAF1FF;color:#315CC5;border-color:#C9D9F7}
+body:has(.wrap .intro) .samples button:hover{border-color:#97B4F0;background:#F0F5FF}
+@media(prefers-reduced-motion:reduce){.site-login,.site-primary{transition:none}}
+
+/* V20: Logo-blue correction for public-facing masthead and hero. */
+.public-mode .site-utility{background:#315CC5!important;color:#F1F5FF!important}
+.public-mode .site-utility .site-wrap{height:30px;justify-content:space-between;gap:22px}
+.public-mode .site-utility .site-wrap span{display:inline!important;color:#E1EAFF;opacity:.95}
+.public-mode .site-hero{background:radial-gradient(circle at 79% 42%,rgba(130,171,255,.33),transparent 39%),linear-gradient(112deg,#254DAE 0%,#315CC5 56%,#3C68D0 100%)!important}
+.public-mode .site-hero-grid{min-height:465px;gap:36px}
+.public-mode .site-hero h1{margin:18px 0 20px}
+.public-mode .site-hero-actions{margin-top:24px}
+.public-mode .site-primary{background:#FFFFFF!important;border-color:#FFFFFF!important;color:#254DAE!important}
+.public-mode .site-primary:hover{background:#EAF1FF!important;border-color:#EAF1FF!important}
+.public-mode .site-secondary{background:#244EAC44!important;border-color:#D7E4FF!important}
+.public-mode .site-secondary:hover{background:#FFFFFF22!important}
+@media(max-width:700px){.public-mode .site-utility .site-wrap span{display:none!important}.public-mode .site-hero-grid{min-height:0}}

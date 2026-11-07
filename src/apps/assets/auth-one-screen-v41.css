@@ -1,0 +1,103 @@
+/* V41 · Single-viewport authentication layout.
+   Applies only to the three role-specific login pages, not the public site. */
+@media (min-width: 951px) {
+  html:has(body.v39-auth), body.v39-auth { height: 100%; overflow: hidden; }
+  body.v39-auth { min-height: 100dvh; display: grid; grid-template-rows: 64px minmax(0,1fr) 22px; }
+  .v39-header { height: 64px; min-height: 0; }
+  .v39-header-inner { width: min(1230px,calc(100% - 44px)); }
+  .v39-brand img { width: 40px; height: 40px; }
+  .v39-brand strong { font-size: 15px; }
+  .v39-brand small { margin-top: 3px; }
+  .v39-main { min-height: 0; padding: 12px 22px 7px; display: flex; align-items: stretch; justify-content: center; }
+  .v39-container { width: 100%; max-width: 1210px; height: 100%; min-height: 0; grid-template-columns: minmax(0,.94fr) minmax(0,1.06fr); border-radius: 17px; }
+  .v39-story { min-height: 0; padding: clamp(18px,2.7vh,30px) clamp(23px,3vw,38px) 18px; gap: 10px; }
+  .v39-overline { font-size: 10px; }
+  .v39-story-core { flex: 1; min-height: 0; display: flex; flex-direction: column; justify-content: center; }
+  .v39-story-tag { padding: 5px 11px; font-size: 11px; align-self: flex-start; }
+  .v39-story h1 { font-size: clamp(25px,2.3vw,34px); line-height: 1.30; margin: clamp(8px,1.5vh,14px) 0 9px; letter-spacing: -.035em; }
+  .v39-story p { font-size: 12px; line-height: 1.6; margin: 0; }
+  .v39-scene-grid { gap: 9px; margin-top: clamp(10px,2vh,17px); }
+  .v39-scene-card { padding: 10px 12px; border-radius: 12px; }
+  .v39-scene-card small { font-size: 9px; margin-bottom: 3px; }
+  .v39-scene-card strong { font-size: 13px; line-height: 1.35; margin-bottom: 2px; }
+  .v39-scene-card span { font-size: 10px; line-height: 1.45; }
+  .v39-story-lines { margin-top: 12px; gap: 8px; }
+  .v39-story-lines div { font-size: 11px; gap: 8px; }
+  .v39-story-lines span { width: 19px; height: 19px; border-radius: 5px; }
+  .v39-role-tags { gap: 6px; margin-top: 11px; }
+  .v39-role-tags b { padding: 5px 9px; font-size: 10px; }
+  .v39-story-bottom { margin-top: auto; }
+  .v39-brand-emblem { font-size: 11px; padding: 8px; }
+  .v39-brand-emblem small { font-size: 7px; }
+  .v39-story-bottom>span { font-size: 8px; }
+  .v39-login-area { min-height: 0; overflow: hidden; padding: clamp(12px,2.4vh,24px) clamp(24px,3.5vw,48px); }
+  .v39-login-content { max-width: 450px; }
+  .v39-eyebrow { font-size: 10px; }
+  .v39-login-content h2 { font-size: 23px; margin: 6px 0 4px; }
+  .v39-sub { font-size: 11px; line-height: 1.55; margin: 0 0 10px; }
+  .v39-field { margin: 9px 0; font-size: 12px; }
+  .v39-field>input,.v39-field>select,.v39-password-wrap { height: 40px; margin-top: 5px; border-radius: 8px; font-size: 12px; }
+  .v39-form-note { font-size: 10px; line-height: 1.45; }
+  .v39-error { margin-top: 7px; padding: 8px; font-size: 11px; }
+  .v39-privilege { padding: 8px 10px; font-size: 11px; border-radius: 8px; }
+  .v39-submit { margin-top: 10px; padding: 10px 16px; min-height: 40px; font-size: 13px; }
+  .v39-sample-area { margin-top: 12px; padding-top: 11px; }
+  .v39-sample-title strong,.v39-sample-title span { font-size: 10px; }
+  .v39-samples { margin-top: 7px; gap: 7px; }
+  .v39-sample { padding: 8px 10px; }
+  .v39-sample b { font-size: 11px; }
+  .v39-sample small { font-size: 9px; margin-top: 2px; }
+  .v39-foot-links { margin-top: 11px; font-size: 10px; }
+  .v39-footer { padding: 2px 8px; height: 22px; font-size: 10px; }
+}
+@media (min-width: 951px) and (max-height: 760px) {
+  .v39-story-bottom, .v39-story-lines, .v39-form-note { display: none; }
+  .v39-scene-grid { grid-template-columns: 1fr 1fr; gap: 8px; }
+  .v39-scene-card { min-width: 0; }
+  .v39-scene-card span { font-size: 10px; }
+  .v39-role-tags { margin-top: 8px; }
+  .v39-login-area { padding-top: 8px; padding-bottom: 8px; }
+  .v39-field { margin: 7px 0; }
+  .v39-sub { margin-bottom: 7px; }
+  .v39-sample-area { margin-top: 9px; padding-top: 9px; }
+}
+@media (max-width: 950px) {
+  body.v39-auth { min-height: 100dvh; display: flex; flex-direction: column; }
+  .v39-main { flex: 1; display: flex; padding: 10px 12px 6px; }
+  .v39-container { width: 100%; min-height: 0; }
+  .v39-story { min-height: 0; padding: 16px 24px; }
+  .v39-story .v39-overline,.v39-story .v39-scene-grid,.v39-story .v39-role-tags,.v39-story .v39-story-lines,.v39-story .v39-story-bottom { display: none; }
+  .v39-story-core { min-height: 0; }
+  .v39-story h1 { font-size: 22px; line-height: 1.3; margin: 7px 0; }
+  .v39-story p { font-size: 11px; line-height: 1.5; }
+  .v39-login-area { padding: 18px 24px; }
+  .v39-login-content { max-width: 510px; }
+  .v39-login-content h2 { margin: 7px 0 5px; font-size: 22px; }
+  .v39-sub { margin-bottom: 11px; font-size: 11px; }
+  .v39-field { margin: 9px 0; font-size: 12px; }
+  .v39-field>input,.v39-field>select,.v39-password-wrap { height: 41px; margin-top: 5px; }
+  .v39-submit { margin-top: 12px; padding: 11px; }
+  .v39-sample-area { margin-top: 11px; padding-top: 10px; }
+  .v39-samples { margin-top: 7px; }
+  .v39-foot-links { margin-top: 12px; }
+  .v39-footer { padding: 6px; }
+}
+@media (max-width: 950px) and (max-height: 800px) {
+  .v39-story { display: none; }
+  .v39-login-area { flex: 1; align-items: center; }
+  .v39-footer { display: none; }
+}
+@media (max-width: 520px) {
+  .v39-header { height: 59px; }
+  .v39-header-inner { height: 59px; }
+  .v39-main { padding: 7px; }
+  .v39-login-area { padding: 16px; }
+  .v39-samples { grid-template-columns: repeat(2,minmax(0,1fr)); }
+  .v39-sample { padding: 8px; }
+  .v39-foot-links span { display: none; }
+}
+/* Very short viewports may scroll rather than conceal login fields. */
+@media (max-height: 570px) and (min-width: 951px) {
+  html:has(body.v39-auth),body.v39-auth { height: auto; overflow: auto; }
+  body.v39-auth { min-height: 570px; }
+}

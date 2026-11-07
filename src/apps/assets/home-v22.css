@@ -1,0 +1,45 @@
+/* V22 – dedicated public homepage UX; scoped to homepage classes */
+.home-v22-hero .site-hero-grid{min-height:500px;grid-template-columns:minmax(0,1.16fr) minmax(340px,.84fr);gap:65px}
+.home-v22-intro h1{font-size:clamp(34px,3.1vw,48px);line-height:1.33;letter-spacing:-.022em}
+.home-v22-intro>p{max-width:630px;line-height:1.95}
+.home-v22-outline{display:inline-flex;align-items:center;justify-content:center;min-height:46px;padding:12px 20px;border-radius:7px;border:1px solid #D7E4FF;color:white;font-weight:650;text-decoration:none}
+.home-v22-outline:hover{background:#ffffff23;color:white;text-decoration:none}
+.home-v22-hero-meta{display:flex;flex-wrap:wrap;gap:16px;margin-top:28px;color:#D9E5FF;font-size:12px}
+.home-v22-hero-meta span:before{content:'✓';color:#9CE8D5;margin-right:7px}
+.home-v22-quick{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;position:relative;margin-top:-32px;z-index:5}
+.home-v22-quick>a,.home-v22-quick>button{font:inherit;text-decoration:none;display:flex;align-items:center;gap:13px;text-align:left;border:1px solid #DDE7F8;background:#fff;box-shadow:0 14px 35px #173B8014;border-radius:12px;padding:20px 19px;color:#193B75;cursor:pointer;min-width:0;transition:transform .2s,border-color .2s}
+.home-v22-quick>a:hover,.home-v22-quick>button:hover{transform:translateY(-3px);border-color:#8FADEB;text-decoration:none}
+.home-v22-quick .qicon{width:43px;height:43px;flex-shrink:0;display:grid;place-items:center;background:#EAF1FF;border-radius:11px;color:#315CC5;font-size:22px}
+.home-v22-quick b{font-size:15px;display:block}.home-v22-quick small{display:block;font-size:11px;margin-top:5px;color:#7185A5;line-height:1.6}.home-v22-quick .quick-arrow{margin-left:auto;color:#315CC5;font-size:17px}
+.home-v22-services{padding-top:100px}
+.home-v22-services .service-tile{border-radius:12px;min-height:215px}.home-v22-services .service-tile:hover{border-color:#ABC3F0}
+.home-v22-demo{background:linear-gradient(115deg,#193E8E 0%,#315CC5 68%,#416DCE 100%);color:white;padding:65px 0}
+.home-v22-demo-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:42px;align-items:center}
+.home-v22-demo h2{font-size:clamp(28px,3vw,40px);line-height:1.4;color:white;margin:14px 0}.home-v22-demo p{color:#E0E9FE;font-size:14px;line-height:1.95;max-width:620px}
+.home-v22-kicker{color:#BFE8F0;letter-spacing:.18em;font-size:11px;font-weight:800}
+.home-v22-demo-btn,.home-v22-verify-btn{display:inline-flex;align-items:center;gap:24px;padding:14px 21px;background:white;color:#254DAE;border-radius:8px;font-weight:750;text-decoration:none;border:1px solid white;cursor:pointer}
+.home-v22-demo-btn:hover,.home-v22-verify-btn:hover{background:#EAF1FF;text-decoration:none;color:#173B80}
+.home-v22-demo-note{margin-top:17px;font-size:12px;color:#D4E1FA}.home-v22-demo-visual{background:#FFFFFF16;border:1px solid #FFFFFF35;border-radius:22px;min-height:270px;display:grid;align-content:center;justify-items:center;gap:28px}
+.home-v22-demo-count{font-size:95px;font-weight:850;line-height:1;text-align:center;letter-spacing:-.07em}.home-v22-demo-count small{display:block;font-size:12px;font-weight:650;letter-spacing:.18em;color:#D6E6FF;margin-top:13px}
+.home-v22-demo-flow{display:flex;gap:9px;flex-wrap:wrap;justify-content:center}.home-v22-demo-flow span{border:1px solid #FFFFFF50;border-radius:99px;padding:8px 12px;font-size:12px}
+.home-v22-news-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}.home-v22-news-card{border:1px solid #DFE7F4;border-radius:12px;overflow:hidden;background:#fff;display:flex;flex-direction:column}.home-v22-news-image{aspect-ratio:16/9;background:#EAF1FF;overflow:hidden}.home-v22-news-image img{display:block;width:100%;height:100%;object-fit:cover}.home-v22-news-body{padding:20px;display:flex;flex-direction:column;flex:1}.home-v22-news-meta{display:flex;justify-content:space-between;gap:10px;color:#788CA5;font-size:11px}.home-v22-news-meta span{color:#315CC5;font-weight:700}.home-v22-news-body h3{font-size:16px;line-height:1.65;color:#173B80;margin:12px 0}.home-v22-news-body p{font-size:12px;color:#6C819A;line-height:1.9;flex:1}.home-v22-news-body .service-link{align-self:flex-start}
+.home-v22-process .band-inner{gap:35px}.home-v22-audience .audience-grid article{border-radius:12px}.home-v22-audience-btn{background:#315CC5!important;color:#fff!important;border:1px solid #315CC5;border-radius:8px;padding:12px 17px;font-weight:700;cursor:pointer}.home-v22-audience-btn:hover{background:#254DAE!important}.home-v22-verify{background:#193E8E!important}.home-v22-verify .site-eyebrow{color:#B5D9FF}
+@media(max-width:980px){.home-v22-hero .site-hero-grid{gap:16px;grid-template-columns:1fr .75fr}.home-v22-quick{grid-template-columns:1fr 1fr}.home-v22-news-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:700px){.home-v22-hero .site-hero-grid{display:block;padding-top:52px;padding-bottom:72px}.home-v22-intro h1{font-size:30px}.home-v22-hero-meta{gap:9px}.home-v22-quick{grid-template-columns:1fr;margin-top:-24px}.home-v22-services{padding-top:50px}.home-v22-demo{padding:44px 0}.home-v22-demo-grid{grid-template-columns:1fr}.home-v22-demo-visual{min-height:210px}.home-v22-demo-count{font-size:72px}.home-v22-news-grid{grid-template-columns:1fr}.home-v22-verify .site-wrap{display:block}.home-v22-verify-btn{margin-top:14px}.home-v22-outline{margin-top:8px}}
+@media(prefers-reduced-motion:reduce){.home-v22-quick>a,.home-v22-quick>button{transition:none}}
+
+/* V26: Unified typography and rhythm for the two hero actions. */
+.home-v22-hero .site-hero-actions > .site-primary,
+.home-v22-hero .site-hero-actions > .home-v22-outline {
+  display:inline-flex;align-items:center;justify-content:center;gap:18px;
+  box-sizing:border-box;min-height:48px;padding:12px 20px;
+  font-family:inherit;font-size:13px!important;font-weight:650!important;
+  line-height:22px!important;letter-spacing:0!important;text-decoration:none;
+  border-radius:8px;white-space:nowrap;vertical-align:middle;
+}
+.home-v22-hero .site-hero-actions > .site-primary span,
+.home-v22-hero .site-hero-actions > .home-v22-outline span {
+  margin-left:0!important;font-size:16px!important;font-weight:650!important;
+  line-height:1;display:inline-block;flex-shrink:0;
+}
+@media(max-width:420px){.home-v22-hero .site-hero-actions > .site-primary,.home-v22-hero .site-hero-actions > .home-v22-outline{width:100%;}}

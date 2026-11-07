@@ -1,0 +1,17 @@
+/* V72.34 shared certificate verifier in authenticated portal workspaces */
+body[data-portal="institution"] .verification-page,
+body[data-portal="operations"] .verification-page,
+body[data-portal="personal"] .verification-page{
+ width:100%;max-width:none;margin:0;padding:4px 0 36px;box-sizing:border-box;
+}
+body[data-portal="institution"] .content:has(.verification-page),
+body[data-portal="operations"] .content:has(.verification-page),
+body[data-portal="personal"] .content:has(.verification-page){min-width:0;overflow-x:hidden}
+body[data-portal="institution"] .verification-layout,
+body[data-portal="operations"] .verification-layout,
+body[data-portal="personal"] .verification-layout{width:100%;min-width:0}
+body[data-portal="institution"] .verification-head h1,
+body[data-portal="operations"] .verification-head h1,
+body[data-portal="personal"] .verification-head h1{color:#173B80}
+@media(max-width:1100px){body:not([data-portal="public"]) .verification-layout{grid-template-columns:1fr}}
+@media(max-width:700px){body:not([data-portal="public"]) .verification-panel{padding:18px}}
