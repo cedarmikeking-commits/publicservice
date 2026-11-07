@@ -1,0 +1,15 @@
+import assert from 'node:assert/strict';
+import {readFileSync,existsSync} from 'node:fs';
+const read=p=>readFileSync(new URL(p,import.meta.url),'utf8');
+const app=read('../src/apps/area/app.js');
+const css=read('../src/apps/area/styles.css');
+const aCss=read('../src/apps/assessment/mveri-embedded-blue-v724.css');
+const menu=read('../src/apps/assets/unified-menu-v722.js');
+assert.match(app,/isAllowedRoute\(id\)/);
+assert.match(app,/validRoutes\.has\(next\)/);
+assert.match(app,/assessmentFrameLoaded/);
+assert.match(css,/overflow-y:auto!important/);
+assert.match(aCss,/button\.type-card-main/);
+for(const x of ['eval-types','eval-bank','school-admin','user-admin','dashboard'])assert.ok(menu.includes(x));
+for(const p of ['../src/apps/area/dashboard.html','../src/apps/assessment/admin-hq.html','../src/apps/site/index.html'])assert.ok(existsSync(new URL(p,import.meta.url)));
+console.log('V72.8 static audit: PASS');
