@@ -1,7 +1,0 @@
-V16.7 更新
-1. 后台“考评点管理”标题右侧增加“考评点萃取核验表”入口，新窗口打开原有核验表。
-2. 原始教师考评点：assessment-points.js（window.ASSESSMENT_POINTS，109条）；当前浏览器修改存于 localStorage 键 teacher_assessment_points_v11，可在后台导出 assessment-points.js。
-3. 原始通用考评点：extracted-general-points.js（window.EXTRACTED_GENERAL_POINTS，256条）；当前浏览器修改存于 localStorage 键 digital_assessment_general_point_records_v152，可在后台导出“通用数智能力考评点数据.js”。
-4. 指标原文与结构：通用 general-framework.js；教师 indicator-tree.js。
-5. 考评点萃取核验表.html 目前主要列示通用能力256个候选考评点的来源和萃取关系，不等同于两套考评点的综合核验表。
-6. 纯静态 HTML + JS 页面保存时不会自动覆盖服务器上的 JS 文件。请导出 JS 并部署替换，或保留 JSON 备份。
